@@ -17,9 +17,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="navbar-nav ml-auto">
-        
+
         @guest
-        
+
         @else
         <!--  -->
         <li class="dropdown nav-item">
@@ -37,7 +37,7 @@
               <a href="javascript:void(0)" class="nav-item dropdown-item">{{ Auth::user()->name }}</a>
             </li>
             <li class="nav-link">
-              <a href="javascript:void(0)" class="nav-item dropdown-item">...</a>
+              <a href="javascript:void(0)" class="nav-item dropdown-item">{{ Auth::user()->email }}...</a>
             </li>
             <li class="dropdown-divider"></li>
             <li class="nav-link">
@@ -45,8 +45,8 @@
                 document.getElementById('logout-form').submit();">
                 Salir
               </a>
-              <form id="logout-form" 
-                action="{{ route('logout') }}" 
+              <form id="logout-form"
+                action="{{ route('logout') }}"
                 method="POST" style="display: none;">
                   @csrf
               </form>
