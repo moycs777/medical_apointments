@@ -7,6 +7,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
+Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::resource('/profile', 'ProfileController');
 
 /* Route::get('profile', function () {

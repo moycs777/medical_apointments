@@ -61,8 +61,8 @@
                     <img src="web/img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
                   </div>
                   <div class="media-body media-middle">
-                    <h5 class="media-heading">Joel Fisher</h5>
-                    <h6>hey@joelfisher.com</h6>
+                    <h5 class="media-heading">{{ Auth::user()->name }}</h5>
+                    <h6>{{ Auth::user()->email }}</h6>
                   </div>
                 </div>
                 <a href="#" class="dropdown-item text-uppercase">View posts</a>
@@ -94,16 +94,16 @@
               <img src="web/img/face5.jpg" height="60" width="60" alt="Avatar" class="img-circle">
             </div>
             <div class="media-body media-middle">
-              <h5 class="media-heading">Joel Fisher</h5>
-              <h6>hey@joelfisher.com</h6>
+              <h5 class="media-heading">{{ Auth::user()->name }}</h5>
+              <h6>{{ Auth::user()->email }}</h6>
             </div>
           </div>
-          <a href="#" class="dropdown-item text-uppercase">View posts</a>
+          <a href="#" class="dropdown-item text-uppercase">Ver citas</a>
           <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
           <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a>
           <a href="{{ route('logout') }}" class="dropdown-item text-uppercase text-muted" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                     Log out
+                                                     Salir
           </a>
           <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
             <span class="sr-only">Edit</span>
