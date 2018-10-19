@@ -18,6 +18,9 @@
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="navbar-nav ml-auto">
         
+        @guest
+        
+        @else
         <!--  -->
         <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -31,17 +34,26 @@
           </a>
           <ul class="dropdown-menu dropdown-navbar">
             <li class="nav-link">
-              <a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a>
+              <a href="javascript:void(0)" class="nav-item dropdown-item">{{ Auth::user()->name }}</a>
             </li>
             <li class="nav-link">
-              <a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>
+              <a href="javascript:void(0)" class="nav-item dropdown-item">...</a>
             </li>
             <li class="dropdown-divider"></li>
             <li class="nav-link">
-              <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
+              <a href="{{ route('logout') }}" class="nav-item dropdown-item" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                Salir
+              </a>
+              <form id="logout-form" 
+                action="{{ route('logout') }}" 
+                method="POST" style="display: none;">
+                  @csrf
+              </form>
             </li>
           </ul>
         </li>
+        @endguest
         <li class="separator d-lg-none"></li>
       </ul>
     </div>

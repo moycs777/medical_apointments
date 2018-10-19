@@ -6,7 +6,7 @@
     
     <div class="main-panel">
       <!-- Navbar -->
-      @include('partials.admin_nav')
+      @include('partials.admin.nav')
       
     <div class="content">
         <div class="row">

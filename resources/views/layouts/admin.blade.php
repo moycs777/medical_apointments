@@ -1,15 +1,15 @@
 <!doctype html>
 <html>
 <head>
-    @include('partials.admin_head')
+    @include('partials.admin.head')
 </head>
 <body class="">
 
-    @include('partials.admin_header')
+    @include('partials.admin.header')
     
     @yield('content')
 
-    @include('partials.admin_footer')
+    @include('partials.admin.footer')
 
     <!--   Core JS Files   -->
     <script src="/dashboard/assets/js/core/jquery.min.js"></script>

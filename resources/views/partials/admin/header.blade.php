@@ -12,19 +12,14 @@
       <li class="active ">
         <a href="{{ route('admin.home')}}">
           <i class="tim-icons icon-chart-pie-36"></i>
-          <p>Dashboard</p>
+          <p>Dashboard / Inicio</p>
         </a>
       </li>
-      <li>
-        <a href="./icons.html">
-          <i class="tim-icons icon-atom"></i>
-          <p>Icons</p>
-        </a>
-      </li>
+      
       <li>
         <a href="./map.html">
           <i class="tim-icons icon-pin"></i>
-          <p>Maps</p>
+          <p>Citas</p>
         </a>
       </li>
       <li>
