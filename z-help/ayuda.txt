@@ -1,5 +1,5 @@
-DROP DATABASE lns;
-CREATE DATABASE lns;
+DROP DATABASE medical_apointments;
+CREATE DATABASE medical_apointments;
 php artisan migrate:refresh --seed
 
 php artisan multiauth:seed --role=super

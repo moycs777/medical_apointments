@@ -90,12 +90,12 @@
               <div class="form-group has-icon-left form-control-password">
                 <label class="sr-only" for="inputPassword">Enter a password</label>
                 <input 
-                    id="password-confirm" type="password" 
+                    id="password_confirm" type="password" 
                     class="form-control form-control-lg" 
                     id="inputPassword" 
                     placeholder="Repite el Password" 
                     autocomplete="off"
-                    name="password-confirm" required
+                    name="password_confirmation" required
                 >
               </div>
             </div>
