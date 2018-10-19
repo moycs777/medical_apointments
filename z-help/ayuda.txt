@@ -1,0 +1,14 @@
+DROP DATABASE lns;
+CREATE DATABASE lns;
+php artisan migrate:refresh --seed
+
+php artisan multiauth:seed --role=super
+https://github.com/sarthaksavvy/laravel-multiauth
+You have created an admin name 'Super Admin' with role of 'super'
+Now log-in with super@admin.com email and password as 'secret'
+super@admin.com
+secret
+
+
+another carusel
+https://bootsnipp.com/snippets/featured/responsive-moving-box-carousel
