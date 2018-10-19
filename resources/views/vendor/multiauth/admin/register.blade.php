@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register New {{ ucfirst(config('multiauth.prefix')) }}</div>
+                <div class="card-header">Roles Register New {{ ucfirst(config('multiauth.prefix')) }}</div>
                 <div class="card-body">
     @include('multiauth::message')
                     <form method="POST" action="{{ route('admin.register') }}">
