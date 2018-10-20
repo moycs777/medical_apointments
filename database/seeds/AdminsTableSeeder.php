@@ -13,7 +13,11 @@ class AdminsTableSeeder extends Seeder
             'password'=> bcrypt('12345678'),
         ]);
         DB::table('roles')->insert([
-            'name' => 'super',
+            'name' => 'doctor',
+            
+        ]);
+        DB::table('roles')->insert([
+            'name' => 'secretary',
             
         ]);
         DB::table('admin_role')->insert([
