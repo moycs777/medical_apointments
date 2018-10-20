@@ -16,9 +16,9 @@ Route::resource('/profile', 'ProfileController');
 
 // Office
 Route::group(['middleware' => 'auth:admin',], function () {
-    Route::resource('office/apointments', 'Admin\ApointmentsController');
-    Route::resource('office/skills', 'Admin\SkillsController');
-    Route::resource('office/memberships', 'Admin\MembershipsController');
+    Route::resource('office/appointments', 'Admin\AppointmentsController');
+    Route::resource('office/clinicalpatients', 'Admin\ClinicalPatientsController');
+    
 });
 
 //moises

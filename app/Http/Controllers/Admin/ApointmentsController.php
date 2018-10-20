@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ApointmentsController extends Controller
+class AppointmentsController extends Controller
 {
     
     public function index()
     {
-        return view('dashboard.apointments.index');
+        return view('dashboard.appointments.index');
     }
 
   

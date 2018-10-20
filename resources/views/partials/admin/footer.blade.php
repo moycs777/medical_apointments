@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <ul class="nav">
       <li class="nav-item">
-        <a href="javascript:void(0)" class="nav-link">
+        <a href="" target="_blank" class="nav-link">
           Moycs777 & Halconrod
         </a>
       </li>
