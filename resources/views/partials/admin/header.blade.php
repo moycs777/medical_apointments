@@ -21,6 +21,18 @@
           <p>Citas</p>
         </a>
       </li>
+      <li class="{{ Request::path() == 'office/classifications' ? 'active' : '' }}">
+        <a href="{{ route('classifications.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Clasificacion</p>
+        </a>
+      </li>
+     {{--  <li class="{{ Request::path() == 'office/classifications' ? 'active' : '' }}">
+        <a href="{{ route('subclassifications.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Subclasificacion</p>
+        </a>
+      </li> --}}
       <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
         <a href="{{ route('clinicalpatients.index') }}">
           <i class="tim-icons icon-single-02"></i>
