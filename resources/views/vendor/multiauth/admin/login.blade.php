@@ -10,7 +10,7 @@
       
     <div class="content">
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-8">
           <div class="card">
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.login') }}" aria-label="{{ __('Admin Login') }}">
