@@ -16,7 +16,7 @@ class ClassificationsController extends Controller
     public function index()
     {
         $classifications = Classification::orderBy('id','DESC')->paginate();
-        return view('dashborad.classification.index',compact('classifications'));
+        return view('dashboard.classifications.index',compact('classifications'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ClassificationsController extends Controller
      */
     public function create()
     {
-        //
+       return view('dashboard.classifications.create');
     }
 
     /**
