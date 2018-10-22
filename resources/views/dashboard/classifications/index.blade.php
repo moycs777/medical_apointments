@@ -6,21 +6,21 @@
       @include('partials.admin.nav')
       <div class="content">
           <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
               <div class="card">
-                  @if (session('status'))
-                  <div class="alert alert-success" role="alert">
-                      {{ session('status') }}
-                  </div>
-                  @endif Clasificaciones!
+	                @if (session('status'))
+	                  <div class="alert alert-success" role="alert">
+	                      {{ session('status') }}
+	                  </div>
+	                @endif 
 
-                <div class="panel panel-default">
+                <div class="card-body">
 			    	Listar Clasificaciones
 			    	<a href="{{ route('classifications.create') }}" class ='btn btn-primary pull-rigth'>Crear</a>
 			    	{{-- <a href="#" class ='btn btn-primary pull-rigth'>Crear</a> --}}
-			        <div class="panel-heading">
+			        <div class="table-responsive ps">
 				  	    <div class="panel-body">
-				  	    	<table class="striped table-hover">
+				  	    	<table class="table tablesorter">
 				  	    		<thead>
 				  	    			<tr>
 				  	    				<th>Id</th>
