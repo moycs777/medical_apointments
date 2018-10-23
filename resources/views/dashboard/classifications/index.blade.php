@@ -12,7 +12,7 @@
 	                  <div class="alert alert-success" role="alert">
 	                      {{ session('status') }}
 	                  </div>
-	                @endif 
+	                @endif
 
                 <div class="card-body">
 			    	Listar Clasificaciones
@@ -39,22 +39,22 @@
 				  	    				<td>{{ $classification->nombre }}</td>
 				  	    				<td>{{ $classification->oms }}</td>
 				  	    				<td>{{ $classification->particular }}</td>
-				  	    				{{--  <td width = "10px">
-				  	    					<a href="{{ route('dashboard.classifications.edit',$classification->id) }}"
-	                                            class = "btn btn-sm">Editar
+				  	    				<td width = "10px">
+				  	    					<a href="{{ route('classifications.edit', $classification->id) }}"
+	                                            class = "btn btn-sm">Editar 
 				  	    					</a>
-				  	    				</td>  --}}
-				  	    				{{--  <td width = "10px">
+				  	    				</td>
+				  	    				<td width = "10px">
 	                                          <a href="" class = "btn btn-sm btn-danger" onclick="event.preventDefault();
 	                                          document.getElementById('delete-form-{{ $classification->id }}').submit();">
 	                                          Eliminar
 	                                          </a>
 	                                          <form id="delete-form-{{ $classification->id }}"
-	                                              action="{{ route('dashboard.classifications.destroy',$classification->id) }}"
+	                                              action="{{ route('classifications.destroy',$classification->id) }}"
 	                                              method="POST" style="display: none;">
 	                                              @csrf @method('DELETE')
 	                                          </form>
-				  	    				</td>  --}}
+				  	    				</td>
 				  	    			</tr>
 				  	    		</tbody>
 				  	    		@endforeach
@@ -77,4 +77,4 @@
   <script type="text/javascript">
     console.log("dashboard ");
   </script>
-@stop			
+@stop

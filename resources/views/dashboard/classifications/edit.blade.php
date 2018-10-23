@@ -1,47 +1,111 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
 @section('content')
-<div class="container">
-   <div class="row">
-      <div class ="col-md-8 col-md-8-offset-2" >
-         <div class = "panel panel-default">
-            <div class= "panel-heading">
-                <a href="{{ route('dashboard.classifications.create') }}" class="btn btn-primary pull-right">Crear</a>
+
+<div class="wrapper">
+    <div class="main-panel">
+       <!-- Navbar -->
+       @include('partials.admin.nav')
+
+        <div class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Actualizar Clasificacion</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('classifications.update', $classification->id ) }}">
+
+                                @csrf
+                                {{ method_field('PUT') }}
+
+                                <div class="form-group">
+                                    <label for="">Codigo</label>
+                                    <input type="text" name="codigo" value="{{ $classification->codigo }}"
+                                    class="form-control" placeholder="Ingresa codigo" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Nombre</label>
+                                    <input type="text" name="nombre" value="{{ $classification->nombre }}"
+                                            class="form-control" placeholder="Ingresa descripcion" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" value="{{ $classification->oms }}" name ="oms"
+                                            @if ($classification->oms == '1')
+                                                checked
+                                            @endif
+                                            id="chkoms" >  O.M.S.
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" value="{{ $classification->particular }}"
+                                            @if ($classification->particular == '1')
+                                                checked
+                                            @endif
+                                            name ="particular" id ="chkpart">  Particular
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
             </div>
+        </div>
+    </div>
 
-            <div class="panel-body">
-
-              <div class="form-group" method="POST" action ="{{ route('dashboard.classifications.update') }}">
-                @csrf
-
-                <div class ="form-group">
-                    <label for ="">Codigo</label>
-                    <input type="text" name="codigo" value ="{{ classifications->codigo }}" class="form-control">
-                </div>
-
-                <div class ="form-group">
-                    <label for ="">Nombre</label>
-                    <input type="text" name="nombre" value ="{{ classifications->nombre }}" class="form-control">
-                </div>
-
-                <div class ="form-group">
-                    <label for ="">O.M.S.</label>
-                    <input type="text" name="oms" value ="{{ classifications->oms }}" class="form-control">
-                </div>
-
-                <div class ="form-group">
-                    <label for ="">Particular</label>
-                    <input type="text" name="particular" value ="{{ classifications->particular }}" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                </div>
-              </div>
-            </div>
-         </div>
-      </div>
-   </div>
+    </div>
 </div>
+@stop
 
+@section('page-script')
 
-@endsection
+  <script type="text/javascript">
+     //console.log("dashboard ");
+        $("#chkoms").on( 'change', function() {
+            console.log("oms ");
+            if( $(this).is(':checked') ) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $(this).prop("checked","1")
+                $(this).attr("value","1");
+                console.log("oms : " +  $(this).val());
+
+                //alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+            } else {
+                //$(this).val('0');
+                $(this).prop("unchecked","0")
+                $(this).attr("value","0");
+                console.log("oms : " +  $(this).val());
+
+                //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+            }
+        });
+
+        $("#chkpart").on( 'change', function() {
+            console.log("part ");
+
+            if( $(this).is(':checked') ) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $(this).prop("checked","1")
+                $(this).attr("value","1");
+                console.log("part : " +  $(this).val());
+
+                //alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+            } else {
+                //$(this).val('0');
+                $(this).prop("unchecked","0")
+                $(this).attr("value","x");
+                console.log("part : " +  $(this).val());
+
+                //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+            }
+        });
+  </script>
+
+@stop

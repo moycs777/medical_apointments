@@ -6,7 +6,7 @@
 <body class="">
 
     @include('partials.admin.header')
-    
+
     @yield('content')
 
     @include('partials.admin.footer')
@@ -16,7 +16,7 @@
     <script src="/dashboard/assets/js/core/popper.min.js"></script>
     <script src="/dashboard/assets/js/core/bootstrap.min.js"></script>
     <script src="/dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    
+
     <!-- Chart JS -->
     <!-- <script src="/dashboard/assets/js/plugins/chartjs.min.js"></script> -->
     <!--  Notifications Plugin    -->
@@ -154,12 +154,12 @@
     <script>
       $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
-        
+
         //calling charts
         //demo.initDashboardPageCharts();
 
         //$('.fixed-plugin .background-color span').click();
-        
+
         // we set the background to white
         $('body').addClass('white-content');
 
@@ -182,7 +182,7 @@
 
         $full_page.attr('filter-color', new_color);
 
-        $sidebar_responsive.attr('data', new_color); 
+        $sidebar_responsive.attr('data', new_color);
 
 
       });
@@ -191,7 +191,7 @@
 
     @yield('page-script')
 
-    
+
 
 </div>
 </body>

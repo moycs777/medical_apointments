@@ -17,8 +17,8 @@ class CreateClassificationsTable extends Migration
             $table->increments('id');
             $table->string('codigo',2);
             $table->string('nombre',120);
-            $table->string('oms',1);
-            $table->string('particular',1);
+            $table->string('oms',1)->default('0');
+            $table->string('particular',1)->default('0');
             $table->timestamps();
 
         });
