@@ -21,6 +21,16 @@
           <p>Citas</p>
         </a>
       </li>
+
+      {{--  // Seguros Medicos  --}}
+      <li class="{{ Request::path() == 'office/insurances' ? 'active' : '' }}">
+        <a href="{{ route('insurances.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Seguros Medicos</p>
+        </a>
+      </li>
+
+      {{--  // Clasificacion  --}}
       <li class="{{ Request::path() == 'office/classifications' ? 'active' : '' }}">
         <a href="{{ route('classifications.index') }}">
           <i class="tim-icons icon-single-02"></i>
