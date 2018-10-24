@@ -22,6 +22,13 @@
         </a>
       </li>
 
+      <li class="{{ Request::path() == 'office/occupations' ? 'active' : '' }}">
+        <a href="{{ route('occupations.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Ocupacion</p>
+        </a>
+      </li>
+
       {{--  // Seguros Medicos  --}}
       <li class="{{ Request::path() == 'office/insurances' ? 'active' : '' }}">
         <a href="{{ route('insurances.index') }}">

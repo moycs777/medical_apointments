@@ -1,0 +1,1 @@
+insert into medical_apointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion

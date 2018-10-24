@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/clinicalpatients', 'Admin\ClinicalPatientsController');
     Route::resource('office/classifications',  'Admin\ClassificationsController');
     Route::resource('office/insurances',       'Admin\InsurancesController');
+    Route::resource('office/occupations',      'Admin\OccupationsController');
 
 
 });
