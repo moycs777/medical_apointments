@@ -37,8 +37,6 @@ class ClassificationsController extends Controller
     {
         $classification = Classification::find($id);
 
-        //dd($classification->oms);
-
         return view('dashboard.classifications.edit',compact('classification'));
     }
 

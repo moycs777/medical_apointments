@@ -17,14 +17,13 @@
                 <div class="card-body">
 			    	Listar Clasificaciones
 			    	<a href="{{ route('classifications.create') }}" class ='btn btn-primary pull-rigth'>Crear</a>
-			    	{{-- <a href="#" class ='btn btn-primary pull-rigth'>Crear</a> --}}
-			        <div class="table-responsive ps">
+			    	<div class="table-responsive ps">
 				  	    <div class="panel-body">
 				  	    	<table class="table tablesorter">
 				  	    		<thead>
 				  	    			<tr>
 				  	    				<th>Id</th>
-				  	    				<th>Codigo</th>
+				  	    				{{-- <th>Codigo</th> --}}
 				  	    				<th>Nombre</th>
 	                                    <th>Oms</th>
 	                                    <th>Particular</th>
@@ -35,8 +34,7 @@
 				  	    		<tbody>
 				  	    			<tr>
 				  	    				<td>{{ $classification->id }}</td>
-				  	    				<td>{{ $classification->codigo }}</td>
-				  	    				<td>{{ $classification->nombre }}</td>
+				  	    				<td>{{ $classification->name }}</td>
 				  	    				<td>{{ $classification->oms }}</td>
 				  	    				<td>{{ $classification->particular }}</td>
 				  	    				<td width = "10px">

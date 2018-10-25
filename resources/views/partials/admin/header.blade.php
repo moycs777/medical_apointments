@@ -44,12 +44,14 @@
           <p>Clasificacion</p>
         </a>
       </li>
-     {{--  <li class="{{ Request::path() == 'office/classifications' ? 'active' : '' }}">
+     
+      <li class="{{ Request::path() == 'office/subclassifications' ? 'active' : '' }}">
         <a href="{{ route('subclassifications.index') }}">
           <i class="tim-icons icon-single-02"></i>
           <p>Subclasificacion</p>
         </a>
-      </li> --}}
+      </li>
+      
       <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
         <a href="{{ route('clinicalpatients.index') }}">
           <i class="tim-icons icon-single-02"></i>

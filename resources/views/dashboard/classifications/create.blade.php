@@ -18,13 +18,8 @@
                                 @csrf
 
                                     <div class="form-group">
-                                        <label for="">Codigo</label>
-                                        <input type="text" name="codigo" class="form-control" placeholder="Ingresa codigo"  >
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="">Nombre</label>
-                                        <input type="text" name="nombre" class="form-control" placeholder="Ingresa descripcion" >
+                                        <input type="text" name="name" class="form-control" placeholder="Ingresa descripcion" >
                                     </div>
 
                                     <div class="form-group">

@@ -16,11 +16,12 @@ Route::resource('/profile', 'ProfileController');
 
 // Office
 Route::group(['middleware' => 'auth:admin',], function () {
-    Route::resource('office/appointments',     'Admin\AppointmentsController');
-    Route::resource('office/clinicalpatients', 'Admin\ClinicalPatientsController');
-    Route::resource('office/classifications',  'Admin\ClassificationsController');
-    Route::resource('office/insurances',       'Admin\InsurancesController');
-    Route::resource('office/occupations',      'Admin\OccupationsController');
+    Route::resource('office/appointments',        'Admin\AppointmentsController');
+    Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
+    Route::resource('office/classifications',     'Admin\ClassificationsController');
+    Route::resource('office/insurances',       	  'Admin\InsurancesController');
+    Route::resource('office/occupations',         'Admin\OccupationsController');
+    Route::resource('office/subclassifications',  'Admin\SubclassificationsController');
 
 
 });

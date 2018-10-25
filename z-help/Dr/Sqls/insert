@@ -1,1 +1,8 @@
-insert into medical_apointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion
+insert into medical_apointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion;
+
+truncate medical_apointments.classfications;
+insert into medical_apointments.classifications select codigo,nombre,oms,particular,NOW(),NOW() from dbscr.clasificacion;
+
+truncate medical_apointments.subclassifications;
+insert into medical_apointments.subclassifications 
+   select codigo,clasificacion,nombre,NOW(),NOW() from dbscr.subclasificacion;

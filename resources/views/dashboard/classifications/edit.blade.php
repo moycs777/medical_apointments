@@ -19,14 +19,8 @@
                                 {{ method_field('PUT') }}
 
                                 <div class="form-group">
-                                    <label for="">Codigo</label>
-                                    <input type="text" name="codigo" value="{{ $classification->codigo }}"
-                                    class="form-control" placeholder="Ingresa codigo" >
-                                </div>
-
-                                <div class="form-group">
                                     <label for="">Nombre</label>
-                                    <input type="text" name="nombre" value="{{ $classification->nombre }}"
+                                    <input type="text" name="name" value="{{ $classification->name }}"
                                             class="form-control" placeholder="Ingresa descripcion" >
                                 </div>
 
