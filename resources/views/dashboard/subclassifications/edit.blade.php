@@ -27,15 +27,22 @@
 
                                 <div class="form-group">
                                     <label for="sel1">Seleccione clasificación</label>
-                                    <select class="form-control" id="sel1" name="classification_id">
-                                        {{-- @foreach($classifications as $classification)  --}}
-                                           <option value ="{{ $subclassification->id }}">
-                                             {{ $subclassification->classification->name }}
-                                           </option>
-                                        {{-- @endforeach  --}} --}}
+                                    <select 
+                                        class="js-example-basic-single form-control" 
+                                        id="sel1" name="classification_id"
+                                    >
+                                        @foreach($classifications as $item) 
+                                            <option 
+                                                value ="{{ $item->id }}"
+                                                @if($item->id == "$subclassification->classification_id") 
+                                                    selected='selected' 
+                                                @endif
+                                            >
+                                                 {{ $item->name }} 
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
@@ -52,7 +59,9 @@
 @section('page-script')
 
   <script type="text/javascript">
-         
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
   </script>
 
 @stop

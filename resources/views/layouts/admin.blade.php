@@ -25,6 +25,9 @@
     <script src="/dashboard/assets/js/black-dashboard.min.js?v=1.0.0"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="/dashboard/assets/demo/demo.js"></script>
+    {{-- Select 2 --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
     <script>
       $(document).ready(function() {
         $().ready(function() {

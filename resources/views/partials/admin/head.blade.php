@@ -15,3 +15,6 @@
 <link href="/dashboard/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/dashboard/assets/demo/demo.css" rel="stylesheet" />
+
+{{-- Select 2 --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />

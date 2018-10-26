@@ -10,7 +10,7 @@ use App\Subclassification;
 
 class SubclassificationsController extends Controller
 {
-    
+
     public function index()
     {
 
@@ -22,7 +22,7 @@ class SubclassificationsController extends Controller
     public function create()
     {
         $classifications = Classification::all();
-        
+
         return view('dashboard.subclassifications.create',compact('classifications'));
     }
 
@@ -33,20 +33,21 @@ class SubclassificationsController extends Controller
         return redirect()->route('subclassifications.index');
     }
 
-   
+
     public function edit($id)
     {
-        
+
         $classifications = Classification::all();
 
         $subclassification = Subclassification::find($id);
-        
+
         return view('dashboard.subclassifications.edit',compact('subclassification','classifications'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $subclassification = Subclassification::find($id);
 
         $subclassification->fill($request->all())->save();
@@ -54,7 +55,7 @@ class SubclassificationsController extends Controller
         return redirect()->route('subclassifications.index');
     }
 
-    
+
     public function destroy($id)
     {
         Subclassification::find($id)->delete();
