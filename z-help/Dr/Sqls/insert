@@ -6,3 +6,9 @@ insert into medical_apointments.classifications select codigo,nombre,oms,particu
 truncate medical_apointments.subclassifications;
 insert into medical_apointments.subclassifications 
    select codigo,clasificacion,nombre,NOW(),NOW() from dbscr.subclasificacion;
+
+truncate medical_apointments.specialties;
+insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from especialidad;
+
+truncate medical_apointments.diseases;
+insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() from dbscr.enfermedad;

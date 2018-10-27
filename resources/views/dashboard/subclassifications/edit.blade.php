@@ -29,8 +29,8 @@
                                     <label for="sel1">Seleccione clasificación</label>
                                     <select 
                                         class="js-example-basic-single form-control" 
-                                        id="sel1" name="classification_id"
-                                    >
+                                        id="sel1" name="classification_id">
+                                        
                                         @foreach($classifications as $item) 
                                             <option 
                                                 value ="{{ $item->id }}"
@@ -43,6 +43,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>

@@ -15,4 +15,10 @@ class Subclassification extends Model
     	//return $this->belongsTo('App\Classification', 'id', 'classifications_id');
     	return $this->belongsTo('App\Classification');
     }
+
+     public function diseases(){
+
+        //return $this->belongsTo('App\Disease', 'subclassifications_id', 'id');
+    	return $this->hasMany('App\Disease');
+    }
 }

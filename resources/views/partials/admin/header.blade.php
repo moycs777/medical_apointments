@@ -22,6 +22,13 @@
         </a>
       </li>
 
+      <li class="{{ Request::path() == 'office/specialties' ? 'active' : '' }}">
+        <a href="{{ route('specialties.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Especialidades</p>
+        </a>
+      </li>
+
       <li class="{{ Request::path() == 'office/occupations' ? 'active' : '' }}">
         <a href="{{ route('occupations.index') }}">
           <i class="tim-icons icon-single-02"></i>
@@ -49,6 +56,13 @@
         <a href="{{ route('subclassifications.index') }}">
           <i class="tim-icons icon-single-02"></i>
           <p>Subclasificacion</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
+        <a href="{{ route('diseases.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Enfermedades</p>
         </a>
       </li>
       
