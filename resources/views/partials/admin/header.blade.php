@@ -65,6 +65,13 @@
           <p>Enfermedades</p>
         </a>
       </li>
+
+       <li class="{{ Request::path() == 'office/doctors' ? 'active' : '' }}">
+        <a href="{{ route('doctors.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Medicos</p>
+        </a>
+      </li>
       
       <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
         <a href="{{ route('clinicalpatients.index') }}">

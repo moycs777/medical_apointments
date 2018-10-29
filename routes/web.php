@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/subclassifications',  'Admin\SubclassificationsController');
     Route::resource('office/specialties',         'Admin\SpecialtiesController');
     Route::resource('office/diseases',            'Admin\DiseasesController');
+    Route::resource('office/doctors',             'Admin\DoctorsController');
 
 
 });

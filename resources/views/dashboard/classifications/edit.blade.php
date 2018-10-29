@@ -26,7 +26,8 @@
 
                                 <div class="form-group">
                                     <label>
-                                        <input type="checkbox" value="{{ $classification->oms }}" name ="oms"
+                                        <input type="checkbox" value="{{ $classification->oms }}" 
+                                            name ="oms"
                                             @if ($classification->oms == '1')
                                                 checked
                                             @endif
@@ -63,39 +64,39 @@
   <script type="text/javascript">
      //console.log("dashboard ");
         $("#chkoms").on( 'change', function() {
-            console.log("oms ");
+            //console.log("oms ");
             if( $(this).is(':checked') ) {
                 // Hacer algo si el checkbox ha sido seleccionado
                 $(this).prop("checked","1")
                 $(this).attr("value","1");
-                console.log("oms : " +  $(this).val());
+                //console.log("oms : " +  $(this).val());
 
                 //alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
             } else {
                 //$(this).val('0');
                 $(this).prop("unchecked","0")
                 $(this).attr("value","0");
-                console.log("oms : " +  $(this).val());
+                //console.log("oms : " +  $(this).val());
 
                 //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
             }
         });
 
         $("#chkpart").on( 'change', function() {
-            console.log("part ");
+            //console.log("part ");
 
             if( $(this).is(':checked') ) {
                 // Hacer algo si el checkbox ha sido seleccionado
                 $(this).prop("checked","1")
                 $(this).attr("value","1");
-                console.log("part : " +  $(this).val());
+                //console.log("part : " +  $(this).val());
 
                 //alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
             } else {
                 //$(this).val('0');
                 $(this).prop("unchecked","0")
                 $(this).attr("value","x");
-                console.log("part : " +  $(this).val());
+                //console.log("part : " +  $(this).val());
 
                 //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
             }
