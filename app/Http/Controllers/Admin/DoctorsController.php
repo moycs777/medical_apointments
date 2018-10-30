@@ -26,7 +26,23 @@ class DoctorsController extends Controller
     public function store(Request $request)
     {
 
-        Doctor::create($request->all());
+        //Doctor::create($request->all());
+        $doctor = new Doctor;
+
+        $doctor->identification_card = $request->identification_card;
+        $doctor->first_name  = $request->first_name;
+        $doctor->last_name   = $request->last_name;
+        $doctor->gender      = $request->input('genero');
+        $doctor->address     = $request->address;
+        $doctor->home_phone  = $request->home_phone;
+        $doctor->work_phone  = $request->work_phone;
+        $doctor->mobile_1    = $request->mobile_1;
+        $doctor->mobile_2    = $request->mobile_2;
+        $doctor->email       = $request->email;
+        $doctor->beeper      = $request->beeper;
+        $doctor->status      = 1;
+
+        $doctor->save();
 
         return redirect()->route('doctors.index');
     }
@@ -42,21 +58,21 @@ class DoctorsController extends Controller
     
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
         $doctor = Doctor::find($id);
 
         $doctor->identification_card = $request->identification_card;
-        $doctor->first_name = $request->first_name;
-        $doctor->last_name  = $request->last_name;
-        $doctor->gender     = ($request->gender == 'M') ? 'M' : 'F';
-        $doctor->address    = $request->address;
-        $doctor->home_phone = $request->home_phone;
-        $doctor->work_phone = $request->work_phone;
-        $doctor->mobile_1   = $request->mobile_1;
-        $doctor->mobile_2   = $request->mobile_2;
-        $doctor->email      = $request->email;
-        $doctor->beeper     = $request->beeper;
-        $doctor->status     = isset($request->status) ? 1 : 0;
+        $doctor->first_name  = $request->first_name;
+        $doctor->last_name   = $request->last_name;
+        $doctor->gender      = $request->input('genero');
+        $doctor->address     = $request->address;
+        $doctor->home_phone  = $request->home_phone;
+        $doctor->work_phone  = $request->work_phone;
+        $doctor->mobile_1    = $request->mobile_1;
+        $doctor->mobile_2    = $request->mobile_2;
+        $doctor->email       = $request->email;
+        $doctor->beeper      = $request->beeper;
+        $doctor->status      = isset($request->status) ? 1 : 0;
 
         $doctor->save();
 

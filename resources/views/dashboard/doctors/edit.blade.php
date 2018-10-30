@@ -144,6 +144,8 @@
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
 
+                                <input type="hidden" id="genero"  name ="genero" 
+                                      value = "{{$doctor->gender}}">
                             </form>
                         </div>
                     </div>
@@ -159,21 +161,40 @@
   <script type="text/javascript">
        $(document).ready(function(){
           
-            $("#status").on( 'change', function() {
+            $("#status").on('change', function() {
                 if( $(this).is(':checked') ) {
                     $(this).prop("checked","1")
                     $(this).attr("value","1");
-                    
                 } else {
                     $(this).prop("unchecked","0")
                     $(this).attr("value","0");
                     
                 }
             });     
-       });
-
        
+            
 
+            
+            $("#optmas").click(function(){ 
+                                
+                $("input[name=gender]").each(function (index) { 
+                   if($(this).is(':checked')){
+                      $("#genero").val('M');
+                   }
+                });
+            });
+            
+            $("#optfem").click(function(){ 
+                
+                $("input[name=gender]").each(function (index) { 
+                   if($(this).is(':checked')){
+                      $("#genero").val('F');
+                   }
+                });
+            });
+
+            
+      });
   </script>
 
 @stop

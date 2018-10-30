@@ -42,13 +42,13 @@
                                 
                                 <div class="radio-inline">
                                   <label>
-                                      <input type="radio" name="gender" value="M" checked>  Masculino
+                                      <input type="radio" id = "optmas" name="gender" value="M" checked>  Masculino
                                   </label>
                                 </div>
 
                                 <div class="radio-inline">
                                    <label>
-                                       <input type="radio" name="gender" value="F">  Femenino
+                                       <input type="radio" id = "optfem" name="gender" value="F">  Femenino
                                    </label>
                                 </div>
                                 
@@ -111,6 +111,9 @@
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
 
+                                <input type="hidden" id="genero"  name ="genero" 
+                                      value = "F">
+
                             </form>
                         </div>
                     </div>
@@ -124,7 +127,24 @@
 @section('page-script')
 
   <script type="text/javascript">
-        
+     
+      $("#optmas").click(function(){ 
+                                
+                $("input[name=gender]").each(function (index) { 
+                   if($(this).is(':checked')){
+                      $("#genero").val('M');
+                   }
+                });
+            });
+            
+      $("#optfem").click(function(){ 
+                
+                $("input[name=gender]").each(function (index) { 
+                   if($(this).is(':checked')){
+                      $("#genero").val('F');
+                   }
+                });
+       });  
   </script>
 
 @stop
