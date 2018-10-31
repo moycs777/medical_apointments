@@ -14,7 +14,7 @@ Route::resource('/profile', 'ProfileController');
     return "prof routre";
 })->middleware('verified'); */
 
-// Office
+// Office   pathologies
 Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/appointments',        'Admin\AppointmentsController');
     Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/specialties',         'Admin\SpecialtiesController');
     Route::resource('office/diseases',            'Admin\DiseasesController');
     Route::resource('office/doctors',             'Admin\DoctorsController');
-
+    Route::resource('office/pathologies',         'Admin\PathologiesController');
 
 });
 

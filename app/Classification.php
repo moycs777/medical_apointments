@@ -20,4 +20,9 @@ class Classification extends Model
     	//return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
     	return $this->hasMany('App\Subclassification');
     }
+
+    public function pathologies(){
+        //return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
+        return $this->hasMany('App\Pathology');
+    }
 }

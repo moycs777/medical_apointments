@@ -12,3 +12,7 @@ insert into medical_apointments.specialties select codigo,nombre,estado,costo,NO
 
 truncate medical_apointments.diseases;
 insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() from dbscr.enfermedad;
+
+truncate medical_apointments.pathologies
+insert into pathologies
+select codigo,Especialidad,nombre,Estado,now(),NOW() from dbscr.receta_patologia
