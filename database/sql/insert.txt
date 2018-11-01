@@ -1,0 +1,22 @@
+insert into medical_apointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion;
+
+truncate medical_apointments.classfications;
+insert into medical_apointments.classifications select codigo,nombre,oms,particular,NOW(),NOW() from dbscr.clasificacion;
+
+truncate medical_apointments.subclassifications;
+insert into medical_apointments.subclassifications 
+   select codigo,clasificacion,nombre,NOW(),NOW() from dbscr.subclasificacion;
+
+truncate medical_apointments.specialties;
+insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from especialidad;
+
+truncate medical_apointments.diseases;
+insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() from dbscr.enfermedad;
+
+truncate medical_apointments.pathologies
+insert into pathologies
+select codigo,Especialidad,nombre,Estado,now(),NOW() from dbscr.receta_patologia
+
+truncate medical_apointments.subpatologies
+insert into medical_apointments.subpatologies 
+select codigo,receta_patologia,nombre,Receta,Prescripcion,Estado,NOW(),NOW() from dbscr.receta_subpatologia
