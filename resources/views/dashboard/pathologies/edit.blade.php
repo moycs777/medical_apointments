@@ -37,8 +37,7 @@
                                                 @if($item->id == "$pathology->classification_id") 
                                                     selected='selected' 
                                                 @endif
-                                            >
-                                                 {{ $item->name }} 
+                                            >{{ $item->name }} 
                                             </option>
                                         @endforeach
                                     </select>

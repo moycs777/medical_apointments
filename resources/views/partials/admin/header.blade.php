@@ -59,6 +59,13 @@
         </a>
       </li>
      
+     <li class="{{ Request::path() == 'office/subpatologies' ? 'active' : '' }}">
+        <a href="{{ route('subpatologies.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Subpatologias</p>
+        </a>
+      </li>
+
       <li class="{{ Request::path() == 'office/subclassifications' ? 'active' : '' }}">
         <a href="{{ route('subclassifications.index') }}">
           <i class="tim-icons icon-single-02"></i>

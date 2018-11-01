@@ -14,4 +14,9 @@ class Pathology extends Model
 
     	return $this->belongsTo('App\Classification');
     }
+
+    public function subpatologies(){
+
+    	return $this->hasMany('App\Subpatology');
+    }
 }

@@ -52,10 +52,7 @@ class PathologiesController extends Controller
     public function update(Request $request, $id)
     {
 
-        //dd($request->input('status'));
         $pathology = Pathology::find($id);
-
-        //$pathology->fill($request->all())->save();
 
         $pathology->classification_id = $request->classification_id;
         $pathology->name = $request->name;
