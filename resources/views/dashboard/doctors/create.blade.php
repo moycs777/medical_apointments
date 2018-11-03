@@ -130,20 +130,20 @@
      
       $("#optmas").click(function(){ 
                                 
-                $("input[name=gender]").each(function (index) { 
-                   if($(this).is(':checked')){
-                      $("#genero").val('M');
-                   }
-                });
-            });
+        $("input[name=gender]").each(function (index) { 
+           if($(this).is(':checked')){
+              $("#genero").val('M');
+           }
+        });
+      });
             
       $("#optfem").click(function(){ 
                 
-                $("input[name=gender]").each(function (index) { 
-                   if($(this).is(':checked')){
-                      $("#genero").val('F');
-                   }
-                });
+        $("input[name=gender]").each(function (index) { 
+           if($(this).is(':checked')){
+              $("#genero").val('F');
+           }
+        });
        });  
   </script>
 

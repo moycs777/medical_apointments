@@ -3,7 +3,6 @@
 @section('content')
     <!-- Hero Section
     ================================================== -->
-
     <header class="jumbotron bg-inverse text-xs-center center-vertically" role="banner">
       <div class="container">
       <!-- <section class="section-signup bg-faded "> -->
@@ -55,9 +54,9 @@
                 <input id="email" 
                     type="text" 
                     class="form-control form-control-lg {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                    placeholder="Email"
+                    placeholder="Email (opcional)"
                     name="email" 
-                    value="{{ old('email') }}" required 
+                    value="{{ old('email') }}"  
                 >
                 @if ($errors->has('email'))
                     <span style="color: red; class="invalid-feedback" role="alert">

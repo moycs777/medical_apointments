@@ -9,16 +9,32 @@
       </a>
     </div>
     <ul class="nav">
+
       <li class="{{ Request::path() == 'admin/home' ? 'active' : '' }}">
         <a href="{{ route('admin.home')}}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <p>Dashboard / Inicio</p>
         </a>
       </li>
+
       <li class="{{ Request::path() == 'office/appointments' ? 'active' : '' }}">
         <a href="{{ route('appointments.index')}}">
           <i class="tim-icons icon-pin"></i>
           <p>Citas</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/doctors' ? 'active' : '' }}">
+        <a href="{{ route('doctors.index')}}">
+          <i class="tim-icons icon-pin"></i>
+          <p>Doctores</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
+        <a href="{{ route('diseases.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Enfermedades</p>
         </a>
       </li>
 
@@ -58,6 +74,13 @@
           <p>Patologias</p>
         </a>
       </li>
+
+      <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
+        <a href="{{ route('clinicalpatients.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Pacientes</p>
+        </a>
+      </li>
      
      <li class="{{ Request::path() == 'office/subpatologies' ? 'active' : '' }}">
         <a href="{{ route('subpatologies.index') }}">
@@ -70,13 +93,6 @@
         <a href="{{ route('subclassifications.index') }}">
           <i class="tim-icons icon-single-02"></i>
           <p>Subclasificación</p>
-        </a>
-      </li>
-
-      <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
-        <a href="{{ route('diseases.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Enfermedades</p>
         </a>
       </li>
 
