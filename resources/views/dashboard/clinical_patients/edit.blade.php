@@ -12,15 +12,16 @@
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
-                @endif pacientes !
+                @endif 
               </div>
                 <div class="card">
                   <div class="card-header">
-                    <h5 class="title">Edit Profile</h5>
+                    <h5 class="title">Editar paciente</h5>
                   </div>
                   <div class="card-body">
-                    <form  method="POST" action="{{ route('clinicalpatients.store') }}" >
+                    <form  method="POST" action="{{ route('clinicalpatients.update',$clinicalpatient->id) }}" >
                       @csrf
+                      {{ method_field('PUT') }}
 
                       <div class="row">
                         <div class="col-md-5 pr-md-1">
@@ -31,7 +32,7 @@
                                 class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}"
                                 placeholder="Username"
                                 name="username" 
-                                value="{{ old('username') }}" required
+                                value="{{ $clinicalpatient->user->username }}" required
                             >
                             @if ($errors->has('username'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -48,7 +49,7 @@
                                 class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                 placeholder="email"
                                 name="email" 
-                                value="{{ old('email') }}" required
+                                value="{{ $clinicalpatient->user->email }}" required
                             >
                             @if ($errors->has('email'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -60,7 +61,7 @@
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group">
                             <label>Password ()</label>
-                            <input type="text" class="form-control" disabled="" placeholder="12345678" value="12345678">
+                            <input type="text" class="form-control" disabled="" placeholder="12345678" value="{{ $clinicalpatient->user->password }}">
                           </div>
                         </div>
                       </div>
@@ -74,7 +75,7 @@
                                 class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
                                 placeholder="Nombre"
                                 name="name" 
-                                value="{{ old('name') }}" required
+                                value="{{ $clinicalpatient->user->name }}" required
                             >
                             @if ($errors->has('name'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -91,7 +92,7 @@
                                 class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                                 placeholder="apellido"
                                 name="last_name" 
-                                value="{{ old('last_name') }}"
+                                value="{{ $clinicalpatient->last_name }}"
                             >
                             @if ($errors->has('last_name'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -111,7 +112,7 @@
                                 class="form-control {{ $errors->has('dni') ? ' is-invalid' : '' }}"
                                 placeholder="DNI"
                                 name="dni" 
-                                value="{{ old('dni') }}"
+                                value="{{ $clinicalpatient->dni }}"
                             >
                             @if ($errors->has('dni'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -131,7 +132,7 @@
                                 class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
                                 placeholder="address"
                                 name="address" 
-                                value="{{ old('address') }}"
+                                value="{{ $clinicalpatient->address }}"
                             >
                             @if ($errors->has('address'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -146,17 +147,27 @@
                         <div class="col-md-12">
                           <div class="radio-inline">
                             <label>
-                                <input type="radio" id = "optmas" name="optmas" value="M" checked>  Masculino
+                                <input type="radio" id = "optmas" name="optmas" 
+                                  @if ($clinicalpatient->gender == 'M')
+                                      checked
+                                      value="{{$clinicalpatient->gender}}"
+                                  @endif
+                                >  Masculino
                             </label>
                           </div>
 
                           <div class="radio-inline">
                              <label>
-                                 <input type="radio" id = "optfem" name="optmas" value="F">  Femenino
+                                 <input type="radio" id = "optfem" name="optmas" 
+                                  @if ($clinicalpatient->gender == 'F')
+                                      checked
+                                      value="{{$clinicalpatient->gender}}"
+                                  @endif
+                                > Femenino
                              </label>
                           </div>
                           <input type="hidden" id="genero"  name ="genero" 
-                             value = "M">
+                             value = "{{$clinicalpatient->gender}}">
                         </div>
                       </div>
 

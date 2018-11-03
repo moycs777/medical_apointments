@@ -24,8 +24,11 @@
                         <table class="table tablesorter">
                           <thead>
                             <tr>
-                              <th>Id</th>
+                              <th>DNI</th>
                               <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Sexo</th>
+                              <th>Direccion</th>
                               <th>Estatus</th>
                               <th colspan="2"></th>
                             </tr>
@@ -33,8 +36,11 @@
                           @foreach($clinicalpatients as $item)
                           <tbody>
                             <tr>
-                              <td>{{ $item->id }}</td>
+                              <td>{{ $item->dni }}</td>
                               <td>{{ $item->user->name }}</td>
+                              <td>{{ $item->last_name }}</td>
+                              <td>{{ $item->gender }}</td>
+                              <td>{{ $item->address }}</td>
                               <td>{{ $item->status }}</td>                        
                               <td width = "10px">
                                 <a href="{{ route('clinicalpatients.edit', $item->id) }}"

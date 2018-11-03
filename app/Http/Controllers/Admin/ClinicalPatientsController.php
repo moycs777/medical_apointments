@@ -61,15 +61,35 @@ class ClinicalPatientsController extends Controller
 
     public function edit($id)
     {
-        $clinicalpatients = ClinicalPatient::find($id);
-
-        return view('dashboard.clinical_patients.edit',compact('clinicalpatients'));
+        $clinicalpatient = ClinicalPatient::find($id);
+        //dd($clinicalpatient);
+        return view('dashboard.clinical_patients.edit',compact('clinicalpatient'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+        /* $user = new User();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password =Hash::make('12345678'); */
+
+        $user->save();
+
+        $clinicalpatients = ClinicalPatient::find($id);
+
+        //$clinicalpatients->user_id     = $user->id;
+        $clinicalpatients->dni         = $request->dni;
+        $clinicalpatients->last_name   = $request->last_name;
+        $clinicalpatients->gender      = $request->input('genero');
+        $clinicalpatients->address     = $request->address;
+        $clinicalpatients->status      = 1;
+
+        $clinicalpatients->save();
+
+        return redirect()->route('clinicalpatients.index');
     }
 
 
