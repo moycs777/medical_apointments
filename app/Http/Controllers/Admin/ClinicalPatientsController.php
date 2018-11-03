@@ -69,16 +69,17 @@ class ClinicalPatientsController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd($request->all());
-        /* $user = new User();
-        $user->name = $request->name;
+        //dd($request->all());
+        $clinicalpatients = ClinicalPatient::find($id);
+
+        $user = $clinicalpatients->user;
+
+        /* $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password =Hash::make('12345678'); */
+        $user->password =Hash::make('12345678');
 
-        $user->save();
-
-        $clinicalpatients = ClinicalPatient::find($id);
+        $user->save(); */
 
         //$clinicalpatients->user_id     = $user->id;
         $clinicalpatients->dni         = $request->dni;
@@ -95,8 +96,14 @@ class ClinicalPatientsController extends Controller
 
     public function destroy($id)
     {
-        ClinicalPatient::find($id)->delete();
+        //dd($id);
+        $clinicalpatients = ClinicalPatient::find($id);
+        $user = $clinicalpatients->user;
+        
+        $clinicalpatients->delete();
         //se debe eliminar tambien el ususario de logueo
+        $user->delete();
+
         return redirect()->route('clinicalpatients.index');
     }
 }

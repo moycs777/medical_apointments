@@ -25,6 +25,7 @@
                           <thead>
                             <tr>
                               <th>DNI</th>
+                              <th>Username</th>
                               <th>Nombre</th>
                               <th>Apellido</th>
                               <th>Sexo</th>
@@ -37,6 +38,7 @@
                           <tbody>
                             <tr>
                               <td>{{ $item->dni }}</td>
+                              <td>{{ $item->user->username }}</td>
                               <td>{{ $item->user->name }}</td>
                               <td>{{ $item->last_name }}</td>
                               <td>{{ $item->gender }}</td>
@@ -49,8 +51,11 @@
                               </td>
                               <td width = "10px">
                                 <a href="" class = "btn btn-sm btn-danger" 
-                                   onclick="event.preventDefault();
-                                   document.getElementById('delete-form-{{ $item->id }}').submit();">
+                                   onclick="
+                                    confirm('Esta seguro de eliminar?'); 
+                                    event.preventDefault();
+                                    document.getElementById('delete-form-{{ $item->id }}').submit();"
+                                >
                                    Eliminar
                                 </a>
                                 <form id="delete-form-{{ $item->id }}"

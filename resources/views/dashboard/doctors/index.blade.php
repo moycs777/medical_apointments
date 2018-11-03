@@ -48,8 +48,12 @@
 				  	    				</td>
 
 				  	    				<td width = "10px">
-	                                          <a href="" class = "btn btn-sm btn-danger" onclick="event.preventDefault();
-	                                          document.getElementById('delete-form-{{ $item->id }}').submit();">
+	                                        <a href="" class = "btn btn-sm btn-danger" 
+		                                        onclick="
+                                				  confirm('Esta seguro de eliminar?'); 
+		                                          event.preventDefault();
+		                                          document.getElementById('delete-form-{{ $item->id }}').submit();"
+			                                >
 	                                          Eliminar
 	                                          </a>
 	                                          <form id="delete-form-{{ $item->id }}"

@@ -196,7 +196,6 @@
            if($(this).is(':checked')){
               console.log("m");
               $("#genero").val('M');
-              $("#genero").val('F');
            } 
         });
     });
