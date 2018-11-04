@@ -11,4 +11,8 @@ class Doctor extends Model
         'mobile_1','mobile_2','email','beeper','status'
 
     ];
+
+    public function admin(){
+        return $this->belongsTo(Admin::class);
+    }
 }

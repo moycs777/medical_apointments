@@ -44,6 +44,10 @@ Route::group([
     Route::get('/super',function(){
         return "you are super user cause this route can only be accessed by super admin";
     })->middleware('role:super');
+    
+    Route::get('/doctor',function(){
+        return "you are doctor cause this route can only be accessed by doctor";
+    })->middleware('role:doctor');
 
     /* Route::get('skills',function(){
         return "This admin/skills";

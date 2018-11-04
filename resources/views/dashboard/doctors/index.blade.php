@@ -50,7 +50,6 @@
 				  	    				<td width = "10px">
 	                                        <a href="" class = "btn btn-sm btn-danger" 
 		                                        onclick="
-                                				  confirm('Esta seguro de eliminar?'); 
 		                                          event.preventDefault();
 		                                          document.getElementById('delete-form-{{ $item->id }}').submit();"
 			                                >

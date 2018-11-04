@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Bitfumes\Multiauth\Notifications\RegistrationNotification;
+use Illuminate\Support\Facades\Hash;
+
+use App\Http\Requests\DoctorsRequest;
 use App\Doctor;
+use Bitfumes\Multiauth\Model\Admin;
 
 class DoctorsController extends Controller
 {
@@ -23,12 +28,20 @@ class DoctorsController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(DoctorsRequest $request)
     {
+        $admin = new Admin;
+        $admin->name  = $request->first_name;
+        $admin->email = $request->email;
+        $admin->password = Hash::make('12345678');
 
-        //Doctor::create($request->all());
+        $admin->save();
+        $admin->roles()->sync(1);
+        //$admin->notify(new RegistrationNotification(request('password')));
+
         $doctor = new Doctor;
 
+        $doctor->admin_id    = $admin->id;
         $doctor->identification_card = $request->identification_card;
         $doctor->first_name  = $request->first_name;
         $doctor->last_name   = $request->last_name;

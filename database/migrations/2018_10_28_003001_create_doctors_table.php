@@ -25,7 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->string('work_phone',12)->nullable();
             $table->string('mobile_1',20)->nullable();
             $table->string('mobile_2',20)->nullable();
-            $table->string('email',60)->unique();
+            $table->string('email',60)->unique()->nullable();
             $table->string('beeper',15)->nullable();
             $table->boolean('status')->default(true);  
             $table->timestamps();
