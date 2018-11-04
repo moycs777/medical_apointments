@@ -13,6 +13,6 @@ class Doctor extends Model
     ];
 
     public function admin(){
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo('Bitfumes\Multiauth\Model\Admin');
     }
 }

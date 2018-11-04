@@ -96,7 +96,13 @@ class DoctorsController extends Controller
     
     public function destroy($id)
     {
-        Doctor::find($id)->delete();
+        $doctor = Doctor::find($id);
+
+        $admin = $doctor->admin;
+        
+        $doctor->delete();
+        //se debe eliminar tambien el admin de logueo
+        $admin->delete();
 
         return redirect()->route('doctors.index');
     }

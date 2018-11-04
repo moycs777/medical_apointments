@@ -24,7 +24,7 @@ class DoctorsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => 'string|email|max:255|unique:admins', 
         ];
     }
 }
