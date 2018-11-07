@@ -25,7 +25,7 @@
                             <label for="exampleInputEmail1">Email</label>
                             <a href="" class="btn btn-fill btn-primary">Horario</a>
                             <a href="" class="btn btn-fill btn-primary">Configurar Agenda</a>
-                            <a href="" class="btn btn-fill btn-primary">Configurar Agenda</a>
+                            <a href="" class="btn btn-fill btn-primary">Pacientes por atender</a>
                             
                           </div>
                         </div>

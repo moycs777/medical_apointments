@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/doctorprofile',       'Admin\DoctorProfileController');
     Route::resource('office/pathologies',         'Admin\PathologiesController');
     Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
-    Route::resource('office/medicalschedules',    'Admin\MedicalSchedulesController');
+    Route::resource('office/medical_schedules',    'Admin\Medical_SchedulesController');
 });
 
 

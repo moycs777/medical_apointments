@@ -33,7 +33,7 @@
 				  	  <th colspan="2"></th>
 				  	 </tr>
 				  	</thead>
-				  	@foreach($medicalschedules as $item)
+				  	@foreach($medical_schedules as $item)
 				  	  <tbody>
 				  	  	<tr>
 				  	     <td>{{ $item->id }}</td>
@@ -63,7 +63,7 @@
 				  	  </tbody>
 				  	@endforeach
 				  </table>
-			  	  {{ $medicalschedules->render() }}
+			  	  {{ $medical_schedules->render() }}
 			   </div>
 			</div>
 	      </div>

@@ -24,6 +24,13 @@
         </a>
       </li>
 
+       <li class="{{ Request::path() == 'office/medical_schedules' ? 'active' : '' }}">
+        <a href="{{ route('medical_schedules.index')}}">
+          <i class="tim-icons icon-pin"></i>
+          <p>Horario Medico</p>
+        </a>
+      </li>
+
       <!-- <li class="{{ Request::path() == 'office/doctors' ? 'active' : '' }}">
         <a href="{{ route('doctors.index')}}">
           <i class="tim-icons icon-pin"></i>
