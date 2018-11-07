@@ -8,11 +8,7 @@ use App\Classification;
 
 class ClassificationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $classifications = Classification::orderBy('id','DESC')->paginate();
