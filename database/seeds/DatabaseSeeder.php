@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AdminsTableSeeder::class);
 
-        // DB::unprepared(File::get('database/seeds/provincias.sql'));
+        // DB::unprepared(File::get('database/seeds/com.sql'));
+        DB::unprepared(File::get('database/sql/com.sql'));
 
 
     }
