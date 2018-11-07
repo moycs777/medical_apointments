@@ -10,6 +10,7 @@ mysql -h localhost -u root -p medical_appointments < database/sql/subpatologies.
 
 mysql -h localhost -u root -p medical_appointments < diseases.sql
 mysql -h localhost -u root -p medical_appointments < pathologies.sql
+mysql -h localhost -u root -p medical_appointments < subclasifications.sql
 mysql -h localhost -u root -p medical_appointments < subpatologies.sql
 
 php artisan multiauth:seed --role=super

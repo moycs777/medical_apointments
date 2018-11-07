@@ -12,7 +12,6 @@ class Disease extends Model
     ];
 
     public function subclassification(){
-
     	//return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
     	return $this->belongsTo('App\Subclassification');
     }
