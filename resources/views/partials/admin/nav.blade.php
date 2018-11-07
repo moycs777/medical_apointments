@@ -38,6 +38,8 @@
             </li>
             <li class="nav-link">
               <a href="javascript:void(0)" class="nav-item dropdown-item">{{ Auth::user()->email }}...</a>
+            </li><li class="nav-link">
+              <a href="{{ route('doctorprofile.index') }}" class="nav-item dropdown-item">Opciones...{{ Auth::user()->id }}</a>
             </li>
             <li class="dropdown-divider"></li>
             <li class="nav-link">
