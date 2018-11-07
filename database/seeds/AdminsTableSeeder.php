@@ -12,6 +12,12 @@ class AdminsTableSeeder extends Seeder
             'email' => 'moycs777@gmail.com',
             'password'=> bcrypt('12345678'),
         ]);
+        
+        DB::table('admins')->insert([
+            'name' => 'fernando',
+            'email' => 'fersichacon@gmail.com',
+            'password'=> bcrypt('12345678'),
+        ]);
         DB::table('roles')->insert([
             'name' => 'doctor',
             
@@ -23,7 +29,10 @@ class AdminsTableSeeder extends Seeder
         DB::table('admin_role')->insert([
             'role_id' => 1,
             'admin_id' => 1,
-            
+        ]);
+        DB::table('admin_role')->insert([
+            'role_id' => 1,
+            'admin_id' => 2,
         ]);
     }
 }

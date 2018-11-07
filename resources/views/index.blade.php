@@ -9,7 +9,7 @@
         <h2 class="display-3">Dr. Fernando Silva Chacón.</h1>
         <h3 class="m-b-3"><em>Otorrinolaringologo</em></h2>
         <h3 class="m-b-3"><em>Past-Presidente de la Asociación Latinoamericana</em> de Rinologia <a href="ui-elements.html" class="jumbolink"></a>.</h2>
-        <a class="btn btn-secondary-outline m-b-1" href="http://tympanus.net/codrops/?p=25217" role="button"><span class="icon-sketch"></span>Sketch included</a>
+        <a class="btn btn-secondary-outline m-b-1" href="http://tympanus.net/codrops/?p=25217" role="button"><span class="icon-sketch"></span>Pide tu cita</a>
         <ul class="nav nav-inline social-share">
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
@@ -21,18 +21,18 @@
     <!-- Intro
     ================================================== -->
 
-    <section class="section-intro bg-faded text-xs-center">
+    <!-- <section class="section-intro bg-faded text-xs-center">
       <div class="container">
         <h3 class="wp wp-1">Build your beautiful UI, the way you want it, with Land.io</h3>
         <p class="lead wp wp-2">Craft memorable, emotive experiences with our range of beautiful UI elements.</p>
         <img src="web/img/mock.png" alt="iPad mock" class="img-fluid wp wp-3">
       </div>
-    </section>
+    </section> -->
 
     <!-- Features
     ================================================== -->
 
-    <section class="section-features text-xs-center">
+    <!-- <section class="section-features text-xs-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -67,23 +67,23 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Video
     ================================================== -->
 
-    <section class="section-video bg-inverse text-xs-center wp wp-4">
+    <!-- <section class="section-video bg-inverse text-xs-center wp wp-4">
       <h3 class="sr-only">Video</h3>
       <video id="demo_video" class="video-js vjs-default-skin vjs-big-play-centered" controls poster="web/img/video-poster.jpg" data-setup='{}'>
         <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
         <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
       </video>
-    </section>
+    </section> -->
 
     <!-- Pricing
     ================================================== -->
 
-    <section class="section-pricing bg-faded text-xs-center">
+    <!-- <section class="section-pricing bg-faded text-xs-center">
       <div class="container">
         <h3>Manage your subscriptions</h3>
         <div class="row p-y-3">
@@ -153,12 +153,12 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Testimonials
     ================================================== -->
 
-    <section class="section-testimonials text-xs-center bg-inverse">
+    <!-- <section class="section-testimonials text-xs-center bg-inverse">
       <div class="container">
         <h3 class="sr-only">Testimonials</h3>
         <div id="carousel-testimonials" class="carousel slide" data-ride="carousel" data-interval="0">
@@ -208,12 +208,12 @@
           </ol>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Text Content
     ================================================== -->
 
-    <section class="section-text">
+    <!-- <section class="section-text">
       <div class="container">
         <h3 class="text-xs-center">Make your mark on the product industry</h3>
         <div class="row p-y-3">
@@ -225,12 +225,12 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- News
     ================================================== -->
 
-    <section class="section-news">
+    <!-- <section class="section-news">
       <div class="container">
         <h3 class="sr-only">News</h3>
         <div class="bg-inverse">
@@ -272,12 +272,12 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Sign Up
     ================================================== -->
 
-    <section class="section-signup bg-faded">
+    <!-- <section class="section-signup bg-faded">
       <div class="container">
         <h3 class="text-xs-center m-b-3">Sign up to receive free updates as soon as they hit!</h3>
         <form>
@@ -312,12 +312,12 @@
           </label>
         </form>
       </div>
-    </section>
+    </section> -->
 
     <!-- Footer
     ================================================== -->
 
-    <footer class="section-footer bg-inverse" role="contentinfo">
+    <!-- <footer class="section-footer bg-inverse" role="contentinfo">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-lg-5">
@@ -343,7 +343,7 @@
           </div>
         </div>
       </div>
-	</footer>
+	</footer> -->
 @endsection()
 
     

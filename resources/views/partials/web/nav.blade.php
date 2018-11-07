@@ -5,7 +5,7 @@
       <div class="container">
         <a class="navbar-brand" href="#">
           <span class="icon-logo"></span>
-          <span class="sr-only">Land.io</span>
+          <span class="sr-only">Dr. Fernando</span>
         </a>
         <a class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" href="#collapsingNavbar" aria-expanded="false" aria-controls="collapsingNavbar">
         &#9776;
@@ -20,19 +20,19 @@
                  class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item nav-item-toggable">
+            <!-- <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="#">Opcion 2</a>
             </li>
             <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="#" 
               target="_blank">Opcion 3</a>
-            </li>
-            <li class="nav-item nav-item-toggable hidden-md-up">
+            </li> -->
+            <!-- <li class="nav-item nav-item-toggable hidden-md-up">
               <form class="navbar-form">
                 <input class="form-control navbar-search-input" type="text" placeholder="Type your search &amp; hit Enter&hellip;">
               </form>
-            </li>
-            <li class="navbar-divider hidden-sm-down"></li>
+            </li> -->
+            <!-- <li class="navbar-divider hidden-sm-down"></li>
             <li class="nav-item dropdown nav-dropdown-search hidden-sm-down">
               <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="icon-search"></span>
@@ -42,7 +42,7 @@
                   <input class="form-control navbar-search-input" type="text" placeholder="Type your search &amp; hit Enter&hellip;">
                 </form>
               </div>
-            </li>
+            </li> -->
             @guest
             <li class="nav-item nav-item-toggable">
               <a class="nav-link" href="{{ route('login') }}">Login</a>
