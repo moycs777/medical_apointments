@@ -18,8 +18,8 @@ class CreateDiseasesTable extends Migration
             $table->integer('subclassification_id')->unsigned();
             $table->string('name',255);
             $table->string('symbol',1);
-            $table->foreign('subclassification_id')->references('id')->on('subclassifications')
-                  ->onupdate('cascade');
+            /* $table->foreign('subclassification_id')->references('id')->on('subclassifications')
+                  ->onupdate('cascade'); */
             $table->timestamps();
         });
     }

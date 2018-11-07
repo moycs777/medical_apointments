@@ -2,6 +2,15 @@ DROP DATABASE medical_appointments;
 CREATE DATABASE medical_appointments;
 php artisan migrate:refresh --seed
 
+mysql -h localhost -u root -p medical_appointments < database/sql/exportacion.sql
+mysql -h localhost -u root -p medical_appointments < database/sql/diseases.sql
+mysql -h localhost -u root -p medical_appointments < database/sql/pathologies.sql
+mysql -h localhost -u root -p medical_appointments < database/sql/subpatologies.sql
+
+mysql -h localhost -u root -p medical_appointments < diseases.sql
+mysql -h localhost -u root -p medical_appointments < pathologies.sql
+mysql -h localhost -u root -p medical_appointments < subpatologies.sql
+
 php artisan multiauth:seed --role=super
 https://github.com/sarthaksavvy/laravel-multiauth
 You have created an admin name 'Super Admin' with role of 'super'
