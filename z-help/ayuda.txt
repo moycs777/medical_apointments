@@ -3,6 +3,7 @@ CREATE DATABASE medical_appointments;
 php artisan migrate:refresh --seed
 
 mysql -h localhost -u root -p medical_appointments < database/sql/exportacion.sql
+
 mysql -h localhost -u root -p medical_appointments < database/sql/diseases.sql
 mysql -h localhost -u root -p medical_appointments < database/sql/pathologies.sql
 mysql -h localhost -u root -p medical_appointments < database/sql/subpatologies.sql
