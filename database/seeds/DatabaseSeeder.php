@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(AdminsTableSeeder::class);
 
+        $this->call(DoctorsTable::class);
+
         //DB::unprepared(File::get('database/sql/com.sql'));
 
 

@@ -16,7 +16,7 @@
               </div>
                 <div class="card">
                   <div class="card-header">
-                    <h5 class="title">Editar Doctor</h5>
+                    <h5 class="title">Editar Doctor </h5>
                   </div>
                   <div class="card-body">
                     <form  method="POST" action="{{ route('doctors.update',$doctor->id) }}" >
@@ -105,7 +105,7 @@
                           <div class="form-group">
                             <label>Cedula</label>
                             <input id="identification_card" 
-                                type="number" 
+                                type="text" 
                                 class="form-control {{ $errors->has('identification_card') ? ' is-invalid' : '' }}"
                                 placeholder="identification_card"
                                 name="identification_card" 
