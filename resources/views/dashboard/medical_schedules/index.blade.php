@@ -34,7 +34,10 @@
 	                  <th>Minutos Desde</th>
 	                  <th>Hora Hasta</th>
 	                  <th>Minutos Hasta</th>
-	                  <th>Doctor</th>
+	                  <th>Hora Desde</th>
+	                  <th>Minutos Desde</th>
+	                  <th>Hora Hasta</th>
+	                  <th>Minutos Hasta</th>
 	                  <th>Estatus</th>
 				  	  <th colspan="2"></th>
 				  	 </tr>
@@ -48,7 +51,10 @@
 				  	     <td>{{ $item->minutes_from_1 }}</td>
 				  	     <td>{{ $item->hour_until_1 }}</td>
 				  	     <td>{{ $item->minutes_until_1 }}</td>
-				  	     <td>{{ $item->doctor_id }}</td>
+				  	     <td>{{ $item->hour_from_2 }}</td>
+				  	     <td>{{ $item->minutes_from_2 }}</td>
+				  	     <td>{{ $item->hour_until_2 }}</td>
+				  	     <td>{{ $item->minutes_until_2 }}</td>
 				  	     <td>{{ $item->status }}</td>
 				  	     <td width = "10px">
 				  	    	<a href="{{ route('medical_schedules.edit', $item->id) }}"

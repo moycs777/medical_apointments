@@ -36,6 +36,7 @@
                          value="{{ $dias[$medicalschedule] }}">
                     </div>
                   </div>
+                  <input type="hidden" name = "dia" value = "{{ $medicalschedule }}">
                   <input type="hidden" name = "doctor_id" value = "{{ $doctor->id }}">
                 </div>
 
@@ -43,8 +44,8 @@
                   <div class="col-md-2 pl-md-1">
                     <div class="form-group">
                       <label for=""><strong>Hora desde</strong></label>
-                      <input id = "hour_from_1" type="number" class="form-control"  
-                        placeholder="Hora Desde" name="hour_from_1" value = "00" maxlength="2">
+                      <input id = "hour_from_1" type="number" class="form-control" autofocus="true" 
+                        placeholder="Hora Desde" name="hour_from_1" value = "00" min="0" max="12">
                     </div>
                   </div>
 
