@@ -37,7 +37,11 @@
 				  	    				<td>{{ $item->id }}</td>
 				  	    				<td>{{ $item->name }}</td>
 				  	    				<td>{{ $item->symbol }}</td>
-				  	    				<td>{{ $item->subclassification->name }}</td>				  	    				
+				  	    				<td>
+												@if ($item->subclassification->name)
+													{{ $item->subclassification->name }}
+												@endif
+												</td>				  	    				
 				  	    				<td width = "10px">
 				  	    					<a href="{{ route('diseases.edit', $item->id) }}"
 	                                            class = "btn btn-sm">Editar 
