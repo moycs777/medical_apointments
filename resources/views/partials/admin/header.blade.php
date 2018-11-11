@@ -31,12 +31,12 @@
         </a>
       </li>
 
-      <!-- <li class="{{ Request::path() == 'office/doctors' ? 'active' : '' }}">
+      <li class="{{ Request::path() == 'office/doctors' ? 'active' : '' }}">
         <a href="{{ route('doctors.index')}}">
           <i class="tim-icons icon-pin"></i>
           <p>Doctores</p>
         </a>
-      </li> -->
+      </li> 
 
       <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
         <a href="{{ route('diseases.index') }}">

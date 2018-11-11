@@ -17,8 +17,14 @@ class CreateMedicalSchedulesTable extends Migration
             $table->increments('id');
             $table->integer('doctor_id')->unsigned();
             $table->string('day',1);
-            $table->string('hour_from',5);
-            $table->string('hour_until',5);
+            $table->string('hour_from_1',2)->default('00');
+            $table->string('minutes_from_1',2)->default('00');
+            $table->string('hour_until_1',2)->default('00');
+            $table->string('minutes_until_1',2)->default('00');
+            $table->string('hour_from_2',2)->default('00');
+            $table->string('minutes_from_2',2)->default('00');
+            $table->string('hour_until_2',2)->default('00');
+            $table->string('minutes_until_2',2)->default('00');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

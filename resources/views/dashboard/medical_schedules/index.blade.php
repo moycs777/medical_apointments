@@ -19,6 +19,10 @@
 			   <a href="{{ route('medical_schedules.create') }}" class ='btn btn-primary pull-rigth'>
 			   	 Crear
 			   </a>
+			   @php
+               	$i =0;
+            	$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
+               @endphp
 			   <div class="table-responsive ps">
 				 <div class="panel-body">
 				  <table class="table tablesorter">
@@ -27,7 +31,9 @@
 				  	  <th>Id</th>
 				  	  <th>Dia</th>
 	                  <th>Hora Desde</th>
+	                  <th>Minutos Desde</th>
 	                  <th>Hora Hasta</th>
+	                  <th>Minutos Hasta</th>
 	                  <th>Doctor</th>
 	                  <th>Estatus</th>
 				  	  <th colspan="2"></th>
@@ -37,9 +43,11 @@
 				  	  <tbody>
 				  	  	<tr>
 				  	     <td>{{ $item->id }}</td>
-				  	     <td>{{ $item->day }}</td>
-				  	     <td>{{ $item->hour_from }}</td>
-				  	     <td>{{ $item->hour_until }}</td>
+				  	     <td>{{ $dias[$item->day] }}</td>
+				  	     <td>{{ $item->hour_from_1 }}</td>
+				  	     <td>{{ $item->minutes_from_1 }}</td>
+				  	     <td>{{ $item->hour_until_1 }}</td>
+				  	     <td>{{ $item->minutes_until_1 }}</td>
 				  	     <td>{{ $item->doctor_id }}</td>
 				  	     <td>{{ $item->status }}</td>
 				  	     <td width = "10px">
