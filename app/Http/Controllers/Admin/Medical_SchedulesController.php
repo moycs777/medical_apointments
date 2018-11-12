@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Medical_SchedulesStoreRequest;
+use App\Http\Requests\Medical_SchedulesUpdateRequest;
+
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -36,7 +39,7 @@ class Medical_SchedulesController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(Medical_SchedulesStoreRequest $request)
     {
 
         $medicalschedule = new MedicalSchedule();
@@ -63,7 +66,7 @@ class Medical_SchedulesController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(Medical_SchedulesUpdateRequest $request, $id)
     {
         $medicalschedule = MedicalSchedule::find($id);
 
