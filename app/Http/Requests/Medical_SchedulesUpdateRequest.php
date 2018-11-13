@@ -24,7 +24,6 @@ class Medical_SchedulesUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            return [
                 'doctor_id' => 'required',
                 'day' => 'required',
                 'hour_from_1' => 'required',
@@ -35,8 +34,8 @@ class Medical_SchedulesUpdateRequest extends FormRequest
                 'minutes_from_2' => 'required',
                 'hour_until_2' => 'required',
                 'minutes_until_2' => 'required',
-                'status' => 'required',
-        ];
+                /*'status_1' => 'required',
+                'status_2' => 'required',*/
         ];
     }
 }

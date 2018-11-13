@@ -19,7 +19,8 @@
 
                                     <div class="form-group">
                                         <label for="">Nombre</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Ingresa descripcion" >
+                                        <input type="text" name="name" class="form-control" 
+                                        placeholder="Ingrese descripcion" >
                                     </div>
 
                                     <div class="form-group">
@@ -30,7 +31,8 @@
 
                                     <div class="form-group">
                                         <label>
-                                            <input type="checkbox" name ="particular" class ="checkbox" value="1">  Particular
+                                            <input type="checkbox" name ="particular" class ="checkbox" 
+                                            value="1">  Particular
                                         </label>
                                     </div>
 
@@ -54,13 +56,13 @@
             if( $(this).is(':checked') ) {
             // Hacer algo si el checkbox ha sido seleccionado
                 $(this).prop("checked","1")
-                alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
+                // alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
             } else {
             // Hacer algo si el checkbox ha sido deseleccionado
                 $(this).val('0');
                 $(this).prop("unchecked","0")
-                alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
-        }
+                //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
+            }
         });
   </script>
 

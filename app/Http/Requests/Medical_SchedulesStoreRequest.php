@@ -34,7 +34,8 @@ class Medical_SchedulesStoreRequest extends FormRequest
             'minutes_from_2' => 'required',
             'hour_until_2' => 'required',
             'minutes_until_2' => 'required',
-            'status' => 'required',
+            /*'status_1' => 'required',
+            'status_2' => 'required',*/
         ];
     } 
 }

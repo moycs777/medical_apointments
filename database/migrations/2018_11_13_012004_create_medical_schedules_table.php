@@ -25,7 +25,8 @@ class CreateMedicalSchedulesTable extends Migration
             $table->string('minutes_from_2',2)->default('00');
             $table->string('hour_until_2',2)->default('00');
             $table->string('minutes_until_2',2)->default('00');
-            $table->boolean('status')->default(true);
+            $table->boolean('status_1')->default(true);
+            $table->boolean('status_2')->default(true);
             $table->timestamps();
         });
     }

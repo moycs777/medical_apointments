@@ -37,7 +37,9 @@
                          value="{{ $dias[$medicalschedule->day] }}">
                     </div>
                   </div>
-                  <input type="hidden" name = "dia" value = "{{ $medicalschedule->day }}">
+                  <input type="text" name = "day" value = "{{ $medicalschedule }}">
+                  <input type="text" name = "dia" value = "{{ $medicalschedule }}">
+                  <input type="hidden" name = "doctor_id" value = "{{ $doctor->id }}">
                 </div>
 
                 <div class = "row">         
@@ -58,7 +60,9 @@
                         maxlength="2">
                     </div>
                   </div> 
-                   
+
+                  
+                
                   <div class="col-md-2 pl-md-1">
                     <div class="form-group">
                       <label for=""><strong>Hora hasta</strong></label>
@@ -73,13 +77,30 @@
                   <div class="col-md-2 pl-md-1">
                     <div class="form-group">
                       <label for=""><strong>Minutos hasta</strong></label>
-                      <input id="minutes_until_1" type="number" class="form-control"
+                      <input 
+                        id="minutes_until_1" type="number" class="form-control"
                         placeholder="Hora Hasta"
                         name="minutes_until_1" value = "{{ $medicalschedule->minutes_until_1 }}" 
-                        maxlength="2"
                       >
                     </div>
                   </div>
+                  
+                  <div class="col-sm-1 pl-sm-1">
+                    <div class="form-group">
+                      <label for=""><strong>Estatus</strong></label>
+                      <input 
+                        id="status_1" 
+                        type="checkbox" 
+                        class="form-control"
+                        name="status_1" 
+                        @if ($medicalschedule->status_1 === 1)
+                          checked="true"
+                        @else
+                        @endif
+                      >
+                    </div>
+                  </div>
+
                 </div>
 
                 <div class = "row">         
@@ -101,7 +122,9 @@
                         value = "{{ $medicalschedule->minutes_from_2 }}" >
                     </div>
                   </div> 
-                   
+                
+
+                 
                   <div class="col-md-2 pl-md-1">
                     <div class="form-group">
                       <label for=""><strong>Hora hasta</strong></label>
@@ -121,6 +144,21 @@
                       >
                     </div>
                   </div>
+
+                   <div class="col-md-1 pl-md-1">
+                    <div class="form-group">
+                      <label for=""><strong>Estatus</strong></label>
+                      <input 
+                        id="status_2" type="checkbox" class="form-control"
+                        name="status_2" 
+                        @if ($medicalschedule->status_2 === 1)
+                          checked="true"
+                        @else
+                        @endif
+                      >
+                    </div>
+                  </div>
+
                 </div>
 
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>

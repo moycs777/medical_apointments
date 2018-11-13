@@ -14,6 +14,7 @@
                </div>
             @endif
 
+           
             <div class="card-body">
 		       Horario Medico
 			   <a href="{{ route('medical_schedules.create') }}" class ='btn btn-primary pull-rigth'>
@@ -93,5 +94,8 @@
 @section('page-script')
   <script type="text/javascript">
     console.log("dashboard ");
+    // $().ready(function(){
+    //     $("#idCrear").prop('disabled', false); // deshabilitar
+    // });
   </script>
 @stop

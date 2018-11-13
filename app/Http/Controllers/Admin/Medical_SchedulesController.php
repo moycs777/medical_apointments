@@ -18,18 +18,20 @@ class Medical_SchedulesController extends Controller
    
     public function index()
     {
-        //$nroreg = DB::table('medical_schedules')->count();
+       
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
-            ->orderBy('id','DESC')
+            ->orderBy('id','ASC')
             ->paginate();
 
-        return view('dashboard.medical_schedules.index',compact('medical_schedules'));
+        return view('dashboard.medical_schedules.index',compact('medical_schedules','nroreg'));
     }
 
     
     public function create()
     {
+        $nroreg = DB::table('medical_schedules')->count();
+        if($nroreg == 7) return;
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
         $medicalschedule = DB::table('medical_schedules')
             ->where('doctor_id', $doctor->id)
@@ -42,6 +44,7 @@ class Medical_SchedulesController extends Controller
     public function store(Medical_SchedulesStoreRequest $request)
     {
 
+        //dd($request->all());
         $medicalschedule = new MedicalSchedule();
         $medicalschedule->doctor_id       = $request->doctor_id;
         $medicalschedule->day             = $request->dia;
@@ -53,16 +56,18 @@ class Medical_SchedulesController extends Controller
         $medicalschedule->minutes_from_2  = $request->minutes_from_2;
         $medicalschedule->hour_until_2    = $request->hour_until_2;
         $medicalschedule->minutes_until_2 = $request->minutes_until_2;
+        $medicalschedule->status_1        = ($request->status_1 == null) ? "0" : "1";
+        $medicalschedule->status_2        = ($request->status_2 == null) ? "0" : "1";
         $medicalschedule->save();
         return redirect()->route('medical_schedules.index');
     }
    
     public function edit($id)
     {
-        //$doctor = Doctor::where('admin_id', Auth::user()->id)->first();
+        $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
         $medicalschedule = MedicalSchedule::find($id);
 
-        return view('dashboard.medical_schedules.edit',compact('medicalschedule'));
+        return view('dashboard.medical_schedules.edit',compact('medicalschedule', 'doctor'));
     }
 
    
@@ -79,6 +84,8 @@ class Medical_SchedulesController extends Controller
         $medicalschedule->minutes_from_2  = $request->minutes_from_2;
         $medicalschedule->hour_until_2    = $request->hour_until_2;
         $medicalschedule->minutes_until_2 = $request->minutes_until_2;
+        $medicalschedule->status_1        = ($request->status_1 == null) ? "0" : "1";
+        $medicalschedule->status_2        = ($request->status_2 == null) ? "0" : "1";
         $medicalschedule->save();
 
         return redirect()->route('medical_schedules.index');
