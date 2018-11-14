@@ -45,7 +45,7 @@ class Medical_SchedulesController extends Controller
 
         if($medicalschedule == 7) return redirect()->route('medical_schedules.index')
             ->with('info','El horario ya fue configurado, utilize el boton Editar...');
-        
+
         return view('dashboard.medical_schedules.create',compact('medicalschedule', 'doctor'));
     }
 
@@ -53,18 +53,21 @@ class Medical_SchedulesController extends Controller
     public function store(Medical_SchedulesStoreRequest $request)
     {
 
-        $hora_desde_1 = intval($request->hour_from_1); 
-        $hora_until_1 = intval($request->hour_until_1); 
+        // $hora_desde_1 = intval($request->hour_from_1); 
+        // $hora_until_1 = intval($request->hour_until_1); 
 
-        if ($hora_desde_1 != 0 && $hora_until_1  == 0){
-
+        if (intval($request->hour_from_1) > 0 && intval($request->hour_until_1)  == 0){
+           // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
+           //        ->with('info','Debe de completar el horario');
+           return redirect()->route('medical_schedules.index')
+                  ->with('info','Debe de completar el turno, falta la hora final');
         }
 
-        $hora_desde_2 = intval($request->hour_from_2); 
-        $hora_until_2 = intval($request->hour_until_2); 
-
-        if ($hora_desde_2 != 0 && $hora_until_2  == 0){
-
+        if (intval($request->hour_from_2) > 0 && intval($request->hour_until_2)  == 0){
+           // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
+           //        ->with('info','Debe de completar el horario');
+           return redirect()->route('medical_schedules.index')
+                  ->with('info','Debe de completar el turno, falta la hora final');
         }
 
         $medicalschedule = new MedicalSchedule();
