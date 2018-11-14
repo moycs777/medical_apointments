@@ -35,11 +35,12 @@
 	                  <th>Minutos Desde</th>
 	                  <th>Hora Hasta</th>
 	                  <th>Minutos Hasta</th>
+	                  <th><strong>Estatus (A)</strong></th>
 	                  <th>Hora Desde</th>
 	                  <th>Minutos Desde</th>
 	                  <th>Hora Hasta</th>
 	                  <th>Minutos Hasta</th>
-	                  <th>Estatus</th>
+	                  <th>Estatus (B)</th>
 				  	  <th colspan="2"></th>
 				  	 </tr>
 				  	</thead>
@@ -52,11 +53,20 @@
 				  	     <td>{{ $item->minutes_from_1 }}</td>
 				  	     <td>{{ $item->hour_until_1 }}</td>
 				  	     <td>{{ $item->minutes_until_1 }}</td>
+				  	     @if ($item->status_1 === 1)
+				  	         <td>Habilitado</td>
+                         @else
+                             <td>Inhabilitado</td>
+				  	     @endif
 				  	     <td>{{ $item->hour_from_2 }}</td>
 				  	     <td>{{ $item->minutes_from_2 }}</td>
 				  	     <td>{{ $item->hour_until_2 }}</td>
 				  	     <td>{{ $item->minutes_until_2 }}</td>
-				  	     <td>{{ $item->status }}</td>
+				  	     @if ($item->status_2 === 1)
+				  	         <td>Habilitado</td>
+                         @else
+                             <td>Inhabilitado</td>
+				  	     @endif
 				  	     <td width = "10px">
 				  	    	<a href="{{ route('medical_schedules.edit', $item->id) }}"
 	                           class = "btn btn-sm">Editar 

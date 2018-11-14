@@ -37,8 +37,8 @@
                     </div>
                   </div>
 
-                  <input type="text" name = "day" value = "{{ $medicalschedule }}">
-                  <input type="text" name = "dia" value = "{{ $medicalschedule }}">
+                  <input type="hidden" name = "day" value = "{{ $medicalschedule }}">
+                  {{-- <input type="text" name = "dia" value = "{{ $medicalschedule }}"> --}}
                   <input type="hidden" name = "doctor_id" value = "{{ $doctor->id }}">
                 </div>
 
@@ -48,6 +48,7 @@
                       <label for=""><strong>Hora desde</strong></label>
                       <input id = "hour_from_1" type="number" class="form-control" autofocus="true" 
                         placeholder="Hora Desde" name="hour_from_1" value = "00" min="00" max="12">
+
                     </div>
                   </div>
 
@@ -158,16 +159,79 @@
 $(document).ready(function(){
      
     $(".checkbox").on( 'change', function() {
-            if( $(this).is(':checked') ) {
-            // Hacer algo si el checkbox ha sido seleccionado
-                $(this).prop("checked","1");
-                // alert("El checkbox con valor " + $(this).val() + " ha sido seleccionado");
-            } else {
-            // Hacer algo si el checkbox ha sido deseleccionado
-                $(this).value('0');
-                $(this).prop("unchecked","0");
-                //alert("El checkbox con valor " + $(this).val() + " ha sido deseleccionado");
-            }
-     });
+        if( $(this).is(':checked') ) {
+            $(this).prop("checked","1");
+        } else {
+            $(this).value('0');
+            $(this).prop("unchecked","0");
+        }
+    });
+
+    $("#hour_from_1").keyup(function() {
+       l = $("#hour_from_1").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#hour_from_1").val("");
+       }
+    });
+
+    $("#minutes_from_1").keyup(function() {
+       l = $("#minutes_from_1").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#minutes_from_1").val("");
+       }
+    });
+
+    $("#hour_until_1").keyup(function() {
+       l = $("#hour_until_1").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#hour_until_1").val("");
+       }
+    });
+
+    $("#minutes_until_1").keyup(function() {
+       l = $("#minutes_until_1").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#minutes_until_1").val("");
+       }
+    });
+
+    //*******************************************
+    $("#hour_from_2").keyup(function() {
+       l = $("#hour_from_1").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#hour_from_1").val("");
+       }
+    });
+
+    $("#minutes_from_2").keyup(function() {
+       l = $("#minutes_from_2").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#minutes_from_2").val("");
+       }
+    });
+
+    $("#hour_until_2").keyup(function() {
+       l = $("#hour_until_2").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#hour_until_2").val("");
+       }
+    });
+
+    $("#minutes_until_2").keyup(function() {
+       l = $("#minutes_until_2").val();
+       if (l.length > 2) {
+          alert("Maximo tres (3) numeros...")
+          $("#minutes_until_2").val("");
+       }
+    });
+
+});
   </script>
 @stop

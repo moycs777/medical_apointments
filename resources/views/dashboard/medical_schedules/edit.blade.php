@@ -33,12 +33,12 @@
                 <div class="row">
                   <div class="col-md-4 pl-md-1">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="day"  disabled="" 
+                      <input type="text" class="form-control" name="day_1"  disabled="" 
                          value="{{ $dias[$medicalschedule->day] }}">
                     </div>
                   </div>
-                  <input type="text" name = "day" value = "{{ $medicalschedule }}">
-                  <input type="text" name = "dia" value = "{{ $medicalschedule }}">
+                  <input type="hidden" name = "day" value = "{{ $medicalschedule->day }}">
+                  {{-- <input type="text" name = "dia" value = "{{ $medicalschedule }}"> --}}
                   <input type="hidden" name = "doctor_id" value = "{{ $doctor->id }}">
                 </div>
 

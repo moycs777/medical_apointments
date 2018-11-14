@@ -30,13 +30,22 @@ class Medical_SchedulesController extends Controller
     
     public function create()
     {
-        $nroreg = DB::table('medical_schedules')->count();
-        if($nroreg == 7) return;
+
+
+        // $nroreg = DB::table('medical_schedules')->count();
+
+        // if($nroreg == 7) return redirect()->route('medical_schedules.index')
+        //     ->with('info','El horario ya fue configurado, utilize el boton Editar...');
+
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
+
         $medicalschedule = DB::table('medical_schedules')
             ->where('doctor_id', $doctor->id)
             ->count();
 
+        if($medicalschedule == 7) return redirect()->route('medical_schedules.index')
+            ->with('info','El horario ya fue configurado, utilize el boton Editar...');
+        
         return view('dashboard.medical_schedules.create',compact('medicalschedule', 'doctor'));
     }
 
@@ -44,10 +53,23 @@ class Medical_SchedulesController extends Controller
     public function store(Medical_SchedulesStoreRequest $request)
     {
 
-        //dd($request->all());
+        $hora_desde_1 = intval($request->hour_from_1); 
+        $hora_until_1 = intval($request->hour_until_1); 
+
+        if ($hora_desde_1 != 0 && $hora_until_1  == 0){
+
+        }
+
+        $hora_desde_2 = intval($request->hour_from_2); 
+        $hora_until_2 = intval($request->hour_until_2); 
+
+        if ($hora_desde_2 != 0 && $hora_until_2  == 0){
+
+        }
+
         $medicalschedule = new MedicalSchedule();
         $medicalschedule->doctor_id       = $request->doctor_id;
-        $medicalschedule->day             = $request->dia;
+        $medicalschedule->day             = $request->day;
         $medicalschedule->hour_from_1     = $request->hour_from_1;
         $medicalschedule->minutes_from_1  = $request->minutes_from_1;
         $medicalschedule->hour_until_1    = $request->hour_until_1;
@@ -73,9 +95,43 @@ class Medical_SchedulesController extends Controller
    
     public function update(Medical_SchedulesUpdateRequest $request, $id)
     {
+        
+        
+        if (intval($request->hour_from_1) > 0 && intval($request->hour_until_1)  == 0){
+           // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
+           //        ->with('info','Debe de completar el horario');
+           return redirect()->route('medical_schedules.index')
+                  ->with('info','Debe de completar el turno, falta la hora final');
+        }
+
+        // $hora_desde_2 = intval($request->hour_from_2); 
+        // $hora_until_2 = intval($request->hour_until_2); 
+
+        // if (intval($request->hour_from_2) > 0 && intval($request->hour_until_2)  == 0){
+        //    return redirect()->route('medical_schedules.index')
+        //           ->with('info','Debe de completar el turno, falta la hora final');
+        // }
+        // //*******************************************************
+        // if (intval($request->hour_from_1) = 0 && intval($request->hour_until_1)  > 0){
+        //    // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
+        //    //        ->with('info','Debe de completar el horario');
+        //    return redirect()->route('medical_schedules.index')
+        //           ->with('info','Debe de completar el turno, falta la hora Inicial');
+        // }
+
+        // if (intval($request->hour_from_2) = 0 && intval($request->hour_until_2)  > 0){
+        //    // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
+        //    //        ->with('info','Debe de completar el horario');
+        //    return redirect()->route('medical_schedules.index')
+        //           ->with('info','Debe de completar el turno, falta la hora Inicial');
+        // }
+
+        //*******************************************************
+//dd($request->all());
         $medicalschedule = MedicalSchedule::find($id);
 
-        $medicalschedule->day             = $request->dia;
+        $medicalschedule->doctor_id       = $request->doctor_id;
+        $medicalschedule->day             = $request->day;
         $medicalschedule->hour_from_1     = $request->hour_from_1;
         $medicalschedule->minutes_from_1  = $request->minutes_from_1;
         $medicalschedule->hour_until_1    = $request->hour_until_1;
