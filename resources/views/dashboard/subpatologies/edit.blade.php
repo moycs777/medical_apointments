@@ -56,8 +56,6 @@
                                              {{ $item->name }} 
                                           </option>
                                       @endforeach 
-
-
                                     </select>
                               </div>
 

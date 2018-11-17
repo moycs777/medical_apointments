@@ -47,7 +47,9 @@
                     <div class="form-group">
                       <label for=""><strong>Hora desde</strong></label>
                       <input id = "hour_from_1" type="number" class="form-control" autofocus="true" 
-                        placeholder="Hora Desde" name="hour_from_1" value = "00" min="00" max="12">
+                        placeholder="Hora Desde" name="hour_from_1" 
+                        value = "{{ old('hour_from_1') }}" 
+                        min="00" max="12" >
 
                     </div>
                   </div>

@@ -20,13 +20,13 @@
                                 {{ method_field('PUT') }}
 
                                 <div class="form-group">
-                                    <label for="">Descripcion especialidad</label>
+                                    <label for=""><strong>Descripcion especialidad</strong></label>
                                     <input type="text" name="name" value="{{ $specialty->name }}"
                                     class="form-control" placeholder="Ingrese descripcion" >
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="">Status</label>
+                                    <label for=""><strong>Status</strong></label>
                                     <input type="checkbox" name="status" value="{{ $specialty->status }}"
                                     placeholder="Estatus"  
                                     @if ($specialty->status == '1')
@@ -35,7 +35,7 @@
                                 >
 
                                 <div class="form-group">
-                                    <label for="">Precio</label>
+                                    <label for=""><strong>Precio</strong></label>
                                     <input type="number" name="price" value="{{ $specialty->price }}"
                                     class="form-control" placeholder="Precio"  
                                 >

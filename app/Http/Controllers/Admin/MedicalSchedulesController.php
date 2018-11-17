@@ -9,11 +9,13 @@ use App\Http\Requests\Medical_SchedulesUpdateRequest;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Redirect;
+use Illuminate\Support\Facades\Input;
 
 use App\MedicalSchedule;
 use App\Doctor;
 
-class Medical_SchedulesController extends Controller
+class MedicalSchedulesController extends Controller
 {
    
     public function index()
@@ -31,11 +33,6 @@ class Medical_SchedulesController extends Controller
     public function create()
     {
 
-
-        // $nroreg = DB::table('medical_schedules')->count();
-
-        // if($nroreg == 7) return redirect()->route('medical_schedules.index')
-        //     ->with('info','El horario ya fue configurado, utilize el boton Editar...');
 
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
 
@@ -59,8 +56,10 @@ class Medical_SchedulesController extends Controller
         if (intval($request->hour_from_1) > 0 && intval($request->hour_until_1)  == 0){
            // return view('dashboard.medical_schedules.edit',compact('medicalschedule'))
            //        ->with('info','Debe de completar el horario');
-           return redirect()->route('medical_schedules.index')
-                  ->with('info','Debe de completar el turno, falta la hora final');
+            return Redirect::back()->withInput(Input::all())
+                ->with('info','Debe de completar el turno, falta la hora final');
+           /*return redirect()->route('medical_schedules.create')
+                  ->with('info','Debe de completar el turno, falta la hora final');*/
         }
 
         if (intval($request->hour_from_2) > 0 && intval($request->hour_until_2)  == 0){

@@ -16,7 +16,7 @@ class CreateExplorationsTable extends Migration
         Schema::create('explorations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('specialty_id')->unsigned();
-            $table->string('name',300);
+            $table->text('name');
             $table->string('de',2);
             $table->boolean('status')->default(true);
             $table->foreign('specialty_id')->references('id')->on('specialties')

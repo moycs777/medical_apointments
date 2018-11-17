@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medical_Schedule extends Model
+class MedicalSchedule extends Model
 {
    protected $fillable = [
 
