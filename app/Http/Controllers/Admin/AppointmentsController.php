@@ -4,34 +4,38 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Appointment;
+use App\Doctor;
 
 class AppointmentsController extends Controller
 {
     
     public function index()
     {
-        return view('dashboard.appointments.index');
+        
+        $appointments = Appointment::orderBy('id','DESC')->paginate();
+
+        return view('dashboard.appointments.index',compact('appointments'));
     }
 
   
     public function create()
     {
-        //
+        $doctors = Doctor::all();
+
+        //dd($doctors);
+        return view('dashboard.appointments.create',compact('doctors'));
     }
 
     
     public function store(Request $request)
     {
-        //
+        Appointment::create($request->all());
+
+        return redirect()->route('appointments.index');
     }
 
     
-    public function show($id)
-    {
-        //
-    }
-
-   
     public function edit($id)
     {
         //

@@ -9,4 +9,8 @@ class Specialty extends Model
     protected $fillable = [
         'name','status','price'
     ];
+
+    public function explorations(){
+    	return $this->hasMany('App\Exploration');
+    }
 }

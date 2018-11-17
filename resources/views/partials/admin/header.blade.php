@@ -45,12 +45,19 @@
         </a>
       </li>
 
-      <!-- <li class="{{ Request::path() == 'office/specialties' ? 'active' : '' }}">
+      <li class="{{ Request::path() == 'office/specialties' ? 'active' : '' }}">
         <a href="{{ route('specialties.index') }}">
           <i class="tim-icons icon-single-02"></i>
           <p>Especialidades</p>
         </a>
-      </li> -->
+      </li>
+      
+      <li class="{{ Request::path() == 'office/explorations' ? 'active' : '' }}">
+        <a href="{{ route('explorations.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Exploraciones</p>
+        </a>
+      </li>
 
       <li class="{{ Request::path() == 'office/occupations' ? 'active' : '' }}">
         <a href="{{ route('occupations.index') }}">

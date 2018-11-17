@@ -43,14 +43,21 @@ class DiseasesController extends Controller
     {
         $subclassifications = Subclassification::all();
 
-        $disease= Disease::find($id);
+        if (is_null( $subclassifications))
+           return response('no encontrado', 404);
 
-        return view('dashboard.diseases.edit',compact('disease','subclassifications'));
+        $disease= Disease::find($id);
+        
+        if (!is_null($disease))
+           return view('dashboard.diseases.edit',compact('disease','subclassifications'));
+        else
+           return response('no encontrado', 404);
+        
     }
 
     public function update(Request $request, $id)
     {
-        $disease= Disease::find($id);
+        $disease= Disease::find($id);   
 
         $disease->fill($request->all())->save();
 
