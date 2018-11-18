@@ -18,6 +18,20 @@ use App\Doctor;
 class MedicalSchedulesController extends Controller
 {
    
+    public function listarHorarioMedico(){
+        
+        $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
+
+        $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
+            ->orderBy('id','ASC')
+            ->get();
+
+        return response()->json(
+            $medical_schedules->toArray()
+        );
+        
+    }
+
     public function index()
     {
        
@@ -119,7 +133,7 @@ class MedicalSchedulesController extends Controller
            return Redirect::back()->withInput(Input::all())
                 ->with('info','Debe de completar el turno, falta la hora inicial');
         }
-        
+
         $medicalschedule = MedicalSchedule::find($id);
 
         $medicalschedule->doctor_id       = $request->doctor_id;

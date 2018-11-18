@@ -9,6 +9,8 @@ use App\Doctor;
 
 class AppointmentsController extends Controller
 {
+
+    
     
     public function index()
     {

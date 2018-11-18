@@ -11,7 +11,7 @@
             <div class="card-body">
               <form method="POST" action="{{ route('appointments.store') }}" >
                 @csrf
-
+                <input type="hidden" name="url" id="url" value="{{url('')}}">
                 <div class="row">
                   <div class="col-md-8 pl-md-1">
                     <div class="form-group">
@@ -48,36 +48,30 @@
                   </div>
                 </div>
                 
-                <table class="table tablesorter">
-                    <thead>
-                      <tr>
-                        <th>Dia</th>
-                        <th>Hora Desde</th>
-                        <th>Hora Hasta</th>
-                        <th>Estatus</th>
-                        <th colspan="2"></th>
-                      </tr>
-                    </thead>
-                    {{-- @foreach($appointments as $item)
-                    <tbody>
-                      <tr>
-                      </tr>
-                    </tbody>
-                    @endforeach --}}
-                </table>
-
-                <div class="form-group">
-                  <label>
-                  <input type="checkbox" name ="oms" class ="checkbox" value="1"> 
-                  </label>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th>Dia</th>
+                            <th>Hora Desde</th>
+                            <th>Hora Hasta</th>
+                            <th>Estatus</th>
+                            <th colspan="2"></th>
+                          </tr>
+                        </thead>
+                        <tbody  id = "datos"></tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label>
                   <input type="checkbox" name ="particular" class ="checkbox" 
                      value="1">  Particular
                   </label>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary">Guardar</button>
@@ -122,6 +116,47 @@
            });
 
            $('.js-example-basic-single').select2();
+
+           var tablaDatos = $("#datos");
+           var route = $('#url').val()+'/office/medical_schedules_ver_horario';
+           var dias = [ 'Lunes', 'Martes','Miercoles', 'Jueves','Viernes', 'Sabado','Domingo' ];
+           
+           $.get(route,function(res){
+              res.forEach(function(res) {
+                //console.log("respuesta: "+JSON.stringify(res));
+                var entro = false
+                if ((res.status_1 ==  1) && (res.status_2 ==  1) && 
+                   (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0) && 
+                   (parseInt(res.hour_until_2) > 0) && (parseInt(res.hour_until_2) > 0)) {
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
+                                     "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
+                                     "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
+                                     "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
+                                     "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
+                                     "</tr>");
+                              
+                }
+                 if ((res.status_1 ==  1) && (res.status_2 ==  0) &&
+                   (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0)) { 
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
+                                     "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
+                                     "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
+                                     "</tr>");
+                 }
+                
+                if ((res.status_1 ==  0) && (res.status_2 ==  1) && 
+                   (parseInt(res.hour_from_2) > 0) && (parseInt(res.hour_until_2) > 0)) { 
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
+                                     "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
+                                     "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
+                                     "</tr>");
+                }
+                
+              });
+           });
         }); 
   </script>
 
