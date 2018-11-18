@@ -23,7 +23,6 @@ class AppointmentsController extends Controller
     {
         $doctors = Doctor::all();
 
-        //dd($doctors);
         return view('dashboard.appointments.create',compact('doctors'));
     }
 

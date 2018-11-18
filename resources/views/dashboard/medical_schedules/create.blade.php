@@ -38,7 +38,6 @@
                   </div>
 
                   <input type="hidden" name = "day" value = "{{ $medicalschedule }}">
-                  {{-- <input type="text" name = "dia" value = "{{ $medicalschedule }}"> --}}
                   <input type="hidden" name = "doctor_id" value = "{{ $doctor->id }}">
                 </div>
 
@@ -50,7 +49,6 @@
                         placeholder="Hora Desde" name="hour_from_1" 
                         value = "{{ old('hour_from_1') }}" 
                         min="00" max="12" >
-
                     </div>
                   </div>
 
@@ -58,7 +56,8 @@
                     <div class="form-group">
                       <label for=""><strong>Minutos desde</strong></label>
                       <input type="number" class="form-control"  placeholder="Minutos Desde" 
-                        name="minutes_from_1"  value = "00"  min="0">
+                        name="minutes_from_1"  
+                        value = "00"  min="0">
                     </div>
                   </div> 
                    
@@ -66,7 +65,7 @@
                     <div class="form-group">
                       <label for=""><strong>Hora hasta</strong></label>
                       <input id="hour_until_1" type="number" class="form-control"
-                        placeholder="Hora Hasta" name="hour_until_1" value = "00" 
+                        placeholder="Hora Hasta" name="hour_until_1" value = "{{ old('hour_until_1') }}"  
                         min="0"
                       >
                     </div>
@@ -77,7 +76,7 @@
                       <label for=""><strong>Minutos hasta</strong></label>
                       <input id="minutes_until_1" type="number" class="form-control"
                         placeholder="Hora Hasta"
-                        name="minutes_until_1" value = "00" min="0"
+                        name="minutes_until_1" value =  "00" min="0"
                       >
                     </div>
                   </div>
@@ -97,7 +96,8 @@
                     <div class="form-group">
                       <label for=""><strong>Hora desde</strong></label>
                       <input id = "hour_from_2" type="number" class="form-control"  
-                        placeholder="Hora Desde" name="hour_from_2" value = "00" min="0">
+                        placeholder="Hora Desde" name="hour_from_2" 
+                        value = value = "{{ old('hour_from_2') }}"  min="0">
                     </div>
                   </div>
 
@@ -114,7 +114,7 @@
                     <div class="form-group">
                       <label for=""><strong>Hora hasta</strong></label>
                       <input id="hour_until_2" type="number" class="form-control"
-                        placeholder="Hora Hasta" name="hour_until_2" value = "00" 
+                        placeholder="Hora Hasta" name="hour_until_2" value = "{{ old('hour_until_2') }}" 
                         min="0"
                       >
                     </div>
