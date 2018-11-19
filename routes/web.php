@@ -29,7 +29,8 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/pathologies',         'Admin\PathologiesController');
     Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
     Route::resource('office/medical_schedules',   'Admin\MedicalSchedulesController');
-    Route::get('office/medical_schedules_ver_horario',        'Admin\MedicalSchedulesController@listarHorarioMedico');
+    Route::get('office/medical_schedules_ver_horario/{id}', 
+        'Admin\MedicalSchedulesController@listarHorarioMedico');
     Route::resource('office/explorations',        'Admin\ExplorationsController');
     
 });

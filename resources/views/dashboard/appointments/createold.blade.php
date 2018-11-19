@@ -6,79 +6,80 @@
     <div class="content">
       <div class="row">
         <div class="col-md-8">
-          <h2>Crear Cita</h2>
-
+          <h2>Crear Cita</h1>
           <div class="card">
             <div class="card-body">
               <form method="POST" action="{{ route('appointments.store') }}" >
                 @csrf
                 <input type="hidden" name="url" id="url" value="{{url('')}}">
-
-                <div class="form-group">
-                  <label for="">Seleccione Doctor</label>
-                  <select class="js-example-basic-single form-control" 
-                     id="sel1" name="doctor_id" required = "required">
-                     <option value ="0">Seleccione...</option >
-                     @foreach($doctors as $item) 
-                       <option value ="{{ $item->id }}">
-                         {{ $item->first_name . " " . $item->last_name }}
-                       </option>
-                     @endforeach
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <label for="">Fecha de la Consulta</label>
-                  <input id="date" type="date" name = "appointment_date"
-                         class="form-control" 
-                         value="@php echo date("Y-m-d")@endphp"> 
-                </div>
-
-                <div class="form-group">
-                  <label for="">Motivo de la consulta</label>
-                  <input type="text" name="reason_consultation" class="form-control">
-                </div>
-
-                <div class="form-group">
-                  <label for="">Fecha</label>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table tablesorter" id="datos">
-                        <thead class=" text-primary">
-                          <tr>
-                            <th> Dia</th>
-                            <th> Hora Desde </th>
-                            <th> Hora hasta</th>
-                            <th> Hora Desde </th>
-                            <th> Hora hasta</th>
-                            <th class="text-center"> Estatus</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            {{-- <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td class="text-center"> </td> --}}
-                          </tr>
-                        </tbody>
-                      </table>
+                <div class="row">
+                  <div class="col-md-8 pl-md-1">
+                    <div class="form-group">
+                      <label for="sel1"><strong>Seleccione Doctor</strong></label>
+                      <select class="js-example-basic-single form-control" 
+                         id="sel1" name="doctor_id" required = "required">
+                         @foreach($doctors as $item) 
+                           <option value ="{{ $item->id }}">
+                             {{ $item->first_name . " " . $item->last_name }}
+                           </option>
+                         @endforeach
+                      </select>
                     </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                   <button type="submit" class="btn btn-primary">Guardar</button>
+                <div class="row">
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label for=""><strong>Fecha de la Consulta</strong></label> 
+                      <input id="date" type="date" name = "appointment_date"
+                         class="form-control" 
+                         value="@php echo date("Y-m-d")@endphp">
+                    </div>  
+                  </div>
                 </div>
+                   
+                <div class="row">
+                  <div class="col-md-12 pl-md-1">
+                    <div class="form-group">
+                      <label for="sel1"><strong>Motivo de la consulta</strong></label>
+                      <input type="text" name="reason_consultation" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <table class="table tablesorter">
+                        <thead>
+                          <tr>
+                            <th>Dia</th>
+                            <th>Hora Desde</th>
+                            <th>Hora Hasta</th>
+                            <th>Estatus</th>
+                            <th colspan="2"></th>
+                          </tr>
+                        </thead>
+                        <tbody  id = "datos"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                {{-- <div class="form-group">
+                  <label>
+                  <input type="checkbox" name ="particular" class ="checkbox" 
+                     value="1">  Particular
+                  </label>
+                </div> --}}
 
                 <div class="form-group">
-                   <input type="button" value ="Ver Horario" class="btn btn-primary"></button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <input type="button" value ="Ver Horario" class="btn btn-primary"></button>
                 </div>
-
               </form>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -110,20 +111,19 @@
              //var n = $(this).val();
              //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
              var optionText = $("#sel1 option:selected").text();
-             var id = $("#sel1 option:selected").val();
-             mostrarHorario(id);
+             var n = $("#sel1 option:selected").val();
+             mostrarHorario();
+            
            });
 
            $('.js-example-basic-single').select2();
-           //mostrarHorario();
-          function mostrarHorario(id){
+           mostrarHorario();
+          function mostrarHorario(){
               var tablaDatos = $("#datos");
-              var route = $('#url').val()+'/office/medical_schedules_ver_horario/'+id;
+              var route = $('#url').val()+'/office/medical_schedules_ver_horario';
               var dias = [ 'Lunes', 'Martes','Miercoles', 'Jueves','Viernes', 'Sabado','Domingo' ];
-              
-              console.log("la url "+route);
-              eliminaFilas();
-
+           
+           alert("Hola");
               $.get(route,function(res){
                 res.forEach(function(res) {
                 //console.log("respuesta: "+JSON.stringify(res));
@@ -131,54 +131,36 @@
                 if ((res.status_1 ==  1) && (res.status_2 ==  1) && 
                    (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0) && 
                    (parseInt(res.hour_until_2) > 0) && (parseInt(res.hour_until_2) > 0)) {
-                   tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
                                      "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
                                      "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
                                      "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
                                      "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
                                      "</tr>");
                               
                 }
                  if ((res.status_1 ==  1) && (res.status_2 ==  0) &&
                    (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0)) { 
-                   tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
                                      "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
                                      "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
-                                     "<td>"+ "</td>"+
-                                     "<td>"+ "</td>"+
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
                                      "</tr>");
                  }
                 
                 if ((res.status_1 ==  0) && (res.status_2 ==  1) && 
                    (parseInt(res.hour_from_2) > 0) && (parseInt(res.hour_until_2) > 0)) { 
-                   tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
+                   tablaDatos.append("<tr><td>" + dias[res.id-1] + "</td>"  + 
                                      "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
                                      "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
-                                     "<td>"+ "</td>"+
-                                     "<td>"+ "</td>"+
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
+                                     "<td>" + "<input type = 'radio' name = 'status'>" +
                                      "</tr>");
                 }
                 
               });
            });
           }
-
-          function eliminaFilas() {
-            //OBTIENE EL NÚMERO DE FILAS DE LA TABLA
-            var n=0;
-            var i=0;
-            $("#datos tbody tr").each(function () {
-               n++;
-            });
-            //BORRA LAS n-1 FILAS VISIBLES DE LA TABLA
-            //LAS BORRA DE LA ULTIMA FILA HASTA LA PRIMERA
-            for(i=n-1;i>0;i--) {
-                $("#datos tbody tr:eq('"+i+"')").remove();
-            };
-          };
         }); 
 
 

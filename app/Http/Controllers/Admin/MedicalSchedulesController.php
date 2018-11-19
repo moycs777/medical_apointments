@@ -18,13 +18,20 @@ use App\Doctor;
 class MedicalSchedulesController extends Controller
 {
    
-    public function listarHorarioMedico(){
+    public function listarHorarioMedico($id)
+    {
         
-        $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
+        
+        $doctor = Doctor::where('id', $id)->first();
+        if ($doctor == null) {
+            return response()->json( null );
+        }
+        //return response()->json(            $doctor->id        );
 
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
             ->orderBy('id','ASC')
             ->get();
+        //return response()->json( $medical_schedules  );
 
         return response()->json(
             $medical_schedules->toArray()
