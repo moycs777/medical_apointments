@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                   <button type="submit" class="btn btn-primary">Guardar</button>
+                   <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
                 </div>
 
                 <div class="form-group">
@@ -120,7 +120,7 @@
               var tablaDatos = $("#datos");
               var route = $('#url').val()+'/office/medical_schedules_ver_horario/'+id;
               var dias = [ 'Lunes', 'Martes','Miercoles', 'Jueves','Viernes', 'Sabado','Domingo' ];
-              
+              var i = 0;
               console.log("la url "+route);
               eliminaFilas();
 
@@ -132,34 +132,41 @@
                    (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0) && 
                    (parseInt(res.hour_until_2) > 0) && (parseInt(res.hour_until_2) > 0)) {
                    tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
-                                     "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
-                                     "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
-                                     "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
-                                     "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
-                                     "</tr>");
-                              
+                      "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
+                      "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
+                      "<td><input type = 'radio' name = 'status' value='M' id= 'status['" + 
+                      i + "]'></td>" +
+                      "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
+                      "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
+                      "<td class='text-center'>" + 
+                      "<input type = 'radio' name = 'status' value='T'" + 
+                      parseInt(res.id) + 1 + " id='status['" + i + 1 +"]'></td>" +
+                      "</tr>");
+                      i = i + 2 ;           
                 }
                  if ((res.status_1 ==  1) && (res.status_2 ==  0) &&
                    (parseInt(res.hour_from_1) > 0) && (parseInt(res.hour_until_1) > 0)) { 
                    tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
-                                     "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
-                                     "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
-                                     "<td>"+ "</td>"+
-                                     "<td>"+ "</td>"+
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
-                                     "</tr>");
+                      "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
+                      "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
+                      "<td><input type = 'radio' name = 'status' value= 'M' id='status['"+ 
+                      i + "]'></td>" + "<td></td>" + "<td></td>"+
+                      "<td class='text-center'></td>" + 
+                      "</tr>"); 
+                      i++; 
                  }
                 
                 if ((res.status_1 ==  0) && (res.status_2 ==  1) && 
                    (parseInt(res.hour_from_2) > 0) && (parseInt(res.hour_until_2) > 0)) { 
                    tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
-                                     "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
-                                     "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
-                                     "<td>"+ "</td>"+
-                                     "<td>"+ "</td>"+
-                                     "<td class='text-center'>" + "<input type = 'radio' name = 'status'>" +
-                                     "</tr>");
+                      "<td>" + res.hour_from_2 + ":" + res.minutes_from_2 + "</td>"  +
+                      "<td>" + res.hour_until_2 + ":" + res.minutes_until_2 + "</td>"  +
+                      "<td></td>"+
+                      "<td></td>"+
+                      "<td class='text-center'>" +
+                      "<td><input type = 'radio' name ='status' value='T' id='status['" + 
+                      i + "]'>" +"</td></tr>");
+                      i++;  
                 }
                 
               });
@@ -179,6 +186,26 @@
                 $("#datos tbody tr:eq('"+i+"')").remove();
             };
           };
+
+          $("#salvar").click(function () {
+            recorrer();
+
+          });
+
+
+
+         function recorrer(){
+
+             $('input:radio').each(function() {
+                if($(this).is(':checked')) {
+                    alert("Hola");
+                } 
+                else {
+                  alert("Holabbbb"); 
+                }
+             }); 
+         }
+
         }); 
 
 

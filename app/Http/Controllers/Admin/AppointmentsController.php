@@ -31,6 +31,7 @@ class AppointmentsController extends Controller
     
     public function store(Request $request)
     {
+        dd($request->all());
         Appointment::create($request->all());
 
         return redirect()->route('appointments.index');
