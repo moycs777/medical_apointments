@@ -65,9 +65,9 @@
                     <h6>{{ Auth::user()->email }}</h6>
                   </div>
                 </div>
-                <a href="#" class="dropdown-item text-uppercase">View posts</a>
-                <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
-                <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a>
+                <a href="{{ route('appointments.index') }}" class="dropdown-item text-uppercase">Citas</a>
+                {{-- <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
+                <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a> --}}
                 <a href="{{ route('logout') }}" class="dropdown-item text-uppercase text-muted" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      Salir
@@ -98,9 +98,9 @@
               <h6>{{ Auth::user()->email }}</h6>
             </div>
           </div>
-          <a href="#" class="dropdown-item text-uppercase">Ver citas</a>
-          <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
-          <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a>
+          <a href="{{ route('appointments.index') }}" class="dropdown-item text-uppercase">Ver citas</a>
+          {{-- <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
+          <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a> --}}
           <a href="{{ route('logout') }}" class="dropdown-item text-uppercase text-muted" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                      Salir
