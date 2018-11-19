@@ -6,10 +6,10 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-Route::resource('/hoappointmentsme', 'AppointmentsController')->name('appointments');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::resource('/profile', 'ProfileController');
+Route::resource('appointments', 'AppointmentsController');
 
 /* Route::get('profile', function () {
     return "prof routre";
