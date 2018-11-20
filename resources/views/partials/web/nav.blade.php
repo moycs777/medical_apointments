@@ -72,7 +72,7 @@
                                                      document.getElementById('logout-form').submit();">
                                                      Salir
                 </a>
-                <a href="#" class="btn-circle has-gradient pull-xs-right">
+                <a href="{{ route('appoints.create') }}" class="btn-circle has-gradient pull-xs-right">
                   <span class="sr-only">Edit</span>
                   <span class="icon-edit"></span>
                 </a>
@@ -105,7 +105,7 @@
                                                      document.getElementById('logout-form').submit();">
                                                      Salir
           </a>
-          <a href="#" class="btn-circle has-gradient pull-xs-right m-b-1">
+          <a href="{{ route('appoints.create') }}" class="btn-circle has-gradient pull-xs-right m-b-1">
             <span class="sr-only">Edit</span>
             <span class="icon-edit"></span>
           </a>
