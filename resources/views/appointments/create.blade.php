@@ -20,7 +20,7 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
-                    <select class=" id="sel1" name="">
+                    <select class=" id="sel1" name="doctor_id">
                     <option>Seleccione su doctor</option>
                     @foreach($doctors as $item)
                         <option value ="{{ $item->id }}">

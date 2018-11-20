@@ -3,7 +3,7 @@
 
     <nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('index') }}">
           <span class="icon-logo"></span>
           <span class="sr-only">Dr. Fernando</span>
         </a>

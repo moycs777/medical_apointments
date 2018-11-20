@@ -8,8 +8,16 @@ class Appointment extends Model
 {
     protected $fillable =[
 
-    	'patient_id','doctor_id','appointment_date','reason_consultation','day',
+    	'clinical_patient_id','doctor_id','appointment_date','reason_consultation','day',
     	'status_1','status_2','status'
 
     ];
+
+    public function doctor(){
+        return $this->belongsTo('App\Doctor');
+    }
+    
+    public function patient(){
+        return $this->belongsTo('App\ClinicalPatient');
+    }
 }
