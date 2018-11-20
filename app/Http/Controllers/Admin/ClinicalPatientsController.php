@@ -40,12 +40,13 @@ class ClinicalPatientsController extends Controller
 
         $clinicalpatients = new ClinicalPatient;
 
-        $clinicalpatients->user_id     = $user->id;
-        $clinicalpatients->dni         = $request->dni;
-        $clinicalpatients->last_name   = $request->last_name;
-        $clinicalpatients->gender      = $request->input('genero');
-        $clinicalpatients->address     = $request->address;
-        $clinicalpatients->status      = 1;
+        $clinicalpatients->user_id      = $user->id;
+        $clinicalpatients->dni          = $request->dni;
+        $clinicalpatients->first_name   = $request->first_name;
+        $clinicalpatients->last_name    = $request->last_name;
+        $clinicalpatients->gender       = $request->input('genero');
+        $clinicalpatients->address      = $request->address;
+        $clinicalpatients->status       = 1;
 
         $clinicalpatients->save();
 

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Appointment;
 use App\Doctor;
+use App\ClinicalPatient;
 
 class AppointmentsController extends Controller
 {
@@ -25,7 +26,9 @@ class AppointmentsController extends Controller
     {
         $doctors = Doctor::all();
 
-        return view('dashboard.appointments.create',compact('doctors'));
+        $patients = ClinicalPatient::where('status',1)->get();
+
+        return view('dashboard.appointments.create',compact('doctors','patients'));
     }
 
     
@@ -43,26 +46,19 @@ class AppointmentsController extends Controller
                ->with('info','Fecha de consulta no puede ser menor (<) a la fecha actual');  
          }
 
-         //Obtener el dia de la fecha
-         //$fechaInicio=strtotime("2016-08-01");
-         $fec_cons=strtotime($fec_consulta);
-         $i=$fec_cons;
-         $dia = date('N', $i);
-         dd($dia);
-         //$fechaFin=strtotime("2016-08-20");
-        //Recorro las fechas y con la función strotime obtengo los Lunes
-         //dd($fec_cons);
-        // for($i=$fec_cons; $i<=$fec_cons; $i+=86400){
-        //     //Sacar el dia de la semana con el modificador N de la funcion date
-        //     $dia = date('N', $i);
-        //     // if($dia==1){
-        //     //     echo "Lunes. ". date ("Y-m-d", $i)."<br>";
-        //     // }
-        //     dd($dia);
-        // }
+         // $fec_cons=strtotime($fec_consulta);
+         // $i=$fec_cons;
+         // $dia = date('N', $i);
+         
+        
+        Appointment::create($request->all());
+        // $appointment = new Appointment();
 
-        dd($request->all());
-        //Appointment::create($request->all());
+        // $appointment->patient_id          =  $request->patient_id;
+        // $appointment->doctor_id           =  $request->doctor_id;
+        // $appointment->appointment_date    =  $request->appointment_date;
+        // $appointment->reason_consultation =  $request->reason_consultation;
+        // $appointment->day                 =  $dia;
 
         return redirect()->route('appointments.index');
     }

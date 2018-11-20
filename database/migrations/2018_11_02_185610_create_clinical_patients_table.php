@@ -15,7 +15,7 @@ class CreateClinicalPatientsTable extends Migration
             $table->string('dni')->inique();
             $table->string('last_name')->nullable();
             $table->string('address')->nullable();
-            $table->string('gender',1)->default('F');
+            $table->string('gender',1)->default('M');
             $table->boolean('status')->default(true);  
 
             $table->timestamps();
