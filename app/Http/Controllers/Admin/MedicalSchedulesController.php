@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Medical_SchedulesStoreRequest;
 use App\Http\Requests\Medical_SchedulesUpdateRequest;
+// use Carbon\Carbon;
 
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -26,13 +27,11 @@ class MedicalSchedulesController extends Controller
         if ($doctor == null) {
             return response()->json( null );
         }
-        //return response()->json(            $doctor->id        );
-
+       
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
             ->orderBy('id','ASC')
             ->get();
-        //return response()->json( $medical_schedules  );
-
+        
         return response()->json(
             $medical_schedules->toArray()
         );
@@ -71,6 +70,7 @@ class MedicalSchedulesController extends Controller
     public function store(Medical_SchedulesStoreRequest $request)
     {
 
+               
         if (intval($request->hour_from_1) > 0 && intval($request->hour_until_1)  == 0){
            return Redirect::back()->withInput(Input::all())
                 ->with('info','Debe de completar el turno, falta la hora final');

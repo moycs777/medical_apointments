@@ -29,7 +29,7 @@
                 
                 <div class="form-group">
                   <label for="">Fecha de la Consulta</label>
-                  <input id="date" type="date" name = "appointment_date"
+                  <input id="appointment_date" type="date" name = "appointment_date"
                          class="form-control" 
                          value="@php echo date("Y-m-d")@endphp"> 
                 </div>
@@ -149,13 +149,17 @@
                    tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
                       "<td>" + res.hour_from_1 + ":" + res.minutes_from_1 + "</td>"  +
                       "<td>" + res.hour_until_1 + ":" + res.minutes_until_1 + "</td>"  +
-                      "<td><input type = 'radio' name = 'status' value= 'M' id='status['"+ 
-                      i + "]'></td>" + "<td></td>" + "<td></td>"+
-                      "<td class='text-center'></td>" + 
-                      "</tr>"); 
+                      "<td><input type = 'radio' name = 'status' value='M' id= 'status['" + 
+                      i + "]'></td>" +
+                      "<td></td>"  + "<td></td>"  +
+                      "<td class='text-center'>" + 
+                      "<input type = 'radio' name = 'status' value='T' style = 'display:none;'" + 
+                      parseInt(res.id) + 1 + " id='status['" + i + 1 +"]'></td>" +
+                      "</tr>");
                       i++; 
                  }
                 
+                style='display:none;'
                 if ((res.status_1 ==  0) && (res.status_2 ==  1) && 
                    (parseInt(res.hour_from_2) > 0) && (parseInt(res.hour_until_2) > 0)) { 
                    tablaDatos.append("<tr><td>" + dias[res.day] + "</td>"  + 
