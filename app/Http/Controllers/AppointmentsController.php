@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 use App\Appointment;
 use App\Doctor;
@@ -10,10 +11,17 @@ use App\Doctor;
 
 class AppointmentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index()
     {
-        $appointments = Appointment::orderBy('id','DESC')->paginate();
+        $appointments = Appointment::where('clinical_patient_id', Auth::user()->id)
+            ->orderBy('id','DESC')
+            ->paginate();
 
         return view('appointments.index', compact('appointments'));
     }
@@ -29,7 +37,7 @@ class AppointmentsController extends Controller
     
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         Appointment::create($request->all());
 
         return redirect()->route('appoints.index');
