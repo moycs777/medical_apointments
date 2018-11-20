@@ -9,7 +9,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::resource('/profile', 'ProfileController');
-Route::resource('appointments', 'AppointmentsController');
+Route::resource('appoints', 'AppointmentsController');
 
 /* Route::get('profile', function () {
     return "prof routre";
