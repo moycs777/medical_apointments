@@ -9,7 +9,7 @@
         <h2 class="display-3">Dr. Fernando Silva Chacón.</h1>
         <h3 class="m-b-3"><em>Otorrinolaringologo</em></h2>
         <h3 class="m-b-3"><em>Past-Presidente de la Asociación Latinoamericana</em> de Rinologia <a href="ui-elements.html" class="jumbolink"></a>.</h2>
-        <a class="btn btn-secondary-outline m-b-1" href="http://tympanus.net/codrops/?p=25217" role="button"><span class="icon-sketch"></span>Pide tu cita</a>
+        <a class="btn btn-secondary-outline m-b-1" href="{{ route('appoints.create') }}" role="button"><span class="icon-sketch"></span>Pide tu cita</a>
         <ul class="nav nav-inline social-share">
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
           <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
