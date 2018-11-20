@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Appointment;
+use App\Doctor;
+
+
 class AppointmentsController extends Controller
 {
     
     public function index()
     {
-        return view('appointments.index');
+        $appointments = Appointment::orderBy('id','DESC')->paginate();
+
+        return view('appointments.index', compact('appointments'));
     }
 
     

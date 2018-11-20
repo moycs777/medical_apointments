@@ -11,25 +11,40 @@
         <div class="col-md-6 col-xl-4">
           <div class="container">
             <h3 class="p-y-1 text-xs-center">Tus <strong>Citas</strong></h3>
+            {{-- <a class="btn btn-primary has-gradient btn-block">Pide una cita!</a> --}}
           </div>
         </div>
         <div class="col-md-6 col-xl-4">
-            <div class="card card-chart">
-              <ul class="list-group">
-                <li class="list-group-item complete">
-                  <span class="label pull-xs-right">324</span>
-                  <span class="icon-status status-completed"></span> Completed
-                </li>
+          <div class="card card-chart">
+            <ul class="list-group">
+              @forelse($appointments as $item)
                 <li class="list-group-item">
-                  <span class="label pull-xs-right">34</span>
-                  <span class="icon-status status-backlog"></span> In backlog
+                  <span class="icon-status status-backlog"></span> {{ $item }}
+                  <span class="label pull-xs-right">{{ $item }}</span>
                 </li>
+              {{-- <li class="list-group-item complete">
+                <span class="icon-status status-completed"></span> Completed
+                <span class="label pull-xs-right">324</span>
+              </li>
+              <li class="list-group-item">
+                <span class="icon-status status-backlog"></span> In backlog
+                <span class="label pull-xs-right">34</span>
+              </li>
+              <li class="list-group-item">
+                <span class="icon-status status-noticket"></span> Without ticket
+                <span class="label pull-xs-right">20</span>
+              </li> --}}
+              @empty
                 <li class="list-group-item">
-                  <span class="label pull-xs-right">20</span>
-                  <span class="icon-status status-noticket"></span> Without ticket
+                  <span class="icon-status status-noticket"></span> Aun no tienes citas
+                  {{-- <span class="label pull-xs-right">Citas</span> --}}
                 </li>
-              </ul>
+              @endforelse()
+            </ul>
           </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <a  class="btn btn-primary has-gradient btn-block">Pedir cita!</a>
         </div>
       </div>
       {{-- <h2 class="display-3">Dr. Fernando Silva Chacón.</h1>
