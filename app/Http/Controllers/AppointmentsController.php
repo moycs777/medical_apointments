@@ -21,13 +21,18 @@ class AppointmentsController extends Controller
     
     public function create()
     {
-        //
+        $doctors = Doctor::all();
+
+        return view('appointments.create',compact('doctors'));
     }
 
     
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        Appointment::create($request->all());
+
+        return redirect()->route('appoints.index');
     }
 
     

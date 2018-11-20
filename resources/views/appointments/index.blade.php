@@ -8,13 +8,13 @@
     <div class="container">
       <div class="clearfix hidden-xl-up"></div>
       <div class="row">
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-2 col-xl-2">
           <div class="container">
             <h3 class="p-y-1 text-xs-center">Tus <strong>Citas</strong></h3>
             {{-- <a class="btn btn-primary has-gradient btn-block">Pide una cita!</a> --}}
           </div>
         </div>
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-8 col-xl-8">
           <div class="card card-chart">
             <ul class="list-group">
               @forelse($appointments as $item)
@@ -43,19 +43,10 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-6 col-xl-4">
-            <a  class="btn btn-primary has-gradient btn-block">Pedir cita!</a>
+        <div class="col-md-2 col-xl-2">
+            <a href="{{ route('appoints.create') }}"  class="btn btn-primary has-gradient btn-block">Pedir cita!</a>
         </div>
       </div>
-      {{-- <h2 class="display-3">Dr. Fernando Silva Chacón.</h1>
-      <h3 class="m-b-3"><em>Otorrinolaringologo</em></h2>
-      <h3 class="m-b-3"><em>Past-Presidente de la Asociación Latinoamericana</em> de Rinologia <a href="ui-elements.html" class="jumbolink"></a>.</h2>
-      <a class="btn btn-secondary-outline m-b-1" href="http://tympanus.net/codrops/?p=25217" role="button"><span class="icon-sketch"></span>Pide tu cita</a>
-      <ul class="nav nav-inline social-share">
-        <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><span class="icon-linkedin"></span> 356</a></li>
-      </ul> --}}
     </div>
   </header>
 
