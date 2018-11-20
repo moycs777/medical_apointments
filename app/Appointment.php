@@ -12,4 +12,8 @@ class Appointment extends Model
     	'status_1','status_2','status'
 
     ];
+
+    public function doctor(){
+        return $this->belongsTo('App\Doctor');
+    }
 }

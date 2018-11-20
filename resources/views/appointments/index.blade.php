@@ -19,8 +19,11 @@
             <ul class="list-group">
               @forelse($appointments as $item)
                 <li class="list-group-item">
-                  <span class="icon-status status-backlog"></span> {{ $item }}
-                  <span class="label pull-xs-right">{{ $item }}</span>
+                  <span class="icon-status status-backlog"></span> 
+                  {{ $item->appointment_date }} , 
+                  doctor: {{ $item->doctor->first_name }}: 
+                  {{ $item->reason_consultation }}
+                  {{-- <span class="label pull-xs-right"></span> --}}
                 </li>
               {{-- <li class="list-group-item complete">
                 <span class="icon-status status-completed"></span> Completed
