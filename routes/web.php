@@ -10,6 +10,9 @@ Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::resource('/profile', 'ProfileController');
 Route::resource('appoints', 'AppointmentsController');
+/* Route::get('appoints', 'AppointmentsController@index')->name('appoints.index');
+Route::get('appointsCreate', 'AppointmentsController@create')->name('appoints.create');
+Route::get('appointsStore', 'AppointmentsController@store')->name('appoints.store'); */
 
 /* Route::get('profile', function () {
     return "prof routre";
