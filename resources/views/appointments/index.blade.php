@@ -11,7 +11,6 @@
         <div class="col-md-2 col-xl-2">
           <div class="container">
             <h3 class="p-y-1 text-xs-center">Tus <strong>Citas</strong></h3>
-            {{-- <a class="btn btn-primary has-gradient btn-block">Pide una cita!</a> --}}
           </div>
         </div>
         <div class="col-md-8 col-xl-8">
@@ -40,7 +39,6 @@
               @empty
                 <li class="list-group-item">
                   <span class="icon-status status-noticket"></span> Aun no tienes citas
-                  {{-- <span class="label pull-xs-right">Citas</span> --}}
                 </li>
               @endforelse()
             </ul>
