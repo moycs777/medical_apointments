@@ -38,7 +38,8 @@
                         <td>{{ $item->appointment_date }}</td>
                         <td>{{ $item->reason_consultation }}</td>
                         <td>{{ $item->doctor->first_name . " " . $item->doctor->last_name}}</td>
-                        <td>{{ $item->clinical_patient->first_name }}
+                        <td>{{ $item->clinical_patient->first_name . " " . 
+                               $item->clinical_patient->last_name }}
                         </td>
                         <td>
                           
