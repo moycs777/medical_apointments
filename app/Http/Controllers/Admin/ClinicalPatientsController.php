@@ -31,14 +31,14 @@ class ClinicalPatientsController extends Controller
     {
         //dd($request->all());
         $user = new User();
-        $user->name = $request->name;
+        $user->name = $request->first_name;
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make('12345678');
 
         $user->save();
 
-        $clinicalpatients = new ClinicalPatient;
+        $clinicalpatients = new ClinicalPatient();
 
         $clinicalpatients->user_id      = $user->id;
         $clinicalpatients->dni          = $request->dni;
@@ -46,7 +46,7 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->last_name    = $request->last_name;
         $clinicalpatients->gender       = $request->input('genero');
         $clinicalpatients->address      = $request->address;
-        $clinicalpatients->status       = 1;
+        //$clinicalpatients->status       = 1;
 
         $clinicalpatients->save();
 
@@ -100,7 +100,7 @@ class ClinicalPatientsController extends Controller
         //dd($id);
         $clinicalpatients = ClinicalPatient::find($id);
         $user = $clinicalpatients->user;
-        
+
         $clinicalpatients->delete();
         //se debe eliminar tambien el ususario de logueo
         $user->delete();

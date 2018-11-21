@@ -23,12 +23,10 @@
                     <thead>
                       <tr>
                         <th>Id</th>
-                        <th>Dia</th>
-                        <th>Hora Desde</th>
-                        <th>Hora Hasta</th>
-                        <th>Doctor</th>
                         <th>Fecha Consulta</th>
                         <th>Motivo Consulta</th>
+                        <th>Doctor</th>
+                        <th>Paciente</th>
                         <th>Estatus</th>
                         <th colspan="2"></th>
                       </tr>
@@ -36,10 +34,23 @@
                     @foreach($appointments as $item)
                     <tbody>
                       <tr>
-                        {{-- <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->oms }}</td>
-                        <td>{{ $item->particular }}</td> --}}
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->appointment_date }}</td>
+                        <td>{{ $item->reason_consultation }}</td>
+                        <td>{{ $item->doctor->first_name . " " . $item->doctor->last_name}}</td>
+                        <td>{{ $item->clinical_patient->first_name }}
+                        </td>
+                        <td>
+                          
+                          @if($item->status == '0')
+                               Pendiente
+                          @elseif ($item->status == '1')
+                               Confirmado
+                          @elseif ($item->status == '2')
+                               Atendido
+                          @endif
+
+                        </td>
                         <td width = "10px">
                           <a href="{{ route('appointments.edit', $item->id) }}"
                             class = "btn btn-sm">Editar 

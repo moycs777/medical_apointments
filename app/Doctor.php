@@ -15,4 +15,9 @@ class Doctor extends Model
     public function admin(){
         return $this->belongsTo('Bitfumes\Multiauth\Model\Admin');
     }
+
+    public function appointments(){
+    	//return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
+    	return $this->hasMany('App\Appointment');
+    }
 }

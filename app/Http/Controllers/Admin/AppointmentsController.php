@@ -24,9 +24,9 @@ class AppointmentsController extends Controller
   
     public function create()
     {
-        $doctors = Doctor::all();
+        $doctors = Doctor::where('status',1)->get();
 
-        $patients = ClinicalPatient::where('status',1)->get();
+        $patients = ClinicalPatient::all();
 
         return view('dashboard.appointments.create',compact('doctors','patients'));
     }

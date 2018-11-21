@@ -19,10 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->integer('doctor_id')->unsigned();
             $table->timestamp('appointment_date');
             $table->string('reason_consultation',200);
-            $table->string('day',1);
-            $table->boolean('status_1');
-            $table->boolean('status_2');
-            $table->string('status',1);
+            $table->string('status',1)->default('0');
             $table->foreign('clinical_patient_id')->references('id')->on('clinical_patients')
                 ->ondelete('cascade')
                 ->onupdate('cascade'); 

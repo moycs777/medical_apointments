@@ -15,7 +15,7 @@ class ClinicalPatientsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            // 'name' => 'required|string|max:255',
             'username' => 'required|string|max:20|unique:users',
             //se debe usar una manera para que el email pueda estar en blanco
             'email' => 'string|email|max:255|unique:users', 

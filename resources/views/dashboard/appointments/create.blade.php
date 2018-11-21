@@ -30,7 +30,7 @@
                 <div class="form-group">
                   <label for=""><strong>Seleccione Paciente</strong></label>
                   <select class="js-example-basic-single form-control" 
-                     id="sel1" name="patient_id" required = "required">
+                     id="sel1" name="clinical_patient_id" required = "required">
                      <option value ="0">Seleccione...</option >
                      @foreach($patients as $item) 
                        <option value ="{{ $item->id }}">

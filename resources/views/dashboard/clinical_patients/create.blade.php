@@ -12,7 +12,7 @@
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
-                @endif 
+                @endif
               </div>
                 <div class="card">
                   <div class="card-header">
@@ -26,11 +26,11 @@
                         <div class="col-md-5 pr-md-1">
                           <div class="form-group">
                             <label>Username</label>
-                            <input id="username" 
-                                type="text" 
+                            <input id="username"
+                                type="text"
                                 class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}"
                                 placeholder="Username"
-                                name="username" 
+                                name="username"
                                 value="{{ old('username') }}" required
                             >
                             @if ($errors->has('username'))
@@ -43,11 +43,11 @@
                         <div class="col-md-3 px-md-1">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input id="email" 
-                                type="text" 
+                            <input id="email"
+                                type="text"
                                 class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                 placeholder="email"
-                                name="email" 
+                                name="email"
                                 value="{{ old('email') }}" required
                             >
                             @if ($errors->has('email'))
@@ -69,15 +69,15 @@
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Nombre</label>
-                            <input id="name" 
-                                type="text" 
-                                class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                            <input id="first_name"
+                                type="text"
+                                class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
                                 placeholder="Nombre"
-                                name="name" 
-                                value="{{ old('name') }}" required
+                                name="first_name"
+                                value="{{ old('first_name') }}" required
                             >
                             @if ($errors->has('name'))
-                                <span style="color: red; class="invalid-feedback" role="alert">
+                                <span style="color: red;" class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif
@@ -86,15 +86,15 @@
                         <div class="col-md-6 pl-md-1">
                           <div class="form-group">
                             <label>Apellido</label>
-                            <input id="last_name" 
-                                type="text" 
+                            <input id="last_name"
+                                type="text"
                                 class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                                 placeholder="apellido"
-                                name="last_name" 
+                                name="last_name"
                                 value="{{ old('last_name') }}"
                             >
                             @if ($errors->has('last_name'))
-                                <span style="color: red; class="invalid-feedback" role="alert">
+                                <span style="color: red;" class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('last_name') }}</strong>
                                 </span>
                             @endif
@@ -106,15 +106,15 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>DNI</label>
-                            <input id="dni" 
-                                type="text" 
+                            <input id="dni"
+                                type="text"
                                 class="form-control {{ $errors->has('dni') ? ' is-invalid' : '' }}"
                                 placeholder="DNI"
-                                name="dni" 
+                                name="dni"
                                 value="{{ old('dni') }}"
                             >
                             @if ($errors->has('dni'))
-                                <span style="color: red; class="invalid-feedback" role="alert">
+                                <span style="color: red;" class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('dni') }}</strong>
                                 </span>
                             @endif
@@ -126,15 +126,15 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>Direccion</label>
-                            <input id="address" 
-                                type="text" 
+                            <input id="address"
+                                type="text"
                                 class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
                                 placeholder="address"
-                                name="address" 
+                                name="address"
                                 value="{{ old('address') }}"
                             >
                             @if ($errors->has('address'))
-                                <span style="color: red; class="invalid-feedback" role="alert">
+                                <span style="color: red;"  class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('address') }}</strong>
                                 </span>
                             @endif
@@ -155,7 +155,7 @@
                                  <input type="radio" id = "optfem" name="optmas" value="F">  Femenino
                              </label>
                           </div>
-                          <input type="hidden" id="genero"  name ="genero" 
+                          <input type="hidden" id="genero"  name ="genero"
                              value = "M">
                         </div>
                       </div>
@@ -218,24 +218,24 @@
 @section('page-script')
   <script type="text/javascript">
     console.log("pacientes ");
-    $("#optmas").click(function(){ 
-        $("input[name=optmas]").each(function (index) { 
+    $("#optmas").click(function(){
+        $("input[name=optmas]").each(function (index) {
            if($(this).is(':checked')){
               console.log("m");
               $("#genero").val('M');
               //$("#genero").val('F');
-           } 
+           }
         });
     });
-            
-      $("#optfem").click(function(){ 
-        $("input[name=optmas]").each(function (index) { 
+
+      $("#optfem").click(function(){
+        $("input[name=optmas]").each(function (index) {
            if($(this).is(':checked')){
               console.log("f");
               $("#genero").val('F');
            }
         });
-       }); 
+       });
   </script>
 @stop
 
@@ -243,5 +243,5 @@
 
 
 
-                
+
 
