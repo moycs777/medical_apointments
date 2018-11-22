@@ -50,29 +50,44 @@ class AppointmentsController extends Controller
          // $i=$fec_cons;
          // $dia = date('N', $i);
          
-        
         Appointment::create($request->all());
-        // $appointment = new Appointment();
-
-        // $appointment->patient_id          =  $request->patient_id;
-        // $appointment->doctor_id           =  $request->doctor_id;
-        // $appointment->appointment_date    =  $request->appointment_date;
-        // $appointment->reason_consultation =  $request->reason_consultation;
-        // $appointment->day                 =  $dia;
-
+        
         return redirect()->route('appointments.index');
     }
 
     
     public function edit($id)
     {
-        //
+        $doctors = Doctor::all();
+        if (is_null($doctors)){
+           return response('Cita no encontrada...', 404);
+        }
+       
+        $patients = ClinicalPatient::all();
+        if (is_null($patients)){
+           return response('Paciente no encontrado...', 404);
+        }
+       
+        $appointment = Appointment::find($id);
+
+        if (is_null($appointment)){
+           return response('Cita no encontrada...', 404);
+        }
+        
+        return view('dashboard.appointments.edit',compact('appointment','doctors','patients'));
     }
 
    
     public function update(Request $request, $id)
     {
-        //
+        $appointment = Appointment::find($id);
+
+        $appointment->doctor_id           = $request->doctor_id;
+        $appointment->clinical_patient_id = $request->clinical_patient_id;
+        $appointment->appointment_date    = $request->appointment_date;
+        $appointment->reason_consultation = $request->reason_consultation ;
+        $appointment->status              = $request->status;
+        $appointment->save();
     }
 
     

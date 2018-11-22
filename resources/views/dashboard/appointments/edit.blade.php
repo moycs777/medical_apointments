@@ -6,7 +6,7 @@
     <div class="content">
       <div class="row">
         <div class="col-md-8">
-          <h2>Crear Cita</h2>
+          <h2>Editar Citas</h2>
 
           <div class="card">
             <div class="card-body">
@@ -27,7 +27,7 @@
                             selected='selected' 
                           @endif
                         >
-                        {{ $item->name }} 
+                        {{ $item->first_name . " " . $item->last_name}} 
                         </option>
                       @endforeach
                     </select>
@@ -44,7 +44,7 @@
                             selected='selected' 
                           @endif
                         >
-                        {{ $item->name }} 
+                        {{ $item->first_name . " " . $item->last_name}} 
                         </option>
                       @endforeach
                     </select>
@@ -54,7 +54,8 @@
                   <label for=""><strong>Fecha de la Consulta</strong></label>
                   <input id="appointment_date" type="date" name = "appointment_date"
                          class="form-control" 
-                         value="{{ $appointment->$appointment_date }}"> 
+                         value="{{ $appointment->appointment_date }}"
+                         > 
                 </div>
 
                 <div class="form-group">
@@ -93,7 +94,7 @@
             
            // });
 
-           // $('.js-example-basic-single').select2();
+           $('.js-example-basic-single').select2();
           
 
         }); 

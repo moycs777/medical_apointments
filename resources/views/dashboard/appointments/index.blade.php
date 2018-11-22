@@ -41,17 +41,7 @@
                         <td>{{ $item->clinical_patient->first_name . " " . 
                                $item->clinical_patient->last_name }}
                         </td>
-                        <td>
-                          
-                          @if($item->status == '0')
-                               Pendiente
-                          @elseif ($item->status == '1')
-                               Confirmado
-                          @elseif ($item->status == '2')
-                               Atendido
-                          @endif
-
-                        </td>
+                        <td>{{ $item->status}} </td>
                         <td width = "10px">
                           <a href="{{ route('appointments.edit', $item->id) }}"
                             class = "btn btn-sm">Editar 
