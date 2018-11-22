@@ -45,13 +45,15 @@ class RegisterController extends Controller
             'email' => $data['email'] ? $data['email'] : null,
             'password' => Hash::make($data['password']),
         ]);
-        
         $patient = new ClinicalPatient();
         $patient->user_id = $user->id;
+        $patient->first_name = $user->name;
+        $patient->last_name = $user->name;
         $patient->dni = '1234';
         $patient->gender = 'M';
-        $patient->status = 1;
+        //$patient->status = 1;
         $patient->save();
+        //dd($patient);
 
         return $user;
     }

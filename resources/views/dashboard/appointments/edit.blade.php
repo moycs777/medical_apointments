@@ -34,34 +34,56 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="sel1">Seleccione Paciente</label>
-                    <select class="js-example-basic-single form-control" 
-                      id="sel1" name="clinical_patient_id">
-                                  
-                      @foreach($patients as $item) 
-                        <option value ="{{ $item->id }}"
-                          @if($item->id == "$appointment->clinical_patient_id") 
-                            selected='selected' 
-                          @endif
-                        >
-                        {{ $item->first_name . " " . $item->last_name}} 
-                        </option>
-                      @endforeach
-                    </select>
+                  <label for="sel1">Paciente</label>
+                  <input type="hidden" name="clinical_patient_id" class="form-control"
+                  value = "{{ $appointment->clinical_patient->id }}">
+                  <input type="text" name="clinical_patient_id" class="form-control"
+                  value = "{{ $appointment->clinical_patient->first_name .' '.$appointment->clinical_patient->last_name  }}" disabled="true">
                 </div>
                 
                 <div class="form-group">
                   <label for=""><strong>Fecha de la Consulta</strong></label>
                   <input id="appointment_date" type="date" name = "appointment_date"
-                         class="form-control" 
-                         value="{{ $appointment->appointment_date }}"
-                         > 
+                    class="form-control" 
+                     {{-- value="{{ $appointment->appointment_date }}" --}}
+                    value="{{date('Y-m-d', strtotime($appointment->appointment_date))}}"
+                  > 
                 </div>
 
                 <div class="form-group">
                   <label for=""><strong>Motivo de la consulta</strong></label>
                   <input type="text" name="reason_consultation" class="form-control"
                   value = "{{ $appointment->reason_consultation }}">
+                </div>
+
+                <div class="form-group">
+                  <label for=""><strong>Status de la consulta</strong></label>
+                  <select class="form-control" name="status">
+                    <option value="pendiente"
+                      @if($appointment->status == "pendiente") 
+                          selected='selected' 
+                      @endif    
+                    >pendiente
+                    </option>
+                    <option value="confirmado"
+                      @if($appointment->status == "confirmado") 
+                          selected='selected' 
+                      @endif
+                    >
+                    confirmado</option>
+                    <option value="atendido"
+                      @if($appointment->status == "atendido") 
+                          selected='selected' 
+                      @endif
+                    >
+                    atendido</option>
+                    <option value="anulado"
+                      @if($appointment->status == "anulado") 
+                          selected='selected' 
+                      @endif
+                    >
+                    anulado</option>
+                  </select>
                 </div>
 
                 <div class="form-group">

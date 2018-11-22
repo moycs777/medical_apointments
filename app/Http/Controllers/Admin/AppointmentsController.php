@@ -62,25 +62,31 @@ class AppointmentsController extends Controller
         if (is_null($doctors)){
            return response('Cita no encontrada...', 404);
         }
-       
-        $patients = ClinicalPatient::all();
-        if (is_null($patients)){
-           return response('Paciente no encontrado...', 404);
-        }
-       
-        $appointment = Appointment::find($id);
 
+        $appointment = Appointment::find($id);
+        //dd($appointment);
         if (is_null($appointment)){
            return response('Cita no encontrada...', 404);
         }
+       
+        /*$patients = ClinicalPatient::all();
+        if (is_null($patients)){
+           return response('Paciente no encontrado...', 404);
+        }*/
+        $patient = ClinicalPatient::all();
+        if (is_null($patient)){
+           return response('Paciente no encontrado...', 404);
+        }
         
-        return view('dashboard.appointments.edit',compact('appointment','doctors','patients'));
+        return view('dashboard.appointments.edit',compact('appointment','doctors','patient'));
     }
 
    
     public function update(Request $request, $id)
     {
+        //dd($request->all());
         $appointment = Appointment::find($id);
+        //dd($appointment);
 
         $appointment->doctor_id           = $request->doctor_id;
         $appointment->clinical_patient_id = $request->clinical_patient_id;
@@ -88,11 +94,15 @@ class AppointmentsController extends Controller
         $appointment->reason_consultation = $request->reason_consultation ;
         $appointment->status              = $request->status;
         $appointment->save();
+
+        return redirect()->route('appointments.index');
+
     }
 
     
     public function destroy($id)
     {
         //
+        return redirect()->route('appointments.index');
     }
 }

@@ -44,16 +44,14 @@ class AppointmentsController extends Controller
         //dd($request->all());
         //Appointment::create($request->all());
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();
+        //dd($patient);
 
         $appoints = new Appointment();
         $appoints->clinical_patient_id = $patient->id;
         $appoints->doctor_id = $request->doctor_id;
         $appoints->appointment_date = $request->appointment_date;
         $appoints->reason_consultation = $request->reason_consultation;
-        $appoints->day = $request->day ? $request->day : 1;
-        $appoints->status_1 = $request->status_1 ? $request->status_1 : 1;
-        $appoints->status_2 = $request->status_2 ? $request->status_2 : 1;
-        $appoints->status = $request->status ? $request->status : 1;
+        
         $appoints->save();
 
         return redirect()->route('appoints.index');
