@@ -7,7 +7,9 @@
       <div class="row">
         <div class="col-md-8">
           <h2>Editar Citas</h2>
-
+          @php
+              $status = array('pendiente','confirmado','atendido','anulado');
+          @endphp
           <div class="card">
             <div class="card-body">
               <form method="POST" action="{{ route('appointments.update',$appointment->id) }}" >
@@ -17,7 +19,7 @@
                 {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
 
                 <div class="form-group">
-                  <label for="sel1">Seleccione Doctor</label>
+                  <label for="sel1"><strong>Seleccione Doctor</strong</label>
                     <select class="js-example-basic-single form-control" 
                       id="sel1" name="doctor_id">
                                   
@@ -34,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="sel1">Paciente</label>
+                  <label for="sel1"><strong>Paciente</strong></label>
                   <input type="hidden" name="clinical_patient_id" class="form-control"
                   value = "{{ $appointment->clinical_patient->id }}">
                   <input type="text" name="clinical_patient_id" class="form-control"
@@ -42,7 +44,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for=""><strong>Fecha de la Consulta</strong></label>
+                  <label for=""><strong><strong>Fecha de la Consulta</strong></strong></label>
                   <input id="appointment_date" type="date" name = "appointment_date"
                     class="form-control" 
                      {{-- value="{{ $appointment->appointment_date }}" --}}
@@ -51,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for=""><strong>Motivo de la consulta</strong></label>
+                  <label for=""><strong><strong>Motivo de la consulta</strong></strong></label>
                   <input type="text" name="reason_consultation" class="form-control"
                   value = "{{ $appointment->reason_consultation }}">
                 </div>
@@ -59,8 +61,21 @@
                 <div class="form-group">
                   <label for=""><strong>Status de la consulta</strong></label>
                   <select class="form-control" name="status">
-                    <option value="pendiente"
-                      @if($appointment->status == "pendiente") 
+
+                    @php
+                      foreach ($status as $item){
+                        $cad = $item; 
+                        $a = "";
+                        $a = "<option value ='";
+                        $a = $a . $cad . "'";
+                        if($appointment->status == $cad){
+                            $a = $a . " selected='selected' ";
+                        }
+                        echo  $a . ">" . $cad . "</option>";
+                      }
+                    @endphp
+                    {{-- <option value="pendiente" 
+                      @if($appointment->status == "pendiente")  
                           selected='selected' 
                       @endif    
                     >pendiente
@@ -82,7 +97,7 @@
                           selected='selected' 
                       @endif
                     >
-                    anulado</option>
+                    anulado</option> --}}
                   </select>
                 </div>
 

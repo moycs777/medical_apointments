@@ -40,12 +40,9 @@ class AppointmentsController extends Controller
     
     public function store(Request $request)
     {
-        //dd(Auth::user()->id);
-        //dd($request->all());
-        //Appointment::create($request->all());
+        
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();
-        //dd($patient);
-
+       
         $appoints = new Appointment();
         $appoints->clinical_patient_id = $patient->id;
         $appoints->doctor_id = $request->doctor_id;

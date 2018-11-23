@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-md-8">
           <h2>Crear Cita</h2>
-
+          
           <div class="card">
             <div class="card-body">
               <form method="POST" action="{{ route('appointments.store') }}" >

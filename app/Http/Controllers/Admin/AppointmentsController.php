@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AppointmentStoreRequest;
+use App\Http\Requests\AppointmentUpdateRequest;
+
 use Carbon\Carbon;
 
 use App\Appointment;
@@ -32,8 +35,13 @@ class AppointmentsController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(AppointmentStoreRequest $request)
     {
+
+         if($request->input('doctor_id') == "0"){
+            return redirect()->route('appointments.create')
+               ->with('info','Debe seleeccionar un doctor');
+         }
 
          $fec_consulta = $request->input('appointment_date');
                    
@@ -52,7 +60,8 @@ class AppointmentsController extends Controller
          
         Appointment::create($request->all());
         
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointments.index')
+          ->with('info','Informacion actualizada');
     }
 
     
@@ -64,15 +73,10 @@ class AppointmentsController extends Controller
         }
 
         $appointment = Appointment::find($id);
-        //dd($appointment);
         if (is_null($appointment)){
            return response('Cita no encontrada...', 404);
         }
        
-        /*$patients = ClinicalPatient::all();
-        if (is_null($patients)){
-           return response('Paciente no encontrado...', 404);
-        }*/
         $patient = ClinicalPatient::all();
         if (is_null($patient)){
            return response('Paciente no encontrado...', 404);
@@ -82,12 +86,10 @@ class AppointmentsController extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(AppointmentUpdateRequest $request, $id)
     {
-        //dd($request->all());
         $appointment = Appointment::find($id);
-        //dd($appointment);
-
+       
         $appointment->doctor_id           = $request->doctor_id;
         $appointment->clinical_patient_id = $request->clinical_patient_id;
         $appointment->appointment_date    = $request->appointment_date;
@@ -95,14 +97,16 @@ class AppointmentsController extends Controller
         $appointment->status              = $request->status;
         $appointment->save();
 
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointments.index')
+           ->with('info','Informacion actualizada');
 
     }
 
     
     public function destroy($id)
     {
-        //
-        return redirect()->route('appointments.index');
+        Appointment::find($id)->delete();
+        return redirect()->route('appointments.index')
+            ->with('info','Informacion eliminada');;
     }
 }
