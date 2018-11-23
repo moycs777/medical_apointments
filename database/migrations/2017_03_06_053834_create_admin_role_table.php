@@ -30,6 +30,7 @@ class CreateAdminRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_admins');
+        Schema::dropIfExists('admin_role');
+        //Schema::dropIfExists('role_admins');
     }
 }

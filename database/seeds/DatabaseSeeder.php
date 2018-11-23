@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
         });
 
 
-        $this->call(GeneralSeed::class);
-
         $this->call(AdminsTableSeeder::class);
 
         $this->call(DoctorsTable::class);
