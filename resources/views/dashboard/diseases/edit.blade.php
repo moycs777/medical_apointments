@@ -10,7 +10,7 @@
       <div class="content">
          <div class="row">
             <div class="col-md-8">
-               <h2>Actualizar Enfermedades</h2>
+               <h2>Actualizar Enfermedad</h2>
                <div class="card">
                   <div class="card-body">
                      <form method="POST" 

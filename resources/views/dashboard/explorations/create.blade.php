@@ -8,7 +8,7 @@
     <div class="content">
       <div class="row">
         <div class="col-md-8">
-          <h2>Crear Exploraciones</h1>
+          <h2>Crear Exploracion</h1>
             <div class="card">
               <div class="card-body">
                 <form method="POST" action="{{ route('explorations.store') }}" >

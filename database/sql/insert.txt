@@ -1,4 +1,4 @@
-mysqldump  -h localhost -u root -p medical_apointments diseases > diseases.sql
+mysqldump  -h localhost -u root -p medical_appointments diseases > diseases.sql
 mysql -h localhost -u root -p medical_appointments < diseases.sql
 
 insert into medical_apointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion;

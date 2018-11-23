@@ -7,7 +7,7 @@
     <div class="content">
       <div class="row">
         <div class="col-md-8">
-          <h2>Editar exploraciones</h1>
+          <h2>Editar exploracion</h1>
             <div class="card">
               <div class="card-body">
 

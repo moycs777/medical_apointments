@@ -46,8 +46,7 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->last_name    = $request->last_name;
         $clinicalpatients->gender       = $request->input('genero');
         $clinicalpatients->address      = $request->address;
-        //$clinicalpatients->status       = 1;
-
+        
         $clinicalpatients->save();
 
         return redirect()->route('clinicalpatients.index');

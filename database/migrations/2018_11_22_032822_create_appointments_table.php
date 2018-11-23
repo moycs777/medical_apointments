@@ -19,7 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->integer('doctor_id')->unsigned();
             $table->timestamp('appointment_date');
             $table->string('reason_consultation',200);
-            $table->enum('status', ['pendiente', 'confirmado','atendido','anulado'])
+            $table->enum('status', ['pendiente', 'confirmado','en consulta','atendido','anulado'])
                           ->default('pendiente');
             $table->foreign('clinical_patient_id')->references('id')->on('clinical_patients')
                 ->ondelete('cascade')

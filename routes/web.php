@@ -11,13 +11,10 @@ Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 Route::resource('/profile', 'ProfileController');
 Route::resource('appoints', 'AppointmentsController');
 
-/* Route::get('profile', function () {
-    return "prof routre";
-})->middleware('verified'); */
-
 // Office   pathologies
 Route::group(['middleware' => 'auth:admin',], function () {
     Route::resource('office/appointments',        'Admin\AppointmentsController');
+    Route::resource('office/consultations',        'Admin\ConsultationsController');
     Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
     Route::resource('office/classifications',     'Admin\ClassificationsController');
     Route::resource('office/insurances',       	  'Admin\InsurancesController');
@@ -33,7 +30,6 @@ Route::group(['middleware' => 'auth:admin',], function () {
     Route::get('office/medical_schedules_ver_horario/{id}', 
         'Admin\MedicalSchedulesController@listarHorarioMedico');
     Route::resource('office/explorations',        'Admin\ExplorationsController');
-    
 });
 
 

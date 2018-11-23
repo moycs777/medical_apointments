@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InsuranceStoreRequest;
+use App\Http\Requests\InsuranceUpdateRequest;
+
 use App\Insurance;
 
 class InsurancesController extends Controller
@@ -23,7 +26,7 @@ class InsurancesController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(InsuranceStoreRequest $request)
     {
         Insurance::create($request->all());
 
@@ -39,7 +42,7 @@ class InsurancesController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(InsuranceUpdateRequest $request, $id)
     {
 
         $insurance = Insurance::find($id);

@@ -7,6 +7,7 @@ mysql -h localhost -u root -p medical_appointments < database/sql/exportacion.sq
 mysql -h localhost -u root -p medical_appointments < database/sql/diseases.sql
 mysql -h localhost -u root -p medical_appointments < database/sql/pathologies.sql
 mysql -h localhost -u root -p medical_appointments < database/sql/subpatologies.sql
+mysql -h localhost -u root -p medical_appointments < database/sql/insurances.sql
 
 mysql -h localhost -u root -p medical_appointments < diseases.sql
 mysql -h localhost -u root -p medical_appointments < pathologies.sql
@@ -23,3 +24,9 @@ secret
 
 another carusel
 https://bootsnipp.com/snippets/featured/responsive-moving-box-carousel
+
+
+// exportar una sola tabla de mysql o respaldarla
+-------------------------------------------------
+cd xampp\bin
+mysqldump -h 127.0.0.1 -u root -p medical_appointments insurances > insurances.sql

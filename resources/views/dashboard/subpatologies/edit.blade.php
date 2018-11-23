@@ -11,7 +11,7 @@
     <div class="content">
         <div class="row">
             <div class="col-md-10">
-               <h2>Actualizar subpatologias</h1>
+               <h2>Actualizar subpatologia</h1>
                   <div class="card">
                       <div class="card-body">
                           <form method="POST" 

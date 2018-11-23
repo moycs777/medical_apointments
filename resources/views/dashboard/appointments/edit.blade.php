@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <h2>Editar Citas</h2>
           @php
-              $status = array('pendiente','confirmado','atendido','anulado');
+              $status = array('pendiente','confirmado','en consulta','atendido','anulado');
           @endphp
           <div class="card">
             <div class="card-body">
@@ -74,30 +74,7 @@
                         echo  $a . ">" . $cad . "</option>";
                       }
                     @endphp
-                    {{-- <option value="pendiente" 
-                      @if($appointment->status == "pendiente")  
-                          selected='selected' 
-                      @endif    
-                    >pendiente
-                    </option>
-                    <option value="confirmado"
-                      @if($appointment->status == "confirmado") 
-                          selected='selected' 
-                      @endif
-                    >
-                    confirmado</option>
-                    <option value="atendido"
-                      @if($appointment->status == "atendido") 
-                          selected='selected' 
-                      @endif
-                    >
-                    atendido</option>
-                    <option value="anulado"
-                      @if($appointment->status == "anulado") 
-                          selected='selected' 
-                      @endif
-                    >
-                    anulado</option> --}}
+                    
                   </select>
                 </div>
 

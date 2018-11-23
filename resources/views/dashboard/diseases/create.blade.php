@@ -11,7 +11,7 @@
     <div class="content">
       <div class="row">
         <div class="col-md-8">
-          <h2>Crear Enfermedades</h1>
+          <h2>Crear Enfermedad</h1>
             <div class="card">
               <div class="card-body">
                 <form method="POST" action="{{ route('diseases.store') }}" >

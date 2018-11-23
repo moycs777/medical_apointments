@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePathologiesTable extends Migration
+class CreateSubclassificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreatePathologiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pathologies', function (Blueprint $table) {
+        Schema::create('subclassifications', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('classification_id')->unsigned();
-            $table->string('name',60);
-            $table->boolean('status')->default(true);
+            $table->string('name',200);
             $table->foreign('classification_id')->references('id')->on('classifications')
                 ->ondelete('cascade')
-                ->onupdate('cascade');
+                ->onupdate('cascade'); 
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreatePathologiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pathologies');
+        Schema::dropIfExists('subclassifications');
     }
 }

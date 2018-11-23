@@ -17,6 +17,13 @@
         </a>
       </li>
 
+      <li class="{{ Request::path() == 'office/consultations' ? 'active' : '' }}">
+        <a href="{{ route('consultations.create')}}">
+          <i class="tim-icons icon-chart-pie-36"></i>
+          <p>Consulta / Medica</p>
+        </a>
+      </li>
+
       <li class="{{ Request::path() == 'office/appointments' ? 'active' : '' }}">
         <a href="{{ route('appointments.index')}}">
           <i class="tim-icons icon-pin"></i>

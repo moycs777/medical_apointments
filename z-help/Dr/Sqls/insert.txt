@@ -8,7 +8,7 @@ insert into medical_apointments.subclassifications
    select codigo,clasificacion,nombre,NOW(),NOW() from dbscr.subclasificacion;
 
 truncate medical_appointments.specialties;
-insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from especialidad;
+insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from dbscr.especialidad;
 
 truncate medical_appointments.diseases;
 insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() from dbscr.enfermedad;

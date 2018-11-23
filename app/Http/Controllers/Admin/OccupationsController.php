@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\RequestsOcupationStoreRequest;
+use App\Http\RequestsOcupationUpdateRequest;
 use App\Occupation;
 
 class OccupationsController extends Controller
@@ -23,7 +25,7 @@ class OccupationsController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(OcupationStoreRequest $request)
     {
         Occupation::create($request->all());
 
@@ -40,7 +42,7 @@ class OccupationsController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(OcupationUpdateRequest $request, $id)
     {
         $occupations = Occupation::find($id);
 

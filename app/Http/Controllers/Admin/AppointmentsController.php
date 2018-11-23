@@ -77,12 +77,7 @@ class AppointmentsController extends Controller
            return response('Cita no encontrada...', 404);
         }
        
-        $patient = ClinicalPatient::all();
-        if (is_null($patient)){
-           return response('Paciente no encontrado...', 404);
-        }
-        
-        return view('dashboard.appointments.edit',compact('appointment','doctors','patient'));
+        return view('dashboard.appointments.edit',compact('appointment','doctors'));
     }
 
    

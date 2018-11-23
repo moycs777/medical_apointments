@@ -6,7 +6,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSubpatologiesTable extends Migration
 {
-    
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('subpatologies', function (Blueprint $table) {
@@ -18,12 +22,16 @@ class CreateSubpatologiesTable extends Migration
             $table->boolean('status')->default(true);
             $table->foreign('pathology_id')->references('id')->on('pathologies')
                 ->ondelete('cascade')
-                ->onupdate('cascade');  
+                ->onupdate('cascade'); 
             $table->timestamps();
         });
     }
 
-    
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('subpatologies');
