@@ -18,14 +18,21 @@
                   @csrf
 
                   <div class="form-group">
-                    <label for="">Nombre</label>
+                    <label for=""><strong>Codigo</strong></label>
+                    <input type="text" name="code" class="form-control" 
+                    required = "required" placeholder="Código de la enfermedad"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for=""><strong>Nombre</strong></label>
                     <input type="text" name="name" class="form-control" 
                     required = "required" placeholder="Descripción de la enfermedad"
                     >
                   </div>
 
                   <div class="form-group">
-                    <label for="sel1">Seleccione subclasificación</label>
+                    <label for="sel1"><strong>Seleccione subclasificación</strong></label>
                     <select class="js-example-basic-single form-control" 
                       id="sel1" name="subclassification_id" required = "required">
 

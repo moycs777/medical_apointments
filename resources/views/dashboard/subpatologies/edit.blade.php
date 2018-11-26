@@ -28,15 +28,20 @@
                               </div>
 
                               <div class="form-group">
-                                  <label for="">Recipe</label>
-                                  <input type="text" name="recipe" class="form-control" 
+                                  <label for=""><strong>Recipe</strong></label>
+                                 {{--  <input type="text" name="recipe" class="form-control" 
                                       value = "{{ $subpatology->recipe }}"
                                       required = "required"
-                                      placeholder="Descripción recipe">
+                                      placeholder="Descripción recipe"> --}}
+                                  
+                                  <textarea class="form-control" name="recipe" rows = '5'
+                                     required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{!! $subpatology->recipe !!}
+                                  </textarea>
+
                               </div>  
 
                               <div class="form-group">
-                                  <label for="">Prescripcion</label>
+                                  <label for=""><strong>Prescripcion</strong></label>
                                   <input type="text" name="prescription" class="form-control" 
                                       value = "{{ $subpatology->prescription }}"
                                       required = "required"
@@ -44,7 +49,7 @@
                               </div>
 
                               <div class="form-group">
-                                  <label for="sel1">Seleccione patologia</label>
+                                  <label for="sel1"><strong>Seleccione patologia</strong></label>
                                     <select class="form-control" id="sel1" name="pathology_id"
                                       required = "required">
                                       @foreach($patholies as $item)

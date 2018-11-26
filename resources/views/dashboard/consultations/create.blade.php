@@ -34,16 +34,19 @@
                   <div class="main">
                     {{-- TabsMenu --}}
                     <input id="tab1" type="radio" name="tabs" checked>
-                    <label for="tab1">Tab 1</label>
+                    <label for="tab1">Consulta</label>
                 
                     <input id="tab2" type="radio" name="tabs">
-                    <label for="tab2">Tab 2</label>
+                    <label for="tab2">Recipe e Indicaciones</label>
                 
                     <input id="tab3" type="radio" name="tabs">
-                    <label for="tab3">Tab 3</label>
+                    <label for="tab3">Antecedentes personales</label>
                 
                     <input id="tab4" type="radio" name="tabs">
-                    <label for="tab4">Tab 4</label>
+                    <label for="tab4">Antecedentes familiares</label>
+
+                    <input id="tab5" type="radio" name="tabs">
+                    <label for="tab5">Control</label>
                     {{-- Tabs --}}
                     <div class="contentTabs">  
                       <div id="content1">
@@ -67,6 +70,13 @@
                       <div id="content4">
                         <div class="row">
                           @include('dashboard.consultations.partials.tab4')
+                        </div>
+                        <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                      </div>
+
+                      <div id="content5">
+                        <div class="row">
+                          @include('dashboard.consultations.partials.tab5')
                         </div>
                         <button type="submit" class="btn btn-fill btn-primary">Save</button>
                       </div>

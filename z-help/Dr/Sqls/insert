@@ -25,3 +25,5 @@ insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() f
 truncate medical_appointments.insurances
 insert into medical_appointments.insurances 
 select codigo,nombre,NOW(),NOW() from dbscr.seguro
+
+insert into medical_appointments.explorations select codigo,Especialidad,Item,DE,Estado,NOW(),NOW() from dbscr.exploracion 

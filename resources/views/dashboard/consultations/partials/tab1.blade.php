@@ -1,53 +1,134 @@
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
-    <label>fieldName</label>
-    <input id="fieldName"
+    <label for="">Numero/codigo de la cita</label>
+    <input id="appointment_number"
         type="text"
-        class="form-control {{ $errors->has('fieldName') ? ' is-invalid' : '' }}"
+        class="form-control {{ $errors->has('appointment_number') ? ' is-invalid' : '' }}"
         placeholder="fieldName"
-        name="fieldName"
-        value="{{ old('fieldName') }}" required
+        name="appointment_number"
+        value="{{ old('appointment_number') }}" required
     >
-    @if ($errors->has('fieldName'))
+    @if ($errors->has('appointment_number'))
         <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('fieldName') }}</strong>
+            <strong>{{ $errors->first('appointment_number') }}</strong>
         </span>
     @endif
   </div>
 </div>
 
+
+
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
-    <label>fieldName2</label>
-    <input id="fieldName2"
+    <label for="">Fecha de la consulta</label>
+    <input id="date_consultation"
         type="text"
-        class="form-control {{ $errors->has('fieldName2') ? ' is-invalid' : '' }}"
-        placeholder="fieldName2"
-        name="fieldName2"
-        value="{{ old('fieldName2') }}" required
+        class="form-control {{ $errors->has('date_consultation') ? ' is-invalid' : '' }}"
+        placeholder="Fecha de la consulta"
+        name="date_consultation"
+        value="@php echo date("d-m-Y") @endphp" required = "require" disabled
     >
-    @if ($errors->has('fieldName2'))
+    @if ($errors->has('date_consultation'))
         <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('fieldName2') }}</strong>
+            <strong>{{ $errors->first('date_consultation') }}</strong>
         </span>
-    @endif
+    @endif 
   </div>
 </div>
 
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
-    <label>fieldName3</label>
-    <input id="fieldName3"
+    <label>Nombre del paciente</label>
+    <input id="clinical_patient_id"
         type="text"
-        class="form-control {{ $errors->has('fieldName3') ? ' is-invalid' : '' }}"
-        placeholder="fieldName3"
-        name="fieldName3"
-        value="{{ old('fieldName3') }}" required
+        class="form-control {{ $errors->has('clinical_patient_id') ? ' is-invalid' : '' }}"
+        placeholder=""
+        name="date_consultation"
+        value="{{ old('clinical_patient_id') }}" required
     >
-    @if ($errors->has('fieldName3'))
+    @if ($errors->has('clinical_patient_id'))
         <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('fieldName3') }}</strong>
+            <strong>{{ $errors->first('clinical_patient_id') }}</strong>
         </span>
     @endif
   </div>
 </div>
+
+
+<div class="col-md-10 col-md-10-offset-2">
+  <div class="form-group">
+    <label>Motivo de la consulta</label>
+    <input id="reason_consultation"
+        type="text"
+        class="form-control {{ $errors->has('reason_consultation') ? ' is-invalid' : '' }}"
+        placeholder="Describa motivo de la consulta"
+        name="reason_consultation"
+        value="{{ old('reason_consultation') }}" required
+    >
+    @if ($errors->has('reason_consultation'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('reason_consultation') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
+
+<div class="col-md-10 col-md-10-offset-10">
+  <div class="form-group">
+    <label>Diagnostico</label>
+    <input id="diagnosis"
+        type="text"
+        class="form-control {{ $errors->has('diagnosis') ? ' is-invalid' : '' }}"
+        placeholder="Diagnostico"
+        name="diagnosis"
+        value="{{ old('diagnosis') }}" required
+    >
+    @if ($errors->has('diagnosis'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('diagnosis') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
+
+{{--
+<div class="col-md-4 pr-md-1">
+  <div class="form-group">
+    <label>Enfermedad</label>
+    <input id="disease"
+        type="text"
+        class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
+        placeholder="Descripcion de la enfermedad"
+        name="disease"
+        value="{{ old('disease') }}" required
+    >
+    @if ($errors->has('disease'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('disease') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
+ <div class="col-md-4 pr-md-1">
+  <div class="form-group">
+    <label>Exploracion</label>
+    <input id="exploration"
+        type="text"
+        class="form-control {{ $errors->has('exploration') ? ' is-invalid' : '' }}"
+        placeholder="Descripcion de la exploracion"
+        name="exploration"
+        value="{{ old('exploration') }}" required
+    >
+    @if ($errors->has('exploration'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('exploration') }}</strong>
+        </span>
+    @endif
+  </div>
+</div> 
+
+
+</div>--}}

@@ -42,7 +42,7 @@ class SubpatologiesController extends Controller
         $patholies = Pathology::all();
 
         $subpatology = Subpatology::find($id);
-
+        //dd($subpatology);
         return view('dashboard.subpatologies.edit',compact('subpatology','patholies'));
 
     }

@@ -16,10 +16,11 @@ class CreateDiseasesTable extends Migration
         Schema::create('diseases', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subclassification_id')->unsigned();
+            $table->string('code',5);
             $table->string('name',255);
             $table->string('symbol',1);
-            /* $table->foreign('subclassification_id')->references('id')->on('subclassifications')
-                  ->onupdate('cascade'); */
+            $table->foreign('subclassification_id')->references('id')->on('subclassifications')
+                  ->onupdate('cascade');
             $table->timestamps();
         });
     }

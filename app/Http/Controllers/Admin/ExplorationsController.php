@@ -12,7 +12,7 @@ class ExplorationsController extends Controller
     
     public function index()
     {
-        $explorations = Exploration::orderBy('id','DESC')->paginate();
+        $explorations = Exploration::orderBy('specialty_id')->paginate();
 
         return view('dashboard.explorations.index',compact('explorations'));
     }

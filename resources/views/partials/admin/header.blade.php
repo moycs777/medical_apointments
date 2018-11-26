@@ -77,7 +77,7 @@
       <li class="{{ Request::path() == 'office/insurances' ? 'active' : '' }}">
         <a href="{{ route('insurances.index') }}">
           <i class="tim-icons icon-single-02"></i>
-          <p>Seguros Médicos</p>
+          <p>Seguros</p>
         </a>
       </li>
 

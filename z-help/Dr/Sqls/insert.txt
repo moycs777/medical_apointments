@@ -11,7 +11,7 @@ truncate medical_appointments.specialties;
 insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from dbscr.especialidad;
 
 truncate medical_appointments.diseases;
-insert into diseases select codigo,subclasificacion,nombre,simbolo,NOW(),NOW() from dbscr.enfermedad;
+insert into medical_appointments.diseases SELECT id,Subclasificacion,codigo,Nombre,Simbolo,NOW(),NOW() from dbscr.enfermedad
 
 truncate medical_appointments.pathologies
 insert into pathologies

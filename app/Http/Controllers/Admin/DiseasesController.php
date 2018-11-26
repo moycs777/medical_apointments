@@ -30,8 +30,9 @@ class DiseasesController extends Controller
     {
         $disease = new Disease;
 
-        $disease->name  = $request->get('name');
         $disease->subclassification_id = $request->get('subclassification_id');
+        $disease->code  = $request->get('code');
+        $disease->name  = $request->get('name');
         $disease->symbol  = "0";
         $disease->save();
 

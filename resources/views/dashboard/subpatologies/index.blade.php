@@ -17,7 +17,7 @@
                 <div class="card-body">
 		        	Subpatologias
 			    	<a href="{{ route('subpatologies.create') }}" class ='btn btn-primary pull-rigth'>
-			    		r
+			    	Crear
 			    	</a>
 			    	<div class="table-responsive ps">
 				  	    <div class="panel-body">
