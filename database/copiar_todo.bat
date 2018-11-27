@@ -1,0 +1,10 @@
+mysql -h localhost -u root -p medical_appointments < classifications.sql
+mysql -h localhost -u root -p medical_appointments < subclasifications.sql
+mysql -h localhost -u root -p medical_appointments < pathologies.sql
+mysql -h localhost -u root -p medical_appointments < subpatologies.sql
+mysql -h localhost -u root -p medical_appointments < diseases.sql
+mysql -h localhost -u root -p medical_appointments < diseases.sql
+mysql -h localhost -u root -p medical_appointments < specialties.sql
+mysql -h localhost -u root -p medical_appointments < explorations.sql
+mysql -h localhost -u root -p medical_appointments < insurances.sql
+mysql -h localhost -u root -p medical_appointments < occupations.sql

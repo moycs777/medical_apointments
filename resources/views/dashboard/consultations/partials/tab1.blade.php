@@ -16,8 +16,6 @@
   </div>
 </div>
 
-
-
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label for="">Fecha de la consulta</label>
@@ -77,13 +75,17 @@
 <div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
     <label>Diagnostico</label>
-    <input id="diagnosis"
+    {{-- <input id="diagnosis"
         type="text"
         class="form-control {{ $errors->has('diagnosis') ? ' is-invalid' : '' }}"
         placeholder="Diagnostico"
         name="diagnosis"
         value="{{ old('diagnosis') }}" required
-    >
+    > --}}
+    <textarea class="form-control" name="diagnosis"
+      placeholder="Diagnostico" rows = '5' required = "required" 
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
+    </textarea>
     @if ($errors->has('diagnosis'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('diagnosis') }}</strong>
@@ -93,17 +95,15 @@
 </div>
 
 
-{{--
-<div class="col-md-4 pr-md-1">
+
+<div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
     <label>Enfermedad</label>
-    <input id="disease"
-        type="text"
-        class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
-        placeholder="Descripcion de la enfermedad"
-        name="disease"
-        value="{{ old('disease') }}" required
-    >
+    
+    <textarea class="form-control" name="disease"
+      placeholder="Enfermedad" rows = '5' required = "required" 
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="disease" >
+    </textarea>
     @if ($errors->has('disease'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('disease') }}</strong>
@@ -112,16 +112,19 @@
   </div>
 </div>
 
- <div class="col-md-4 pr-md-1">
+<div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
     <label>Exploracion</label>
-    <input id="exploration"
+    {{-- <input id="exploration"
         type="text"
         class="form-control {{ $errors->has('exploration') ? ' is-invalid' : '' }}"
         placeholder="Descripcion de la exploracion"
-        name="exploration"
-        value="{{ old('exploration') }}" required
-    >
+        name="exploration" value="{{ old('exploration') }}" required
+    > --}}
+    <textarea class="form-control" name="exploration"
+      placeholder="Exploracion" rows = '5' required = "required" 
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="exploration" >
+    </textarea>
     @if ($errors->has('exploration'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('exploration') }}</strong>
@@ -130,5 +133,3 @@
   </div>
 </div> 
 
-
-</div>--}}

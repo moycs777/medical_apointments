@@ -15,7 +15,7 @@
             @endif
 
             <div class="card-body">
-              Listado de Constultas
+              Listado de Consultas
               <a href="{{ route('consultations.create') }}" class ='btn btn-primary pull-rigth'>Crear</a>
               <div class="table-responsive ps">
                 <div class="panel-body">
