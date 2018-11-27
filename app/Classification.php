@@ -17,7 +17,6 @@ class Classification extends Model
 
     public function subclassifications(){
 
-    	//return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
     	return $this->hasMany('App\Subclassification');
     }
 
