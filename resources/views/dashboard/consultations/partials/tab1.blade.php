@@ -71,31 +71,6 @@
   </div>
 </div>
 
-
-<div class="col-md-10 col-md-10-offset-10">
-  <div class="form-group">
-    <label>Diagnostico</label>
-    {{-- <input id="diagnosis"
-        type="text"
-        class="form-control {{ $errors->has('diagnosis') ? ' is-invalid' : '' }}"
-        placeholder="Diagnostico"
-        name="diagnosis"
-        value="{{ old('diagnosis') }}" required
-    > --}}
-    <textarea class="form-control" name="diagnosis"
-      placeholder="Diagnostico" rows = '5' required = "required" 
-      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
-    </textarea>
-    @if ($errors->has('diagnosis'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('diagnosis') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
-
-
-
 <div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
     <label>Enfermedad</label>
@@ -132,4 +107,32 @@
     @endif
   </div>
 </div> 
+
+<div class="col-md-10 col-md-10-offset-10">
+  <div class="form-group">
+    <label>Diagnostico</label>
+    {{-- <input id="diagnosis"
+        type="text"
+        class="form-control {{ $errors->has('diagnosis') ? ' is-invalid' : '' }}"
+        placeholder="Diagnostico"
+        name="diagnosis"
+        value="{{ old('diagnosis') }}" required
+    > --}}
+    <textarea class="form-control" name="diagnosis"
+      placeholder="Diagnostico" rows = '5' required = "required" 
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
+    </textarea>
+    @if ($errors->has('diagnosis'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('diagnosis') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
+
+
+
+
+
 

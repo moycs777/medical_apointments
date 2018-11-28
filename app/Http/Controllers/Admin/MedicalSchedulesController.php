@@ -25,7 +25,7 @@ class MedicalSchedulesController extends Controller
         
         $doctor = Doctor::where('id', $id)->first();
         if ($doctor == null) {
-            return response()->json( null );
+            return "Informacion no encontrado...";
         }
        
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
@@ -42,6 +42,10 @@ class MedicalSchedulesController extends Controller
     {
        
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
+        if ($doctor == null) {
+            return "Usted no autenticado con el perfil de medico";
+        }
+
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
             ->orderBy('id','ASC')
             ->paginate();
