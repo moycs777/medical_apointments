@@ -10,6 +10,7 @@ use App\Http\Requests\ClinicalPatientsRequest;
 
 use App\ClinicalPatient;
 use App\User;
+use App\Insurance;
 
 class ClinicalPatientsController extends Controller
 {
@@ -23,7 +24,8 @@ class ClinicalPatientsController extends Controller
 
     public function create()
     {
-        return view('dashboard.clinical_patients.create');
+        $insurances = Insurance::orderBy('name')->get();
+        return view('dashboard.clinical_patients.create',compact('insurances'));
     }
 
 
@@ -41,6 +43,7 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients = new ClinicalPatient();
 
         $clinicalpatients->user_id      = $user->id;
+        $clinicalpatients->insurance_id = $request->insurance_id;
         $clinicalpatients->dni          = $request->dni;
         $clinicalpatients->first_name   = $request->first_name;
         $clinicalpatients->last_name    = $request->last_name;
@@ -61,9 +64,12 @@ class ClinicalPatientsController extends Controller
 
     public function edit($id)
     {
+
+        $insurances = Insurance::orderBy('name')->get();
+
         $clinicalpatient = ClinicalPatient::find($id);
-        //dd($clinicalpatient);
-        return view('dashboard.clinical_patients.edit',compact('clinicalpatient'));
+        
+        return view('dashboard.clinical_patients.edit',compact('clinicalpatient','insurances'));
     }
 
 
@@ -80,13 +86,13 @@ class ClinicalPatientsController extends Controller
         $user->password =Hash::make('12345678');
 
         $user->save(); */
-
-        //$clinicalpatients->user_id     = $user->id;
-        $clinicalpatients->dni         = $request->dni;
-        $clinicalpatients->last_name   = $request->last_name;
-        $clinicalpatients->gender      = $request->input('genero');
-        $clinicalpatients->address     = $request->address;
-        $clinicalpatients->status      = 1;
+       
+        $clinicalpatients->dni              = $request->dni;
+        $clinicalpatients->insurance_id     = $request->insurance_id;
+        $clinicalpatients->last_name        = $request->last_name;
+        $clinicalpatients->gender           = $request->input('genero');
+        $clinicalpatients->address          = $request->address;
+        //$clinicalpatients->status           = 1;
 
         $clinicalpatients->save();
 

@@ -123,6 +123,20 @@
                         </div>
                       </div>
 
+                      <div class="form-group">
+                        <label for="sel1"><strong>Seleccione seguro</strong></label>
+                          <select class="form-control" id="sel1" name="insurance_id" required = "required">
+                            @foreach($insurances as $item)
+                              <option value ="{{ $item->id }}"
+                                @if($item->id == $clinicalpatient->insurance_id) 
+                                    selected='selected' 
+                                @endif>
+                                {{ $item->name }}
+                              </option>
+                            @endforeach 
+                          </select>
+                      </div>
+
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
@@ -208,6 +222,10 @@
            }
         });
        }); 
+
+      $(document).ready(function() {
+          $('.js-example-basic-single').select2();
+      }); 
   </script>
 @stop
 

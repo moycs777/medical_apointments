@@ -18,6 +18,7 @@ class ClinicalPatientsRequest extends FormRequest
             // 'name' => 'required|string|max:255',
             'username' => 'required|string|max:20|unique:users',
             //se debe usar una manera para que el email pueda estar en blanco
+            'insurance_id' => 'required',
             'email' => 'string|email|max:255|unique:users', 
             'dni' => 'string|unique:clinical_patients', 
             //'email' => 'required|string|email|max:255|unique:users', 

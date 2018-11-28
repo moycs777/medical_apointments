@@ -13,4 +13,8 @@ class ClinicalPatient extends Model
     public function appointments(){
         return $this->hasMany('App\Appointment');
     }
+
+    public function insurance(){
+        return $this->belongsTo('App\Insurance');
+    }
 }

@@ -28,7 +28,7 @@
                               <th>Username</th>
                               <th>Nombre</th>
                               <th>Apellido</th>
-                              <th>Sexo</th>
+                              <th>Seguro Medico</th>
                               <th>Direccion</th>
                               <th>Estatus</th>
                               <th colspan="2"></th>
@@ -41,7 +41,7 @@
                               <td>{{ $item->user->username }}</td>
                               <td>{{ $item->user->name }}</td>
                               <td>{{ $item->last_name }}</td>
-                              <td>{{ $item->gender }}</td>
+                              <td>{{ $item->insurance->name }}</td>
                               <td>{{ $item->address }}</td>
                               <td>{{ $item->status }}</td>                        
                               <td width = "10px">

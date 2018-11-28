@@ -16,11 +16,15 @@ class CreateClinicalPatientsTable extends Migration
         Schema::create('clinical_patients', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
+            $table->integer('insurance_id')->unsigned()->comment('Codigo del seguro medico');
             $table->string('dni')->unique();
             $table->string('first_name',30)->nullable;
             $table->string('last_name',30);
             $table->string('address')->nullable();
             $table->string('gender',1)->default('M');
+            $table->foreign('insurance_id')->references('id')->on('insurances')
+                ->ondelete('cascade')
+                ->onupdate('cascade');
             $table->timestamps();
         });
     }
