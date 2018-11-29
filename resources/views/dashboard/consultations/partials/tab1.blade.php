@@ -52,7 +52,6 @@
   </div>
 </div>
 
-
 <div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Motivo de la consulta</label>
@@ -76,8 +75,8 @@
     <label>Enfermedad</label>
     
     <textarea class="form-control" name="disease"
-      placeholder="Enfermedad" rows = '5' required = "required" 
-      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="disease" >
+      placeholder="Enfermedad" rows = '2'  
+      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="disease" >
     </textarea>
     @if ($errors->has('disease'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -86,23 +85,22 @@
     @endif
   </div>
 </div>
-
 <div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
-    <label>Exploracion</label>
-    {{-- <input id="exploration"
-        type="text"
-        class="form-control {{ $errors->has('exploration') ? ' is-invalid' : '' }}"
-        placeholder="Descripcion de la exploracion"
-        name="exploration" value="{{ old('exploration') }}" required
-    > --}}
-    <textarea class="form-control" name="exploration"
-      placeholder="Exploracion" rows = '5' required = "required" 
-      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="exploration" >
-    </textarea>
-    @if ($errors->has('exploration'))
+    <div class="form-group">
+       <label for="sel1"><strong>Seleccione la exploracion</strong></label>
+         <select class="form-control" id="sel1" name="exploration_id">
+            @foreach($explorations as $item)
+               <option value ="{{ $item->id }}">
+                  {{ $item->name }}
+               </option>
+            @endforeach 
+         </select>
+    </div>
+    
+    @if ($errors->has('exploration_id'))
         <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('exploration') }}</strong>
+            <strong>{{ $errors->first('exploration_id') }}</strong>
         </span>
     @endif
   </div>
@@ -111,16 +109,9 @@
 <div class="col-md-10 col-md-10-offset-10">
   <div class="form-group">
     <label>Diagnostico</label>
-    {{-- <input id="diagnosis"
-        type="text"
-        class="form-control {{ $errors->has('diagnosis') ? ' is-invalid' : '' }}"
-        placeholder="Diagnostico"
-        name="diagnosis"
-        value="{{ old('diagnosis') }}" required
-    > --}}
     <textarea class="form-control" name="diagnosis"
       placeholder="Diagnostico" rows = '5' required = "required" 
-      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
+      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
     </textarea>
     @if ($errors->has('diagnosis'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -130,9 +121,54 @@
   </div>
 </div>
 
+<div class="col-md-6 pr-md-1">
+  <div class="form-group">
+    <label for="">Recipe</label>
+    <textarea class="form-control" name="recipe"
+      placeholder="Recipe" rows = '5' required = "required" 
+      style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
+    </textarea>
+    @if ($errors->has('recipe'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('recipe') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
 
+<div class="col-md-6 pr-md-1">
+  <div class="form-group">
+    <label for="">Indicaciones</label>
+    <textarea class="form-control" name="prescription"
+      placeholder="Describa las indicaciones" rows = '5' required = "required" 
+      style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
+    </textarea>
+    @if ($errors->has('prescription'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('prescription') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
 
+@section('page-script')
 
+  <script type="text/javascript">
 
+        $(document).ready(function() {
 
+           // $('#sel1').on('change',function(){
+           //   //var n = $(this).val();
+           //   //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+           //   var optionText = $("#sel1 option:selected").text();
+           //   var id = $("#sel1 option:selected").val();
+            
+           // });
 
+           $('.js-example-basic-single').select2();
+     
+        }); 
+
+  </script>
+
+@stop

@@ -12,7 +12,7 @@ class ExplorationsController extends Controller
     
     public function index()
     {
-        $explorations = Exploration::orderBy('specialty_id')->paginate();
+        $explorations = Exploration::where('specialty_id','10')->orderBy('specialty_id')->paginate();
 
         return view('dashboard.explorations.index',compact('explorations'));
     }
@@ -41,12 +41,14 @@ class ExplorationsController extends Controller
         
         $specialties  = Specialty::where('status','=',1)->get(); 
         if (is_null($specialties))
-           return response('Especialidades no encontradas...', 404);
+           //return response('Especialidades no encontradas...', 404)
+           return Redirect::back()->withErrors(['Error', 'Especialidades no encontradas']);
         
         //dd($specialties);    
         $exploration = Exploration::find($id);
         if (is_null( $exploration))
-           return response('Informacion no encontrada', 404);
+           //return response('Informacion no encontrada', 404);
+           return Redirect::back()->withErrors(['Error', 'Exploracion no encontrada']);
 
         return view('dashboard.explorations.edit',compact('exploration','specialties'));
     }

@@ -15,12 +15,13 @@ class CreateConsultationsTable extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('clinical_patient_id')->unsigned()->comment('paciente');
+             $table->integer('clinical_patient_id')->unsigned()->comment('paciente');
             $table->integer('doctor_id')->unsigned()->comment('doctor');
+            $table->integer('exploration_id')->unsigned()->comment('Codigo de la exploracion');
             $table->timestamp('date_consultation');
             $table->string('reason_consultation',200)->comment('fecha de la consulta');
             $table->text('disease')->comment('enfermedad');
-            $table->text('exploration')->comment('exploracion');
+            //$table->text('exploration')->comment('exploracion');
             $table->string('weight',5)->comment('peso');
             $table->string('size',2)->comment('talla');
             $table->string('systolic_pressure',5)->comment('presion sistoloica');
@@ -31,7 +32,10 @@ class CreateConsultationsTable extends Migration
                   ->onupdate('cascade'); 
             $table->foreign('doctor_id')->references('id')->on('doctors')
                   ->ondelete('cascade')
-                  ->onupdate('cascade'); 
+                  ->onupdate('cascade');
+            $table->foreign('exploration_id')->references('id')->on('explorations')
+                  ->ondelete('cascade')
+                  ->onupdate('cascade');  
             $table->timestamps();
         });
     }

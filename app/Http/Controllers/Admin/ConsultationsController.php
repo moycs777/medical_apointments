@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Consultation;
+use App\Exploration;
 
 class ConsultationsController extends Controller
 {
@@ -18,7 +19,12 @@ class ConsultationsController extends Controller
 
     public function create()
     {
-        return view('dashboard.consultations.create');
+        $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
+
+        if ($explorations == null) {
+            return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
+        }
+        return view('dashboard.consultations.create',compact('explorations'));
     }
 
     

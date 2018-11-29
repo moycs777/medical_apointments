@@ -51,9 +51,7 @@
 
   </header>
 
-    
-
-   
+ 
 @endsection()
 
     

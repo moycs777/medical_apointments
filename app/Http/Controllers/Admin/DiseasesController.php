@@ -12,7 +12,7 @@ class DiseasesController extends Controller
     
     public function index()
     {
-        $diseases = Disease::orderBy('id','DESC')->paginate();
+        $diseases = Disease::where('subclassification_id','230')->orderBy('id','DESC')->paginate();
 
         return view('dashboard.diseases.index',compact('diseases'));
     }

@@ -5,11 +5,12 @@
      body {background: red; color: black; font: 14px 'Open Sans', sans-serif;}
      h1 {padding: 100px 0; font-weight: 400; text-align: center;}
      p {margin: 0 0 20px; line-height: 1.5;}
-     .main {margin: 0 auto; min-width: 320px; max-width: 800px;}
+     .main {margin: 0 auto; min-width: 320px; max-width: 1000px;}
      .contentTabs {background: white; color: black;}
      .contentTabs > div {display: none; padding: 20px 25px 5px;}
      input {display: none;}
-     label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}
+     /*label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}*/
+     label {display: inline-block; padding:0px 25px; font-weight: 600; text-align: center;}
      label:hover {color: #1d8cf8; cursor: pointer;}
      input:checked + label {background: #1d8cf8; color: #fff;}
      #tab1:checked ~ .contentTabs #content1,
@@ -34,19 +35,17 @@
                   <div class="main">
                     {{-- TabsMenu --}}
                     <input id="tab1" type="radio" name="tabs" checked>
-                    <label for="tab1">Consulta</label>
+                    <label for="tab1"><strong>Consulta</strong></label>
                 
                     <input id="tab2" type="radio" name="tabs">
-                    <label for="tab2">Recipe e Indicaciones</label>
+                    <label for="tab2"><strong>Antecedentes personales</strong></label>
                 
                     <input id="tab3" type="radio" name="tabs">
-                    <label for="tab3">Antecedentes personales</label>
+                    <label for="tab3"><strong>Antecedentes familiares</strong></label>
                 
                     <input id="tab4" type="radio" name="tabs">
-                    <label for="tab4">Antecedentes familiares</label>
+                    <label for="tab4"><strong>Control</strong></label>
 
-                    <input id="tab5" type="radio" name="tabs">
-                    <label for="tab5">Control</label>
                     {{-- Tabs --}}
                     <div class="contentTabs">  
                       <div id="content1">

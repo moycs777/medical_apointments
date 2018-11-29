@@ -24,19 +24,21 @@
 
                                 <div class="form-group">
                                    <label for=""><strong>Recipe</strong></label>
-                                   {{-- <input type="text" name="recipe" class="form-control" 
-                                      placeholder="Descripción recipe"> --}}
+                                   
                                    <textarea class="form-control" name="recipe"
                                       placeholder="Descripción recipe" rows = '5'
                                       required = "required" 
                                       style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="recipe" >
                                    </textarea>
+
                                 </div>
 
                                 <div class="form-group">
                                    <label for=""><strong>Prescripcion</strong></label>
-                                   <input type="text" name="prescription" class="form-control" 
-                                      placeholder="Detalle de la prescripcion">
+                                   <textarea class="form-control" name="prescription"
+                                      placeholder="Indicaciones" rows = '5' required = "required" 
+                                      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="prescription" >
+                                   </textarea>
                                 </div>
 
                                 <div class="form-group">
