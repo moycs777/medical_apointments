@@ -5,7 +5,7 @@
      body {background: red; color: black; font: 14px 'Open Sans', sans-serif;}
      h1 {padding: 100px 0; font-weight: 400; text-align: center;}
      p {margin: 0 0 20px; line-height: 1.5;}
-     .main {margin: 0 auto; min-width: 320px; max-width: 1000px;}
+     .main {margin: 0 auto; min-width: 320px; max-width: 100%px;}
      .contentTabs {background: white; color: black;}
      .contentTabs > div {display: none; padding: 20px 25px 5px;}
      /*esta regla para los inputs produce conflicto con el select2*/
@@ -35,39 +35,17 @@
               @csrf
               {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
               <div class="col-md-12">
-                  <div class="main">
+                  <div class="main" >
                     {{-- TabsMenu --}}
-                    {{-- <div class="form-group">
-                       <label for="sel2"><strong>Seleccione subpatologia</strong></label>
-                         <select class="" id="qwe" name="subpatology">
-                            @foreach($subpatologies as $item)
-                               <option value ="{{ $item->id }}">
-                                  {{ $item->recipe }}
-                               </option>
-                            @endforeach 
-                         </select>
-                         <hr>
-                         <select class="form-control" id="asd" name="exploration_id">
-                            @foreach($explorations as $item)
-                               <option value ="{{ $item->id }}">
-                                  {{ $item->name }}
-                               </option>
-                            @endforeach 
-                         </select>
-                    </div> --}}
                     <input type="hidden" name="url" id="url" value="{{url('')}}">
-                    <input id="tab1" type="radio" name="tabs" checked>
+                    <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
                     <label for="tab1"><strong>Consulta</strong></label>
                 
-                    <input id="tab2" type="radio" name="tabs">
-                    <label for="tab2"><strong>Antecedentes personales</strong></label>
+                    <input id="tab2" type="radio" name="tabs" style="display: none !important;">
+                    <label for="tab2"><strong>Antecedentes</strong></label>
                 
-                    <input id="tab3" type="radio" name="tabs">
-                    <label for="tab3"><strong>Antecedentes familiares</strong></label>
-                
-                    <input id="tab4" type="radio" name="tabs">
-                    <label for="tab4"><strong>Control</strong></label>
-
+                    <input id="tab3" type="radio" name="tabs" style="display: none !important;">
+                    <label for="tab3"><strong>Otros</strong></label>
                     {{-- Tabs --}}
                     <div class="contentTabs">  
                       <div id="content1">
@@ -105,7 +83,7 @@
                     </div>
                     {{-- tabs --}}             
                   </div>
-                <a href="https://twitter.com/moycs777?lang=es" target="_blank">@moycs777</a>
+                <a href="https://twitter.com/moycs777?lang=es" target="_blank"></a>
               </div>
             </form>
           </div>
@@ -126,6 +104,20 @@
          var optionText = $("#sel1 option:selected").text();
          var id = $("#sel1 option:selected").val();
        });
+
+       //tab 1
+       $("select[name=subpatology]").change(function(){
+           Mostrar_Recipe($('select[name=subpatology]').val());
+          
+        });
+
+        function Mostrar_Recipe(pid){
+           var route = $('#url').val()+'/office/consultations_mostrar_recipe/' + pid;
+           $.get(route,function(res){
+              $("#recipe").val($.trim(res.recipe));
+              $("#prescription").val($.trim(res.prescription));
+           });
+        }
 
     }); 
   </script>

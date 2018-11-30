@@ -16,7 +16,6 @@
     @endif
   </div>
 </div>
-
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label for="">Fecha de la consulta</label>
@@ -51,7 +50,6 @@
     @endif
   </div>
 </div>
-
 <div class="col-md-12">
   <div class="form-group">
     <label>Motivo de la consulta</label>
@@ -74,10 +72,17 @@
   <div class="form-group">
     <label>Enfermedad</label>
     
-    <textarea class="form-control" name="disease"
+    {{-- <textarea class="form-control" name="disease"
       placeholder="Enfermedad" rows = '2'  
       style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="disease" >
-    </textarea>
+    </textarea> --}}
+    <input id="disease"
+        type="text"
+        class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
+        placeholder="Describa enfermedad"
+        name="reason_consultation"
+        value="{{ old('disease') }}"
+    >
     @if ($errors->has('disease'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('disease') }}</strong>
@@ -85,8 +90,6 @@
     @endif
   </div>
 </div>
-
-
 <div class="col-md-12">
   <div class="form-group">
     <label>Exploracion</label>
@@ -121,7 +124,7 @@
       <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
         @foreach($subpatologies as $item)
            <option value ="{{ $item->id }}">
-              {{ $item->recipe }}
+              {{  $item->name . "---" .$item->recipe }}
            </option>
         @endforeach 
       </select>
@@ -133,7 +136,7 @@
     <label for="">Recipe</label>
     <textarea class="form-control" name="recipe"
       placeholder="Recipe" rows = '5' required = "required" 
-      style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
     </textarea>
     @if ($errors->has('recipe'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -148,7 +151,7 @@
     <label for="">Indicaciones</label>
     <textarea class="form-control" name="prescription"
       placeholder="Describa las indicaciones" rows = '5' required = "required" 
-      style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
+      style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
     </textarea>
     @if ($errors->has('prescription'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -157,3 +160,4 @@
     @endif
   </div>
 </div>
+
