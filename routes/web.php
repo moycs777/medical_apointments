@@ -13,23 +13,24 @@ Route::resource('appoints', 'AppointmentsController');
 
 // Office   pathologies
 Route::group(['middleware' => 'auth:admin',], function () {
-    Route::resource('office/appointments',        'Admin\AppointmentsController');
-    Route::resource('office/consultations',        'Admin\ConsultationsController');
-    Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
-    Route::resource('office/classifications',     'Admin\ClassificationsController');
-    Route::resource('office/insurances',       	  'Admin\InsurancesController');
-    Route::resource('office/occupations',         'Admin\OccupationsController');
-    Route::resource('office/subclassifications',  'Admin\SubclassificationsController');
-    Route::resource('office/specialties',         'Admin\SpecialtiesController');
-    Route::resource('office/diseases',            'Admin\DiseasesController');
-    Route::resource('office/doctors',             'Admin\DoctorsController');
-    Route::resource('office/doctorprofile',       'Admin\DoctorProfileController');
-    Route::resource('office/pathologies',         'Admin\PathologiesController');
-    Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
-    Route::resource('office/medical_schedules',   'Admin\MedicalSchedulesController');
-    Route::get('office/medical_schedules_ver_horario/{id}', 
+  Route::resource('office/appointments',        'Admin\AppointmentsController');
+  Route::resource('office/consultations',        'Admin\ConsultationsController');
+  Route::get('office/consultations_mostrar_recipe/{id}','Admin\ConsultationsController@Mostrar_Recipe_Prescripcion');
+  Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
+  Route::resource('office/classifications',     'Admin\ClassificationsController');
+  Route::resource('office/insurances',       	  'Admin\InsurancesController');
+  Route::resource('office/occupations',         'Admin\OccupationsController');
+  Route::resource('office/subclassifications',  'Admin\SubclassificationsController');
+  Route::resource('office/specialties',         'Admin\SpecialtiesController');
+  Route::resource('office/diseases',            'Admin\DiseasesController');
+  Route::resource('office/doctors',             'Admin\DoctorsController');
+  Route::resource('office/doctorprofile',       'Admin\DoctorProfileController');
+  Route::resource('office/pathologies',         'Admin\PathologiesController');
+  Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
+  Route::resource('office/medical_schedules',   'Admin\MedicalSchedulesController');
+  Route::get('office/medical_schedules_ver_horario/{id}', 
         'Admin\MedicalSchedulesController@listarHorarioMedico');
-    Route::resource('office/explorations',        'Admin\ExplorationsController');
+  Route::resource('office/explorations',        'Admin\ExplorationsController');
 });
 
 

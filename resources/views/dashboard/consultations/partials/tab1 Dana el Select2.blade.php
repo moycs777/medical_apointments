@@ -1,11 +1,10 @@
-<input type="hidden" name="url" id="url" value="{{url('')}}">
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label for="">Numero/codigo de la cita</label>
     <input id="appointment_number"
         type="text"
         class="form-control {{ $errors->has('appointment_number') ? ' is-invalid' : '' }}"
-        placeholder="Numero de cita"
+        placeholder="fieldName"
         name="appointment_number"
         value="{{ old('appointment_number') }}" required
     >
@@ -41,7 +40,8 @@
     <input id="clinical_patient_id"
         type="text"
         class="form-control {{ $errors->has('clinical_patient_id') ? ' is-invalid' : '' }}"
-        placeholder="" name="clinical_patient_id" disabled
+        placeholder=""
+        name="date_consultation"
         value="{{ old('clinical_patient_id') }}" required
     >
     @if ($errors->has('clinical_patient_id'))
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Motivo de la consulta</label>
     <input id="reason_consultation"
@@ -70,7 +70,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Enfermedad</label>
     
@@ -86,21 +86,28 @@
   </div>
 </div>
 
-
-<div class="col-md-12">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
-    <label>Exploracion</label>
-    <select class="form-control" id="asd" name="exploration_id">
-        @foreach($explorations as $item)
-           <option value ="{{ $item->id }}">
-              {{ $item->name }}
-           </option>
-        @endforeach 
-     </select>
+    <div class="form-group">
+       <label for="sel1"><strong>Seleccione la exploracion</strong></label>
+         <select class="form-control" id="sel1" name="exploration_id">
+            @foreach($explorations as $item)
+               <option value ="{{ $item->id }}">
+                  {{ $item->name }}
+               </option>
+            @endforeach 
+         </select>
+    </div>
+    
+    @if ($errors->has('exploration_id'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('exploration_id') }}</strong>
+        </span>
+    @endif
   </div>
-</div>
+</div> 
 
-<div class="col-md-12">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Diagnostico</label>
     <textarea class="form-control" name="diagnosis"
@@ -115,18 +122,28 @@
   </div>
 </div>
 
+{{-- Subpatologia --}}
 <div class="col-md-12">
   <div class="form-group">
-    <label for="sel2"><strong>Seleccione subpatologia</strong></label>
-      <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
-        @foreach($subpatologies as $item)
-           <option value ="{{ $item->id }}">
-              {{ $item->recipe }}
-           </option>
-        @endforeach 
-      </select>
+    <div class="form-group">
+       <label for="sel2"><strong>Seleccione subpatologia</strong></label>
+         <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
+            @foreach($subpatologies as $item)
+               <option value ="{{ $item->id }}">
+                  {{ $item->recipe }}
+               </option>
+            @endforeach 
+         </select>
+    </div>
+    
+    @if ($errors->has('id'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('id') }}</strong>
+        </span>
+    @endif
   </div>
-</div>
+</div> 
+
 
 <div class="col-md-6 pr-md-1">
   <div class="form-group">
@@ -157,3 +174,47 @@
     @endif
   </div>
 </div>
+
+@section('page-script')
+
+  <script type="text/javascript">
+
+        $(document).ready(function() {
+
+          // $('#sel1').on('change',function(){
+          //    //var n = $(this).val();
+          //    //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+          //    var optionText = $("#sel1 option:selected").text();
+          //    var id = $("#sel1 option:selected").val();
+          //    alert("Selecciono 1");
+          // });
+
+          $("select[name=subpatology]").change(function(){
+            //alert($('select[name=subpatology]').val());
+            Mostrar_Recipe($('select[name=subpatology]').val());
+            // $('input[name=valor1]').val($(this).val());
+            //alert("Selecciono 2");
+          });
+
+          // $("#recipe").click(function(){
+          //   $("#sel1").select();
+          //   alert("Selecciono 2");
+          // });
+
+          // $("#sel1").select(function(){
+          //   alert("Texto seleccionado 3");
+          // });
+     
+          function Mostrar_Recipe(pid){
+             var route = $('#url').val()+'/office/consultations_mostrar_recipe/'+pid;
+             //alert("Hola "+pid);
+             $.get(route,function(res){
+               alert(res.recipe);
+             });
+          }
+
+        }); 
+
+  </script>
+
+@stop

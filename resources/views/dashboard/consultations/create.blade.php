@@ -8,8 +8,9 @@
      .main {margin: 0 auto; min-width: 320px; max-width: 1000px;}
      .contentTabs {background: white; color: black;}
      .contentTabs > div {display: none; padding: 20px 25px 5px;}
-     input {display: none;}
-     /*label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}*/
+     /*esta regla para los inputs produce conflicto con el select2*/
+     /*input {display: none;}*/
+     label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}
      label {display: inline-block; padding:0px 25px; font-weight: 600; text-align: center;}
      label:hover {color: #1d8cf8; cursor: pointer;}
      input:checked + label {background: #1d8cf8; color: #fff;}
@@ -28,12 +29,33 @@
       <!-- Navbar -->
       @include('partials.admin.nav')
       <div class="content">
+         {{--  <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
           <div class="row">
             <form method="POST" action="{{ route('consultations.store') }}">
               @csrf
+              {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
               <div class="col-md-12">
                   <div class="main">
                     {{-- TabsMenu --}}
+                    {{-- <div class="form-group">
+                       <label for="sel2"><strong>Seleccione subpatologia</strong></label>
+                         <select class="" id="qwe" name="subpatology">
+                            @foreach($subpatologies as $item)
+                               <option value ="{{ $item->id }}">
+                                  {{ $item->recipe }}
+                               </option>
+                            @endforeach 
+                         </select>
+                         <hr>
+                         <select class="form-control" id="asd" name="exploration_id">
+                            @foreach($explorations as $item)
+                               <option value ="{{ $item->id }}">
+                                  {{ $item->name }}
+                               </option>
+                            @endforeach 
+                         </select>
+                    </div> --}}
+                    <input type="hidden" name="url" id="url" value="{{url('')}}">
                     <input id="tab1" type="radio" name="tabs" checked>
                     <label for="tab1"><strong>Consulta</strong></label>
                 
@@ -80,7 +102,8 @@
                         <button type="submit" class="btn btn-fill btn-primary">Save</button>
                       </div>
 
-                    </div>              
+                    </div>
+                    {{-- tabs --}}             
                   </div>
                 <a href="https://twitter.com/moycs777?lang=es" target="_blank">@moycs777</a>
               </div>
@@ -93,7 +116,18 @@
 @section('page-script')
   <script type="text/javascript">
     console.log("pacientes ");
-    
+     $(document).ready(function() {
+       $('.js-example-basic-single').select2();
+       $('#qwe').select2();
+       $('#asd').select2();
+       $('#sel1').on('change',function(){
+         //var n = $(this).val();
+         //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+         var optionText = $("#sel1 option:selected").text();
+         var id = $("#sel1 option:selected").val();
+       });
+
+    }); 
   </script>
 @stop
 

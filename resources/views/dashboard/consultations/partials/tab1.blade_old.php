@@ -1,10 +1,12 @@
+
+<input type="hidden" name="url" id="url" value="{{url('')}}">
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label for="">Numero/codigo de la cita</label>
     <input id="appointment_number"
         type="text"
         class="form-control {{ $errors->has('appointment_number') ? ' is-invalid' : '' }}"
-        placeholder="fieldName"
+        placeholder="Numero de cita"
         name="appointment_number"
         value="{{ old('appointment_number') }}" required
     >
@@ -87,7 +89,7 @@
   </div>
 </div>
 
-<div class="col-md-10 col-md-10-offset-10">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Exploracion</label>
     {{-- <input id="exploration"
@@ -108,7 +110,7 @@
   </div>
 </div> 
 
-<div class="col-md-10 col-md-10-offset-10">
+<div class="col-md-10 col-md-10-offset-2">
   <div class="form-group">
     <label>Diagnostico</label>
     {{-- <input id="diagnosis"
