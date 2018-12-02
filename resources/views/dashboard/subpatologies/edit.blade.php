@@ -29,11 +29,7 @@
 
                               <div class="form-group">
                                   <label for=""><strong>Recipe</strong></label>
-                                 {{--  <input type="text" name="recipe" class="form-control" 
-                                      value = "{{ $subpatology->recipe }}"
-                                      required = "required"
-                                      placeholder="Descripción recipe"> --}}
-                                  
+                                                                   
                                   <textarea class="form-control" name="recipe" rows = '5'
                                      required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{!! $subpatology->recipe !!}
                                   </textarea>

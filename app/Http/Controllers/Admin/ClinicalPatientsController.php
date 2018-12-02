@@ -31,7 +31,7 @@ class ClinicalPatientsController extends Controller
 
     public function store(ClinicalPatientsRequest $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $user = new User();
         $user->name = $request->first_name;
         $user->username = $request->username;
@@ -49,7 +49,7 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->last_name    = $request->last_name;
         $clinicalpatients->gender       = $request->input('genero');
         $clinicalpatients->address      = $request->address;
-        
+        $clinicalpatients->bloodtype    = $request->bloodtype;
         $clinicalpatients->save();
 
         return redirect()->route('clinicalpatients.index');
@@ -92,6 +92,7 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->last_name        = $request->last_name;
         $clinicalpatients->gender           = $request->input('genero');
         $clinicalpatients->address          = $request->address;
+        $clinicalpatients->bloodtype        = $request->bloodtype;
         //$clinicalpatients->status           = 1;
 
         $clinicalpatients->save();

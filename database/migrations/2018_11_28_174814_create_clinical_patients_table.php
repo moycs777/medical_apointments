@@ -22,6 +22,9 @@ class CreateClinicalPatientsTable extends Migration
             $table->string('last_name',30);
             $table->string('address')->nullable();
             $table->string('gender',1)->default('M');
+            $table->text('personal_history')->nullable;
+            $table->text('family_background')->nullable;
+            $table->string('bloodtype',2);
             $table->foreign('insurance_id')->references('id')->on('insurances')
                 ->ondelete('cascade')
                 ->onupdate('cascade');

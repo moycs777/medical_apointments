@@ -73,8 +73,7 @@
                             <input id="first_name"
                                 type="text"
                                 class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                                placeholder="Nombre"
-                                name="first_name"
+                                placeholder="Nombre" name="first_name"
                                 value="{{ old('first_name') }}" required
                             >
                             @if ($errors->has('name'))
@@ -91,8 +90,7 @@
                             <input id="last_name"
                                 type="text"
                                 class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
-                                placeholder="apellido"
-                                name="last_name"
+                                placeholder="apellido" name="last_name"
                                 value="{{ old('last_name') }}"
                             >
                             @if ($errors->has('last_name'))
@@ -109,12 +107,8 @@
                           <div class="form-group">
                             <label>DNI</label>
                             <input id="dni"
-                                type="text"
-                                class="form-control {{ $errors->has('dni') ? ' is-invalid' : '' }}"
-                                placeholder="DNI"
-                                name="dni"
-                                value="{{ old('dni') }}"
-                            >
+                                type="text" class="form-control {{ $errors->has('dni') ? ' is-invalid' : '' }}"
+                                placeholder="DNI" name="dni" value="{{ old('dni') }}">
                             @if ($errors->has('dni'))
                                 <span style="color: red;" class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('dni') }}</strong>
@@ -139,12 +133,9 @@
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>Direccion</label>
-                            <input id="address"
-                                type="text"
+                            <input id="address" type="text"
                                 class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
-                                placeholder="address"
-                                name="address"
-                                value="{{ old('address') }}"
+                                placeholder="address" name="address" value="{{ old('address') }}"
                             >
                             @if ($errors->has('address'))
                                 <span style="color: red;"  class="invalid-feedback" role="alert">
@@ -170,6 +161,23 @@
                           </div>
                           <input type="hidden" id="genero"  name ="genero"
                              value = "M">
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 col-md-4-offset-8">
+                        <div class="form-group">
+                          <label for=""><strong>Seleccione tipo de sangre</strong></label>
+                          <select class="form-control" 
+                            id="bloodtype" name="bloodtype" required = "required">
+                            <option value ="1">A+</option>
+                            <option value ="2">A-</option>
+                            <option value ="3">B+</option>
+                            <option value ="4">B-</option>
+                            <option value ="5">AB+</option>
+                            <option value ="6">AB-</option>
+                            <option value ="7">O+</option>
+                            <option value ="8">O-</option>
+                          </select>
                         </div>
                       </div>
 
