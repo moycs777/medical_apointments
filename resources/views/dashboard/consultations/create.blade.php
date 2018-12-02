@@ -29,11 +29,9 @@
       <!-- Navbar -->
       @include('partials.admin.nav')
       <div class="content">
-         {{--  <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
-          <div class="row">
+         <div class="row">
             <form method="POST" action="{{ route('consultations.store') }}">
               @csrf
-              {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
               <div class="col-md-12">
                   <div class="main" >
                     {{-- TabsMenu --}}
@@ -73,13 +71,7 @@
                         <button type="submit" class="btn btn-fill btn-primary">Save</button>
                       </div>
 
-                      <div id="content5">
-                        <div class="row">
-                          @include('dashboard.consultations.partials.tab5')
-                        </div>
-                        <button type="submit" class="btn btn-fill btn-primary">Save</button>
-                      </div>
-
+                      
                     </div>
                     {{-- tabs --}}             
                   </div>
@@ -95,29 +87,45 @@
   <script type="text/javascript">
     console.log("pacientes ");
      $(document).ready(function() {
-       $('.js-example-basic-single').select2();
-       $('#qwe').select2();
-       $('#asd').select2();
-       $('#sel1').on('change',function(){
-         //var n = $(this).val();
-         //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-         var optionText = $("#sel1 option:selected").text();
-         var id = $("#sel1 option:selected").val();
-       });
+         $('.js-example-basic-single').select2();
+         $('#qwe').select2();
+         $('#asd').select2();
+         $('#appointment_id').select2();
+         $('#sel1').on('change',function(){
+            //var n = $(this).val();
+            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+            var optionText = $("#sel1 option:selected").text();
+            var id = $("#sel1 option:selected").val();
+         });
 
-       //tab 1
-       $("select[name=subpatology]").change(function(){
-           Mostrar_Recipe($('select[name=subpatology]').val());
-          
-        });
+         //tab 1
+         $("select[name=subpatology]").change(function(){
+             Mostrar_Recipe($('select[name=subpatology]').val());
+         });
 
-        function Mostrar_Recipe(pid){
+         function Mostrar_Recipe(pid){
            var route = $('#url').val()+'/office/consultations_mostrar_recipe/' + pid;
            $.get(route,function(res){
               $("#recipe").val($.trim(res.recipe));
               $("#prescription").val($.trim(res.prescription));
            });
-        }
+         }
+
+        
+         $("#appointment_id").change(function(){
+               Mostrar_Paciente($('select[name=appointment_id]').val());
+         });
+
+         function Mostrar_Paciente(pid){
+
+           var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
+           $.get(route,function(datos){
+              console.log("Retorno :" + JSON.stringify(datos[0]));
+              $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
+              $("#reason_consultation").val(datos[0].reason_consultation);
+           });
+           
+         }
 
     }); 
   </script>

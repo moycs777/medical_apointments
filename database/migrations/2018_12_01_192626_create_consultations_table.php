@@ -15,8 +15,7 @@ class CreateConsultationsTable extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
-             $table->integer('clinical_patient_id')->unsigned()->comment('paciente');
-            $table->integer('doctor_id')->unsigned()->comment('doctor');
+            $table->integer('appointment_id')->unsigned()->comment('Numero de la cita');
             $table->integer('exploration_id')->unsigned()->comment('Codigo de la exploracion');
             $table->timestamp('date_consultation');
             $table->string('reason_consultation',200)->comment('fecha de la consulta');
@@ -27,12 +26,9 @@ class CreateConsultationsTable extends Migration
             $table->string('systolic_pressure',5)->comment('presion sistoloica');
             $table->string('diastolic_pressure',5)->comment('presion diastolica');
             $table->string('status');
-            $table->foreign('clinical_patient_id')->references('id')->on('clinical_patients')
+            $table->foreign('appointment_id')->references('id')->on('appointments')
                   ->ondelete('cascade')
-                  ->onupdate('cascade'); 
-            $table->foreign('doctor_id')->references('id')->on('doctors')
-                  ->ondelete('cascade')
-                  ->onupdate('cascade');
+                  ->onupdate('cascade');  
             $table->foreign('exploration_id')->references('id')->on('explorations')
                   ->ondelete('cascade')
                   ->onupdate('cascade');  
