@@ -8,11 +8,16 @@
          <div class="row">
            <div class="col-md-12">
              <div class="card">
-              @if (session('status'))
-                  <div class="alert alert-success" role="alert">
-                      {{ session('status') }}
-                  </div>
-              @endif
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+               
+                @php
+                  $Tipo_Sangre = array('A+','A-','B+','B-','AB+','AB-','O+','O-');
+                  $i = 1;
+                @endphp
 
                 <div class="card-body">
                     Pacientes 
@@ -30,7 +35,7 @@
                               <th>Apellido</th>
                               <th>Seguro Medico</th>
                               <th>Direccion</th>
-                              <th>Estatus</th>
+                              <th>Tipo Sangre</th>
                               <th colspan="2"></th>
                             </tr>
                           </thead>
@@ -43,7 +48,17 @@
                               <td>{{ $item->last_name }}</td>
                               <td>{{ $item->insurance->name }}</td>
                               <td>{{ $item->address }}</td>
-                              <td>{{ $item->status }}</td>                        
+                              <td>
+
+                                @foreach($Tipo_Sangre as $tipo)
+
+                                  @if($i == $item->bloodtype)
+                                      {{ $tipo }}
+                                  @endif
+                                  @php $i++ @endphp
+
+                                @endforeach
+                              </td>                        
                               <td width = "10px">
                                 <a href="{{ route('clinicalpatients.edit', $item->id) }}"
                                   class = "btn btn-sm">Editar 

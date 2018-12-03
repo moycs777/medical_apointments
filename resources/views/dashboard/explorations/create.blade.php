@@ -16,12 +16,11 @@
 
                   <div class="form-group">
                     <label for=""><strong>Nombre</strong></label>
-                    {{-- <input type="text" name="name" class="form-control" rows = "20"
-                    required = "required" placeholder="Descripción de la exploracion"
-                    > --}}
+                    
                     <textarea class="form-control" rows="5" id="comment" rows = "10" name="name"
                       required = "required" placeholder="Descripción de la exploracion">
                     </textarea>
+                    
                   </div>
 
                   <div class="form-group">

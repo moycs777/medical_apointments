@@ -86,7 +86,8 @@
   <div class="form-group">
     <label>Exploracion</label>
     <select class="form-control" id="asd" name="exploration_id">
-        @foreach($explorations as $item)
+      <option value="0">Seleccione</option>
+         @foreach($explorations as $item)
            <option value ="{{ $item->id }}">
               {{ $item->name }}
            </option>
@@ -114,6 +115,7 @@
   <div class="form-group">
     <label for="sel2"><strong>Seleccione subpatologia</strong></label>
       <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
+        <option value="0">Seleccione</option>
         @foreach($subpatologies as $item)
            <option value ="{{ $item->id }}">
               {{  $item->name . "---" .$item->recipe }}
@@ -153,58 +155,9 @@
   </div>
 </div>
 
-<div class="col-md-3">
-  <div class="form-group">
-    <label>Peso</label>
-    <input id="weight"
-        type="text" class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
-        placeholder="Indique el peso" name="weight" value="{{ old('weight') }}">
-    @if ($errors->has('weight'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('weight') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
 
-<div class="col-md-3">
-  <div class="form-group">
-    <label>Talla</label>
-    <input id="size"
-        type="text" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="size" value="{{ old('size') }}">
-    @if ($errors->has('size'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('size') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
 
-<div class="col-md-3">
-  <div class="form-group">
-    <label>Presion sistolica</label>
-    <input id="systolic_pressure"
-        type="text" class="form-control {{ $errors->has('systolic_pressure') ? ' is-invalid' : '' }}"
-        placeholder="Indique la presion sistolica" name="systolic_pressure" value="{{ old('systolic_pressure') }}">
-    @if ($errors->has('systolic_pressure'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('systolic_pressure') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
 
-<div class="col-md-3">
-  <div class="form-group">
-    <label>Presion diastolica</label>
-    <input id="diastolic_pressure"
-        type="text" class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="size" value="{{ old('size') }}">
-    @if ($errors->has('diastolic_pressure'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('diastolic_pressure') }}</strong>
-        </span>
-    @endif
-  </div>
+<div class="form-group">
+   <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
 </div>

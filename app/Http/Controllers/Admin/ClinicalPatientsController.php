@@ -42,14 +42,16 @@ class ClinicalPatientsController extends Controller
 
         $clinicalpatients = new ClinicalPatient();
 
-        $clinicalpatients->user_id      = $user->id;
-        $clinicalpatients->insurance_id = $request->insurance_id;
-        $clinicalpatients->dni          = $request->dni;
-        $clinicalpatients->first_name   = $request->first_name;
-        $clinicalpatients->last_name    = $request->last_name;
-        $clinicalpatients->gender       = $request->input('genero');
-        $clinicalpatients->address      = $request->address;
-        $clinicalpatients->bloodtype    = $request->bloodtype;
+        $clinicalpatients->user_id           = $user->id;
+        $clinicalpatients->insurance_id      = $request->insurance_id;
+        $clinicalpatients->dni               = $request->dni;
+        $clinicalpatients->first_name        = $request->first_name;
+        $clinicalpatients->last_name         = $request->last_name;
+        $clinicalpatients->gender            = $request->input('genero');
+        $clinicalpatients->personal_history  = 'A';
+        $clinicalpatients->family_background = 'A';
+        $clinicalpatients->address           = $request->address;
+        $clinicalpatients->bloodtype         = $request->bloodtype;
         $clinicalpatients->save();
 
         return redirect()->route('clinicalpatients.index');

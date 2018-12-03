@@ -1,4 +1,4 @@
-<div class="col-md-4 pr-md-1">
+{{-- <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label>fieldName</label>
     <input id="fieldName"
@@ -50,4 +50,4 @@
         </span>
     @endif
   </div>
-</div>
+</div> --}}

@@ -25,8 +25,8 @@
                         <th>Id</th>
                         <th>Fecha Consulta</th>
                         <th>Motivo Consulta</th>
-                        <th>Doctor</th>
                         <th>Paciente</th>
+                        <th>Doctor</th>
                         <th>Estatus</th>
                         <th colspan="2"></th>
                       </tr>
@@ -35,13 +35,11 @@
                     <tbody>
                       <tr>
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->appointment_date }}</td>
+                        <td>{{ $item->date_consultation }}</td>
                         <td>{{ $item->reason_consultation }}</td>
-                        <td>{{ $item->doctor->first_name . " " . $item->doctor->last_name}}</td>
-                        <td>{{ $item->clinical_patient->first_name . " " . 
-                               $item->clinical_patient->last_name }}
-                        </td>
-                        <td>{{ $item->status}} </td>
+                        <td>{{ $item->first_name . " " . $item->last_name}}</td>  
+                        <td>{{ $item->nomdoctor. " " . $item->apedoctor }} 
+                        <td>{{ $item->status}}
                         <td width = "10px">
                           <a href="{{ route('consultations.edit', $item->id) }}"
                             class = "btn btn-sm">Editar 
@@ -62,7 +60,7 @@
                     </tbody>
                     @endforeach
                 </table>
-                  {{ $consultations->render() }}
+                  {{-- {{ $consultations->render() }} --}}
                 </div>
               </div>
             </div>

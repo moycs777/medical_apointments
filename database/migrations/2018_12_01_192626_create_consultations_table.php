@@ -20,9 +20,10 @@ class CreateConsultationsTable extends Migration
             $table->timestamp('date_consultation');
             $table->string('reason_consultation',200)->comment('fecha de la consulta');
             $table->text('disease')->comment('enfermedad');
-            //$table->text('exploration')->comment('exploracion');
+            $table->text('recipe')->comment('recipe');
+            $table->text('prescription')->comment('Indicaciones');
             $table->string('weight',5)->comment('peso');
-            $table->string('size',2)->comment('talla');
+            $table->string('size',5)->comment('talla');
             $table->string('systolic_pressure',5)->comment('presion sistoloica');
             $table->string('diastolic_pressure',5)->comment('presion diastolica');
             $table->string('status');

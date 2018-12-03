@@ -30,12 +30,13 @@
       @include('partials.admin.nav')
       <div class="content">
          <div class="row">
+            <input type="hidden" name="url" id="url" value="{{url('')}}">
             <form method="POST" action="{{ route('consultations.store') }}">
               @csrf
               <div class="col-md-12">
                   <div class="main" >
                     {{-- TabsMenu --}}
-                    <input type="hidden" name="url" id="url" value="{{url('')}}">
+                    {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
                     <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
                     <label for="tab1"><strong>Consulta</strong></label>
                 
@@ -50,6 +51,7 @@
                         <div class="row">
                           @include('dashboard.consultations.partials.tab1')
                         </div>
+                        {{-- <button type="submit" class="btn btn-fill btn-primary">Salvar</button> --}}
                       </div>
                 
                       <div id="content2">
@@ -58,7 +60,7 @@
                         </div>
                       </div>
                 
-                      <div id="content3">
+                      {{-- <div id="content3">
                         <div class="row">
                           @include('dashboard.consultations.partials.tab3')
                         </div>
@@ -68,15 +70,12 @@
                         <div class="row">
                           @include('dashboard.consultations.partials.tab4')
                         </div>
-                        <button type="submit" class="btn btn-fill btn-primary">Save</button>
                       </div>
-
-                      
-                    </div>
+                    </div> --}}
                     {{-- tabs --}}             
                   </div>
                 <a href="https://twitter.com/moycs777?lang=es" target="_blank"></a>
-              </div>
+              </div>     
             </form>
           </div>
       </div>
@@ -123,6 +122,8 @@
               console.log("Retorno :" + JSON.stringify(datos[0]));
               $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
               $("#reason_consultation").val(datos[0].reason_consultation);
+              $("#personal_history").val(datos[0].personal_history);
+              $("#family_background").val(datos[0].family_background);
            });
            
          }
