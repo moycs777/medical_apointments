@@ -41,8 +41,8 @@
                         <td>{{ $item->nomdoctor. " " . $item->apedoctor }} 
                         <td>{{ $item->status}}
                         <td width = "10px">
-                          <a href="{{ route('consultations.edit', $item->id) }}"
-                            class = "btn btn-sm">Editar 
+                          <a href="{{ route('consultations.edit', $item->id) }}" 
+                             class = "btn btn-sm">Editar 
                           </a>
                         </td>
                         <td width = "10px">

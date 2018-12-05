@@ -53,6 +53,7 @@ class ConsultationsController extends Controller
     {
         //$consultations = Consultation::orderBy('id','DESC')->paginate();
         $consultations = DB::table('consultations')
+           ->orderBy('consultations.id','DESC')
            ->join('appointments', 'consultations.appointment_id', '=', 'appointments.id')
            ->join('clinical_patients', 'appointments.clinical_patient_id', '=', 'clinical_patients.id')
            ->join('doctors', 'appointments.doctor_id', '=', 'doctors.id')
@@ -96,15 +97,6 @@ class ConsultationsController extends Controller
     {
 
 
-        // Actualizar status de la cita del paciente
-        $appointment = Appointment::find($request->appointment_id);
-        if ($appointment == null) {
-            return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
-        }
-        $appointment->status = 'atendido';
-        $appointment->save();
-        
-
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
@@ -140,19 +132,25 @@ class ConsultationsController extends Controller
         $consultation->status                = "atendido";
         
         $consultation->save();
+
+        // Actualizar status de la cita del paciente
+        $appointment = Appointment::find($request->appointment_id);
+        if ($appointment == null) {
+            return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
+        }
+        $appointment->status = 'atendido';
+        $appointment->save();
+        
         return redirect()->route('consultations.index');
     }
 
-    
-    public function show($id)
-    {
-        //
-    }
-
-    
+       
     public function edit($id)
     {
-        //
+        $consultation = Consultation::find($id);
+
+        //dd($consultation);
+        return view('dashboard.consultations.edit',compact('consultation'));
     }
 
     

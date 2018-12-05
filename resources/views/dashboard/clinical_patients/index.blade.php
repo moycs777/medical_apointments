@@ -58,6 +58,8 @@
                                   @php $i++ @endphp
 
                                 @endforeach
+                                
+                                @php $i=1; @endphp
                               </td>                        
                               <td width = "10px">
                                 <a href="{{ route('clinicalpatients.edit', $item->id) }}"
