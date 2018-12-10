@@ -66,7 +66,8 @@
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group">
                             <label>Password ()</label>
-                            <input type="text" class="form-control" disabled="" placeholder="12345678" value="{{ $clinicalpatient->user->password }}">
+                            <input type="text" class="form-control" disabled="" placeholder="12345678" 
+                            value="{{ $clinicalpatient->user->password }}">
                           </div>
                         </div>
                       </div>
@@ -169,7 +170,7 @@
                                 <input type="radio" id = "optmas" name="optmas" 
                                   @if ($clinicalpatient->gender == 'M')
                                       checked
-                                      value="{{$clinicalpatient->gender}}"
+                                      value="{{ $clinicalpatient->gender }}"
                                   @endif
                                 >  Masculino
                             </label>
@@ -179,7 +180,7 @@
                             <label>
                               <input type="radio" id = "optfem" name="optmas" 
                                 @if ($clinicalpatient->gender == 'F')
-                                  checked value="{{$clinicalpatient->gender}}"
+                                  checked value="{{ $clinicalpatient->gender }}"
                                 @endif
                               >Femenino
                             </label>
@@ -193,61 +194,7 @@
                             <label for=""><strong>Seleccione tipo de sangre</strong></label>
                             <select class="form-control" 
                               id="bloodtype" name="bloodtype" required = "required">
-                              {{-- <option value ="1" 
-                                @if($clinicalpatient->bloodtype == "1") 
-                                   selected='selected' 
-                                @endif
-                                >A+
-                              </option>
-
-                              <option value ="2"
-                                @if($clinicalpatient->bloodtype == "2") 
-                                   selected='selected' 
-                                @endif
-                                >A-
-                              </option>
-
-                              <option value ="3"
-                                @if($clinicalpatient->bloodtype == "3") 
-                                   selected='selected' 
-                                @endif
-                                >B+
-                              </option>
-                              
-                              <option value ="4"
-                                @if($clinicalpatient->bloodtype == "4") 
-                                   selected='selected' 
-                                @endif
-                                >B-
-                              </option>
                              
-                              <option value ="5"
-                                @if($clinicalpatient->bloodtype == "5") 
-                                   selected='selected' 
-                                @endif
-                                >AB+
-                              </option>
-
-                              <option value ="6"
-                                @if($clinicalpatient->bloodtype == "6") 
-                                   selected='selected' 
-                                @endif
-                                >AB-
-                              </option>
-
-                              <option value ="7"
-                                @if($clinicalpatient->bloodtype == "7") 
-                                   selected='selected' 
-                                @endif
-                                >O+
-                              </option>
-
-                              <option value ="8"
-                                @if($clinicalpatient->bloodtype == "8") 
-                                   selected='selected' 
-                                @endif
-                                >O-
-                              </option> --}}
                               @foreach($Tipo_Sangre as $tipo)
                                 <option value = "{{ $i }}"
                                    @if($clinicalpatient->bloodtype == $i) 
@@ -261,11 +208,7 @@
                           </div>
                         </div>
                       </div>
-
-                      
-
                       <button type="submit" class="btn btn-fill btn-primary">Save</button>
-
                     </form>
                   </div>
                   <div class="card-footer">

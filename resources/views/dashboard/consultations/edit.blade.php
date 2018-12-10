@@ -112,6 +112,11 @@
             });
         }
 
+      function Hola(){
+        alert("GGGGG");
+      }
+
+       $('#x').trigger("click") 
     }); 
   </script>
 @stop

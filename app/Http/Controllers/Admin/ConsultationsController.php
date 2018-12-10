@@ -123,6 +123,7 @@ class ConsultationsController extends Controller
         $consultation->date_consultation     = $request->date_consultation;
         $consultation->reason_consultation   = $request->reason_consultation;
         $consultation->disease               = ($request->input('disease') == null) ? "A" : $request->disease;
+        $consultation->diagnosis             = $request->diagnosis;
         $consultation->recipe                = $recipe;
         $consultation->prescription          = $prescription;
         $consultation->weight                = $weight;
@@ -141,22 +142,76 @@ class ConsultationsController extends Controller
         $appointment->status = 'atendido';
         $appointment->save();
         
-        return redirect()->route('consultations.index');
+        return redirect()->route('consultations.index')->with('info','Informacion actualizada');
     }
 
        
     public function edit($id)
     {
         $consultation = Consultation::find($id);
+        if ($consultation == null) {
+            return Redirect::back()->withErrors(['Error', 'No existe informacion de consultas']);
+        } 
 
-        //dd($consultation);
-        return view('dashboard.consultations.edit',compact('consultation'));
+        $appointment = Appointment::find($consultation->appointment_id);
+        if ($appointment == null) {
+            return Redirect::back()->withErrors(['Error', 'No existe informacion de citas']);
+        } 
+
+        $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
+        if ($explorations == null) {
+            return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
+        } 
+        
+        $subpatologies = Subpatology::orderBy('name')->get();;
+        if ($subpatologies == null) {
+            return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
+        }
+
+        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations','subpatologies'));
+
     }
 
     
     public function update(Request $request, $id)
     {
-        //
+
+        //dd($request->all());
+
+        $weight = "00";
+        $size = "00";
+        $systolic_pressure = "00";
+        $diastolic_pressure = "00";
+        if(isset($request->weight)) $weight = $request->weight;
+        if(isset($request->size))    $weight = $request->size;
+        if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
+        if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
+
+        $consultation = new Consultation();
+        $consultation->appointment_id        = $request->nrocita;
+        $consultation->exploration_id        = $request->exploration_id;
+        $consultation->date_consultation     = $request->date_consultation;
+        $consultation->reason_consultation   = $request->reason_consultation;
+        $consultation->disease               = $request->disease;
+        $consultation->diagnosis             = $request->diagnosis;
+        $consultation->recipe                = $request->recipe;
+        $consultation->prescription          = $request->prescription;
+        $consultation->weight                = $weight;
+        $consultation->size                  = $size;
+        $consultation->systolic_pressure     = $systolic_pressure;
+        $consultation->diastolic_pressure    = $diastolic_pressure;
+        $consultation->status                = $request->status;
+        $consultation->save();
+
+        // Actualizar status de la cita del paciente
+        // $appointment = Appointment::find($request->appointment_id);
+        // if ($appointment == null) {
+        //     return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
+        // }
+        // $appointment->status = 'atendido';
+        // $appointment->save();
+        
+       return redirect()->route('consultations.index')->with('info','Informacion actualizada');
     }
 
     

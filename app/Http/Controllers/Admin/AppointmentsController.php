@@ -38,7 +38,7 @@ class AppointmentsController extends Controller
     public function store(AppointmentStoreRequest $request)
     {
 
-         if($request->input('doctor_id') == "0"){
+         if($request->input('doctor_id') == "0") {
             return redirect()->route('appointments.create')
                ->with('info','Debe seleeccionar un doctor');
          }
@@ -57,6 +57,8 @@ class AppointmentsController extends Controller
          // $fec_cons=strtotime($fec_consulta);
          // $i=$fec_cons;
          // $dia = date('N', $i);
+
+        //dd($request->all());
          
         Appointment::create($request->all());
         

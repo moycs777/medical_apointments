@@ -20,7 +20,7 @@
     <label>Antecedentes Familiares</label>
     
     <textarea class="form-control" name="family_background" 
-      placeholder="Antecedentes familiares" rows = '10' required = "required" 
+      placeholder="Antecedentes familiares" rows = '10'  
       style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
       solid #dddddd; padding: 10px;" id="family_background" >
     </textarea>
@@ -80,7 +80,7 @@
     <label>Presion diastolica</label>
     <input id="diastolic_pressure"
         type="text" class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="size" value="{{ old('size') }}">
+        placeholder="Describa la talla" name="size" value="{{ old('diastolic_pressure') }}">
     @if ($errors->has('diastolic_pressure'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('diastolic_pressure') }}</strong>

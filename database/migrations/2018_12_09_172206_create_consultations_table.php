@@ -20,6 +20,7 @@ class CreateConsultationsTable extends Migration
             $table->timestamp('date_consultation');
             $table->string('reason_consultation',200)->comment('fecha de la consulta');
             $table->text('disease')->comment('enfermedad');
+            $table->text('diagnosis')->comment('Diagnostico');
             $table->text('recipe')->comment('recipe');
             $table->text('prescription')->comment('Indicaciones');
             $table->string('weight',5)->comment('peso');
@@ -32,7 +33,7 @@ class CreateConsultationsTable extends Migration
                   ->onupdate('cascade');  
             $table->foreign('exploration_id')->references('id')->on('explorations')
                   ->ondelete('cascade')
-                  ->onupdate('cascade');  
+                  ->onupdate('cascade'); 
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class Consultation extends Model
        'size','systolic_pressure','diastolic_pressure','status'
     ];
 
-    public function consultation_appointment(){
+    public function appointment(){
         return $this->belongsTo('App\Appointment');
     }
 }

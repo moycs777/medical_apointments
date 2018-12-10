@@ -20,44 +20,43 @@
                               @csrf
                               {{ method_field('PUT') }}
                               <div class="form-group">
-                                  <label for=""><strong>Nombre</strong></label>
-                                  <input type="text" name="name" class="form-control" 
-                                      placeholder="Descripción de la subpatologia"
-                                      required = "required"
-                                      value = "{{ $subpatology->name }}">
+                                <label for=""><strong>Nombre</strong></label>
+                                <input type="text" name="name" class="form-control" 
+                                    placeholder="Descripción de la subpatologia"
+                                    required = "required"
+                                    value = "{{ $subpatology->name }}">
                               </div>
 
                               <div class="form-group">
-                                  <label for=""><strong>Recipe</strong></label>
-                                                                   
-                                  <textarea class="form-control" name="recipe" rows = '5'
-                                     required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{!! $subpatology->recipe !!}
-                                  </textarea>
+                                <label for=""><strong>Recipe</strong></label>
+                                                                 
+                                <textarea class="form-control" name="recipe" rows = '5'
+                                   required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{!! $subpatology->recipe !!}
+                                </textarea>
 
                               </div>  
 
                               <div class="form-group">
-                                  <label for=""><strong>Prescripcion</strong></label>
-                                  <input type="text" name="prescription" class="form-control" 
-                                      value = "{{ $subpatology->prescription }}"
-                                      required = "required"
-                                      placeholder="Detalle de la prescripción">
+                                <label for=""><strong>Prescripcion</strong></label>
+                                <input type="text" name="prescription" class="form-control" 
+                                    value = "{{ $subpatology->prescription }}"
+                                    required = "required"
+                                    placeholder="Detalle de la prescripción">
                               </div>
 
                               <div class="form-group">
-                                  <label for="sel1"><strong>Seleccione patologia</strong></label>
-                                    <select class="form-control" id="sel1" name="pathology_id"
-                                      required = "required">
-                                      @foreach($patholies as $item)
-                                          <option 
-                                             value ="{{ $item->id }}"
-                                             @if($item->id == $subpatology->pathology_id) 
-                                                selected='selected' 
-                                             @endif>
-                                             {{ $item->name }} 
-                                          </option>
-                                      @endforeach 
-                                    </select>
+                                <label for="sel1"><strong>Seleccione patologia</strong></label>
+                                  <select class="form-control" id="sel1" name="pathology_id"                          required = "required">
+                                    @foreach($patholies as $item)
+                                      <option 
+                                         value ="{{ $item->id }}"
+                                         @if($item->id == $subpatology->pathology_id) 
+                                            selected='selected' 
+                                         @endif>
+                                         {{ $item->name }} 
+                                      </option>
+                                    @endforeach 
+                                  </select>
                               </div>
 
                               <div class="form-group">
