@@ -26,7 +26,7 @@
 </div>
 
 <div class="col-md-4">
-   <input id="x" type="hidden" name="x" value="{{ $appointment->clinical_patient_id }}" >
+   <input id="x" type="hidden" name="codigo_paciente" value="{{ $appointment->clinical_patient_id }}" >
 </div>
 
 <div class="col-md-4 pr-md-1">

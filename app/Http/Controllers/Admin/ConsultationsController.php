@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\Exception;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConsultationStoreRequest;
 use App\Http\Requests\ConsultationUpdateRequest;
@@ -20,7 +21,6 @@ class ConsultationsController extends Controller
     public function Mostrar_Recipe_Prescripcion($id)
     {
         
-        //dd($id);
         $subpatology = Subpatology::where('id', $id)->first();
         if ($subpatology == null) {
             return Redirect::back()->withErrors(['Error', 'Subpatologia no registrada']);
@@ -134,7 +134,7 @@ class ConsultationsController extends Controller
         
         $consultation->save();
 
-        // Actualizar status de la cita del paciente
+        //**** Actualizar status de la cita del paciente***
         $appointment = Appointment::find($request->appointment_id);
         if ($appointment == null) {
             return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
@@ -176,42 +176,64 @@ class ConsultationsController extends Controller
     public function update(Request $request, $id)
     {
 
-        //dd($request->all());
-
-        $weight = "00";
-        $size = "00";
-        $systolic_pressure = "00";
-        $diastolic_pressure = "00";
-        if(isset($request->weight)) $weight = $request->weight;
-        if(isset($request->size))    $weight = $request->size;
-        if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
-        if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
-
-        $consultation = new Consultation();
-        $consultation->appointment_id        = $request->nrocita;
-        $consultation->exploration_id        = $request->exploration_id;
-        $consultation->date_consultation     = $request->date_consultation;
-        $consultation->reason_consultation   = $request->reason_consultation;
-        $consultation->disease               = $request->disease;
-        $consultation->diagnosis             = $request->diagnosis;
-        $consultation->recipe                = $request->recipe;
-        $consultation->prescription          = $request->prescription;
-        $consultation->weight                = $weight;
-        $consultation->size                  = $size;
-        $consultation->systolic_pressure     = $systolic_pressure;
-        $consultation->diastolic_pressure    = $diastolic_pressure;
-        $consultation->status                = $request->status;
-        $consultation->save();
-
-        // Actualizar status de la cita del paciente
-        // $appointment = Appointment::find($request->appointment_id);
-        // if ($appointment == null) {
-        //     return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
-        // }
-        // $appointment->status = 'atendido';
-        // $appointment->save();
+       
+        DB::beginTransaction();
         
-       return redirect()->route('consultations.index')->with('info','Informacion actualizada');
+        try{
+ 
+            $weight = "00";
+            $size = "00";
+            $systolic_pressure = "00";
+            $diastolic_pressure = "00";
+            if(isset($request->weight)) $weight = $request->weight;
+            if(isset($request->size))    $weight = $request->size;
+            if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
+            if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
+
+            $consultation = Consultation::find($id);
+            $consultation->appointment_id        = $request->nrocita;
+            $consultation->exploration_id        = $request->exploration_id;
+            $consultation->date_consultation     = $request->date_consultation;
+            $consultation->reason_consultation   = $request->reason_consultation;
+            $consultation->disease               = $request->disease;
+            $consultation->diagnosis             = $request->diagnosis;
+            $consultation->recipe                = $request->recipe;
+            $consultation->prescription          = $request->prescription;
+            $consultation->weight                = $weight;
+            $consultation->size                  = $size;
+            $consultation->systolic_pressure     = $systolic_pressure;
+            $consultation->diastolic_pressure    = $diastolic_pressure;
+            $consultation->status                = $request->status;
+            $consultation->save();
+
+           //*** Actualizamos ClinicalPatient
+           $clinicalpatient = ClinicalPatient::find($request->codigo_paciente);
+           if($clinicalpatient == null){
+              DB::rollback();
+
+              //throw new Exception("Transaccion cancelada", 1);
+              return Redirect::back()->withErrors(['Error', 'Transaccion cancelada...']);
+           }
+
+           $clinicalpatient->personal_history   = $request->personal_history;
+           $clinicalpatient->family_background  = $request->family_background;
+           // $clinicalpatient->weight             = $request->weight;
+           // $clinicalpatient->size               = $request->size;
+           // $clinicalpatient->systolic_pressure  = $request->systolic_pressure;
+           // $clinicalpatient->diastolic_pressure = $request->diastolic_pressure;
+           $clinicalpatient->save();
+           
+           DB::commit(); 
+
+           return redirect()->route('consultations.index')->with('info','Informacion actualizada');
+
+        } catch (\Exception $e){
+
+            DB::rollback();
+
+            throw $e;
+            return Redirect::back()->withErrors(['Error', 'Transaccion cancelada...']);
+        }
     }
 
     

@@ -6,7 +6,7 @@
       placeholder="Antecedentes personales" rows = '10' required = "required" 
       style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
       solid #dddddd; padding: 10px;" id="personal_history" 
-      value = "{{ $consultation->personal_history }}" >
+      value = "{{ $consultation->personal_history }}" >{!! $appointment->clinical_patient->personal_history !!}
     </textarea>
     @if ($errors->has('personal_history'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
       placeholder="Antecedentes familiares" rows = '10' required = "required" 
       style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
       solid #dddddd; padding: 10px;" id="family_background" 
-      value ="{!! $consultation->family_background !!}}" >
+      value ="{!! $consultation->family_background !!}}" >{!! $appointment->clinical_patient->family_background !!}
     </textarea>
 
     @if ($errors->has('family_background'))
@@ -40,7 +40,7 @@
     <label>Peso</label>
     <input id="weight"
         type="text" class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
-        placeholder="Indique el peso" name="weight" value="{{$appointment->clinical_patient->weight }}">
+        placeholder="Indique el peso" name="weight" value="{{$consultation->weight }}">
     @if ($errors->has('weight'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('weight') }}</strong>
@@ -54,7 +54,7 @@
     <label>Talla</label>
     <input id="size"
         type="text" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="size" value="{{ $appointment->clinical_patient->size }}">
+        placeholder="Describa la talla" name="size" value="{{$consultation->size }}">
     @if ($errors->has('size'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('size') }}</strong>
@@ -69,7 +69,8 @@
     <input id="systolic_pressure"
         type="text" class="form-control {{ $errors->has('systolic_pressure') ? ' is-invalid' : '' }}"
         placeholder="Indique la presion sistolica" name="systolic_pressure" 
-        value="{{ $appointment->clinical_patient->systolic_pressure }}">
+        value="{{ $consultation->systolic_pressure }}">
+        {{-- value="{{ $appointment->clinical_patient->systolic_pressure }}"> --}}
     @if ($errors->has('systolic_pressure'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('systolic_pressure') }}</strong>
@@ -83,7 +84,9 @@
     <label>Presion diastolica</label>
     <input id="diastolic_pressure"
         type="text" class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="diastolic_pressure" value="{{ $appointment->clinical_patient->diastolic_pressure }}">
+        placeholder="Describa la talla" name="diastolic_pressure" 
+        value = "{{ $consultation->diastolic_pressure }}"
+        {{-- value="{{ $appointment->clinical_patient->diastolic_pressure }}"> --}}
     @if ($errors->has('diastolic_pressure'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('diastolic_pressure') }}</strong>
