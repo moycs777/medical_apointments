@@ -93,7 +93,7 @@ class ConsultationsController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(ConsultationStoreRequest $request)
     {
 
 
@@ -173,7 +173,7 @@ class ConsultationsController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(ConsultationUpdateRequest $request, $id)
     {
 
        
