@@ -52,7 +52,7 @@
 @section('page-script')
 
   <script type="text/javascript">
-         $(".checkbox").on( 'change', function() {
+        $(".checkbox").on( 'change', function() {
             if( $(this).is(':checked') ) {
             // Hacer algo si el checkbox ha sido seleccionado
                 $(this).prop("checked","1")

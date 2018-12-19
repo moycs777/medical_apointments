@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::get('office/medical_schedules_ver_horario/{id}', 
         'Admin\MedicalSchedulesController@listarHorarioMedico');
   Route::resource('office/explorations',        'Admin\ExplorationsController');
+  Route::resource('office/explorations',        'Admin\ExplorationsController');
+  Route::resource('office/doctorspecialties',   'Admin\DoctorSpecialtyController');
 });
 
 

@@ -84,7 +84,7 @@ class ConsultationsController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
         }
         
-        $subpatologies = Subpatology::orderBy('name')->get();;
+        $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
         }

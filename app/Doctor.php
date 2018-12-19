@@ -20,4 +20,8 @@ class Doctor extends Model
     	//return $this->hasMany('App\Subclassification', 'classifications_id', 'id');
     	return $this->hasMany('App\Appointment');
     }
+
+    public function specialities(){
+        return $this->belongsToMany('App\Specialty');
+    }
 }

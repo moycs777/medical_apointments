@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\ClinicalPatient;
@@ -39,21 +40,36 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //dd($data);
-        $user = User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'email' => $data['email'] ? $data['email'] : null,
-            'password' => Hash::make($data['password']),
-        ]);
-        $patient = new ClinicalPatient();
-        $patient->user_id = $user->id;
-        $patient->first_name = $user->name;
-        $patient->last_name = $user->name;
-        $patient->dni = '1234';
-        $patient->gender = 'M';
-        //$patient->status = 1;
-        $patient->save();
-        //dd($patient);
+
+        DB::beginTransaction();
+        
+        try{
+            $user = User::create([
+                'name' => $data['name'],
+                'username' => $data['username'],
+                'email' => $data['email'] ? $data['email'] : null,
+                'password' => Hash::make($data['password']),
+            ]);
+        
+            $patient = new ClinicalPatient();
+            $patient->user_id = $user->id;
+            $patient->insurance_id = 10;
+            $patient->first_name = $user->name;
+            $patient->last_name = $user->name;
+            $patient->dni = $user->id;
+            $patient->gender = 'M';
+            $patient->personal_history  = 'A';
+            $patient->family_background = 'A'; 
+            $patient->bloodtype  = 2;
+            $patient->save();
+            DB::commit(); 
+        } catch (\Exception $e){
+
+            DB::rollback();
+
+            throw $e;
+            return Redirect::back()->withErrors(['Error', 'Transaccion cancelada...']);
+        }
 
         return $user;
     }

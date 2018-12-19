@@ -31,34 +31,34 @@
       <div class="content">
          <div class="row">
             <input type="hidden" name="url" id="url" value="{{url('')}}">
-            <form method="POST" action="{{ route('consultations.store') }}">
+            <form method="POST" action="{{ route('clinicalpatients.store') }}">
               @csrf
               <div class="col-md-12">
                   <div class="main" >
                     {{-- TabsMenu --}}
                     {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
                     <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
-                    <label for="tab1"><strong>Consulta</strong></label>
+                    <label for="tab1"><strong>Datos personales</strong></label>
                 
                     <input id="tab2" type="radio" name="tabs" style="display: none !important;">
                     <label for="tab2"><strong>Antecedentes</strong></label>
                 
-                    <input id="tab3" type="radio" name="tabs" style="display: none !important;">
-                    <label for="tab3"><strong>Otros</strong></label>
                     {{-- Tabs --}}
                     <div class="contentTabs">  
                       <div id="content1">
                         <div class="row">
-                          @include('dashboard.consultations.partials.tab1')
+                          @include('dashboard.clinical_patients.partials.tab1')
                         </div>
-                        {{-- <button type="submit" class="btn btn-fill btn-primary">Salvar</button> --}}
+                        <button type="submit" class="btn btn-fill btn-primary">Salvar</button>
                       </div>
                 
                       <div id="content2">
                         <div class="row">
-                          @include('dashboard.consultations.partials.tab2')
+                          @include('dashboard.clinical_patients.partials.tab2')
                         </div>
                       </div>
+                
+                                 
                   </div>
                 {{-- <a href="https://twitter.com/moycs777?lang=es" target="_blank"></a> --}}
               </div>     
@@ -77,41 +77,27 @@
          $('#asd').select2();
          $('#appointment_id').select2();
          $('#sel1').on('change',function(){
-            //var n = $(this).val();
-            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
             var optionText = $("#sel1 option:selected").text();
             var id = $("#sel1 option:selected").val();
          });
 
-         //tab 1
-         $("select[name=subpatology]").change(function(){
-             Mostrar_Recipe($('select[name=subpatology]').val());
+         $("#optmas").click(function(){
+            $("input[name=optmas]").each(function (index) {
+              if($(this).is(':checked')){
+                  console.log("m");
+                 $("#genero").val('M');
+              }
+            });
          });
 
-         function Mostrar_Recipe(pid){
-           var route = $('#url').val()+'/office/consultations_mostrar_recipe/' + pid;
-           $.get(route,function(res){
-              $("#recipe").val($.trim(res.recipe));
-              $("#prescription").val($.trim(res.prescription));
-           });
-         }
-
-        
-        $("#appointment_id").change(function(){
-             Mostrar_Paciente($('select[name=appointment_id]').val());
+        $("#optfem").click(function(){
+          $("input[name=optmas]").each(function (index) {
+             if($(this).is(':checked')){
+                console.log("f");
+                $("#genero").val('F');
+             }
+          });
         });
-
-        function Mostrar_Paciente(pid){
-
-            var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
-            $.get(route,function(datos){
-                console.log("Retorno :" + JSON.stringify(datos[0]));
-                $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
-                $("#reason_consultation").val(datos[0].reason_consultation);
-                $("#personal_history").val(datos[0].personal_history);
-                $("#family_background").val(datos[0].family_background);
-            });
-        }
 
     }); 
   </script>

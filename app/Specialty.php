@@ -10,7 +10,13 @@ class Specialty extends Model
         'name','status','price'
     ];
 
+    protected $table = 'specialties';
+
     public function explorations(){
     	return $this->hasMany('App\Exploration');
+    }
+
+    public function doctors(){
+        return $this->belongsToMany('App\Doctor');
     }
 }

@@ -120,7 +120,8 @@
 
                       <div class="form-group">
                          <label for="sel1"><strong>Seleccione seguro</strong></label>
-                           <select class="form-control" id="sel1" name="insurance_id">
+                           <select class="js-example-basic-single form-control"  id="sel1" name="insurance_id">
+                              <option value="0">Seleccione</option>
                               @foreach($insurances as $item)
                                  <option value ="{{ $item->id }}">
                                     {{ $item->name }}
@@ -167,8 +168,10 @@
                       <div class="col-md-4 col-md-4-offset-8">
                         <div class="form-group">
                           <label for=""><strong>Seleccione tipo de sangre</strong></label>
-                          <select class="form-control" 
+                          <select class="js-example-basic-single form-control"  
                             id="bloodtype" name="bloodtype" required = "required">
+                            <option value="0">Seleccione</option>
+                            
                             <option value ="1">A+</option>
                             <option value ="2">A-</option>
                             <option value ="3">B+</option>
@@ -199,28 +202,36 @@
 @section('page-script')
   <script type="text/javascript">
     console.log("pacientes ");
-    $("#optmas").click(function(){
-        $("input[name=optmas]").each(function (index) {
-           if($(this).is(':checked')){
-              console.log("m");
-              $("#genero").val('M');
-              //$("#genero").val('F');
-           }
-        });
-    });
+
+  $(document).ready(function() {
+      $("#optmas").click(function(){
+          $("input[name=optmas]").each(function (index) {
+              if($(this).is(':checked')){
+                console.log("m");
+                $("#genero").val('M');
+                //$("#genero").val('F');
+              }
+          });
+      });
 
       $("#optfem").click(function(){
-        $("input[name=optmas]").each(function (index) {
-           if($(this).is(':checked')){
+          $("input[name=optmas]").each(function (index) {
+            if($(this).is(':checked')){
               console.log("f");
               $("#genero").val('F');
-           }
-        });
-       });
+            }
+          });
+      });
 
-       $(document).ready(function() {
-          $('.js-example-basic-single').select2();
-        }); 
+      $('.js-example-basic-single').select2();
+      
+      $('#bloodtype').on('change',function(){
+          //var n = $(this).val();
+          //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+          var optionText = $("#bloodtype option:selected").text();
+          var id = $("#bloodtype option:selected").val();
+      }); 
+  }); 
   </script>
 @stop
 

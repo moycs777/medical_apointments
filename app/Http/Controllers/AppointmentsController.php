@@ -8,6 +8,7 @@ use Auth;
 use App\Appointment;
 use App\Doctor;
 use App\ClinicalPatient;
+use App\Specialty;
 
 
 class AppointmentsController extends Controller
@@ -33,6 +34,9 @@ class AppointmentsController extends Controller
     public function create()
     {
         $doctors = Doctor::all();
+        if($doctors == null){
+           return Redirect::back()->withErrors(['Error', 'Informacionsobre doctores no registrada']);
+        }
 
         return view('appointments.create',compact('doctors'));
     }

@@ -1,13 +1,9 @@
 @extends('layouts.admin')
-
 @section('content')
-
 <div class="wrapper">
-
   <div class="main-panel">
-        <!-- Navbar -->
+       <!-- Navbar -->
     @include('partials.admin.nav')
-
     <div class="content">
         <div class="row">
             <div class="col-md-8">

@@ -40,10 +40,19 @@ class ClinicalPatientsController extends Controller
 
         $user->save();
 
+        // $weight = "00";
+        // $size = "00";
+        // $systolic_pressure = "00";
+        // $diastolic_pressure = "00";
+        // if(isset($request->weight))  $weight = $request->weight;
+        // if(isset($request->size))    $weight = $request->size;
+        // if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
+        // if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
+
         $clinicalpatients = new ClinicalPatient();
 
         $clinicalpatients->user_id           = $user->id;
-        $clinicalpatients->insurance_id      = $request->insurance_id;
+        $clinicalpatients->insurance_id      = $request->insurance_id; 
         $clinicalpatients->dni               = $request->dni;
         $clinicalpatients->first_name        = $request->first_name;
         $clinicalpatients->last_name         = $request->last_name;

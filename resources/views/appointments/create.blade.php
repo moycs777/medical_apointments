@@ -29,11 +29,25 @@
                     @endforeach 
                     </select>
                 </li>
+
+                <li class="list-group-item">
+                    <span class="icon-status status-completed"></span> 
+                    <select class=" id="sel1" name="specialtie_id">
+                    <option>Seleccione especialidad del  doctor</option>
+                    @foreach($specialties as $item)
+                        <option value ="{{ $item->id }}">
+                            {{ $item->name }}
+                        </option>
+                    @endforeach 
+                    </select>
+                </li>
+
+
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
                     <input type="text" name="reason_consultation" placeholder="Motivo de consulta"/>
-                    
                 </li>
+
                 <li class="list-group-item">
                     <span class="icon-status status-noticket"></span> 
                     <input type="date" name="appointment_date" min="2018-01-02">

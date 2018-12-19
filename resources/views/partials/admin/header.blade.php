@@ -45,6 +45,13 @@
         </a>
       </li> 
 
+      <li class="{{ Request::path() == 'office/doctorspecialties' ? 'active' : '' }}">
+        <a href="{{ route('doctorspecialties.index')}}">
+          <i class="tim-icons icon-pin"></i>
+          <p>Doctor y sus especialidades</p>
+        </a>
+      </li>
+
       <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
         <a href="{{ route('diseases.index') }}">
           <i class="tim-icons icon-single-02"></i>
