@@ -21,7 +21,7 @@ class ConsultationUpdateRequest extends FormRequest
             'diagnosis' => 'required', 
             'recipe' => 'required', 
             'prescription' => 'required', 
-            'status' => 'required', 
+           
         ];
     }
 }

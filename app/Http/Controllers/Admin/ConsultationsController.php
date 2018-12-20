@@ -14,6 +14,7 @@ use App\Exploration;
 use App\Subpatology;
 use App\Appointment;
 use App\ClinicalPatient;
+use App\Disease;
 
 
 class ConsultationsController extends Controller
@@ -89,7 +90,13 @@ class ConsultationsController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
 
-        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments'));
+        $diseases = Disease::where('subclassification_id','230')->get();
+        if($diseases == null){
+          return Redirect::back()->withErrors(['Error', 'Enfermedades no registradas']);
+        }
+
+        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments',
+                    'diseases'));
     }
 
     

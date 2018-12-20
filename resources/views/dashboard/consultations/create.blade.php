@@ -73,6 +73,7 @@
     console.log("pacientes ");
      $(document).ready(function() {
          $('.js-example-basic-single').select2();
+               
          $('#qwe').select2();
          $('#asd').select2();
          $('#appointment_id').select2();
@@ -82,6 +83,8 @@
             var optionText = $("#sel1 option:selected").text();
             var id = $("#sel1 option:selected").val();
          });
+
+         $(".js-example-basic-multiple").select2();
 
          //tab 1
          $("select[name=subpatology]").change(function(){
@@ -95,8 +98,11 @@
               $("#prescription").val($.trim(res.prescription));
            });
          }
-
+        // $('#date_consultation').ready(function()){
+        //   dateFormat: "yyyy-mm-dd"
+        // }
         
+
         $("#appointment_id").change(function(){
              Mostrar_Paciente($('select[name=appointment_id]').val());
         });

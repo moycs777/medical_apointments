@@ -22,7 +22,7 @@
         class="form-control {{ $errors->has('date_consultation') ? ' is-invalid' : '' }}"
         placeholder="Fecha de la consulta"
         name="date_consultation"
-        value="@php echo date("d-m-Y") @endphp" required = "require" disabled
+        value="@php echo date("Y-m-d") @endphp" required = "require" readonly
     >
     @if ($errors->has('date_consultation'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -69,11 +69,11 @@
 
 <div class="col-md-12">
   <div class="form-group">
-    <label>Enfermedad</label>
+    <label>Enfermedad Actual</label>
         
     <input id="disease"
         type="text" class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
-        placeholder="Describa enfermedad"  name="reason_consultation" value="{{ old('disease') }}">
+        placeholder="Describa enfermedad"  name="disease" value="{{ old('disease') }}">
     @if ($errors->has('disease'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('disease') }}</strong>
@@ -96,7 +96,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label>Diagnostico</label>
     <textarea class="form-control" name="diagnosis"
@@ -109,11 +109,28 @@
         </span>
     @endif
   </div>
+</div> --}}
+
+
+<div class="col-md-12">
+  <div class="form-group">
+    <label for="id_label_multiple">Seleccione diagnostico</label>
+      <select class="js-example-basic-multiple js-states form-control" id="id_multiple" 
+          multiple="multiple" name = "diagnosis">
+        <option value="0">Seleccione</option>
+        @foreach($diseases as $item)
+           <option value ="{{ $item->code }}">
+              {{ $item->code }}  {{ $item->name }}
+           </option>
+        @endforeach 
+      </select>
+    </label>
+  </div>
 </div>
 
 <div class="col-md-12">
   <div class="form-group">
-    <label for="sel2"><strong>Seleccione subpatologia</strong></label>
+    <label for="sel2"><strong>Seleccione tratamiento</strong></label>
       <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
         <option value="0">Seleccione</option>
         @foreach($subpatologies as $item)
