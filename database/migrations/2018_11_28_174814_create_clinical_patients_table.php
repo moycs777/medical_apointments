@@ -26,8 +26,8 @@ class CreateClinicalPatientsTable extends Migration
             $table->text('family_background');
             $table->string('bloodtype',3);
             $table->foreign('insurance_id')->references('id')->on('insurances')
-                ->ondelete('cascade')
-                ->onupdate('cascade');
+                  ->ondelete('cascade')
+                  ->onupdate('cascade');
             $table->timestamps();
         });
     }

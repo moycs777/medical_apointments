@@ -109,7 +109,8 @@ class MedicalSchedulesController extends Controller
         $medicalschedule->status_1        = ($request->status_1 == null) ? "0" : "1";
         $medicalschedule->status_2        = ($request->status_2 == null) ? "0" : "1";
         $medicalschedule->save();
-        return redirect()->route('medical_schedules.index');
+        //return redirect()->route('medical_schedules.index');
+        return redirect()->route('medical_schedules.index')->with('info','Informacion actualizada');
     }
    
     public function edit($id)
@@ -161,7 +162,8 @@ class MedicalSchedulesController extends Controller
         $medicalschedule->status_2        = ($request->status_2 == null) ? "0" : "1";
         $medicalschedule->save();
 
-        return redirect()->route('medical_schedules.index');
+        //return redirect()->route('medical_schedules.index');
+        return redirect()->route('medical_schedules.index')->with('info','Informacion registrada');
     }
 
     

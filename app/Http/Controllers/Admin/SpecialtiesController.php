@@ -30,7 +30,8 @@ class SpecialtiesController extends Controller
         $specialty->price = $request->get('price');
         $specialty->save();
 
-        return redirect()->route('specialties.index');
+        //return redirect()->route('specialties.index');
+        return redirect()->route('specialties.index')->with('info','Informacion actualizada');
     }
 
     
@@ -52,7 +53,7 @@ class SpecialtiesController extends Controller
         $specialty->price  = $request->get('price');
         $specialty->save();
 
-        return redirect()->route('specialties.index');
+        return redirect()->route('specialties.index')->with('info','Informacion actualizada');
     }
 
     

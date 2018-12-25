@@ -39,7 +39,8 @@ class DiseasesController extends Controller
         $disease->symbol  = "0";
         $disease->save();
 
-        return redirect()->route('diseases.index');
+        //return redirect()->route('diseases.index');
+        return redirect()->route('diseases.index')->with('info','Informacion actualizada');
     }
 
     
@@ -65,7 +66,8 @@ class DiseasesController extends Controller
 
         $disease->fill($request->all())->save();
 
-        return redirect()->route('diseases.index');
+        //return redirect()->route('diseases.index');
+        return redirect()->route('diseases.index')->with('info','Informacion actualizada');
     }
 
 

@@ -45,7 +45,8 @@ class DoctorSpecialtyController extends Controller
 
         $doctor->specialities()->sync($request->specialities_ids);  
 
-        return redirect()->route('doctorspecialties.index');
+        //return redirect()->route('doctorspecialties.index');
+        return redirect()->route('doctorspecialties.index')->with('info','Informacion actualizada');
         
     }
 

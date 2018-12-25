@@ -7,11 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AppointmentStoreRequest;
 use App\Http\Requests\AppointmentUpdateRequest;
 
+use Illuminate\Support\Facades\DB;
+
 use Carbon\Carbon;
 
 use App\Appointment;
 use App\Doctor;
 use App\ClinicalPatient;
+use App\Specialty;
+use App\DoctorSpecialty;
 
 class AppointmentsController extends Controller
 {
@@ -28,19 +32,38 @@ class AppointmentsController extends Controller
     public function create()
     {
         $doctors = Doctor::where('status',1)->get();
+        if($doctors == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre doctores no registrada']);
+        }
 
         $patients = ClinicalPatient::all();
+        if($patients == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre pacientes no registrada']);
+        }
 
-        return view('dashboard.appointments.create',compact('doctors','patients'));
+        $doctorspecialty = DB::table('doctor_specialty')
+            ->join('doctors', 'doctor_specialty.doctor_id', '=', 'doctors.id')
+            ->join('specialties', 'doctor_specialty.specialty_id', '=', 'specialties.id')
+            ->select('doctor_specialty.id','specialties.name')
+            ->where('doctors.status','=',true)
+            ->get();
+
+        if($doctorspecialty == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
+        }
+               
+        return view('dashboard.appointments.create',compact('doctors','patients','doctorspecialty'));
+        
     }
 
     
     public function store(AppointmentStoreRequest $request)
     {
 
+         //dd($request->all());
          if($request->input('doctor_id') == "0") {
             return redirect()->route('appointments.create')
-               ->with('info','Debe seleeccionar un doctor');
+               ->with('info','Debe seleccionar un doctor');
          }
 
          $fec_consulta = $request->input('appointment_date');
@@ -78,20 +101,34 @@ class AppointmentsController extends Controller
         if (is_null($appointment)){
            return response('Cita no encontrada...', 404);
         }
-       
-        return view('dashboard.appointments.edit',compact('appointment','doctors'));
+
+        $doctorspecialty = DB::table('appointments')
+            ->join('doctor_specialty', 'appointments.doctor_id', '=', 'doctor_specialty.doctor_id')
+            ->join('specialties', 'doctor_specialty.specialty_id', '=', 'specialties.id')
+            ->select('doctor_specialty.id','specialties.name')
+            ->where('appointments.id','=',$id)
+            ->get();
+
+        if($doctorspecialty == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
+        }
+        
+        return view('dashboard.appointments.edit',compact('appointment','doctors','doctorspecialty'));
     }
 
    
     public function update(AppointmentUpdateRequest $request, $id)
     {
+
+        //dd($request->all());
         $appointment = Appointment::find($id);
        
-        $appointment->doctor_id           = $request->doctor_id;
-        $appointment->clinical_patient_id = $request->clinical_patient_id;
-        $appointment->appointment_date    = $request->appointment_date;
-        $appointment->reason_consultation = $request->reason_consultation ;
-        $appointment->status              = $request->status;
+        $appointment->doctor_id            = $request->doctor_id;
+        $appointment->clinical_patient_id  = $request->clinical_patient_id;
+        $appointment->doctor_specialty_id  = $request->doctor_specialty_id;
+        $appointment->appointment_date     = $request->appointment_date;
+        $appointment->reason_consultation  = $request->reason_consultation ;
+        $appointment->status               = $request->status;
         $appointment->save();
 
         return redirect()->route('appointments.index')

@@ -30,7 +30,8 @@ class InsurancesController extends Controller
     {
         Insurance::create($request->all());
 
-        return redirect()->route('insurances.index');
+        //return redirect()->route('insurances.index');
+        return redirect()->route('insurances.index')->with('info','Informacion registrada');
     }
 
 
@@ -49,7 +50,8 @@ class InsurancesController extends Controller
 
         $insurance->fill($request->all())->save();
 
-        return redirect()->route('insurances.index');
+        //return redirect()->route('insurances.index');
+        return redirect()->route('insurances.index')->with('info','Informacion actaulizada');
     }
 
 

@@ -30,7 +30,9 @@ class SubclassificationsController extends Controller
     {
         Subclassification::create($request->all());
 
-        return redirect()->route('subclassifications.index');
+        //return redirect()->route('subclassifications.index');
+
+        return redirect()->route('subclassifications.index')->with('info','Informacion actualizada');
     }
 
 
@@ -52,7 +54,8 @@ class SubclassificationsController extends Controller
 
         $subclassification->fill($request->all())->save();
 
-        return redirect()->route('subclassifications.index');
+        //return redirect()->route('subclassifications.index');
+        return redirect()->route('subclassifications.index')->with('info','Informacion actualizada');
     }
 
 

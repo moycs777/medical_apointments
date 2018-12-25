@@ -26,7 +26,9 @@ class ClassificationsController extends Controller
     {
        Classification::create($request->all());
 
-       return redirect()->route('classifications.index');
+       //return redirect()->route('classifications.index');
+
+       return redirect()->route('classifications.index')->with('info','Informacion actualizada');
     }
 
     public function edit($id)
@@ -49,7 +51,8 @@ class ClassificationsController extends Controller
 
         //$classification->fill($request->all())->save();
 
-        return redirect()->route('classifications.index');
+        //return redirect()->route('classifications.index');
+        return redirect()->route('classifications.index')->with('info','Informacion actualizada');
     }
 
     public function destroy($id)

@@ -57,7 +57,8 @@ class DoctorsController extends Controller
 
         $doctor->save();
 
-        return redirect()->route('doctors.index');
+        //return redirect()->route('doctors.index');
+        return redirect()->route('doctors.index')->with('info','Informacion actualizada');
     }
 
     
@@ -89,7 +90,8 @@ class DoctorsController extends Controller
 
         $doctor->save();
 
-        return redirect()->route('doctors.index');
+        //return redirect()->route('doctors.index');
+        return redirect()->route('doctors.index')->with('info','Informacion actualizada');
 
     }
 

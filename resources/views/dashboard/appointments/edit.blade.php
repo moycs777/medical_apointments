@@ -36,6 +36,22 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="sel1"><strong>Especialidad del Doctor</strong</label>
+                    <select class="js-example-basic-single form-control" 
+                      id="sel1" name="doctor_specialty_id" required>
+                      @foreach($doctorspecialty as $item) 
+                        <option value ="{{ $item->id }}"
+                          @if($item->id == "$appointment->doctor_specialty_id") 
+                            selected='selected' 
+                          @endif
+                        >
+                        {{ $item->name }} 
+                        </option>
+                      @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                   <label for="sel1"><strong>Paciente</strong></label>
                   <input type="hidden" name="clinical_patient_id" class="form-control"
                   value = "{{ $appointment->clinical_patient->id }}">
