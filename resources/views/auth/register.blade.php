@@ -12,7 +12,7 @@
           @csrf
           <div class="row">
             
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-6  col-md-offset-0">
               <div class="form-group has-icon-left form-control-name">
                 <label class="sr-only" for="inputName">Your name</label>
                 <input id="name" 
@@ -30,7 +30,7 @@
               </div>
             </div>
             
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-6  col-md-offset-0">
               <div class="form-group has-icon-left form-control-name">
                 <label class="sr-only" for="inputName">Your name</label>
                 <input id="username" 
@@ -48,7 +48,7 @@
               </div>
             </div>
             
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-6 col-md-offset-0">
               <div class="form-group has-icon-left form-control-name">
                 <label class="sr-only" for="inputName">Your name</label>
                 <input id="email" 
@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-6 col-md-offset-0">
               <div class="form-group has-icon-left form-control-password">
                 <label class="sr-only" for="inputPassword">Enter a password</label>
                 <input 
@@ -85,7 +85,7 @@
               </div>
             </div>
             
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-6 col-md-offset-0">
               <div class="form-group has-icon-left form-control-password">
                 <label class="sr-only" for="inputPassword">Enter a password</label>
                 <input 

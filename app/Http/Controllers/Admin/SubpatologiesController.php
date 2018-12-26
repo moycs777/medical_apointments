@@ -31,7 +31,8 @@ class SubpatologiesController extends Controller
     {
         Subpatology::create($request->all());
 
-        return redirect()->route('subpatologies.index');
+        //return redirect()->route('subpatologies.index');
+        return redirect()->route('subpatologies.index')->with('info','Informacion actualizada');
     }
 
     
@@ -60,8 +61,7 @@ class SubpatologiesController extends Controller
         $subpatology->status = ($request->input('status') == null) ? 0 : 1;
         $subpatology->save();
 
-        return redirect()->route('subpatologies.index');
-
+        return redirect()->route('subpatologies.index')->with('info','Informacion actualizada');
         
     }
 

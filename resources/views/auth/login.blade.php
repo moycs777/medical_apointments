@@ -13,7 +13,7 @@
             @csrf
           <div class="row">
             <!-- <div class="col-md-12 col-xl-3"> -->
-              <div class="col-md-12 col-md-offset-0">
+              <div class="col-md-8 col-md-offset-0">
               <div class="form-group has-icon-left form-control-name">
                 <label class="sr-only" for="inputName">Your name</label>
                 <input style = "min-width: 300px;" id="email" type="text" 
@@ -32,7 +32,7 @@
           </div>
 
             <div class="row">
-            <div class="col-md-12 col-md-offset-0">
+            <div class="col-md-8 col-md-offset-0">
               <div class="form-group has-icon-left form-control-password">
                 <label class="sr-only" for="inputPassword">Enter a password</label>
                 <input 

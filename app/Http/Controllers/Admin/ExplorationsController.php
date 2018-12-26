@@ -63,7 +63,8 @@ class ExplorationsController extends Controller
         $exploration->status       = ($request->input('status') == null) ? 0 : 1;
         $exploration->save();
 
-        return redirect()->route('explorations.index');
+        return redirect()->route('explorations.index')->with('info','Informacion actualizada');
+
     }
 
     public function destroy($id)

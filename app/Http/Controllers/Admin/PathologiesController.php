@@ -33,7 +33,8 @@ class PathologiesController extends Controller
 
         Pathology::create($request->all());
 
-        return redirect()->route('pathologies.index');
+        //return redirect()->route('pathologies.index');
+        return redirect()->route('pathologies.index')->with('info','Informacion actualizada');
     }
 
     
@@ -58,7 +59,8 @@ class PathologiesController extends Controller
         $pathology->name = $request->name;
         $pathology->status = ($request->input('status') == null) ? 0 : 1;
         $pathology->save();
-        return redirect()->route('pathologies.index');
+        
+        return redirect()->route('pathologies.index')->with('info','Informacion actualizada');
     }
 
     

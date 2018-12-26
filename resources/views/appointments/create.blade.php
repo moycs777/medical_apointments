@@ -21,27 +21,27 @@
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
                     <select class=" id="sel1" name="doctor_id">
-                    <option>Seleccione su doctor</option>
+                    {{-- <select class=" id="doctor_id" name="doctor_id"> --}}
+                    <option><strong>Seleccione su doctor</strong></option>
                     @foreach($doctors as $item)
-                        <option value ="{{ $item->id }}">
-                            {{ $item->first_name }}, {{ $item->last_name }}
-                        </option>
+                       <option value ="{{ $item->id }}">
+                          {{ $item->first_name }}, {{ $item->last_name }}
+                       </option>
                     @endforeach 
                     </select>
                 </li>
 
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
-                    <select class=" id="sel1" name="specialtie_id">
-                    <option>Seleccione especialidad del  doctor</option>
-                    @foreach($specialties as $item)
-                        <option value ="{{ $item->id }}">
+                    <select class=" id="sel1" name="doctor_specialty_id">
+                      <option><strong>Seleccione especialidad del doctor</strong></option>
+                        @foreach($doctorspecialty as $item)
+                          <option value ="{{ $item->id }}">
                             {{ $item->name }}
-                        </option>
-                    @endforeach 
+                          </option>
+                        @endforeach 
                     </select>
                 </li>
-
 
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
@@ -52,6 +52,8 @@
                     <span class="icon-status status-noticket"></span> 
                     <input type="date" name="appointment_date" min="2018-01-02">
                 </li>
+
+                <input type="hidden" name = "status" value = "pendiente">    
                 <input type="hidden" name="clinical_patient_id" value="{{ Auth::user()->id }}" />
             </ul>
           </div>
@@ -67,5 +69,33 @@
 
  
 @endsection()
+
+@section('page-script')
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+     $('.js-example-basic-single').select2();
+
+      // $("#doctor_id").change(function(){
+      //        //alert("Hola");
+      //        especialidad_doctor($('select[name=doctor_id]').val());
+      // });
+
+      //   function especialidad_doctor(pid){
+
+      //       var roumte = $('#url').val() + '/office/consultations_especialidad_doctor/' + pid;
+      //       $.get(route,function(datos){
+      //           console.log("Retorno :" + JSON.stringify(datos[0]));
+      //           $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
+      //           $("#reason_consultation").val(datos[0].reason_consultation);
+      //           $("#personal_history").val(datos[0].personal_history);
+      //           $("#family_background").val(datos[0].family_background);
+      //       });
+      //   }
+  });    
+</script>
+
+@stop
 
     

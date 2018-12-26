@@ -59,7 +59,7 @@
 
 <div class="col-md-12">
   <div class="form-group">
-    <label>Enfermedad</label>
+    <label>Enfermedad Actual</label>
         
     <input id="disease"
         type="text" class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
@@ -72,8 +72,7 @@
   </div>
 </div>
 
-
-  
+ 
 <div class="col-md-12">
   <div class="form-group">
   <label for="sel1"><strong>Exploracion</strong></label>
@@ -108,19 +107,6 @@
   </div>
 </div>
 
-{{-- <div class="col-md-12">
-  <div class="form-group">
-    <label for="sel2"><strong>Seleccione subpatologia</strong></label>
-      <select class="js-example-basic-single form-control" id="sel2" name="subpatology">
-        <option value="0">Seleccione</option>
-        @foreach($subpatologies as $item)
-           <option value ="{{ $item->id }}">
-              {{  $item->name . "---" .$item->recipe }}
-           </option>
-        @endforeach 
-      </select>
-  </div>
-</div> --}}
 
 <div class="col-md-6 pr-md-1">
   <div class="form-group">
@@ -131,7 +117,6 @@
       style="width: 100%; height: 100%px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >{!! $consultation->recipe !!}
     </textarea>
    
-    {{-- <input type="text" name = "recipe" value ="{{ $consultation->recipe }}"> --}}
     @if ($errors->has('recipe'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('recipe') }}</strong>

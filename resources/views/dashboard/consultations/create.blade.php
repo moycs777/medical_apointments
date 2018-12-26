@@ -71,7 +71,11 @@
 @section('page-script')
   <script type="text/javascript">
     console.log("pacientes ");
-     $(document).ready(function() {
+     $(document).ready(function() {  
+         //alert("Entro");
+         var a = new Array();
+         var i = 0;
+         var aa = '';
          $('.js-example-basic-single').select2();
                
          $('#qwe').select2();
@@ -84,7 +88,39 @@
             var id = $("#sel1 option:selected").val();
          });
 
+         //---------------------------------------------
          $(".js-example-basic-multiple").select2();
+         
+         $("#id_multiple").change(function(){
+            
+            //var n = $(this).val();
+            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+            var optionText = $("#id_multiple option:selected").text();
+            //var id = $("#id_multiple option:selected").val();
+            //var id = $(this).val();
+            // if (optionText != ""){
+            //   a = a + optionText;
+            //   console.log(a);
+            // }
+            if (a[i] != "") {
+               i++;
+               a[i] = optionText;
+            }else{
+               a[i] = optionText;
+            }  
+            
+            
+           
+            aa = aa + a.toString();
+            // for(ii = 0; ii < a.length; ii++){
+            //     aa = aa + a[ii];
+            //     alert("aa :" + aa);
+            // }
+            // id = $(this).val(aa);
+
+            alert(aa);
+         });
+         //--------------------------------------------
 
          //tab 1
          $("select[name=subpatology]").change(function(){
@@ -104,6 +140,7 @@
         
 
         $("#appointment_id").change(function(){
+             //alert("Hola");
              Mostrar_Paciente($('select[name=appointment_id]').val());
         });
 

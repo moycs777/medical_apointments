@@ -29,7 +29,9 @@ class OccupationsController extends Controller
     {
         Occupation::create($request->all());
 
-        return redirect()->route('occupations.index'); 
+        //return redirect()->route('occupations.index'); 
+
+        return redirect()->route('occupations.index')->with('info','Informacion actualizada');
     }
 
    
@@ -48,7 +50,7 @@ class OccupationsController extends Controller
 
         $occupations->fill($request->all())->save();
 
-        return redirect()->route('occupations.index');
+        return redirect()->route('occupations.index')->with('info','Informacion actualizada');
     }
 
     public function destroy($id)

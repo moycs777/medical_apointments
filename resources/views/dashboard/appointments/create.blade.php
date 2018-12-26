@@ -28,6 +28,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label for=""><strong>Seleccione especialidad del Doctor</strong></label>
+                    <select class="js-example-basic-single form-control"
+                      id="sel1" name="doctor_specialty_id" required>
+                      <option>Seleccione especialidad del doctor</option>
+                        @foreach($doctorspecialty as $item) 
+                          <option value ="{{ $item->id }}">
+                            {{ $item->name }}
+                          </option>
+                        @endforeach 
+                    </select>
+                </div>
+
+               
+                <div class="form-group">
                   <label for=""><strong>Seleccione Paciente</strong></label>
                   <select class="js-example-basic-single form-control" 
                      id="sel1" name="clinical_patient_id" required = "required">

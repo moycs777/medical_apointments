@@ -63,7 +63,8 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->bloodtype         = $request->bloodtype;
         $clinicalpatients->save();
 
-        return redirect()->route('clinicalpatients.index');
+        //return redirect()->route('clinicalpatients.index');
+        return redirect()->route('clinicalpatients.index')->with('info','Informacion actualizada');
     }
 
 
@@ -108,7 +109,8 @@ class ClinicalPatientsController extends Controller
 
         $clinicalpatients->save();
 
-        return redirect()->route('clinicalpatients.index');
+        //return redirect()->route('clinicalpatients.index');
+        return redirect()->route('clinicalpatients.index')->with('info','Informacion actualizada');
     }
 
 

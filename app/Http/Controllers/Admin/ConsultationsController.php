@@ -102,8 +102,7 @@ class ConsultationsController extends Controller
     
     public function store(ConsultationStoreRequest $request)
     {
-
-
+        
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");

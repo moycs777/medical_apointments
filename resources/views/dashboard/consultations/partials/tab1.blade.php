@@ -40,7 +40,7 @@
         class="form-control {{ $errors->has('clinical_patient_id') ? ' is-invalid' : '' }}"
         placeholder="" name="clinical_patient_id" disabled
         value="{{ old('clinical_patient_id') }}" required
-    >
+        >
     @if ($errors->has('clinical_patient_id'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('clinical_patient_id') }}</strong>
@@ -70,7 +70,6 @@
 <div class="col-md-12">
   <div class="form-group">
     <label>Enfermedad Actual</label>
-        
     <input id="disease"
         type="text" class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
         placeholder="Describa enfermedad"  name="disease" value="{{ old('disease') }}">
@@ -96,7 +95,7 @@
   </div>
 </div>
 
-{{-- <div class="col-md-12">
+<div class="col-md-12">
   <div class="form-group">
     <label>Diagnostico</label>
     <textarea class="form-control" name="diagnosis"
@@ -109,24 +108,24 @@
         </span>
     @endif
   </div>
-</div> --}}
+</div>
 
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label for="id_label_multiple">Seleccione diagnostico</label>
       <select class="js-example-basic-multiple js-states form-control" id="id_multiple" 
           multiple="multiple" name = "diagnosis">
         <option value="0">Seleccione</option>
         @foreach($diseases as $item)
-           <option value ="{{ $item->code }}">
+           <option value ="{{ $item->name }}">
               {{ $item->code }}  {{ $item->name }}
            </option>
         @endforeach 
       </select>
     </label>
   </div>
-</div>
+</div> --}}
 
 <div class="col-md-12">
   <div class="form-group">

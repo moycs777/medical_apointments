@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\ClinicalPatient;
+use App\Insurance;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -39,8 +42,12 @@ class RegisterController extends Controller
    
     protected function create(array $data)
     {
-        //dd($data);
+        // $insurance = Insurance::find(10);
+        // if($insurance == null){
+        //    return ('Error :No existen Seguros medicos creados...'); 
+        // }
 
+        // dd($insurance);
         DB::beginTransaction();
         
         try{
