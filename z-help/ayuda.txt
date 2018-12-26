@@ -4,11 +4,6 @@ php artisan migrate:refresh --seed
 
 mysql -h localhost -u root -p medical_appointments < database/sql/exportacion.sql
 
-mysql -h localhost -u root -p medical_appointments < database/sql/diseases.sql
-mysql -h localhost -u root -p medical_appointments < database/sql/pathologies.sql
-mysql -h localhost -u root -p medical_appointments < database/sql/subpatologies.sql
-mysql -h localhost -u root -p medical_appointments < database/sql/insurances.sql
-
 ----------------------------------------------------------------------
 mysql -h localhost -u root -p medical_appointments < classifications.sql
 mysql -h localhost -u root -p medical_appointments < diseases.sql
@@ -21,7 +16,6 @@ mysql -h localhost -u root -p medical_appointments < specialties.sql
 mysql -h localhost -u root -p medical_appointments < subclasifications.sql
 mysql -h localhost -u root -p medical_appointments < subpatologies.sql
 
-mysql -h localhost -u root -p medical_appointments < diseases.sql
 --------------------------------------------------------------------
 
 php artisan multiauth:seed --role=super
