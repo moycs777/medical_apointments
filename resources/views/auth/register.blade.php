@@ -10,8 +10,7 @@
         <h3 class="text-xs-center m-b-3">Registrate</h3>
         <form   method="POST" action="{{ route('register') }}">
           @csrf
-          <div class="row">
-            
+          <div class="row">            
             <div class="col-md-6  col-md-offset-0">
               <div class="form-group has-icon-left form-control-name">
                 <label class="sr-only" for="inputName">Your name</label>

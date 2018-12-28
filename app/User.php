@@ -19,10 +19,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+
+    public function clinical_patient()
+    {
+        return $this->hasOne(ClinicalPatient::class);
+    }
+    
     public function photos()
     {
         return $this->belongsToMany('App\Photo');
     }
+    
     public function info()
     {
         return $this->hasOne(Info::class);

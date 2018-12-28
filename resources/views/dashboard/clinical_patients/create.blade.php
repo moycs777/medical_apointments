@@ -18,8 +18,12 @@
                   <div class="card-header">
                     <h5 class="title">Crear Paciente</h5>
                   </div>
+                  <form  method="POST" action="{{ route('clinicalpatients.store') }}" >
+
+                  <div class="col-md-4 col-md-4-offset-8">
+                    <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                  </div>
                   <div class="card-body">
-                    <form  method="POST" action="{{ route('clinicalpatients.store') }}" >
                       @csrf
 
                       <div class="row">
@@ -118,20 +122,23 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
-                         <label for="sel1"><strong>Seleccione seguro</strong></label>
-                           <select class="js-example-basic-single form-control"  id="sel1" name="insurance_id">
-                              <option value="0">Seleccione</option>
-                              @foreach($insurances as $item)
-                                 <option value ="{{ $item->id }}">
-                                    {{ $item->name }}
-                                 </option>
-                              @endforeach 
-                           </select>
-                      </div>
 
                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label for="sel1"><strong>Seleccione seguro</strong></label>
+                              <select class="js-example-basic-single form-control"  id="sel1" name="insurance_id">
+                                  <option value="0">Seleccione</option>
+                                  @foreach($insurances as $item)
+                                    <option value ="{{ $item->id }}">
+                                        {{ $item->name }}
+                                    </option>
+                                  @endforeach 
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Direccion</label>
                             <input id="address" type="text"
@@ -145,10 +152,11 @@
                             @endif
                           </div>
                         </div>
+
                       </div>
 
                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 pr-md-1">
                           <div class="radio-inline">
                             <label>
                                 <input type="radio" id = "optmas" name="optmas" value="M" checked>  Masculino
@@ -163,33 +171,32 @@
                           <input type="hidden" id="genero"  name ="genero"
                              value = "M">
                         </div>
-                      </div>
 
-                      <div class="col-md-4 col-md-4-offset-8">
-                        <div class="form-group">
-                          <label for=""><strong>Seleccione tipo de sangre</strong></label>
-                          <select class="js-example-basic-single form-control"  
-                            id="bloodtype" name="bloodtype" required = "required">
-                            <option value="0">Seleccione</option>
-                            
-                            <option value ="1">A+</option>
-                            <option value ="2">A-</option>
-                            <option value ="3">B+</option>
-                            <option value ="4">B-</option>
-                            <option value ="5">AB+</option>
-                            <option value ="6">AB-</option>
-                            <option value ="7">O+</option>
-                            <option value ="8">O-</option>
-                          </select>
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label for=""><strong>Seleccione tipo de sangre</strong></label>
+                            <select class="js-example-basic-single form-control"  
+                              id="bloodtype" name="bloodtype" required = "required">
+                              <option value="0">Seleccione</option>
+                              
+                              <option value ="1">A+</option>
+                              <option value ="2">A-</option>
+                              <option value ="3">B+</option>
+                              <option value ="4">B-</option>
+                              <option value ="5">AB+</option>
+                              <option value ="6">AB-</option>
+                              <option value ="7">O+</option>
+                              <option value ="8">O-</option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
-                      <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                     
 
                     </form>
                   </div>
-                  <div class="card-footer">
-                  </div>
+                  
                 </div>
             </div>
           </div>

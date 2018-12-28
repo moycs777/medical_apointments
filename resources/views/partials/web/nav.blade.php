@@ -66,6 +66,7 @@
                   </div>
                 </div>
                 <a href="{{ route('appoints.index') }}" class="dropdown-item text-uppercase">Citas</a>
+                <a href="{{ route('profile.index') }}" class="dropdown-item text-uppercase">Mis datos</a>
                 {{-- <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
                 <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a> --}}
                 <a href="{{ route('logout') }}" class="dropdown-item text-uppercase text-muted" onclick="event.preventDefault();
