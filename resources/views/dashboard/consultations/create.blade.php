@@ -141,7 +141,8 @@
 
         $("#appointment_id").change(function(){
              //alert("Hola");
-             Mostrar_Paciente($('select[name=appointment_id]').val());
+            console.log("appointment_id :" + $('select[name=appointment_id]').val() );
+            Mostrar_Paciente($('select[name=appointment_id]').val());
         });
 
         function Mostrar_Paciente(pid){
