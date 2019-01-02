@@ -81,6 +81,7 @@
          $('#qwe').select2();
          $('#asd').select2();
          $('#appointment_id').select2();
+         
          $('#sel1').on('change',function(){
             //var n = $(this).val();
             //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
@@ -89,37 +90,8 @@
          });
 
          //---------------------------------------------
-         $(".js-example-basic-multiple").select2();
+         //$(".js-example-basic-multiple").select2();
          
-         $("#id_multiple").change(function(){
-            
-            //var n = $(this).val();
-            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-            var optionText = $("#id_multiple option:selected").text();
-            //var id = $("#id_multiple option:selected").val();
-            //var id = $(this).val();
-            // if (optionText != ""){
-            //   a = a + optionText;
-            //   console.log(a);
-            // }
-            if (a[i] != "") {
-               i++;
-               a[i] = optionText;
-            }else{
-               a[i] = optionText;
-            }  
-            
-            
-           
-            aa = aa + a.toString();
-            // for(ii = 0; ii < a.length; ii++){
-            //     aa = aa + a[ii];
-            //     alert("aa :" + aa);
-            // }
-            // id = $(this).val(aa);
-
-            alert(aa);
-         });
          //--------------------------------------------
 
          //tab 1

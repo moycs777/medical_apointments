@@ -1,3 +1,47 @@
+<div class="col-md-12">
+  <div class="form-group">
+    <label for="sel22"><strong>Seleccione tratamiento</strong></label>
+      <select class="js-example-basic-single form-control" id="sel22" name="subpatology" style="width: 100%;">
+        <option value="0">Seleccione</option>
+        @foreach($subpatologies as $item)
+           <option value ="{{ $item->id }}">
+              {{  $item->name . "---" .$item->recipe }}
+           </option>
+        @endforeach 
+      </select>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="form-group">
+    <label for="">Recipe</label>
+    <textarea class="form-control" name="recipe"
+      placeholder="Recipe" rows = '10' required = "required" 
+      style="width: 100%; height: 100%px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
+    </textarea>
+    @if ($errors->has('recipe'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('recipe') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="form-group">
+    <label for="">Indicaciones</label>
+    <textarea class="form-control" name="prescription"
+      placeholder="Describa las indicaciones" rows = '10' required = "required" 
+      style="width: 100%; height: 100%px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
+    </textarea>
+    @if ($errors->has('prescription'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('prescription') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
+
 <div class="col-md-12 ">
   <div class="form-group">
     <label>Antecedentes Personales</label>
