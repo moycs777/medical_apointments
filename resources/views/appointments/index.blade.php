@@ -18,7 +18,19 @@
             <ul class="list-group">
               @forelse($appointments as $item)
                 <li class="list-group-item">
-                  <span class="icon-status status-backlog"></span> 
+                  {{-- <span class="icon-status status-backlog"></span>  --}}
+                  @if ($item->status == 'pendiente')
+                      <span class="icon-status status-noticket"></span>pendiente por confirmar
+                  @endif 
+                  @if ($item->status == 'confirmado')
+                      <span class="icon-status status-backlog"></span> Han confirmado
+                  @endif 
+                  @if ($item->status == 'en consulta')
+                      En consulta
+                  @endif 
+                  @if ($item->status == 'atendido')
+                      <span class="icon-status status-completed"></span>Te Han atendido
+                  @endif 
                   {{ $item->appointment_date }} , 
                   doctor: {{ $item->doctor->first_name }}: 
                   {{ $item->reason_consultation }}
