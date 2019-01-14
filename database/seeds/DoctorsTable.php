@@ -4,11 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DoctorsTable extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    
     public function run()
     {
         DB::table('doctors')->insert([
@@ -19,6 +15,12 @@ class DoctorsTable extends Seeder
             'gender' => 'M',
             'address' => 'Ecuador cerca del centro',
 
+        ]);
+        
+        // vinculamos al dr fernando con la especialidad otorrino
+        DB::table('doctor_specialty')->insert([
+            'doctor_id' => 1,
+            'specialty_id' => 10,
         ]);
     }
 }
