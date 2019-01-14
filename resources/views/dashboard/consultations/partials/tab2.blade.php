@@ -12,12 +12,12 @@
   </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-6">
   <div class="form-group">
     <label for="">Recipe</label>
-    <textarea class="form-control" name="recipe"
-      placeholder="Recipe" rows = '10' required = "required" 
-      style="width: 100%; height: 100%px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
+    <textarea name="recipe"
+      placeholder="Recipe" rows = '10' cols= "80" required = "required" 
+      style="font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
     </textarea>
     @if ($errors->has('recipe'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -27,12 +27,12 @@
   </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-6">
   <div class="form-group">
     <label for="">Indicaciones</label>
-    <textarea class="form-control" name="prescription"
-      placeholder="Describa las indicaciones" rows = '10' required = "required" 
-      style="width: 100%; height: 100%px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
+    <textarea name="prescription"
+      placeholder="Describa las indicaciones" rows = '10' cols= "80" required = "required" 
+      style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
     </textarea>
     @if ($errors->has('prescription'))
         <span style="color: red; class="invalid-feedback" role="alert">

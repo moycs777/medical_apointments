@@ -21,7 +21,6 @@
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 
                     <select class=" id="sel1" name="doctor_id">
-                    {{-- <select class=" id="doctor_id" name="doctor_id"> --}}
                     <option><strong>Seleccione su doctor</strong></option>
                     @foreach($doctors as $item)
                        <option value ="{{ $item->id }}">
@@ -42,6 +41,18 @@
                         @endforeach 
                     </select>
                 </li>
+
+                 {{-- <li class="list-group-item">
+                    <span class="icon-status status-completed"></span> 
+                    <select class=" id="sel1" name="insurance_id">
+                      <option><strong>Seleccione su Seguro Medico</strong></option>
+                        @foreach($insurances as $item)
+                          <option value ="{{ $item->id }}">
+                            {{ $item->name }}
+                          </option>
+                        @endforeach 
+                    </select>
+                </li> --}}
 
                 <li class="list-group-item">
                     <span class="icon-status status-completed"></span> 

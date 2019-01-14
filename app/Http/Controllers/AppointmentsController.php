@@ -12,7 +12,6 @@ use App\ClinicalPatient;
 use App\DoctorSpecialty;
 use App\Specialty;
 
-
 class AppointmentsController extends Controller
 {
 
@@ -54,7 +53,8 @@ class AppointmentsController extends Controller
         if($doctorspecialty == null){
            return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
         }
-        return view('appointments.create',compact('doctors','doctorspecialty'));
+
+       return view('appointments.create',compact('doctors','doctorspecialty'));
     }
 
     

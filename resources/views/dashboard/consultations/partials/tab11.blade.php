@@ -108,7 +108,7 @@
 </div>
 
 
-<div class="col-md-6 pr-md-1">
+{{-- <div class="col-md-6 pr-md-1">
   <div class="form-group">
     <label for="">Recipe</label>
     <textarea class="form-control" name="recipe" 
@@ -138,7 +138,7 @@
         </span>
     @endif
   </div>
-</div>
+</div> --}}
 
 <input type = "hidden" name = "status" value = "{{ $consultation->status }}">
 <input type = "hidden" name = "nrocita" value = "{{ $consultation->appointment_id }}">
