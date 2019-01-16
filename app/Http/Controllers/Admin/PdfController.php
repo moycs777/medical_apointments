@@ -22,7 +22,8 @@ class PdfController extends Controller
     {
         $consult = Consultation::find($request->id);
         //return $consult; 
-        $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'));
+        $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
+            ->setPaper('a4', 'landscape');
 
         return $pdf->download('consult.pdf');
     }

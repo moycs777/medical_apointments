@@ -15,20 +15,22 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                {{-- <th>ID</th>
                                 <th>reason_consultation</th>
-                                <th>disease</th>
+                                <th>disease</th> --}}
                                 <th>diagnosis</th>
                                 <th>recipe</th>
+                                <th>prescription</th>
                             </tr>                            
                         </thead>
                         <tbody>
                             
                             <tr>
-                                <td>{{ $consult->id }}</td>
-                                <td>{{ $consult->reason_consultation }}</td>
+                                {{-- <td>{{ $consult->id }}</td>
+                                <td>{{ $consult->reason_consultation }}</td> --}}
                                 <td>{{ $consult->disease }}</td>
                                 <td class="text-right">{{ $consult->recipe }}</td>
+                                <td class="text-right">{{ $consult->prescription }}</td>
                             </tr>
                             
                         </tbody>
