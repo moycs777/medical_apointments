@@ -28,7 +28,7 @@
                         <th>Paciente</th>
                         <th>Doctor</th>
                         <th>Estatus</th>
-                        <th colspan="2"></th>
+                        <th colspan="3"></th>
                       </tr>
                     </thead>
                     @foreach($consultations as $item)
@@ -54,6 +54,15 @@
                             action="{{ route('consultations.destroy',$item->id) }}"
                             method="POST" style="display: none;">
                             @csrf @method('DELETE')
+                          </form>
+                        </td>
+                        <td>
+                          <form 
+                            action="{{ route('pdf_generate') }}"
+                            method="POST" >
+                            @csrf 
+                            <input type="hidden" name="id" value="{{$item->id}}" />
+                            <button type="submit" id = "salvar" class="btn btn-sm">imprimir</button>
                           </form>
                         </td>
                       </tr>

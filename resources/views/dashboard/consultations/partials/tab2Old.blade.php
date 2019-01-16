@@ -1,4 +1,4 @@
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12">
   <div class="form-group">
     <label for="sel22"><strong>Seleccione tratamiento</strong></label>
       <select class="js-example-basic-single form-control" id="sel22" name="subpatology" style="width: 100%;">
@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-6">
   <div class="form-group">
     <label for="">Recipe</label>
     <textarea name="recipe"
@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-6">
   <div class="form-group">
     <label for="">Indicaciones</label>
     <textarea name="prescription"
@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12 ">
   <div class="form-group">
     <label>Antecedentes Personales</label>
    
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12">
   <div class="form-group">
     <label>Antecedentes Familiares</label>
     
