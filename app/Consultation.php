@@ -15,4 +15,10 @@ class Consultation extends Model
     public function appointment(){
         return $this->belongsTo('App\Appointment');
     }
+
+
+    public function doctor(){
+        return $this->belongsTo('App\Doctor');
+    }
+    
 }

@@ -20,11 +20,20 @@ class PdfController extends Controller
 {
     public function generate(Request $request)
     {
-        $consult = Consultation::find($request->id);
-        //return $consult; 
+        //$consult = Consultation::find($request->id)
+        $consult = Consultation::where('id',$request->id)
+            ->with('appointment')
+            ->first(); 
         $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
             ->setPaper('a4', 'landscape');
-
-        return $pdf->download('consult.pdf');
+        //return $consult->appointment->clinical_patient;
+        return $pdf->download(
+            'Recipe de '
+            .$consult->appointment->clinical_patient->first_name
+            .' '
+            .$consult->appointment->clinical_patient->last_name 
+            . ' , fecha: '
+            . $consult->appointment->created_at
+            .'.pdf');
     }
 }
