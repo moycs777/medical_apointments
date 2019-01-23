@@ -18,9 +18,9 @@ class DoctorsTable extends Seeder
         ]);
         
         // vinculamos al dr fernando con la especialidad otorrino
-        DB::table('doctor_specialty')->insert([
+        /* DB::table('doctor_specialty')->insert([
             'doctor_id' => 1,
             'specialty_id' => 10,
-        ]);
+        ]); */
     }
 }
