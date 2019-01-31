@@ -44,17 +44,17 @@
                         </select>
                     </li>
 
-                     {{-- <li class="list-group-item">
-                        <span class="icon-status status-completed"></span>
-                        <select class="" id="sel1" name="insurance_id">
+                    <li class="list-group-item">
+                      <span class="icon-status status-completed"></span>
+                      <select class="js-example-basic-singlE" id="sel3" name="insurance_id">
                           <option><strong>Seleccione su Seguro Medico</strong></option>
                             @foreach($insurances as $item)
                               <option value ="{{ $item->id }}">
                                 {{ $item->name }}
                               </option>
                             @endforeach
-                        </select>
-                    </li> --}}
+                      </select>
+                    </li>
 
                     <li class="list-group-item">
                         <span class="icon-status status-completed"></span>
@@ -63,7 +63,7 @@
 
                     <li class="list-group-item">
                         <span class="icon-status status-noticket"></span>
-                        <input type="date" name="appointment_date" min="2018-01-02">
+                        <input type="date" name="appointment_date" id = "appointment_date" min="2019-01-02">
                     </li>
 
                     <input type="hidden" name = "status" value = "pendiente">
@@ -83,12 +83,12 @@
 
 <script type="text/javascript">
 
-
-  $(document).ready(function() {
+ 
+ $(document).ready(function() {
 
      $('.js-example-basic-single').select2();
 
-     alert("Hola");
+    
       // $("#doctor_id").change(function(){
       //        //alert("Hola");
       //        especialidad_doctor($('select[name=doctor_id]').val());
@@ -105,7 +105,8 @@
       //           $("#family_background").val(datos[0].family_background);
       //       });
       //   }
-       $('body').on('focus',"#appointment_date", function(){
+
+      $('body').on('focus',"#appointment_date", function(){        
         $(this).datepicker();
       });
 
