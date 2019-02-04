@@ -44,9 +44,9 @@
                         </select>
                     </li>
 
-                     {{-- <li class="list-group-item">
+                    <li class="list-group-item">
                         <span class="icon-status status-completed"></span>
-                        <select class="" id="sel1" name="insurance_id">
+                        <select class="js-example-basic-single" id="sel1" name="insurance_id">
                           <option><strong>Seleccione su Seguro Medico</strong></option>
                             @foreach($insurances as $item)
                               <option value ="{{ $item->id }}">
@@ -54,7 +54,7 @@
                               </option>
                             @endforeach
                         </select>
-                    </li> --}}
+                    </li>
 
                     <li class="list-group-item">
                         <span class="icon-status status-completed"></span>
@@ -66,6 +66,9 @@
                         <input type="date" name="appointment_date" min="2018-01-02">
                     </li>
 
+                    <li>
+                        <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
+                    </li>
                     <input type="hidden" name = "status" value = "pendiente">
                     <input type="hidden" name="clinical_patient_id" value="{{ Auth::user()->id }}" />
                   </ul>

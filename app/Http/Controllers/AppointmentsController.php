@@ -11,6 +11,7 @@ use App\Doctor;
 use App\ClinicalPatient;
 use App\DoctorSpecialty;
 use App\Specialty;
+use App\Insurance;
 
 class AppointmentsController extends Controller
 {
@@ -26,12 +27,14 @@ class AppointmentsController extends Controller
     
     public function index()
     {
+
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();
 
         $appointments = Appointment::where('clinical_patient_id', $patient->id)
             ->orderBy('id','DESC')
             ->paginate();
 
+  
         return view('appointments.index', compact('appointments'));
     }
 
@@ -54,7 +57,11 @@ class AppointmentsController extends Controller
            return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
         }
 
-       return view('appointments.create',compact('doctors','doctorspecialty'));
+        $insurances = Insurance::all();
+        if($insurances == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre seguros no registrada']);
+        }
+       return view('appointments.create',compact('doctors','doctorspecialty','insurances'));
     }
 
     
@@ -67,6 +74,7 @@ class AppointmentsController extends Controller
         $appoints->clinical_patient_id = $patient->id;
         $appoints->doctor_id = $request->doctor_id;
         $appoints->doctor_specialty_id = $request->doctor_specialty_id;
+        $appoints->insurance_id = $request->insurance_id;
         $appoints->appointment_date = $request->appointment_date;
         $appoints->reason_consultation = $request->reason_consultation;
         

@@ -85,9 +85,10 @@
 
   <script type="text/javascript">
 
-
+alert("1");
         $(document).ready(function() {
 
+           $('.js-example-basic-single').select2();
            $('#sel1').on('change',function(){
              //var n = $(this).val();
              //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
@@ -96,7 +97,7 @@
             
            });
 
-           $('.js-example-basic-single').select2();
+           alert("2");
           
         }); 
 
