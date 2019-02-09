@@ -72,7 +72,7 @@
   <script type="text/javascript">
     console.log("pacientes ");
      $(document).ready(function() {  
-         //alert("Entro");
+        
          var a = new Array();
          var i = 0;
          var aa = '';
@@ -89,14 +89,10 @@
             var id = $("#sel1 option:selected").val();
          });
 
-         //---------------------------------------------
-         //$(".js-example-basic-multiple").select2();
          
-         //--------------------------------------------
-
          //tab 1
-         $("select[name=subpatology]").change(function(){
-             Mostrar_Recipe($('select[name=subpatology]').val());
+         $("select[name=subpatology_id]").change(function(){
+             Mostrar_Recipe($('select[name=subpatology_id]').val());
          });
 
          function Mostrar_Recipe(pid){
@@ -106,10 +102,7 @@
               $("#prescription").val($.trim(res.prescription));
            });
          }
-        // $('#date_consultation').ready(function()){
-        //   dateFormat: "yyyy-mm-dd"
-        // }
-        
+                
 
         $("#appointment_id").change(function(){
              //alert("Hola");

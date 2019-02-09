@@ -69,22 +69,23 @@
 @stop
 @section('page-script')
   <script type="text/javascript">
-    console.log("pacientes ");
+     console.log("Consulta Edit");
+    
      $(document).ready(function() {
          $('.js-example-basic-single').select2();
          $('#qwe').select2();
          $('#asd').select2();
-         $('#appointment_id').select2();
+
+
          $('#sel1').on('change',function(){
             //var n = $(this).val();
             //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
             var optionText = $("#sel1 option:selected").text();
             var id = $("#sel1 option:selected").val();
          });
-
-         //tab 1
-         $("select[name=subpatology]").change(function(){
-             Mostrar_Recipe($('select[name=subpatology]').val());
+      
+         $("select[name=subpatology_id]").change(function(){
+            Mostrar_Recipe($('select[name=subpatology_id]').val());
          });
 
          function Mostrar_Recipe(pid){
@@ -96,11 +97,11 @@
          }
 
         
-        $("#appointment_id").change(function(){
+         $("#appointment_id").change(function(){
              Mostrar_Paciente($('select[name=appointment_id]').val());
-        });
+         });
 
-        function Mostrar_Paciente(pid){
+         function Mostrar_Paciente(pid){
 
             var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
             $.get(route,function(datos){
@@ -110,13 +111,9 @@
                 $("#personal_history").val(datos[0].personal_history);
                 $("#family_background").val(datos[0].family_background);
             });
-        }
+         }
 
-      function Hola(){
-        alert("GGGGG");
-      }
-
-       $('#x').trigger("click") 
+      
     }); 
   </script>
 @stop

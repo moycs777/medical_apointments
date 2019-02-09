@@ -102,6 +102,7 @@ class ConsultationsController extends Controller
     
     public function store(ConsultationStoreRequest $request)
     {
+        //dd($request->all());
         
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
@@ -118,20 +119,19 @@ class ConsultationsController extends Controller
         $size = "00";
         $systolic_pressure = "00";
         $diastolic_pressure = "00";
-        if(isset($request->weight)) $weight = $request->weight;
-        if(isset($request->size))    $weight = $request->size;
+        if(isset($request->weight))  $weight = $request->weight;
+        if(isset($request->size))    $size   = $request->size;
         if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
         if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
         
         $consultation = new Consultation();
         $consultation->appointment_id        = $request->appointment_id;
         $consultation->exploration_id        = $request->exploration_id;
+        $consultation->subpatology_id        = $request->subpatology_id;
         $consultation->date_consultation     = $request->date_consultation;
         $consultation->reason_consultation   = $request->reason_consultation;
         $consultation->disease               = ($request->input('disease') == null) ? "A" : $request->disease;
         $consultation->diagnosis             = $request->diagnosis;
-        $consultation->recipe                = $recipe;
-        $consultation->prescription          = $prescription;
         $consultation->weight                = $weight;
         $consultation->size                  = $size;
         $consultation->systolic_pressure     = $systolic_pressure;
@@ -147,7 +147,18 @@ class ConsultationsController extends Controller
         }
         $appointment->status = 'atendido';
         $appointment->save();
-        
+        //**************************************************
+
+        //Actualizar recipe e indicaciones
+        $subpatology = Subpatology::find($request->subpatology_id);
+        if ($subpatology == null) {
+            return Redirect::back()->withErrors(['Error', 'Subpatologia no sera actualizada...']);
+        }
+        $subpatology->recipe       = $request->recipe;
+        $subpatology->prescription = $request->prescription;
+        $subpatology->save();
+        //***************************************************
+
         return redirect()->route('consultations.index')->with('info','Informacion actualizada');
     }
 
@@ -192,19 +203,18 @@ class ConsultationsController extends Controller
             $systolic_pressure = "00";
             $diastolic_pressure = "00";
             if(isset($request->weight)) $weight = $request->weight;
-            if(isset($request->size))    $weight = $request->size;
+            if(isset($request->size))   $size = $request->size;
             if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
             if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
 
             $consultation = Consultation::find($id);
             $consultation->appointment_id        = $request->nrocita;
             $consultation->exploration_id        = $request->exploration_id;
+            $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->date_consultation     = $request->date_consultation;
             $consultation->reason_consultation   = $request->reason_consultation;
             $consultation->disease               = $request->disease;
             $consultation->diagnosis             = $request->diagnosis;
-            $consultation->recipe                = $request->recipe;
-            $consultation->prescription          = $request->prescription;
             $consultation->weight                = $weight;
             $consultation->size                  = $size;
             $consultation->systolic_pressure     = $systolic_pressure;
@@ -223,11 +233,17 @@ class ConsultationsController extends Controller
 
            $clinicalpatient->personal_history   = $request->personal_history;
            $clinicalpatient->family_background  = $request->family_background;
-           // $clinicalpatient->weight             = $request->weight;
-           // $clinicalpatient->size               = $request->size;
-           // $clinicalpatient->systolic_pressure  = $request->systolic_pressure;
-           // $clinicalpatient->diastolic_pressure = $request->diastolic_pressure;
            $clinicalpatient->save();
+
+          
+           //Actualizar recipe e indicaciones
+           $subpatology = Subpatology::find($request->subpatology_id);
+           if ($subpatology == null) {
+               return Redirect::back()->withErrors(['Error', 'Subpatologia no sera actualizada...']);
+           }
+           $subpatology->recipe       = $request->recipe;
+           $subpatology->prescription = $request->prescription;
+           $subpatology->save();
            
            DB::commit(); 
 

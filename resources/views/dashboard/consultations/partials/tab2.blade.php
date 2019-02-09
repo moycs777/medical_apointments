@@ -1,7 +1,7 @@
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12">
   <div class="form-group">
     <label for="sel22"><strong>Seleccione tratamiento</strong></label>
-      <select class="js-example-basic-single form-control" id="sel22" name="subpatology" style="width: 100%;">
+      <select class="js-example-basic-single form-control" id="sel22" name="subpatology_id" style="width: 100%;">
         <option value="0">Seleccione</option>
         @foreach($subpatologies as $item)
            <option value ="{{ $item->id }}">
@@ -12,10 +12,10 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-6 pr-md-1">
   <div class="form-group">
     <label for="">Recipe</label>
-    <textarea name="recipe"
+    <textarea name="recipe" 
       placeholder="Recipe" rows = '10' cols= "80" required = "required" 
       style="font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
     </textarea>
@@ -27,10 +27,10 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-6 pr-md-1">
   <div class="form-group">
     <label for="">Indicaciones</label>
-    <textarea name="prescription"
+    <textarea name="prescription" 
       placeholder="Describa las indicaciones" rows = '10' cols= "80" required = "required" 
       style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
     </textarea>
@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12">
   <div class="form-group">
     <label>Antecedentes Personales</label>
    
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<div class="col-md-4 pr-md-1">
+<div class="col-md-12">
   <div class="form-group">
     <label>Antecedentes Familiares</label>
     
