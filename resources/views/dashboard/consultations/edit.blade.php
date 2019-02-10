@@ -102,7 +102,6 @@
          });
 
          function Mostrar_Paciente(pid){
-
             var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
             $.get(route,function(datos){
                 console.log("Retorno :" + JSON.stringify(datos[0]));
@@ -113,7 +112,7 @@
             });
          }
 
-      
+                
     }); 
   </script>
 @stop

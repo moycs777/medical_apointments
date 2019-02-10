@@ -32,7 +32,7 @@
     <label for="">Indicaciones</label>
     <textarea name="prescription" 
       placeholder="Describa las indicaciones" rows = '10' cols= "80" required = "required" 
-      style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription" >
+      style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription">
     </textarea>
     @if ($errors->has('prescription'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -80,7 +80,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Peso</label>
-    <input id="weight"
+    <input id="weight" maxlength="10"
         type="text" class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
         placeholder="Indique el peso" name="weight" value="{{ old('weight') }}">
     @if ($errors->has('weight'))
@@ -94,7 +94,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Talla</label>
-    <input id="size"
+    <input id="size" maxlength="10"
         type="text" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}"
         placeholder="Describa la talla" name="size" value="{{ old('size') }}">
     @if ($errors->has('size'))
@@ -108,7 +108,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Presion sistolica</label>
-    <input id="systolic_pressure"
+    <input id="systolic_pressure" maxlength="10"
         type="text" class="form-control {{ $errors->has('systolic_pressure') ? ' is-invalid' : '' }}"
         placeholder="Indique la presion sistolica" name="systolic_pressure" value="{{ old('systolic_pressure') }}">
     @if ($errors->has('systolic_pressure'))
@@ -122,9 +122,9 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Presion diastolica</label>
-    <input id="diastolic_pressure"
+    <input id="diastolic_pressure" maxlength="10"
         type="text" class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
-        placeholder="Describa la talla" name="size" value="{{ old('diastolic_pressure') }}">
+        placeholder="Indique la presion sistolica" name="diastolic_pressure" value="{{ old('diastolic_pressure') }}">
     @if ($errors->has('diastolic_pressure'))
         <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('diastolic_pressure') }}</strong>

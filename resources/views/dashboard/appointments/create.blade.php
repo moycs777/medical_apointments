@@ -10,9 +10,10 @@
           
           <div class="card">
             <div class="card-body">
+              <input type="hidden" name="url" id="url" value="{{url('')}}">
               <form method="POST" action="{{ route('appointments.store') }}" >
                 @csrf
-                <input type="hidden" name="url" id="url" value="{{url('')}}">
+               {{--  <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
 
                 <div class="form-group">
                   <label for=""><strong>Seleccione Doctor</strong></label>
@@ -85,20 +86,15 @@
 
   <script type="text/javascript">
 
-alert("1");
         $(document).ready(function() {
 
-           $('.js-example-basic-single').select2();
-           $('#sel1').on('change',function(){
-             //var n = $(this).val();
-             //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-             var optionText = $("#sel1 option:selected").text();
-             var id = $("#sel1 option:selected").val();
-            
-           });
+           //$('.js-example-basic-single').select2();
+           // $('#sel1').on('change',function(){
+           //     var optionText = $("#sel1 option:selected").text();
+           //     var id = $("#sel1 option:selected").val();
+           // });
 
-           alert("2");
-          
+                
         }); 
 
 

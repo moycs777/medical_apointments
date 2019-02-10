@@ -86,7 +86,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Peso</label>
-    <input id="weight"
+    <input id="weight" maxlength="10"
         type="text" class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
         placeholder="Indique el peso" name="weight" value="{{$consultation->weight }}">
     @if ($errors->has('weight'))
@@ -100,7 +100,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Talla</label>
-    <input id="size"
+    <input id="size" maxlength="10"
         type="text" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}"
         placeholder="Describa la talla" name="size" value="{{$consultation->size }}">
     @if ($errors->has('size'))
@@ -114,7 +114,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Presion sistolica</label>
-    <input id="systolic_pressure"
+    <input id="systolic_pressure" maxlength="10"
         type="text" class="form-control {{ $errors->has('systolic_pressure') ? ' is-invalid' : '' }}"
         placeholder="Indique la presion sistolica" name="systolic_pressure" 
         value="{{ $consultation->systolic_pressure }}">
@@ -130,7 +130,7 @@
 <div class="col-md-3">
   <div class="form-group">
     <label>Presion diastolica</label>
-    <input id="diastolic_pressure"
+    <input id="diastolic_pressure" maxlength="10"
         type="text" class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
         placeholder="Describa la talla" name="diastolic_pressure" 
         value = "{{ $consultation->diastolic_pressure }}"

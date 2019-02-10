@@ -38,7 +38,7 @@
     <input id="clinical_patient_full_name"
         type="text"
         class="form-control {{ $errors->has('clinical_patient_id') ? ' is-invalid' : '' }}"
-        placeholder="" name="clinical_patient_id" disabled
+        placeholder="" name="clinical_patient_id" disabled 
         value="{{ old('clinical_patient_id') }}" required
         >
     @if ($errors->has('clinical_patient_id'))
@@ -113,3 +113,5 @@
 <div class="form-group">
    <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
 </div>
+
+

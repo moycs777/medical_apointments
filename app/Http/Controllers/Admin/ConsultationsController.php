@@ -102,6 +102,8 @@ class ConsultationsController extends Controller
     
     public function store(ConsultationStoreRequest $request)
     {
+        
+        
         //dd($request->all());
         
         // Elimina retornos de carro y salto de linea
@@ -192,8 +194,7 @@ class ConsultationsController extends Controller
     
     public function update(ConsultationUpdateRequest $request, $id)
     {
-
-       
+               
         DB::beginTransaction();
         
         try{
@@ -263,4 +264,6 @@ class ConsultationsController extends Controller
     {
         //
     }
+
+    
 }
