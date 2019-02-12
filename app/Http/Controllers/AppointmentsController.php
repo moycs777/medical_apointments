@@ -28,8 +28,9 @@ class AppointmentsController extends Controller
     public function index()
     {
 
+        //return Auth::user()->id;
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();
-
+        //dd($patient);
         $appointments = Appointment::where('clinical_patient_id', $patient->id)
             ->orderBy('id','DESC')
             ->paginate();
