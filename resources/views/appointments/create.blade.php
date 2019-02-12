@@ -89,9 +89,11 @@
 
   $(document).ready(function() {
 
+    console.log("wwww");
+
      $('.js-example-basic-single').select2();
 
-     //alert("Hola");
+      //alert("Hola");
       // $("#doctor_id").change(function(){
       //        //alert("Hola");
       //        especialidad_doctor($('select[name=doctor_id]').val());
