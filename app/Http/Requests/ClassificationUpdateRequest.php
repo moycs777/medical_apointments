@@ -13,7 +13,7 @@ class ClassificationUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class ClassificationUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+           'name' => 'required|max:120',
+           'oms'  => 'required|max:1',
+           'particular' => 'required|max:1',
         ];
     }
 }

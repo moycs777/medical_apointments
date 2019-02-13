@@ -8,6 +8,7 @@ use Bitfumes\Multiauth\Notifications\RegistrationNotification;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\DoctorsRequest;
+use App\Http\Requests\DoctorUpdateRequest;
 use App\Doctor;
 use Bitfumes\Multiauth\Model\Admin;
 
@@ -70,7 +71,7 @@ class DoctorsController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(DoctorUpdateRequest $request, $id)
     {
         //dd($request->all());
         $doctor = Doctor::find($id);

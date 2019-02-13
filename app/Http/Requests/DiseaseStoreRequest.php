@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClassificationStoreRequest extends FormRequest
+class DiseaseStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class ClassificationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:120',
-            'oms' => 'required|max:1',
-            'particular' => 'required|max:1',
+            'subclassification_id' => 'required',
+            'code' => 'required|max:5',
+            'name' => 'required|max:255',
+            
         ];
     }
 }

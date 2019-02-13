@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClassificationStoreRequest;
+use App\Http\Requests\ClassificationUpdateRequest;
+
 use App\Classification;
 
 class ClassificationsController extends Controller
@@ -22,7 +25,7 @@ class ClassificationsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ClassificationStoreRequest $request)
     {
        Classification::create($request->all());
 
@@ -38,7 +41,7 @@ class ClassificationsController extends Controller
         return view('dashboard.classifications.edit',compact('classification'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ClassificationUpdateRequest $request, $id)
     {
 
         $classification = Classification::find($id);

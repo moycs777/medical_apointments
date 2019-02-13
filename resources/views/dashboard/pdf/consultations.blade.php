@@ -13,7 +13,7 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>diagnosis</th>
+                                <th>Diagnostico</th>
                             </tr>                            
                         </thead>
                         <tbody>
@@ -30,14 +30,14 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>recipe</th>
-                                <th>prescription</th>
+                                <th>Recipe</th>
+                                <th>Prescription</th>
                             </tr>                            
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="">{{ $consult->recipe }}</td>
-                                <td class="">{{ $consult->prescription }}</td>
+                                <td class="">{!! $consult->subpatology->recipe !!}</td>
+                                <td class="">{{ $consult->subpatology->prescription }}</td>
                             </tr>
                         </tbody>
                     </table>

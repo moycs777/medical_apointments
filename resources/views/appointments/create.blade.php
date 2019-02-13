@@ -112,10 +112,11 @@
       //   }
        $('body').on('focus',"#appointment_date", function(){
         $(this).datepicker();
+
       });
 
       $("#appointment_date").click(function(){
-         alert("Holaeretetee");
+         
       });
   });
 </script>

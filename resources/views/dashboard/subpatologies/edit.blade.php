@@ -27,22 +27,63 @@
                                     value = "{{ $subpatology->name }}">
                               </div>
 
-                              <div class="form-group">
+                              <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for=""><strong>Recipe</strong></label>
+                                      <textarea name="recipe" 
+                                        placeholder="Recipe" rows = '10'  required = "required" 
+                                        style="width: 100%; height: 100% px;font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="recipe" >
+                                         {!! $subpatology->recipe !!}
+                                      </textarea>
+                                      @if ($errors->has('recipe'))
+                                          <span style="color: red; class="invalid-feedback" role="alert">
+                                              <strong>{{ $errors->first('recipe') }}</strong>
+                                          </span>
+                                      @endif
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for=""><strong>Indicaciones</strong></label>
+                                      <textarea name="prescription" 
+                                        placeholder="Describa las indicaciones" rows = '10' 
+                                        required = "required" 
+                                        style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription">
+                                         {!! $subpatology->prescription !!}
+                                      </textarea>
+                                      @if ($errors->has('prescription'))
+                                          <span style="color: red; class="invalid-feedback" role="alert">
+                                              <strong>{{ $errors->first('prescription') }}</strong>
+                                          </span>
+                                      @endif
+                                    </div>
+                                  </div>
+                                </div>
+
+                              {{-- <div class="form-group">
                                 <label for=""><strong>Recipe</strong></label>
                                                                  
-                                <textarea class="form-control" name="recipe" rows = '5'
-                                   required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >{!! $subpatology->recipe !!}
+                                <textarea class="form-control" name="recipe" rows = '10' cols = "100"
+                                   required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >
+                                     {!! $subpatology->recipe !!}
                                 </textarea>
 
                               </div>  
 
-                              <div class="form-group">
-                                <label for=""><strong>Prescripcion</strong></label>
-                                <input type="text" name="prescription" class="form-control" 
-                                    value = "{{ $subpatology->prescription }}"
-                                    required = "required"
-                                    placeholder="Detalle de la prescripción">
-                              </div>
+                               <div class="form-group">
+                                <label for=""><strong>Recipe</strong></label>
+                                                                 
+                                <textarea class="form-control" name="prescription" rows = '10' cols = "100"
+                                   required = "required" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" id="editor1" >
+                                     {!! $subpatology->prescription !!}
+                                </textarea>
+
+                              </div>  --}}
+                             
 
                               <div class="form-group">
                                 <label for="sel1"><strong>Seleccione patologia</strong></label>

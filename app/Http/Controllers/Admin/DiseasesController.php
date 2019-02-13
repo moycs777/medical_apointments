@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DiseaseStoreRequest;
+use App\Http\Requests\DiseaseUpdateRequest;
 use App\Disease;
 use App\Subclassification;
 
@@ -29,7 +31,7 @@ class DiseasesController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(DiseaseStoreRequest $request)
     {
         $disease = new Disease;
 
@@ -60,7 +62,7 @@ class DiseasesController extends Controller
         
     }
 
-    public function update(Request $request, $id)
+    public function update(DiseaseUpdateRequest $request, $id)
     {
         $disease= Disease::find($id);   
 

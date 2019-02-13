@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\ClinicalPatientsRequest;
+use App\Http\Requests\ClinicalPatientsUpdateRequest;
 
 use App\ClinicalPatient;
 use App\User;
@@ -29,7 +30,7 @@ class ClinicalPatientsController extends Controller
     }
 
 
-    public function store(ClinicalPatientsRequest $request)
+    public function store(ClinicalPatientsRequestt $request)
     {
         // dd($request->all());
         $user = new User();
@@ -85,7 +86,7 @@ class ClinicalPatientsController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ClinicalPatientsUpdateReques $request, $id)
     {
         //dd($request->all());
         $clinicalpatients = ClinicalPatient::find($id);

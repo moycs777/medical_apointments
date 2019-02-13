@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PathologyStoreRequest;
+use App\Http\Requests\PathologyUpdateRequest;
+
 use App\Pathology;
 use App\Classification;
 
@@ -28,7 +31,7 @@ class PathologiesController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(PathologyStoreRequest $request)
     {
 
         Pathology::create($request->all());
@@ -50,7 +53,7 @@ class PathologiesController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(PathologyUpdateRequest $request, $id)
     {
 
         $pathology = Pathology::find($id);

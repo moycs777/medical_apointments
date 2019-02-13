@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubpathologyStoreRequest;
+use App\Http\Requests\SubpathologyUpdateRequest;
+
 use App\Subpatology;
 use App\Pathology;
 
@@ -27,7 +30,7 @@ class SubpatologiesController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(SubpathologyStoreRequest $request)
     {
         Subpatology::create($request->all());
 
@@ -48,7 +51,7 @@ class SubpatologiesController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(SubpathologyUpdateRequest $request, $id)
     {
 
         //dd($request->input('pathology_id'));
