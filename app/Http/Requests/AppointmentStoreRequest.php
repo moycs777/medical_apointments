@@ -17,6 +17,7 @@ class AppointmentStoreRequest extends FormRequest
         return [
             'doctor_id'           => 'required|integer',
             'clinical_patient_id' => 'required|integer', 
+            'insurance_id'        => 'required|integer', 
             'appointment_date'    => 'required|date', 
             'reason_consultation' => 'required|string|max:200', 
            

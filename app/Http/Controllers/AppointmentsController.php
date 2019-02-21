@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AppointmentStoreRequest;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
@@ -66,7 +67,7 @@ class AppointmentsController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(AppointmentStoreRequest $request)
     {
         
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\Exception;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\ClinicalPatientsRequest;
 use App\Http\Requests\ClinicalPatientsUpdateRequest;
@@ -25,14 +27,25 @@ class ClinicalPatientsController extends Controller
 
     public function create()
     {
+        // $users = DB::table('users')
+        //         ->whereNotIn('id', DB::table('clinical_patients')->pluck('user_id'))
+        //         ->select('id','username')
+        //         ->groupBy('id','username')
+        //         ->get();
+
         $insurances = Insurance::orderBy('name')->get();
         return view('dashboard.clinical_patients.create',compact('insurances'));
     }
 
 
-    public function store(ClinicalPatientsRequestt $request)
+    public function store(ClinicalPatientsRequest $request)
     {
-        // dd($request->all());
+        // Validar si username ya existe*****
+        $buscarUser = User::where('username',$request->username)->first();
+        if($buscarUser != null){
+           return back()->withInput()->withErrors(['field_name' => ['Username ya esta registrado.']]);
+        }
+        //***********************************
         $user = new User();
         $user->name = $request->first_name;
         $user->username = $request->username;
@@ -41,27 +54,31 @@ class ClinicalPatientsController extends Controller
 
         $user->save();
 
-        // $weight = "00";
-        // $size = "00";
-        // $systolic_pressure = "00";
-        // $diastolic_pressure = "00";
-        // if(isset($request->weight))  $weight = $request->weight;
-        // if(isset($request->size))    $weight = $request->size;
-        // if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
-        // if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
+        $weight = "00";
+        $size = "00";
+        $systolic_pressure = "00";
+        $diastolic_pressure = "00";
+        if(isset($request->weight))  $weight = $request->weight;
+        if(isset($request->size))    $weight = $request->size;
+        if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
+        if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
 
         $clinicalpatients = new ClinicalPatient();
 
-        $clinicalpatients->user_id           = $user->id;
-        $clinicalpatients->insurance_id      = $request->insurance_id; 
-        $clinicalpatients->dni               = $request->dni;
-        $clinicalpatients->first_name        = $request->first_name;
-        $clinicalpatients->last_name         = $request->last_name;
-        $clinicalpatients->gender            = $request->input('genero');
-        $clinicalpatients->personal_history  = 'A';
-        $clinicalpatients->family_background = 'A';
-        $clinicalpatients->address           = $request->address;
-        $clinicalpatients->bloodtype         = $request->bloodtype;
+        $clinicalpatients->user_id            = $user->id;
+        $clinicalpatients->insurance_id       = $request->insurance_id; 
+        $clinicalpatients->dni                = $request->dni;
+        $clinicalpatients->first_name         = $request->first_name;
+        $clinicalpatients->last_name          = $request->last_name;
+        $clinicalpatients->gender             = $request->input('genero');
+        $clinicalpatients->weight             = $weight;
+        $clinicalpatients->size               = $size;
+        $clinicalpatients->systolic_pressure  = $systolic_pressure;
+        $clinicalpatients->diastolic_pressure = $diastolic_pressure;
+        $clinicalpatients->personal_history   = 'A';
+        $clinicalpatients->family_background  = 'A';
+        $clinicalpatients->address            = $request->address;
+        $clinicalpatients->bloodtype          = $request->bloodtype;
         $clinicalpatients->save();
 
         //return redirect()->route('clinicalpatients.index');
@@ -86,7 +103,7 @@ class ClinicalPatientsController extends Controller
     }
 
 
-    public function update(ClinicalPatientsUpdateReques $request, $id)
+    public function update(ClinicalPatientsUpdateRequest $request, $id)
     {
         //dd($request->all());
         $clinicalpatients = ClinicalPatient::find($id);

@@ -44,6 +44,18 @@
                             @endif
                           </div>
                         </div>
+                        {{-- <div class="col-md-5 pr-md-1">
+                          <div class="form-group">
+                            <label for="sel1">Seleccione usuario</label>
+                            <select class="form-control" id="sel1" name="user_id">
+                               @foreach($users as $item)
+                                <option value ="{{ $item->id }}">
+                                    {{ $item->username }}
+                                </option>
+                              @endforeach 
+                            </select>
+                          </div>
+                        </div> --}}
 
                         <div class="col-md-3 px-md-1">
                           <div class="form-group">
@@ -62,6 +74,7 @@
                             @endif
                           </div>
                         </div>
+
                         <div class="col-md-4 pl-md-1">
                           <div class="form-group">
                             <label>Password ()</label>
@@ -80,9 +93,9 @@
                                 placeholder="Nombre" name="first_name"
                                 value="{{ old('first_name') }}" required
                             >
-                            @if ($errors->has('name'))
+                            @if ($errors->has('first_name'))
                                 <span style="color: red;" class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>{{ $errors->first('first_name') }}</strong>
                                 </span>
                             @endif
                           </div>

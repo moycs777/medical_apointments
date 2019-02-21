@@ -129,22 +129,24 @@
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="sel1"><strong>Seleccione seguro</strong></label>
-                          <select class="form-control" id="sel1" name="insurance_id" required = "required">
-                            @foreach($insurances as $item)
-                              <option value ="{{ $item->id }}"
-                                @if($item->id == $clinicalpatient->insurance_id) 
-                                    selected='selected' 
-                                @endif>
-                                {{ $item->name }}
-                              </option>
-                            @endforeach 
-                          </select>
-                      </div>
-
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label for="sel1"><strong>Seleccione seguro</strong></label>
+                              <select class="form-control" id="sel1" name="insurance_id" required = "required">
+                                @foreach($insurances as $item)
+                                  <option value ="{{ $item->id }}"
+                                    @if($item->id == $clinicalpatient->insurance_id) 
+                                        selected='selected' 
+                                    @endif>
+                                    {{ $item->name }}
+                                  </option>
+                                @endforeach 
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Direccion</label>
                             <input id="address" 
@@ -164,7 +166,7 @@
                       </div>
 
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6 pr-md-1">
                           <div class="radio-inline">
                             <label>
                                 <input type="radio" id = "optmas" name="optmas" 
@@ -189,7 +191,7 @@
                              value = "{{$clinicalpatient->gender}}">
                         </div>
 
-                        <div class="col-md-4 ">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label for=""><strong>Seleccione tipo de sangre</strong></label>
                             <select class="form-control" 
