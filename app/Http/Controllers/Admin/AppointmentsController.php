@@ -48,10 +48,12 @@ class AppointmentsController extends Controller
             ->where('doctors.status','=',true)
             ->get();
 
-        if($doctorspecialty == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
+        if (count($doctorspecialty) == 0){
+           return redirect()
+                  ->route('appointments.index')
+                  ->withErrors(['Error(es)', 'Especialidad del doctor no registrada']);
         }
-               
+
         return view('dashboard.appointments.create',compact('doctors','patients','doctorspecialty'));
         
     }

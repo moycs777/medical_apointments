@@ -19,7 +19,9 @@
                   <label for=""><strong>Seleccione Doctor</strong></label>
                   <select class="js-example-basic-single form-control" 
                      id="sel1" name="doctor_id" required = "required">
-                     <option value ="0">Seleccione...</option >
+                     @if (count($doctors) > 1){
+                         <option value ="0">Seleccione...</option >
+                     @endif
                      @foreach($doctors as $item) 
                        <option value ="{{ $item->id }}">
                          {{ $item->first_name . " " . $item->last_name }}
@@ -32,7 +34,10 @@
                     <label for=""><strong>Seleccione especialidad del Doctor</strong></label>
                     <select class="js-example-basic-single form-control"
                       id="sel1" name="doctor_specialty_id" required>
-                      <option>Seleccione especialidad del doctor</option>
+                      @if (count($doctorspecialty) > 1){
+                         <option value ="0">Seleccione especialidad del doctor...</option >
+                      @endif
+                      {{-- <option>Seleccione especialidad del doctor</option> --}}
                         @foreach($doctorspecialty as $item) 
                           <option value ="{{ $item->id }}">
                             {{ $item->name }}
@@ -46,7 +51,10 @@
                   <label for=""><strong>Seleccione Paciente</strong></label>
                   <select class="js-example-basic-single form-control" 
                      id="sel1" name="clinical_patient_id" required = "required">
-                     <option value ="0">Seleccione...</option >
+                     @if (count($patients) > 1){
+                         <option value ="0">Seleccione paciente...</option >
+                     @endif
+                     
                      @foreach($patients as $item) 
                        <option value ="{{ $item->id }}">
                          {{ $item->first_name . " " . $item->last_name }}
