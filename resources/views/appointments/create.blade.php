@@ -23,23 +23,24 @@
                     <li class="list-group-item">
                        <span class="icon-status status-completed"></span>
                        <select class="js-example-basic-single" id="sel1" name="doctor_id">
-                          <option><strong>Seleccione su doctor</strong></option>
-                             @foreach($doctors as $item)
-                                <option value ="{{ $item->id }}">
-                                  {{ $item->first_name }}, {{ $item->last_name }}
-                                </option>
-                             @endforeach
+                          @if(count($doctors) > 1)
+                             <option value = 0><strong>Seleccione su doctor</strong></option>
+                          @endif
+                          @foreach($doctors as $item)
+                            <option value ="{{ $item->id }}">{{ $item->first_name }}, {{ $item->last_name }}</option>
+                          @endforeach
                        </select>
                     </li>
 
                     <li class="list-group-item">
                         <span class="icon-status status-completed"></span>
                         <select class="js-example-basic-single" id="sel2" name="doctor_specialty_id">
-                           <option><strong>Seleccione especialidad del doctor</strong></option>
+                           {{-- <option><strong>Seleccione especialidad del doctor</strong></option> --}}
+                           @if(count($doctorspecialty) > 1)
+                             <option value = 0><strong>Seleccione especialidad del doctor</strong></option>
+                           @endif
                            @foreach($doctorspecialty as $item)
-                              <option value ="{{ $item->id }}">
-                                  {{ $item->name }}
-                              </option>
+                              <option value ="{{ $item->id }}">{{ $item->name }}</option>
                            @endforeach
                         </select>
                     </li>
@@ -47,11 +48,12 @@
                     <li class="list-group-item">
                         <span class="icon-status status-completed"></span>
                         <select class="js-example-basic-single" id="sel1" name="insurance_id">
-                          <option><strong>Seleccione su Seguro Medico</strong></option>
+                          @if(count($insurances) > 1)
+                             <option value = 0><strong>Seleccione su Seguro Medico</strong></option>
+                          @endif
+                          {{-- <option><strong>Seleccione su Seguro Medico</strong></option> --}}
                             @foreach($insurances as $item)
-                              <option value ="{{ $item->id }}">
-                                {{ $item->name }}
-                              </option>
+                              <option value ="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </li>

@@ -55,9 +55,13 @@ class AppointmentsController extends Controller
             ->where('doctors.status','=',true)
             ->get();
 
-        if($doctorspecialty == null){
+        if(count($doctorspecialty) == 0){
            return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
         }
+
+        // if($doctorspecialty == null){
+        //    return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
+        // }
 
         $insurances = Insurance::all();
         if($insurances == null){
