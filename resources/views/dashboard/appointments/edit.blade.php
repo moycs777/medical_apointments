@@ -18,6 +18,7 @@
 
                 {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
 
+               
                 <div class="form-group">
                   <label for="sel1"><strong>Seleccione Doctor</strong</label>
                     <select class="js-example-basic-single form-control" 
@@ -35,6 +36,7 @@
                     </select>
                 </div>
 
+
                 <div class="form-group">
                   <label for="sel1"><strong>Especialidad del Doctor</strong</label>
                     <select class="js-example-basic-single form-control" 
@@ -50,6 +52,7 @@
                       @endforeach
                     </select>
                 </div>
+               
 
                 <div class="form-group">
                   <label for="sel1"><strong>Paciente</strong></label>
@@ -59,6 +62,22 @@
                   value = "{{ $appointment->clinical_patient->first_name .' '.$appointment->clinical_patient->last_name  }}" disabled="true">
                 </div>
                 
+                <div class="form-group">
+                  <label for="sel1"><strong>Seguro medico</strong</label>
+                    <select class="js-example-basic-single form-control" 
+                      id="sel1" name="insurance_id" required>
+                      @foreach($insurances as $item) 
+                        <option value ="{{ $item->id }}"
+                          @if($item->id == "$appointment->insurance_id") 
+                            selected='selected' 
+                          @endif
+                        >
+                        {{ $item->name }} 
+                        </option>
+                      @endforeach
+                    </select>
+                </div>
+
                 <div class="form-group">
                   <label for=""><strong><strong>Fecha de la Consulta</strong></strong></label>
                   <input id="appointment_date" type="date" name = "appointment_date"
@@ -95,10 +114,17 @@
                 </div>
 
                 <div class="form-group">
-                   <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
+                   
+                   @if($appointment->status == 'anulado') 
+                       <button type="submit" id = "salvar" class="btn btn-primary" disabled="false" >Guardar </button>
+                   @else
+                       <button type="submit" id = "salvar" class="btn btn-primary">Guardar </button>
+                   @endif
+                
                 </div>
-
+                          
               </form>
+              {{-- <button type="submit" id = "salvar" class="btn btn-primary" disabled="false" >Guardar </button> --}}
             </div>
           </div>
 

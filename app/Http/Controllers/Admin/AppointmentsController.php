@@ -16,6 +16,7 @@ use App\Doctor;
 use App\ClinicalPatient;
 use App\Specialty;
 use App\DoctorSpecialty;
+use App\Insurance;
 
 class AppointmentsController extends Controller
 {
@@ -54,7 +55,12 @@ class AppointmentsController extends Controller
                   ->withErrors(['Error(es)', 'Especialidad del doctor no registrada']);
         }
 
-        return view('dashboard.appointments.create',compact('doctors','patients','doctorspecialty'));
+        $insurances = Insurance::all();
+        if($insurances == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre seguros no registrada']);
+        }
+
+        return view('dashboard.appointments.create',compact('doctors','patients','doctorspecialty','insurances'));
         
     }
 
@@ -64,8 +70,7 @@ class AppointmentsController extends Controller
 
          //dd($request->all());
          if($request->input('doctor_id') == "0") {
-            return redirect()->route('appointments.create')
-               ->with('info','Debe seleccionar un doctor');
+            return redirect()->route('appointments.create')->with('info','Debe seleccionar un doctor');
          }
 
          $fec_consulta = $request->input('appointment_date');
@@ -115,26 +120,32 @@ class AppointmentsController extends Controller
            return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
         }
         
-        return view('dashboard.appointments.edit',compact('appointment','doctors','doctorspecialty'));
+        $insurances = Insurance::all();
+        if($insurances == null){
+           return Redirect::back()->withErrors(['Error', 'Informacion sobre seguros no registrada']);
+        }
+
+        return view('dashboard.appointments.edit',compact('appointment','doctors','doctorspecialty','insurances'));
     }
 
    
     public function update(AppointmentUpdateRequest $request, $id)
     {
 
-        //dd($request->all());
+        // dd($request->all());
         $appointment = Appointment::find($id);
        
-        $appointment->doctor_id            = $request->doctor_id;
-        $appointment->clinical_patient_id  = $request->clinical_patient_id;
-        $appointment->doctor_specialty_id  = $request->doctor_specialty_id;
-        $appointment->appointment_date     = $request->appointment_date;
-        $appointment->reason_consultation  = $request->reason_consultation ;
-        $appointment->status               = $request->status;
-        $appointment->save();
+        // $appointment->doctor_id            = $request->doctor_id;
+        // $appointment->clinical_patient_id  = $request->clinical_patient_id;
+        // $appointment->doctor_specialty_id  = $request->doctor_specialty_id;
+        // $appointment->insurance_id         = $request->insurance_id;
+        // $appointment->appointment_date     = $request->appointment_date;
+        // $appointment->reason_consultation  = $request->reason_consultation ;
+        // $appointment->status               = $request->status;
+        //$appointment->save();
+        $appointment->fill($request->all())->save();
 
-        return redirect()->route('appointments.index')
-           ->with('info','Informacion actualizada');
+        return redirect()->route('appointments.index')->with('info','Informacion actualizada');
 
     }
 

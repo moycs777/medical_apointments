@@ -52,7 +52,7 @@
                   <select class="js-example-basic-single form-control" 
                      id="sel1" name="clinical_patient_id" required = "required">
                      @if (count($patients) > 1){
-                         <option value ="0">Seleccione paciente...</option >
+                         <option value ="">Seleccione paciente...</option >
                      @endif
                      
                      @foreach($patients as $item) 
@@ -62,8 +62,21 @@
                      @endforeach
                   </select>
                 </div>
-                
+
                 <div class="form-group">
+                    <label for=""><strong>Seleccione seguro medico</strong></label>
+                    <select class="js-example-basic-single form-control" id="sel1" name="insurance_id">
+                        @if(count($insurances) > 1)
+                           <option value = 0><strong>Seleccione su Seguro Medico</strong></option>
+                        @endif
+                        
+                        @foreach($insurances as $item)
+                           <option value ="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="form-group">                  
                   <label for=""><strong>Fecha de la Consulta</strong></label>
                   <input id="appointment_date" type="date" name = "appointment_date"
                          class="form-control" 
