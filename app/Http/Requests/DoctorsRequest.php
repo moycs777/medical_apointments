@@ -25,10 +25,10 @@ class DoctorsRequest extends FormRequest
     {
         return [
             
-            'admin_id' => 'required', 
+            // 'admin_id' => 'required', 
             'identification_card' => 'required|max:10', 
             'first_name' => 'required|max:30', 
-            'lastt_name' => 'required|max:30', 
+            'last_name' => 'required|max:30', 
             'email' => 'string|email|max:255|unique:admins', 
         ];
     }

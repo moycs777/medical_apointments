@@ -42,7 +42,7 @@
                             @endif
                           </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Status</label>
                             <select class="form-control" name="status" id="">
@@ -81,7 +81,7 @@
                             @endif
                           </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Apellido</label>
                             <input id="last_name" 
@@ -101,7 +101,7 @@
                       </div>
 
                       <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Cedula</label>
                             <input id="identification_card" 
@@ -118,6 +118,25 @@
                             @endif
                           </div>
                         </div>
+                        
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label>Beeper</label>
+                            <input id="beeper" 
+                                type="text" 
+                                class="form-control {{ $errors->has('beeper') ? ' is-invalid' : '' }}"
+                                placeholder="beeper"
+                                name="beeper" 
+                                value="{{ $doctor->beeper }}"
+                            >
+                            @if ($errors->has('beeper'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('beeper') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
                       </div>
 
                       <div class="row">
@@ -158,7 +177,7 @@
                             @endif
                           </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Telefono donde labora</label>
                             <input id="work_phone" 
@@ -195,7 +214,7 @@
                             @endif
                           </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+                        <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label>Telefono donde labora</label>
                             <input id="mobile_2" 
@@ -214,8 +233,8 @@
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-md-6 pr-md-1">
+                     {{--  <div class="row">
+                        <div class="col-md-6 pl-md-1">
                           <div class="form-group">
                             <label>Beeper</label>
                             <input id="beeper" 
@@ -232,7 +251,7 @@
                             @endif
                           </div>
                         </div>
-                      </div>
+                      </div> --}}
 
                       <div class="row">
                         <div class="col-md-12">
@@ -262,46 +281,7 @@
                         </div>
                       </div>
 
-                      <!-- <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label>Address</label>
-                            <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-4 pr-md-1">
-                          <div class="form-group">
-                            <label>City</label>
-                            <input type="text" class="form-control" placeholder="City" value="Mike">
-                          </div>
-                        </div>
-                        <div class="col-md-4 px-md-1">
-                          <div class="form-group">
-                            <label>Country</label>
-                            <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                          </div>
-                        </div>
-                        <div class="col-md-4 pl-md-1">
-                          <div class="form-group">
-                            <label>Postal Code</label>
-                            <input type="number" class="form-control" placeholder="ZIP Code">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-8">
-                          <div class="form-group">
-                            <label>About Me</label>
-                            <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                          </div>
-                        </div>
-                      </div> -->
-
-                      <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                      <center><button type="submit" class="btn btn-fill btn-primary">Save</button></center>
 
                     </form>
                   </div>

@@ -31,6 +31,8 @@ class DoctorsController extends Controller
    
     public function store(DoctorsRequest $request)
     {
+
+        //dd($request->all());
         $admin = new Admin;
         $admin->name  = $request->first_name;
         $admin->email = $request->email;

@@ -14,7 +14,7 @@ Route::resource('appoints', 'AppointmentsController');
 // Office   pathologies
 Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/appointments',        'Admin\AppointmentsController');
-  Route::resource('office/consultations',        'Admin\ConsultationsController');
+  Route::resource('office/consultations',       'Admin\ConsultationsController');
   Route::get('office/consultations_mostrar_recipe/{id}','Admin\ConsultationsController@Mostrar_Recipe_Prescripcion');
   Route::get('office/consultations_mostrar_paciente/{id}','Admin\ConsultationsController@Mostrar_Paciente');
   Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/diseases',            'Admin\DiseasesController');
   Route::resource('office/doctors',             'Admin\DoctorsController');
   Route::resource('office/doctorprofile',       'Admin\DoctorProfileController');
-  Route::post('office/pdf',       'Admin\PdfController@generate')->name('pdf_generate');
+  Route::post('office/pdf',                     'Admin\PdfController@generate')->name('pdf_generate');
   Route::resource('office/pathologies',         'Admin\PathologiesController');
   Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
   Route::resource('office/medical_schedules',   'Admin\MedicalSchedulesController');
