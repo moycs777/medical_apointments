@@ -67,6 +67,10 @@ class RegisterController extends Controller
             $patient->gender = 'M';
             $patient->personal_history  = 'A';
             $patient->family_background = 'A'; 
+            $patient->weight = '00'; 
+            $patient->size = '00'; 
+            $patient->systolic_pressure = '00'; 
+            $patient->diastolic_pressure = '00'; 
             $patient->bloodtype  = 2;
             $patient->save();
             DB::commit(); 

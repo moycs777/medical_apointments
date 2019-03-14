@@ -22,13 +22,13 @@ class CreateClinicalPatientsTable extends Migration
             $table->string('last_name',30);
             $table->string('address')->nullable();
             $table->string('gender',1)->default('M');
-            $table->string('weight',5)->comment('peso');
-            $table->string('size',5)->comment('talla');
-            $table->string('systolic_pressure',10)->comment('presion sistoloica');
-            $table->string('diastolic_pressure',10)->comment('presion diastolica');
-            $table->text('personal_history');
-            $table->text('family_background');
-            $table->string('bloodtype',3);
+            $table->string('weight',5)->default(00)->comment('peso');
+            $table->string('size',5)->default(00)->comment('talla');
+            $table->string('systolic_pressure',10)->default('A')->comment('presion sistoloica');
+            $table->string('diastolic_pressure',10)->default('A')->comment('presion diastolica');
+            $table->text('personal_history')->nullable();
+            $table->text('family_background')->nullable();
+            $table->string('bloodtype',3)->nullable();
             $table->foreign('insurance_id')->references('id')->on('insurances')
                   ->ondelete('cascade')
                   ->onupdate('cascade');
