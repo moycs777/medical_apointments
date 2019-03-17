@@ -80,7 +80,10 @@ class ConsultationsController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion sobre citas']);
         }
 
-        $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
+        $explorations = Exploration::where('specialty_id','9')
+                        ->orderBy('name')
+                        ->get();
+
         if ($explorations == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
         }

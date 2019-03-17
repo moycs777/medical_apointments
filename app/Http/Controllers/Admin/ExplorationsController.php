@@ -24,8 +24,8 @@ class ExplorationsController extends Controller
         $specialties  = Specialty::where('status','=',1)->get();
 
         $exploration = Exploration::all();
-        //dd($specialties);
-        return view('dashboard.explorations.create',compact('exploration','specialties'));
+        
+        return view('dashboard.explorations.create',compact('specialties','exploration'));
     }
 
     public function store(Request $request)

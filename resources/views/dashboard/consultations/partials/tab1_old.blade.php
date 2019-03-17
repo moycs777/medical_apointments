@@ -69,21 +69,6 @@
 
 <div class="col-md-12">
   <div class="form-group">
-    <label>Diagnostico</label>
-    <textarea class="form-control" name="diagnosis"
-      placeholder="Diagnostico" rows = '5' required = "required"
-      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
-    </textarea>
-    @if ($errors->has('diagnosis'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('diagnosis') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
-
-<div class="col-md-12">
-  <div class="form-group">
     <label>Enfermedad Actual</label>
     <input id="disease"
         type="text" class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
@@ -110,6 +95,20 @@
   </div>
 </div>
 
+<div class="col-md-12">
+  <div class="form-group">
+    <label>Diagnostico</label>
+    <textarea class="form-control" name="diagnosis"
+      placeholder="Diagnostico" rows = '5' required = "required"
+      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="diagnosis" >
+    </textarea>
+    @if ($errors->has('diagnosis'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('diagnosis') }}</strong>
+        </span>
+    @endif
+  </div>
+</div>
 
 <div class="form-group">
    <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>

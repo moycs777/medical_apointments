@@ -17,10 +17,10 @@
         </a>
       </li>
 
-      <li class="{{ Request::path() == 'office/consultations' ? 'active' : '' }}">
-        <a href="{{ route('consultations.index')}}">
-          <i class="tim-icons icon-chart-pie-36"></i>
-          <p>Consulta / Medica</p>
+      <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
+        <a href="{{ route('clinicalpatients.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Pacientes</p>
         </a>
       </li>
 
@@ -31,10 +31,39 @@
         </a>
       </li>
 
-       <li class="{{ Request::path() == 'office/medical_schedules' ? 'active' : '' }}">
-        <a href="{{ route('medical_schedules.index')}}">
-          <i class="tim-icons icon-pin"></i>
-          <p>Horario Medico</p>
+      <li class="{{ Request::path() == 'office/consultations' ? 'active' : '' }}">
+        <a href="{{ route('consultations.index')}}">
+          <i class="tim-icons icon-chart-pie-36"></i>
+          <p>Consulta / Medica</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/subpatologies' ? 'active' : '' }}">
+        <a href="{{ route('subpatologies.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Subpatologias</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
+        <a href="{{ route('diseases.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Enfermedades</p>
+        </a>
+      </li>
+
+      {{--  // Seguros Medicos  --}}
+      <li class="{{ Request::path() == 'office/insurances' ? 'active' : '' }}">
+        <a href="{{ route('insurances.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Seguros</p>
+        </a>
+      </li>
+
+      <li class="{{ Request::path() == 'office/explorations' ? 'active' : '' }}">
+        <a href="{{ route('explorations.index') }}">
+          <i class="tim-icons icon-single-02"></i>
+          <p>Exploraciones</p>
         </a>
       </li>
 
@@ -52,10 +81,17 @@
         </a>
       </li>
 
-      <li class="{{ Request::path() == 'office/diseases' ? 'active' : '' }}">
-        <a href="{{ route('diseases.index') }}">
+      <li class="{{ Request::path() == 'office/pathologies' ? 'active' : '' }}">
+        <a href="{{ route('pathologies.index') }}">
           <i class="tim-icons icon-single-02"></i>
-          <p>Enfermedades</p>
+          <p>Patologias</p>
+        </a>
+      </li>
+      
+      <li class="{{ Request::path() == 'office/medical_schedules' ? 'active' : '' }}">
+        <a href="{{ route('medical_schedules.index')}}">
+          <i class="tim-icons icon-pin"></i>
+          <p>Horario Medico</p>
         </a>
       </li>
 
@@ -66,25 +102,10 @@
         </a>
       </li>
       
-      <li class="{{ Request::path() == 'office/explorations' ? 'active' : '' }}">
-        <a href="{{ route('explorations.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Exploraciones</p>
-        </a>
-      </li>
-
       <li class="{{ Request::path() == 'office/occupations' ? 'active' : '' }}">
         <a href="{{ route('occupations.index') }}">
           <i class="tim-icons icon-single-02"></i>
           <p>Ocupación</p>
-        </a>
-      </li>
-
-      {{--  // Seguros Medicos  --}}
-      <li class="{{ Request::path() == 'office/insurances' ? 'active' : '' }}">
-        <a href="{{ route('insurances.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Seguros</p>
         </a>
       </li>
 
@@ -96,26 +117,7 @@
         </a>
       </li>
 
-      <li class="{{ Request::path() == 'office/pathologies' ? 'active' : '' }}">
-        <a href="{{ route('pathologies.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Patologias</p>
-        </a>
-      </li>
-
-      <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
-        <a href="{{ route('clinicalpatients.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Pacientes</p>
-        </a>
-      </li>
-     
-     <li class="{{ Request::path() == 'office/subpatologies' ? 'active' : '' }}">
-        <a href="{{ route('subpatologies.index') }}">
-          <i class="tim-icons icon-single-02"></i>
-          <p>Subpatologias</p>
-        </a>
-      </li>
+      
 
       <li class="{{ Request::path() == 'office/subclassifications' ? 'active' : '' }}">
         <a href="{{ route('subclassifications.index') }}">
