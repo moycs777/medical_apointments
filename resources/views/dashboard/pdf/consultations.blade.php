@@ -10,15 +10,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
+                    <center>
+                        <h4>DR. FERNANDO SILVA CHACON</h4>
+                        <h4>OTORRINOLARINGOLOGO</h4> 
+                        <h4>PAST-PRESIDENTE DE LA SOCIEDAD LATINOAMERICAN DE RINOLOGIA</h4> 
+                        <h4>PAST-PRESIDENTE DE LA SOCIEDAD ECUATORIANA DE O.R.L.</h4> 
+                        <h4>Especializado en Argentina</h4> 
+                    </center>
+                    
                     <table class="table table-hover table-striped">
                         <thead>
-                            <tr>
-                                <th>Diagnostico</th>
-                            </tr>                            
                         </thead>
                         <tbody>
+                            <tr><td>Guayaquil:@php echo date("d-m-Y") @endphp</td></tr>
                             <tr>
-                                <td>{{ $consult->disease }}</td>
+                                <td>Paciente: {{$consult->appointment->clinical_patient->first_name }} {{$consult->appointment->clinical_patient->last_name }}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
