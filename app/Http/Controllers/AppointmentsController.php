@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AppointmentStoreRequest;
 use Illuminate\Support\Facades\DB;
 use Auth;
+Use Redirect;
 
 use App\Appointment;
 use App\Doctor;
