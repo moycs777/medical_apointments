@@ -23,10 +23,10 @@ class ConsultationStoreRequest extends FormRequest
             'reason_consultation' => 'required|max:200', 
             'disease'             => 'required', 
             'diagnosis'           => 'required', 
-            'weigth'              => 'string|max:10', 
-            'size'                => 'string|max:10', 
-            'systolic_pressure'   => 'string|max:10',
-            'diastolic_pressure'  => 'string|max:10', 
+            'weigth'              => 'max:10', 
+            'size'                => 'max:10', 
+            'systolic_pressure'   => 'max:10',
+            'diastolic_pressure'  => 'max:10', 
             
         ];
     }

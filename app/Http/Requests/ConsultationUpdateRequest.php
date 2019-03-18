@@ -6,28 +6,28 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ConsultationUpdateRequest extends FormRequest
 {
-   
+
     public function authorize()
     {
         return true;
     }
 
-   
+
     public function rules()
     {
         return [
-           'appointment_id'      => 'required|integer', 
-            'exploration_id'      => 'required|integer', 
-            'subpatology_id'      => 'required|integer', 
-            'date_consultation'   => 'required|date', 
-            'reason_consultation' => 'required|max:200', 
-            'disease'             => 'required', 
-            'diagnosis'           => 'required', 
-            'weigth'              => 'string|max:10', 
-            'size'                => 'string|max:10', 
-            'systolic_pressure'   => 'string|max:10',
-            'diastolic_pressure'  => 'string|max:10',  
-           
+           'appointment_id'       => 'required|integer',
+            'exploration_id'      => 'required|integer',
+            'subpatology_id'      => 'required|integer',
+            'date_consultation'   => 'required|date',
+            'reason_consultation' => 'required|max:200',
+            'disease'             => 'required',
+            'diagnosis'           => 'required',
+            'weigth'              => 'max:10',
+            'size'                => 'max:10',
+            'systolic_pressure'   => 'max:10',
+            'diastolic_pressure'  => 'max:10',
+
         ];
     }
 }

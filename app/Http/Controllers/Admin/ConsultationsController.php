@@ -106,9 +106,6 @@ class ConsultationsController extends Controller
     public function store(ConsultationStoreRequest $request)
     {
         
-        
-        //dd($request->all());
-        
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
@@ -128,7 +125,9 @@ class ConsultationsController extends Controller
         if(isset($request->size))    $size   = $request->size;
         if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
         if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
-        
+
+
+        //dd($request->all());
         $consultation = new Consultation();
         $consultation->appointment_id        = $request->appointment_id;
         $consultation->exploration_id        = $request->exploration_id;
@@ -137,11 +136,12 @@ class ConsultationsController extends Controller
         $consultation->reason_consultation   = $request->reason_consultation;
         $consultation->disease               = ($request->input('disease') == null) ? "A" : $request->disease;
         $consultation->diagnosis             = $request->diagnosis;
-        $consultation->weight                = $weight;
-        $consultation->size                  = $size;
-        $consultation->systolic_pressure     = $systolic_pressure;
-        $consultation->diastolic_pressure    = $diastolic_pressure;
+        $consultation->weight                = ($request->weight == null) ? $weight : $request->weight;
+        $consultation->size                  = ($request->size == null) ? $size : $request->size;
+        $consultation->systolic_pressure     = ($request->size == null) ? $systolic_pressure : $request->systolic_pressure;
+        $consultation->diastolic_pressure    = ($request->size == null) ? $diastolic_pressure : $request->diastolic_pressure;
         $consultation->status                = "atendido";
+         
         
         $consultation->save();
 
