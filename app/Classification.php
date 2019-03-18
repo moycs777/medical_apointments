@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Classification extends Model
 {
     protected $fillable =[
-        'nombre','oms','particular'
+        'name','oms','particular'
     ];
 
     protected $attributes = [
