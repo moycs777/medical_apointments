@@ -26,12 +26,13 @@ class ClinicalPatientsUpdateRequest extends FormRequest
         return [
             'first_name' => 'string|max:30',
             'last_name'  => 'string|max:30',
-            'email' => 'string|email|max:255|unique:users',
+            'email' => 'string|email|max:255',
+            //'email' => 'string|email|max:255|unique:users',
             //'username' => 'required|string|max:20|unique:users',
             //se debe usar una manera para que el email pueda estar en blanco
             'insurance_id' => 'required',
-            'email' => 'string|email|max:255|unique:users', 
-            'dni' => 'string|unique:clinical_patients', 
+            //'dni' => 'string|unique:clinical_patients', 
+            'dni' => 'string|max:10',
         ];
     }
 }
