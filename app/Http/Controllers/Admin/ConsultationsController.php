@@ -105,7 +105,7 @@ class ConsultationsController extends Controller
     
     public function store(ConsultationStoreRequest $request)
     {
-        
+        // dd($request->all());
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
@@ -117,31 +117,19 @@ class ConsultationsController extends Controller
         $reemplazar=array("", "", "", "");
         $cadena=str_ireplace($buscar,$reemplazar,$prescription);
 
-        $weight = "00";
-        $size = "00";
-        $systolic_pressure = "00";
-        $diastolic_pressure = "00";
-        if(isset($request->weight))  $weight = $request->weight;
-        if(isset($request->size))    $size   = $request->size;
-        if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
-        if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
-
-
-        //dd($request->all());
         $consultation = new Consultation();
         $consultation->appointment_id        = $request->appointment_id;
         $consultation->exploration_id        = $request->exploration_id;
         $consultation->subpatology_id        = $request->subpatology_id;
+        $consultation->disease_id            = $request->disease_id ;
         $consultation->date_consultation     = $request->date_consultation;
         $consultation->reason_consultation   = $request->reason_consultation;
-        $consultation->disease               = ($request->input('disease') == null) ? "A" : $request->disease;
         $consultation->diagnosis             = $request->diagnosis;
-        $consultation->weight                = ($request->weight == null) ? $weight : $request->weight;
-        $consultation->size                  = ($request->size == null) ? $size : $request->size;
-        $consultation->systolic_pressure     = ($request->size == null) ? $systolic_pressure : $request->systolic_pressure;
-        $consultation->diastolic_pressure    = ($request->size == null) ? $diastolic_pressure : $request->diastolic_pressure;
+        $consultation->weight                =  $request->weight;
+        $consultation->size                  =  $request->size;
+        $consultation->systolic_pressure     =  $request->systolic_pressure;
+        $consultation->diastolic_pressure    =  $request->diastolic_pressure;
         $consultation->status                = "atendido";
-         
         
         $consultation->save();
 
@@ -190,7 +178,12 @@ class ConsultationsController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
 
-        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations','subpatologies'));
+        $diseases = Disease::where('subclassification_id','230')->get();
+        if($diseases == null){
+          return Redirect::back()->withErrors(['Error', 'Enfermedades no registradas']);
+        }
+        
+        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations','subpatologies','diseases'));
 
     }
 
@@ -217,7 +210,8 @@ class ConsultationsController extends Controller
             $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->date_consultation     = $request->date_consultation;
             $consultation->reason_consultation   = $request->reason_consultation;
-            $consultation->disease               = $request->disease;
+            // $consultation->disease               = $request->disease;
+            $consultation->disease_id            = $request->disease_id ;
             $consultation->diagnosis             = $request->diagnosis;
             $consultation->weight                = $weight;
             $consultation->size                  = $size;

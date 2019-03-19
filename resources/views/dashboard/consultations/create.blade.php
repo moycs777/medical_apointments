@@ -81,6 +81,8 @@
          $('#qwe').select2();
          $('#asd').select2();
          $('#appointment_id').select2();
+         $('#seldisease').select2();
+
          
          $('#sel1').on('change',function(){
             //var n = $(this).val();

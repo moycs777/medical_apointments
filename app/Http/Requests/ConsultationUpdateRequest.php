@@ -16,12 +16,12 @@ class ConsultationUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-           'appointment_id'       => 'required|integer',
+            'appointment_id'       => 'required|integer',
             'exploration_id'      => 'required|integer',
             'subpatology_id'      => 'required|integer',
+            'disease_id'          => 'required|integer',
             'date_consultation'   => 'required|date',
             'reason_consultation' => 'required|max:200',
-            'disease'             => 'required',
             'diagnosis'           => 'required',
             'weigth'              => 'max:10',
             'size'                => 'max:10',

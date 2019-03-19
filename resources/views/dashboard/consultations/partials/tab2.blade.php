@@ -47,7 +47,7 @@
     <label>Antecedentes Personales</label>
    
     <textarea class="form-control" name="personal_history" 
-      placeholder="Antecedentes personales" rows = '10' required = "required" 
+      placeholder="Antecedentes personales" rows = '10'  
       style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
       solid #dddddd; padding: 10px;" id="personal_history" >
     </textarea>

@@ -69,6 +69,34 @@
 
 <div class="col-md-12">
   <div class="form-group">
+    <label for="sel22"><strong>Seleccione enfermedad</strong></label>
+      <select class="js-example-basic-single form-control" id="seldisease" name="disease_id" style="width: 100%;">
+        <option value="0">Seleccione</option>
+        @foreach($diseases as $item)
+           <option value ="{{ $item->id }}">
+              {{  $item->name }}
+           </option>
+        @endforeach 
+      </select>
+  </div>
+</div>
+
+{{-- <div class="col-md-12">
+  <div class="form-group">
+    <label>Enfermedad Actual</label>
+    <input id="disease"
+        type="text" class="form-control {{ $errors->has('disease') ? ' is-invalid' : '' }}"
+        placeholder="Enfermedad"  name="disease" value="{{ old('disease') }}">
+    @if ($errors->has('disease'))
+        <span style="color: red; class="invalid-feedback" role="alert">
+            <strong>{{ $errors->first('disease') }}</strong>
+        </span>
+    @endif
+  </div>
+</div> --}}
+
+<div class="col-md-12">
+  <div class="form-group">
     <label>Diagnostico</label>
     <textarea class="form-control" name="diagnosis"
       placeholder="Diagnostico" rows = '5' required = "required"
@@ -82,7 +110,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label>Enfermedad Actual</label>
     <input id="disease"
@@ -94,7 +122,7 @@
         </span>
     @endif
   </div>
-</div>
+</div> --}}
 
 <div class="col-md-12">
   <div class="form-group">

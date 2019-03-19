@@ -3,11 +3,11 @@
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label>Numero/codigo de la cita</label>
-    
-     <input id="appointment_id"
-        type="text" class="form-control" name="appointment_id" 
-        value="{{ $consultation->appointment_id }}" disabled 
+     <input type = "hidden" id="appointment_id"
+        class="form-control" name="appointment_id" 
+        value="{{ $consultation->appointment_id }}" 
      >
+     <input type="text" class="form-control" value="{{ $consultation->appointment_id }}" disabled>
      @if ($errors->has('appointment_id'))
          <span style="color: red; class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('appointment_id') }}</strong>
@@ -16,13 +16,16 @@
   </div>
 </div>
 
+<input type = "hidden" id="date_consultation" class="form-control" name="date_consultation" 
+        value="{{ $consultation->date_consultation }}" 
+>
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label for="">Fecha de la consulta</label>
-    <input type="text" class="form-control"
-        name="date_consultation" value="{{ $consultation->date_consultation }}"  disabled
-    >
-  </div>
+    <input type="text" class="form-control" 
+      {{-- value="{{ $consultation->date_consultation }}" disabled>  --}}
+      value="{{Carbon\Carbon::parse($consultation->date_consultation)->format('Y-m-d')}}" disabled>
+    </div>
 </div>
 
 <div class="col-md-4">
@@ -59,6 +62,23 @@
 
 <div class="col-md-12">
   <div class="form-group">
+  <label for="sel1"><strong>Enfermedad</strong></label>
+    <select class="js-example-basic-single form-control" id="seldisease" name="disease_id" style="width: 100%;">
+      @foreach($diseases as $item)
+          <option 
+             value ="{{ $item->id }}"
+             @if($item->id == $consultation->disease_id) 
+                selected='selected' 
+             @endif>
+             {{ $item->name }} 
+          </option>
+      @endforeach 
+    </select>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="form-group">
     <label>Diagnostico</label>
     <textarea class="form-control" name="diagnosis" value ="{{ $consultation->diagnosis }}"
       placeholder="Diagnostico" rows = '5' required = "required" 
@@ -73,7 +93,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label>Enfermedad Actual</label>
         
@@ -86,7 +106,7 @@
         </span>
     @endif
   </div>
-</div>
+</div> --}}
 
  
 <div class="col-md-12">

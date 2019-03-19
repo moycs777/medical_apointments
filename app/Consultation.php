@@ -8,8 +8,9 @@ class Consultation extends Model
 {
     protected $fillable = [
        
-       'appointment_id','exploration_id','subpatology_id','date_consultation','reason_consultation','disease',
-       'weight','size','systolic_pressure','diastolic_pressure','status'
+       'appointment_id','exploration_id','subpatology_id','disease_id','date_consultation',
+       'disease',
+       'reason_consultation','weight','size','systolic_pressure','diastolic_pressure','status'
     ];
 
     public function appointment(){
