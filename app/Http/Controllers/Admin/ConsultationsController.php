@@ -41,9 +41,9 @@ class ConsultationsController extends Controller
             ->select('appointments.id','appointments.reason_consultation',
                      'clinical_patients.first_name', 'clinical_patients.last_name',
                      'clinical_patients.personal_history', 'clinical_patients.family_background')
-            ->where('appointments.status','=','pendiente')
-            ->where('appointments.id', '=', $id)
-            ->get();
+             ->where('appointments.id', '=', $id)
+             ->Where('appointments.status','=','pendiente')
+             ->get();
       
         return response()->json(
             $appointment->toArray()
@@ -74,7 +74,8 @@ class ConsultationsController extends Controller
             ->join('clinical_patients', 'appointments.clinical_patient_id', '=', 'clinical_patients.id')
             ->select('appointments.id','appointments.appointment_date',
                      'clinical_patients.first_name', 'clinical_patients.last_name')
-            ->where('status','=','pendiente')
+            ->Where('status','=','pendiente')
+            ->OrWhere('status','=','confirmado')
             ->get();
         if ($appointments == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion sobre citas']);

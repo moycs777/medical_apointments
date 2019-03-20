@@ -1,5 +1,6 @@
 <input type="hidden" name="url" id="url" value="{{url('')}}">
 
+
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label>Numero/codigo de la cita</label>
@@ -23,13 +24,8 @@
   <div class="form-group">
     <label for="">Fecha de la consulta</label>
     <input type="text" class="form-control" 
-      {{-- value="{{ $consultation->date_consultation }}" disabled>  --}}
-      value="{{Carbon\Carbon::parse($consultation->date_consultation)->format('Y-m-d')}}" disabled>
+       value="{{Carbon\Carbon::parse($consultation->date_consultation)->format('d-m-Y')}}" disabled>
     </div>
-</div>
-
-<div class="col-md-4">
-   <input id="x" type="hidden" name="codigo_paciente" value="{{ $appointment->clinical_patient_id }}" >
 </div>
 
 <div class="col-md-4 pr-md-1">
@@ -37,9 +33,12 @@
     <label>Nombre del paciente</label>
     <input id="clinical_patient_full_name"
         type="text" class="form-control" name="clinical_patient_id" disabled
-        value="{{ $appointment->clinical_patient->first_name . " " . $appointment->clinical_patient->last_name }}" required
+        value="{{ $appointment->clinical_patient->first_name . " " . $appointment->clinical_patient->last_name }}" 
     >
   </div>
+</div>
+<div class="col-md-4  pr-md-1">
+   <input id="x" type="hidden" name="codigo_paciente" value="{{ $appointment->clinical_patient_id }}" >
 </div>
 
 <div class="col-md-12">
