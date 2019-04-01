@@ -65,7 +65,7 @@
 
                     <li class="list-group-item">
                         <span class="icon-status status-noticket"></span>
-                        <input type="date" name="appointment_date" min="2018-01-02">
+                        <input type="date" name="appointment_date" min="2019-01-02">
                     </li>
 
                     <li>

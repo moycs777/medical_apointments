@@ -69,6 +69,10 @@ class DoctorSpecialtyController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Especialidades']);
         }
         //dd($specialties);
+        //$doctor = DoctorSpecialty::where('id', 1)->first();
+        // $user = DoctorSpecialty::find($id);
+        // $user->delete();
+        //DB::table('doctor_specialty')->where('doctor_id', '=', $id)->delete();
         return view('dashboard.doctorspecialties.create',compact('doctor','specialties'));
     }
 

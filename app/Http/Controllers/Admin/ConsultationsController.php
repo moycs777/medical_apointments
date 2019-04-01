@@ -42,9 +42,9 @@ class ConsultationsController extends Controller
                      'clinical_patients.first_name', 'clinical_patients.last_name',
                      'clinical_patients.personal_history', 'clinical_patients.family_background')
              ->where('appointments.id', '=', $id)
-             ->Where('appointments.status','=','pendiente')
+             ->Where('appointments.status','=','confirmado')
              ->get();
-      
+        //dd($appointment->all());
         return response()->json(
             $appointment->toArray()
         );
@@ -74,8 +74,7 @@ class ConsultationsController extends Controller
             ->join('clinical_patients', 'appointments.clinical_patient_id', '=', 'clinical_patients.id')
             ->select('appointments.id','appointments.appointment_date',
                      'clinical_patients.first_name', 'clinical_patients.last_name')
-            ->Where('status','=','pendiente')
-            ->OrWhere('status','=','confirmado')
+            ->Where('status','=','confirmado')
             ->get();
         if ($appointments == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion sobre citas']);
@@ -125,7 +124,7 @@ class ConsultationsController extends Controller
         $consultation->disease_id            = $request->disease_id ;
         $consultation->date_consultation     = $request->date_consultation;
         $consultation->reason_consultation   = $request->reason_consultation;
-        $consultation->diagnosis             = $request->diagnosis;
+        $consultation->current_illness       = $request->current_illness;
         $consultation->weight                =  $request->weight;
         $consultation->size                  =  $request->size;
         $consultation->systolic_pressure     =  $request->systolic_pressure;
@@ -160,6 +159,8 @@ class ConsultationsController extends Controller
     public function edit($id)
     {
         $consultation = Consultation::find($id);
+
+
         if ($consultation == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion de consultas']);
         } 
@@ -174,7 +175,7 @@ class ConsultationsController extends Controller
             return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
         } 
         
-        $subpatologies = Subpatology::orderBy('name')->get();;
+        $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
@@ -191,29 +192,20 @@ class ConsultationsController extends Controller
     
     public function update(ConsultationUpdateRequest $request, $id)
     {
-               
+        
+        dd($request->all());       
         DB::beginTransaction();
         
         try{
  
-            $weight = "00";
-            $size = "00";
-            $systolic_pressure = "00";
-            $diastolic_pressure = "00";
-            if(isset($request->weight)) $weight = $request->weight;
-            if(isset($request->size))   $size = $request->size;
-            if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
-            if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
-
             $consultation = Consultation::find($id);
             $consultation->appointment_id        = $request->nrocita;
             $consultation->exploration_id        = $request->exploration_id;
             $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->date_consultation     = $request->date_consultation;
             $consultation->reason_consultation   = $request->reason_consultation;
-            // $consultation->disease               = $request->disease;
+            $consultation->current_illness       = $request->current_illness;
             $consultation->disease_id            = $request->disease_id ;
-            $consultation->diagnosis             = $request->diagnosis;
             $consultation->weight                = $weight;
             $consultation->size                  = $size;
             $consultation->systolic_pressure     = $systolic_pressure;

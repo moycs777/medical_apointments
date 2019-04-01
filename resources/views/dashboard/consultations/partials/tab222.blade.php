@@ -1,3 +1,4 @@
+
 <div class="col-md-12">
   <div class="form-group">
     <label for="sel1"><strong>Enfermedad(diagnostico)</strong></label>
@@ -62,9 +63,4 @@
     @endif
   </div>
 </div>
-
-
-  <div class="form-group">
-    <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
-  </div>
 

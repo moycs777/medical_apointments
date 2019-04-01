@@ -72,8 +72,9 @@
                         </div>
                       </div>
 
+                      
                       <div class="row">
-                        <div class="col-md-6 pr-md-1">
+                        <div class="col-md-4 pr-md-1">
                           <div class="form-group">
                             <label>Nombre</label>
                             <input id="name" 
@@ -90,7 +91,8 @@
                             @endif
                           </div>
                         </div>
-                        <div class="col-md-6 pl-md-1">
+
+                        <div class="col-md-4 pl-md-1">
                           <div class="form-group">
                             <label>Apellido</label>
                             <input id="last_name" 
@@ -107,18 +109,13 @@
                             @endif
                           </div>
                         </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-12">
+                      
+                        <div class="col-md-4 px-md-1">
                           <div class="form-group">
                             <label>DNI</label>
-                            <input id="dni" 
-                                type="text" 
+                            <input id="dni" type="text" 
                                 class="form-control {{ $errors->has('dni') ? ' is-invalid' : '' }}"
-                                placeholder="DNI"
-                                name="dni" 
-                                value="{{ $clinicalpatient->dni }}"
+                                placeholder="DNI" name="dni" value="{{ $clinicalpatient->dni }}"
                             >
                             @if ($errors->has('dni'))
                                 <span style="color: red; class="invalid-feedback" role="alert">
@@ -167,6 +164,108 @@
 
                       <div class="row">
                         <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label><strong>Antecedentes Personales</strong></label>
+                           
+                            <textarea class="form-control" name="personal_history" 
+                              placeholder="Antecedentes personales" rows = '5'  
+                              style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
+                              solid #dddddd; padding: 10px;" id="personal_history" 
+                              >{!! $clinicalpatient->personal_history !!}
+                            </textarea>
+                            @if ($errors->has('personal_history'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('personal_history') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 pr-md-1">
+                          <div class="form-group">
+                            <label><strong>Antecedentes Familiares</strong></label>
+                            
+                            <textarea class="form-control" name="family_background" 
+                              placeholder="Antecedentes familiares" rows = '5'  
+                              style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 4px 
+                              solid #dddddd; padding: 10px;" id="family_background"
+                              >{!! $clinicalpatient->family_background !!}
+                            </textarea>
+
+                            @if ($errors->has('family_background'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('family_background') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label><strong>Peso</strong></label>
+                            <input id="weight" maxlength="10"
+                                type="text" class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
+                                placeholder="Indique el peso" name="weight" 
+                                value="{{ $clinicalpatient->weight }}">
+                            @if ($errors->has('weight'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('weight') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label><strong>Talla</strong></label>
+                            <input id="size" maxlength="10"
+                                type="text" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}"
+                                placeholder="Describa la talla" name="size" value="{{ $clinicalpatient->size }}">
+                            @if ($errors->has('size'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('size') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label><strong>Presion sistolica</strong></label>
+                            <input id="systolic_pressure" maxlength="10"
+                                type="text" 
+                                class="form-control {{ $errors->has('systolic_pressure') ? ' is-invalid' : '' }}"
+                                placeholder="Indique la presion sistolica" name="systolic_pressure" 
+                                value="{{ $clinicalpatient->systolic_pressure }}">
+                            @if ($errors->has('systolic_pressure'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('systolic_pressure') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label><strong>Presion diastolica</strong></label>
+                            <input id="diastolic_pressure" maxlength="10"
+                                type="text" 
+                                class="form-control {{ $errors->has('diastolic_pressure') ? ' is-invalid' : '' }}"
+                                placeholder="Indique la presion sistolica" name="diastolic_pressure" 
+                                value="{{ $clinicalpatient->diastolic_pressure }}">
+                            @if ($errors->has('diastolic_pressure'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('diastolic_pressure') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 pr-md-1">
                           <div class="radio-inline">
                             <label>
                                 <input type="radio" id = "optmas" name="optmas" 
@@ -190,7 +289,7 @@
                           <input type="hidden" id="genero"  name ="genero" 
                              value = "{{$clinicalpatient->gender}}">
                         </div>
-
+                        
                         <div class="col-md-6 pr-md-1">
                           <div class="form-group">
                             <label for=""><strong>Seleccione tipo de sangre</strong></label>
@@ -210,7 +309,7 @@
                           </div>
                         </div>
                       </div>
-                      <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                      <center><button type="submit" class="btn btn-fill btn-primary">Save</button></center>
                     </form>
                   </div>
                   <div class="card-footer">

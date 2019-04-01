@@ -1,3 +1,5 @@
+<input type="hidden" name="url" id="url" value="{{url('')}}">
+
 @extends('layouts.admin')
 @section('page-style')
   <style>
@@ -10,14 +12,14 @@
      .contentTabs > div {display: none; padding: 20px 25px 5px;}
      /*esta regla para los inputs produce conflicto con el select2*/
      /*input {display: none;}*/
-     label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}
+     label {display: inline-block; padding:15px 25px; font-weight: 600; text-align: center;}
      label {display: inline-block; padding:0px 25px; font-weight: 600; text-align: center;}
      label:hover {color: #1d8cf8; cursor: pointer;}
      input:checked + label {background: #1d8cf8; color: #fff;}
-     #tab11:checked ~ .contentTabs #content11,
-     #tab22:checked ~ .contentTabs #content22,
-     #tab33:checked ~ .contentTabs #content33,
-     #tab44:checked ~ .contentTabs #content44 {
+     #tab1:checked ~ .contentTabs #content1,
+     #tab2:checked ~ .contentTabs #content2,
+     #tab3:checked ~ .contentTabs #content3,
+     #tab4:checked ~ .contentTabs #content4 {
        display: block;
      }
      @media screen and (max-width: 400px) { label {padding: 15px 10px;} }
@@ -30,43 +32,48 @@
       @include('partials.admin.nav')
       <div class="content">
          <div class="row">
-            <input type="hidden" name="url" id="url" value="{{url('')}}">
-            <form method="POST" action="{{ route('consultations.update',$consultation->id) }}">
+            {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
+            <form method="POST" action="{{ route('consultations.edit',$consultation->id) }}">
               @csrf
-              {{ method_field('PUT') }}
               <div class="col-md-12">
-                <div class="main" >
-                    
-                  <input id="tab11" type="radio" name="tabs" style="display: none !important;" checked>
-                  <label for="tab11"><strong>Consulta</strong></label>
+                  <div class="main" >
+                    {{-- TabsMenu --}}
+                    {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
+                    <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
+                    <label for="tab1"><strong>Antecedentes/Consulta</strong></label>
                 
-                  <input id="tab22" type="radio" name="tabs" style="display: none !important;">
-                  <label for="tab22"><strong>Antecedentes</strong></label>
+                    {{-- <input id="tab2" type="radio" name="tabs" style="display: none !important;">
+                    <label for="tab2"><strong>Consulta</strong></label>
                 
-                  <input id="tab33" type="radio" name="tabs" style="display: none !important;">
-                  <label for="tab33"><strong>Otros</strong></label>
+                    <input id="tab3" type="radio" name="tabs" style="display: none !important;">
+                    <label for="tab3"><strong>Otros</strong></label> --}}
                     {{-- Tabs --}}
-                  <div class="contentTabs">  
-                    <div id="content11">
-                      <div class="row">
-                        @include('dashboard.consultations.partials.tab11')
-                      </div>
-                    </div>
-                    <div id="content22">
-                      <div class="row">
-                        @include('dashboard.consultations.partials.tab22')
-                      </div>
-                    </div>
-                  </div>
+                    <div class="contentTabs">  
 
-                </div>  
-              </div>   
+                      <div id="content1">
+                        <div class="row">
+                          @include('dashboard.consultations.partials.tab11')
+                        </div>
+                      </div>
+
+                      {{-- <div id="content2">
+                        <div class="row">
+                          @include('dashboard.consultations.partials.tab22')
+                        </div>
+                      </div> --}}
+                      
+                  </div>
+                {{-- <a href="https://twitter.com/moycs777?lang=es" target="_blank"></a> --}}
+              </div>     
             </form>
           </div>
       </div>
     </div>
 </div>
 @stop
+
+
+{{-- //---------------------------------------------------------------------------- --}}
 @section('page-script')
   <script type="text/javascript">
      console.log("Consulta Edit");
@@ -76,7 +83,7 @@
          $('#qwe').select2();
          $('#asd').select2();
 
-
+         //alert("Hola");
          $('#sel1').on('change',function(){
             //var n = $(this).val();
             //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();

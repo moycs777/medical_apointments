@@ -22,10 +22,10 @@ class CreateClinicalPatientsTable extends Migration
             $table->string('last_name',30);
             $table->string('address')->nullable();
             $table->string('gender',1)->default('M');
-            $table->string('weight',5)->default(00)->nullable()->comment('peso');
-            $table->string('size',5)->default(00)->nullable()->comment('talla');
-            $table->string('systolic_pressure',10)->default('A')->comment('presion sistoloica');
-            $table->string('diastolic_pressure',10)->default('A')->comment('presion diastolica');
+            $table->string('weight',5)->nullable()->comment('peso');
+            $table->string('size',5)->nullable()->comment('talla');
+            $table->string('systolic_pressure',10)->nullable()->comment('presion sistoloica');
+            $table->string('diastolic_pressure',10)->nullable()->comment('presion diastolica');
             $table->text('personal_history')->nullable();
             $table->text('family_background')->nullable();
             $table->string('bloodtype',3)->nullable();

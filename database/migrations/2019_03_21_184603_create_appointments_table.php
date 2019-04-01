@@ -38,7 +38,6 @@ class CreateAppointmentsTable extends Migration
            $table->foreign('insurance_id')->references('id')->on('insurances')
                 ->ondelete('cascade')
                 ->onupdate('cascade'); 
-
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
      .contentTabs > div {display: none; padding: 20px 25px 5px;}
      /*esta regla para los inputs produce conflicto con el select2*/
      /*input {display: none;}*/
-     label {display: inline-block; padding: 15px 25px; font-weight: 600; text-align: center;}
+     label {display: inline-block; padding:15px 25px; font-weight: 600; text-align: center;}
      label {display: inline-block; padding:0px 25px; font-weight: 600; text-align: center;}
      label:hover {color: #1d8cf8; cursor: pointer;}
      input:checked + label {background: #1d8cf8; color: #fff;}
@@ -38,10 +38,10 @@
                     {{-- TabsMenu --}}
                     {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
                     <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
-                    <label for="tab1"><strong>Consulta</strong></label>
+                    <label for="tab1"><strong>Antecedentes</strong></label>
                 
                     <input id="tab2" type="radio" name="tabs" style="display: none !important;">
-                    <label for="tab2"><strong>Antecedentes</strong></label>
+                    <label for="tab2"><strong>Consulta</strong></label>
                 
                     <input id="tab3" type="radio" name="tabs" style="display: none !important;">
                     <label for="tab3"><strong>Otros</strong></label>
@@ -68,6 +68,7 @@
     </div>
 </div>
 @stop
+
 @section('page-script')
   <script type="text/javascript">
     console.log("pacientes ");
@@ -94,6 +95,7 @@
          
          //tab 1
          $("select[name=subpatology_id]").change(function(){
+
              Mostrar_Recipe($('select[name=subpatology_id]').val());
          });
 
@@ -107,7 +109,7 @@
                 
 
         $("#appointment_id").change(function(){
-             //alert("Hola");
+            // alert("Hola");
             console.log("appointment_id :" + $('select[name=appointment_id]').val() );
             Mostrar_Paciente($('select[name=appointment_id]').val());
         });
@@ -116,6 +118,7 @@
 
             var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
             $.get(route,function(datos){
+              // ALERT("Retorno :" + JSON.stringify(datos[0]));
                 console.log("Retorno :" + JSON.stringify(datos[0]));
                 $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
                 $("#reason_consultation").val(datos[0].reason_consultation);

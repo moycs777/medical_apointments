@@ -54,14 +54,14 @@ class ClinicalPatientsController extends Controller
 
         $user->save();
 
-        $weight = "00";
-        $size = "00";
-        $systolic_pressure = "00";
-        $diastolic_pressure = "00";
-        if(isset($request->weight))  $weight = $request->weight;
-        if(isset($request->size))    $weight = $request->size;
-        if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
-        if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
+        // $weight = "00";
+        // $size = "00";
+        // $systolic_pressure = "00";
+        // $diastolic_pressure = "00";
+        // if(isset($request->weight))  $weight = $request->weight;
+        // if(isset($request->size))    $weight = $request->size;
+        // if(isset($request->systolic_pressure))   $systolic_pressure = $request->systolic_pressure;
+        // if(isset($request->diastolic_pressure))  $diastolic_pressure = $request->diastolic_pressure;
 
         $clinicalpatients = new ClinicalPatient();
 
@@ -71,12 +71,12 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->first_name         = $request->first_name;
         $clinicalpatients->last_name          = $request->last_name;
         $clinicalpatients->gender             = $request->input('genero');
-        $clinicalpatients->weight             = $weight;
-        $clinicalpatients->size               = $size;
-        $clinicalpatients->systolic_pressure  = $systolic_pressure;
-        $clinicalpatients->diastolic_pressure = $diastolic_pressure;
-        $clinicalpatients->personal_history   = 'A';
-        $clinicalpatients->family_background  = 'A';
+        $clinicalpatients->weight             = $request->weight;
+        $clinicalpatients->size               = $request->size;
+        $clinicalpatients->systolic_pressure  = $request->systolic_pressure;
+        $clinicalpatients->diastolic_pressure = $request->diastolic_pressure;
+        $clinicalpatients->personal_history   = $request->personal_history;
+        $clinicalpatients->family_background  = $request->family_background;
         $clinicalpatients->address            = $request->address;
         $clinicalpatients->bloodtype          = $request->bloodtype;
         $clinicalpatients->save();
@@ -107,7 +107,7 @@ class ClinicalPatientsController extends Controller
     {
         //dd($request->all());
         $clinicalpatients = ClinicalPatient::find($id);
-
+        //dd($clinicalpatients->all());
         $user = $clinicalpatients->user;
 
         /* $user->name = $request->name;
@@ -117,13 +117,19 @@ class ClinicalPatientsController extends Controller
 
         $user->save(); */
        
-        $clinicalpatients->dni              = $request->dni;
-        $clinicalpatients->insurance_id     = $request->insurance_id;
-        $clinicalpatients->last_name        = $request->last_name;
-        $clinicalpatients->gender           = $request->input('genero');
-        $clinicalpatients->address          = $request->address;
-        $clinicalpatients->bloodtype        = $request->bloodtype;
-        //$clinicalpatients->status           = 1;
+        $clinicalpatients->insurance_id       = $request->insurance_id; 
+        $clinicalpatients->dni                = $request->dni;
+        $clinicalpatients->first_name         = $request->first_name;
+        $clinicalpatients->last_name          = $request->last_name;
+        $clinicalpatients->gender             = $request->input('genero');
+        $clinicalpatients->weight             = $request->weight;
+        $clinicalpatients->size               = $request->size;
+        $clinicalpatients->systolic_pressure  = $request->systolic_pressure;
+        $clinicalpatients->diastolic_pressure = $request->diastolic_pressure;
+        $clinicalpatients->personal_history   = $request->personal_history;
+        $clinicalpatients->family_background  = $request->family_background;
+        $clinicalpatients->address            = $request->address;
+        $clinicalpatients->bloodtype          = $request->bloodtype;
 
         $clinicalpatients->save();
 

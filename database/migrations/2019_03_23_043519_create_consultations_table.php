@@ -21,7 +21,7 @@ class CreateConsultationsTable extends Migration
             $table->integer('disease_id')->unsigned()->comment('Codigo de la enfermedad');
             $table->timestamp('date_consultation');
             $table->string('reason_consultation',200)->comment('fecha de la consulta');
-            $table->text('diagnosis')->comment('Diagnostico');
+            $table->string('current_illness',200)->comment('enfermedad actual');
             $table->string('weight',10)->nullable()->comment('peso');
             $table->string('size',10)->nullable()->comment('talla');
             $table->string('systolic_pressure',10)->nullable()->comment('presion sistoloica');

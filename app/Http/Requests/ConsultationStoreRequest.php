@@ -22,7 +22,7 @@ class ConsultationStoreRequest extends FormRequest
             'disease_id'          => 'required|integer', 
             'date_consultation'   => 'required|date', 
             'reason_consultation' => 'required|max:200', 
-            'diagnosis'           => 'required', 
+            'current_illness'     => 'required|max:200', 
             'weigth'              => 'max:10', 
             'size'                => 'max:10', 
             'systolic_pressure'   => 'max:10',

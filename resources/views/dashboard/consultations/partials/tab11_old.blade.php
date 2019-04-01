@@ -1,4 +1,6 @@
-<input type="hidden" name="url" id="url" value="{{url('')}}">
+
+
+{{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
 
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
@@ -90,26 +92,66 @@
   </div>
 </div>
 
-
-<div class="col-md-12">
-  <div class="form-group">
-    <label>Diagnostico</label>
-    <textarea class="form-control" name="diagnosis" value ="{{ $consultation->diagnosis }}"
-      placeholder="Diagnostico" rows = '5' required = "required" 
-      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;"
-      id="diagnosis" >{!! $consultation->diagnosis !!}
-    </textarea>
-    @if ($errors->has('diagnosis'))
-        <span style="color: red; class="invalid-feedback" role="alert">
-            <strong>{{ $errors->first('diagnosis') }}</strong>
-        </span>
-    @endif
-  </div>
-</div>
-
 <input type = "hidden" name = "status" value = "{{ $consultation->status }}">
 <input type = "hidden" name = "nrocita" value = "{{ $consultation->appointment_id }}">
 
-<div class="form-group">
-   <button type="submit" id = "salvar" class="btn btn-primary">Guardar</button>
-</div>
+@section('page-script')
+  <script type="text/javascript">
+    console.log("pacientes ");
+     $(document).ready(function() {  
+        
+         var a = new Array();
+         var i = 0;
+         var aa = '';
+         $('.js-example-basic-single').select2();
+               
+         $('#qwe').select2();
+         $('#asd').select2();
+         $('#appointment_id').select2();
+         $('#seldisease').select2();
+
+         
+         $('#sel1').on('change',function(){
+            //var n = $(this).val();
+            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
+            var optionText = $("#sel1 option:selected").text();
+            var id = $("#sel1 option:selected").val();
+         });
+
+         
+         //tab 1
+         $("select[name=subpatology_id]").change(function(){
+             Mostrar_Recipe($('select[name=subpatology_id]').val());
+         });
+
+         function Mostrar_Recipe(pid){
+           var route = $('#url').val()+'/office/consultations_mostrar_recipe/' + pid;
+           $.get(route,function(res){
+              $("#recipe").val($.trim(res.recipe));
+              $("#prescription").val($.trim(res.prescription));
+           });
+         }
+                
+
+        $("#appointment_id").change(function(){
+             //alert("Hola");
+            console.log("appointment_id :" + $('select[name=appointment_id]').val() );
+            Mostrar_Paciente($('select[name=appointment_id]').val());
+        });
+
+        function Mostrar_Paciente(pid){
+
+            var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
+            $.get(route,function(datos){
+                console.log("Retorno :" + JSON.stringify(datos[0]));
+                $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
+                $("#reason_consultation").val(datos[0].reason_consultation);
+                $("#personal_history").val(datos[0].personal_history);
+                $("#family_background").val(datos[0].family_background);
+            });
+        }
+
+        
+    }); 
+  </script>
+@stop
