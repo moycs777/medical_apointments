@@ -25,6 +25,7 @@
      @media screen and (max-width: 400px) { label {padding: 15px 10px;} }
   </style>
 @stop
+
 @section('content')
 <div class="wrapper">
     <div class="main-panel">
@@ -32,21 +33,22 @@
       @include('partials.admin.nav')
       <div class="content">
          <div class="row">
-            {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
-            <form method="POST" action="{{ route('consultations.edit',$consultation->id) }}">
+            <input type="hidden" name="url" id="url" value="{{url('')}}"> 
+            <form method="POST" action="{{ route('consultations.update',$consultation->id) }}">
               @csrf
+              {{ method_field('PUT') }}
               <div class="col-md-12">
                   <div class="main" >
                     {{-- TabsMenu --}}
-                    {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
+                   
                     <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
-                    <label for="tab1"><strong>Antecedentes/Consulta</strong></label>
+                    <label for="tab1"><strong>Antecedentes</strong></label>
                 
-                    {{-- <input id="tab2" type="radio" name="tabs" style="display: none !important;">
+                    <input id="tab2" type="radio" name="tabs" style="display: none !important;">
                     <label for="tab2"><strong>Consulta</strong></label>
                 
                     <input id="tab3" type="radio" name="tabs" style="display: none !important;">
-                    <label for="tab3"><strong>Otros</strong></label> --}}
+                    <label for="tab3"><strong>Otros</strong></label>
                     {{-- Tabs --}}
                     <div class="contentTabs">  
 
@@ -56,11 +58,11 @@
                         </div>
                       </div>
 
-                      {{-- <div id="content2">
+                      <div id="content2">
                         <div class="row">
                           @include('dashboard.consultations.partials.tab22')
                         </div>
-                      </div> --}}
+                      </div>
                       
                   </div>
                 {{-- <a href="https://twitter.com/moycs777?lang=es" target="_blank"></a> --}}
@@ -71,7 +73,6 @@
     </div>
 </div>
 @stop
-
 
 {{-- //---------------------------------------------------------------------------- --}}
 @section('page-script')

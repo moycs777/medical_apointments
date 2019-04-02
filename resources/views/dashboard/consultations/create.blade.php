@@ -36,7 +36,6 @@
               <div class="col-md-12">
                   <div class="main" >
                     {{-- TabsMenu --}}
-                    {{-- <input type="hidden" name="url" id="url" value="{{url('')}}"> --}}
                     <input id="tab1" type="radio" name="tabs" style="display: none !important;" checked>
                     <label for="tab1"><strong>Antecedentes</strong></label>
                 

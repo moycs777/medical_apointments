@@ -125,10 +125,10 @@ class ConsultationsController extends Controller
         $consultation->date_consultation     = $request->date_consultation;
         $consultation->reason_consultation   = $request->reason_consultation;
         $consultation->current_illness       = $request->current_illness;
-        $consultation->weight                =  $request->weight;
-        $consultation->size                  =  $request->size;
-        $consultation->systolic_pressure     =  $request->systolic_pressure;
-        $consultation->diastolic_pressure    =  $request->diastolic_pressure;
+        $consultation->weight                = $request->weight;
+        $consultation->size                  = $request->size;
+        $consultation->systolic_pressure     = $request->systolic_pressure;
+        $consultation->diastolic_pressure    = $request->diastolic_pressure;
         $consultation->status                = "atendido";
         
         $consultation->save();
@@ -185,7 +185,8 @@ class ConsultationsController extends Controller
           return Redirect::back()->withErrors(['Error', 'Enfermedades no registradas']);
         }
         
-        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations','subpatologies','diseases'));
+        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations',
+            'subpatologies','diseases'));
 
     }
 
@@ -193,23 +194,24 @@ class ConsultationsController extends Controller
     public function update(ConsultationUpdateRequest $request, $id)
     {
         
-        dd($request->all());       
+        //dd($request->all());       
         DB::beginTransaction();
         
         try{
  
             $consultation = Consultation::find($id);
+            
             $consultation->appointment_id        = $request->nrocita;
             $consultation->exploration_id        = $request->exploration_id;
             $consultation->subpatology_id        = $request->subpatology_id;
+            $consultation->disease_id            = $request->disease_id;
             $consultation->date_consultation     = $request->date_consultation;
             $consultation->reason_consultation   = $request->reason_consultation;
             $consultation->current_illness       = $request->current_illness;
-            $consultation->disease_id            = $request->disease_id ;
-            $consultation->weight                = $weight;
-            $consultation->size                  = $size;
-            $consultation->systolic_pressure     = $systolic_pressure;
-            $consultation->diastolic_pressure    = $diastolic_pressure;
+            $consultation->weight                = $request->weight;
+            $consultation->size                  = $request->size;
+            $consultation->systolic_pressure     = $request->systolic_pressure;
+            $consultation->diastolic_pressure    = $request->diastolic_pressure;
             $consultation->status                = $request->status;
             $consultation->save();
 
@@ -217,13 +219,17 @@ class ConsultationsController extends Controller
            $clinicalpatient = ClinicalPatient::find($request->codigo_paciente);
            if($clinicalpatient == null){
               DB::rollback();
-
-              //throw new Exception("Transaccion cancelada", 1);
               return Redirect::back()->withErrors(['Error', 'Transaccion cancelada...']);
            }
 
-           $clinicalpatient->personal_history   = $request->personal_history;
-           $clinicalpatient->family_background  = $request->family_background;
+           if($request->personal_history != null) {
+             $clinicalpatient->personal_history   = $request->personal_history;
+           }
+
+           if( $request->family_background != null) {
+               $clinicalpatient->family_background  = $request->family_background;
+           }
+
            $clinicalpatient->save();
 
           

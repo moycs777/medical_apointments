@@ -24,9 +24,10 @@ class CreateConsultationsTable extends Migration
             $table->string('current_illness',200)->comment('enfermedad actual');
             $table->string('weight',10)->nullable()->comment('peso');
             $table->string('size',10)->nullable()->comment('talla');
-            $table->string('systolic_pressure',10)->nullable()->comment('presion sistoloica');
+            $table->string('systolic_pressure',10)->nullable()->comment('presion sistolica');
             $table->string('diastolic_pressure',10)->nullable()->comment('presion diastolica');
             $table->string('status');
+            
             $table->foreign('appointment_id')->references('id')->on('appointments')
                   ->ondelete('cascade')
                   ->onupdate('cascade');  
