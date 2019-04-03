@@ -76,7 +76,7 @@ class AppointmentsController extends Controller
     {
         
         $patient = ClinicalPatient::where('user_id', Auth::user()->id)->first();
-        dd(Auth::user()->id);
+        //dd(Auth::user()->id);
         $appoints = new Appointment();
         $appoints->clinical_patient_id = $patient->id;
         $appoints->doctor_id = $request->doctor_id;
