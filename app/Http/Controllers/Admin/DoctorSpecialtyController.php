@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\DoctorSpecialty;
 use App\Doctor;
 use App\Specialty;
@@ -40,13 +42,24 @@ class DoctorSpecialtyController extends Controller
     
     public function store(Request $request)
     {
-        
-        $doctor = Doctor::find($request->doctor_id); 
+       
 
-        $doctor->specialities()->sync($request->specialities_ids);  
+       $doctor = Doctor::find($request->doctor_id); 
 
-        //return redirect()->route('doctorspecialties.index');
-        return redirect()->route('doctorspecialties.index')->with('info','Informacion actualizada');
+       //Verifica si el doctor y especialidad ya esta registrado en alguna cita
+       $doc_esp_citas = DB::table('appointments')
+            ->join('doctor_specialty', 'appointments.doctor_specialty_id', '=', 'doctor_specialty.id')
+            ->where('appointments.doctor_id', '=', $doctor->id)
+            ->get();
+
+       if(count($doc_esp_citas) > 0){
+         return redirect()->route('doctorspecialties.index')->with('info','Debe de modificar la especialidad por el modulo de CITAS');
+       }
+       //--------------------------------------------------------------------
+
+       $doctor->specialities()->sync($request->specialities_ids); 
+       
+       return redirect()->route('doctorspecialties.index')->with('info','Informacion actualizada');
         
     }
 

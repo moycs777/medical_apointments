@@ -50,6 +50,10 @@ class Handler extends ExceptionHandler
          // if ($exception->getStatusCode() == 23000) {
          //    return response()->view('errors.404', [], 23000);
          // }
+        if ($exception instanceof CustomException) {
+           return response()->view('errors.custom', [], 500);
+        }
+ 
         return parent::render($request, $exception);
     }
 }

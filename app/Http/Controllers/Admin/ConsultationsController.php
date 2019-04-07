@@ -44,7 +44,6 @@ class ConsultationsController extends Controller
              ->where('appointments.id', '=', $id)
              ->Where('appointments.status','=','confirmado')
              ->get();
-        //dd($appointment->all());
         return response()->json(
             $appointment->toArray()
         );
