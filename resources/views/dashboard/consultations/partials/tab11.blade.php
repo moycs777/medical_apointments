@@ -167,7 +167,6 @@
   </div>
 </div>
 
-
 <div class="col-md-12">
   <div class="form-group">
     <label for="sel1"><strong>Exploracion</strong></label>
