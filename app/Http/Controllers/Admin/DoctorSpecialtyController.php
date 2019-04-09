@@ -43,7 +43,6 @@ class DoctorSpecialtyController extends Controller
     public function store(Request $request)
     {
        
-
        $doctor = Doctor::find($request->doctor_id); 
 
        //Verifica si el doctor y especialidad ya esta registrado en alguna cita
