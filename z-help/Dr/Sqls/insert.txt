@@ -4,11 +4,11 @@ truncate medical_appointments.classfications;
 insert into medical_apointments.classifications select codigo,nombre,oms,particular,NOW(),NOW() from dbscr.clasificacion;
 
 truncate medical_appointments.subclassifications;
-insert into medical_apointments.subclassifications 
+insert into medical_appointments.subclassifications 
    select codigo,clasificacion,nombre,NOW(),NOW() from dbscr.subclasificacion;
 
 truncate medical_appointments.specialties;
-insert into medical_apointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from dbscr.especialidad;
+insert into medical_appointments.specialties select codigo,nombre,estado,costo,NOW(),NOW() from dbscr.especialidad;
 
 truncate medical_appointments.diseases;
 insert into medical_appointments.diseases SELECT id,Subclasificacion,codigo,Nombre,Simbolo,NOW(),NOW() from dbscr.enfermedad
@@ -18,7 +18,7 @@ insert into pathologies
 select codigo,Especialidad,nombre,Estado,now(),NOW() from dbscr.receta_patologia
 
 truncate medical_appointments.subpatologies
-insert into medical_apointments.subpatologies 
+insert into medical_appointments.subpatologies 
 select codigo,receta_patologia,nombre,Receta,Prescripcion,Estado,NOW(),NOW() from dbscr.receta_subpatologia
 
 truncate medical_appointments.explorations

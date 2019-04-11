@@ -1,3 +1,5 @@
+Exportando tabla
+----------------
 mysqldump  -h localhost -u root -p medical_appointments diseases > diseases.sql
 mysql -h localhost -u root -p medical_appointments < diseases.sql
 
@@ -26,3 +28,11 @@ select codigo,Especialidad,nombre,Estado,now(),NOW() from dbscr.receta_patologia
 truncate medical_apointments.subpatologies
 insert into medical_apointments.subpatologies 
 select codigo,receta_patologia,nombre,Receta,Prescripcion,Estado,NOW(),NOW() from dbscr.receta_subpatologia
+
+Importando Tabla version 5.7
+---------------------------
+mysql -h localhost -u root -p
+
+mysql>use medical_appointments
+mysql>-u root -p medical_appointments
+mysql>source /var/www/laravel/database/insurances.sql

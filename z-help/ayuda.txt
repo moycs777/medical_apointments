@@ -6,11 +6,11 @@ mysql -h localhost -u root -p medical_appointments < database/sql/exportacion.sq
 
 ----------------------------------------------------------------------
 
+mysql -h localhost -u root -p medical_appointments < occupations.sql
 mysql -h localhost -u root -p medical_appointments < subclasifications.sql
 mysql -h localhost -u root -p medical_appointments < diseases.sql
 mysql -h localhost -u root -p medical_appointments < explorations.sql
 mysql -h localhost -u root -p medical_appointments < insurances.sql
-mysql -h localhost -u root -p medical_appointments < ocupations.sql
 mysql -h localhost -u root -p medical_appointments < occupations.sql
 mysql -h localhost -u root -p medical_appointments < pathologies.sql
 mysql -h localhost -u root -p medical_appointments < specialties.sql
@@ -34,3 +34,4 @@ https://bootsnipp.com/snippets/featured/responsive-moving-box-carousel
 -------------------------------------------------
 cd xampp\bin
 mysqldump -h 127.0.0.1 -u root -p medical_appointments insurances > insurances.sql
+ 

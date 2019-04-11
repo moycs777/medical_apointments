@@ -1,7 +1,7 @@
 truncate medical_appointments.occupations;
 insert into medical_appointments.occupations select codigo,nombre,NOW(),NOW() from dbscr.ocupacion;
 
-truncate medical_appointments.classfications;
+truncate medical_appointments.classifications;
 insert into medical_appointments.classifications select codigo,nombre,oms,particular,NOW(),NOW() from dbscr.clasificacion;
 
 truncate medical_appointments.subclassifications;
