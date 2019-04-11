@@ -25,5 +25,6 @@
 <meta name="msapplication-TileImage" content="{{ asset('web/img/favicon/mstile-144x144.png') }}">
 <meta name="msapplication-config" content="{{ asset('web/img/favicon/browserconfig.xml') }}">
 <meta name="theme-color" content="#663fb5">
-<link rel="stylesheet" href="{{ asset('web/css/landio.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('web/css/landio.css') }}"> --}}
+<link rel="stylesheet" href="web/css/landio.css">
 
