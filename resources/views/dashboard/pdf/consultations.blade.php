@@ -11,13 +11,14 @@
             <div class="row">
                 <div class="col-xs-12">
                     <center>
-                        <h4></h4>
-                        <h4></h4> 
-                        <h4></h4> 
-                        <h4></h4> 
-                        <h4></h4> 
+                        <h4>                  </h4>
+                        <h4>                  </h4> 
+                        <h4>                  </h4> 
+                        <h4>                  </h4> 
+                        <h4>                  </h4> 
                     </center>
-                    
+
+                    {{-- SetMargins(float left, float top [, float right]) --}}
                     <table class="table table-hover table-striped">
                         <thead>
                         </thead>
