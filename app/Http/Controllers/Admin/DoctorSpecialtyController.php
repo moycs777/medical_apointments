@@ -13,17 +13,17 @@ use App\Specialty;
 
 class DoctorSpecialtyController extends Controller
 {
-    
+
     public function index()
     {
         $doctorspecialties = DoctorSpecialty::orderBy('id')->paginate();
 
         $doctors = Doctor::paginate();
-       
+
         return view('dashboard.doctorspecialties.index',compact('doctorspecialties', 'doctors'));
     }
 
-    
+
     public function create()
     {
         $doctor = Doctor::where('id', 1)->first();
@@ -35,18 +35,17 @@ class DoctorSpecialtyController extends Controller
 
         $specialties = Specialty::orderBy('name')->get();
         if ($specialties == null) {
-            return redirect()->route('doctorspecialties.index')
-                             ->withErrors(['Error', 'No existe informacion sobre Especialidades']);
+            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Especialidades']);
         }
         //dd($specialties);
         return view('dashboard.doctorspecialties.create',compact('doctor','specialties'));
     }
 
-    
+
     public function store(Request $request)
     {
-       
-       $doctor = Doctor::find($request->doctor_id); 
+
+       $doctor = Doctor::find($request->doctor_id);
 
        //Verifica si el doctor y especialidad ya esta registrado en alguna cita
        $doc_esp_citas = DB::table('appointments')
@@ -59,16 +58,16 @@ class DoctorSpecialtyController extends Controller
        }
        //--------------------------------------------------------------------
 
-       $doctor->specialities()->sync($request->specialities_ids); 
-       
+       $doctor->specialities()->sync($request->specialities_ids);
+
        return redirect()->route('doctorspecialties.index')->with('info','Informacion actualizada');
-        
+
     }
 
-   
+
     public function show($id)
     {
-        
+
     }
 
     public function edit($id)
@@ -78,7 +77,7 @@ class DoctorSpecialtyController extends Controller
         if ($doctor == null) {
            //return redirect()->route('doctorspecialties.index')->with('Error','Doctor no registrado');
            return redirect()->route('doctorspecialties.index')->withErrors(['Error', 'Doctor no registrado']);
-           
+
         }
 
         $specialties = Specialty::orderBy('name')->get();
@@ -93,13 +92,13 @@ class DoctorSpecialtyController extends Controller
         return view('dashboard.doctorspecialties.create',compact('doctor','specialties'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         //
     }
 
-   
+
     public function destroy($id)
     {
         //
