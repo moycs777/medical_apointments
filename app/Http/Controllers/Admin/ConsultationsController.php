@@ -24,7 +24,8 @@ class ConsultationsController extends Controller
         
         $subpatology = Subpatology::where('id', $id)->first();
         if ($subpatology == null) {
-            return Redirect::back()->withErrors(['Error', 'Subpatologia no registrada']);
+            return redirect()->route('consultations.index')
+                             ->withErrors(['Error', 'Subpatologia no registrada']);
         }
        
         return response()->json(
@@ -95,7 +96,7 @@ class ConsultationsController extends Controller
 
         $diseases = Disease::where('subclassification_id','230')->get();
         if($diseases == null){
-          return Redirect()-route('consultations.index')->withErrors(['Error', 'Enfermedades no registradas']);
+          return Redirect()->route('consultations.index')->withErrors(['Error', 'Enfermedades no registradas']);
         }
 
         return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments','diseases'));
@@ -135,7 +136,7 @@ class ConsultationsController extends Controller
         //**** Actualizar status de la cita del paciente***
         $appointment = Appointment::find($request->appointment_id);
         if ($appointment == null) {
-            return Redirect::back()->withErrors(['Error', 'informacion no encontrada...']);
+            return redirect()->route('consultations.index')->withErrors(['Error', 'informacion no encontrada...']);
         }
         $appointment->status = 'atendido';
         $appointment->save();
@@ -144,7 +145,8 @@ class ConsultationsController extends Controller
         //Actualizar recipe e indicaciones
         $subpatology = Subpatology::find($request->subpatology_id);
         if ($subpatology == null) {
-            return Redirect::back()->withErrors(['Error', 'Subpatologia no sera actualizada...']);
+            return redirect()->route('consultations.index')
+                             ->withErrors(['Error', 'Subpatologia no sera actualizada...']);
         }
         $subpatology->recipe       = $request->recipe;
         $subpatology->prescription = $request->prescription;
@@ -161,27 +163,32 @@ class ConsultationsController extends Controller
 
 
         if ($consultation == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de consultas']);
+            return redirect()->route('consultations.index')
+                             ->withErrors(['Error', 'No existe informacion de consultas']);
         } 
 
         $appointment = Appointment::find($consultation->appointment_id);
         if ($appointment == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de citas']);
+            return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'No existe informacion de citas']);
         } 
 
         $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
         if ($explorations == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
+            return redirect()->route('consultations.index')
+                             ->withErrors(['Error', 'No existe informacion de exploraciones']);
         } 
         
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
+            return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
 
         $diseases = Disease::where('subclassification_id','230')->get();
         if($diseases == null){
-          return Redirect::back()->withErrors(['Error', 'Enfermedades no registradas']);
+          return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'Enfermedades no registradas']);
         }
         
         return view('dashboard.consultations.edit',compact('consultation','appointment','explorations',

@@ -24,7 +24,8 @@ class DiseasesController extends Controller
     {
         $subclassifications = Subclassification::all();
         if($subclassifications == null){
-          return Redirect::back()->withErrors(['Error', 'Subclasificacion no registrada']);
+          return redirect()->route('diseases.index')
+                           ->withErrors(['Error', 'Subclasificacion no registrada']);
         }
 
         return view('dashboard.diseases.create',compact('subclassifications'));

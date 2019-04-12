@@ -25,7 +25,7 @@ class MedicalSchedulesController extends Controller
         
         $doctor = Doctor::where('id', $id)->first();
         if ($doctor == null) {
-            return Redirect::back()
+            return redirect()->route('medical_schedules.index')
                   ->withErrors(['Error', 'No existen medicos registrados']);
         }
        

@@ -35,7 +35,8 @@ class DoctorSpecialtyController extends Controller
 
         $specialties = Specialty::orderBy('name')->get();
         if ($specialties == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Especialidades']);
+            return redirect()->route('doctorspecialties.index')
+                             ->withErrors(['Error', 'No existe informacion sobre Especialidades']);
         }
         //dd($specialties);
         return view('dashboard.doctorspecialties.create',compact('doctor','specialties'));

@@ -40,7 +40,8 @@ class AppointmentsController extends Controller
         
         $patients = ClinicalPatient::all();
         if($patients == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre pacientes no registrada']);
+           return redirec()->route('appointments.index')
+                           ->withErrors(['Error', 'Informacion sobre pacientes no registrada']);
         }
 
         $doctorspecialty = DB::table('doctor_specialty')
