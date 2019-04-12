@@ -28,12 +28,8 @@ class PdfController extends Controller
             ->setPaper('a4', 'landscape');
         //return $consult->appointment->clinical_patient;
         return $pdf->download(
-            'Recipe de '
-            .$consult->appointment->clinical_patient->first_name
-            .' '
-            .$consult->appointment->clinical_patient->last_name 
-            . ' , fecha: '
-            . $consult->appointment->created_at
+            'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
+            .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
             .'.pdf');
     }
 }

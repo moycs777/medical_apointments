@@ -33,7 +33,7 @@ class ExplorationsController extends Controller
          Exploration::create($request->all());
 
          return redirect()->route('explorations.index')
-            ->with('info','Transaccion exitosa...');
+                          ->with('info','Transaccion exitosa...');
     }
 
     public function edit($id)
@@ -42,13 +42,15 @@ class ExplorationsController extends Controller
         $specialties  = Specialty::where('status','=',1)->get(); 
         if (is_null($specialties))
            //return response('Especialidades no encontradas...', 404)
-           return Redirect::back()->withErrors(['Error', 'Especialidades no encontradas']);
+           return redirect()->route('explorations.index')
+                            ->withErrors(['Error', 'Especialidades no encontradas']);
         
         //dd($specialties);    
         $exploration = Exploration::find($id);
         if (is_null( $exploration))
            //return response('Informacion no encontrada', 404);
-           return Redirect::back()->withErrors(['Error', 'Exploracion no encontrada']);
+           return redirect()->route('explorations.index')
+                            ->withErrors(['Error', 'Exploracion no encontrada']);
 
         return view('dashboard.explorations.edit',compact('exploration','specialties'));
     }

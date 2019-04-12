@@ -75,8 +75,9 @@ class ConsultationsController extends Controller
                      'clinical_patients.first_name', 'clinical_patients.last_name')
             ->Where('status','=','confirmado')
             ->get();
+
         if ($appointments == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre citas']);
+            return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion sobre citas']);
         }
 
         $explorations = Exploration::where('specialty_id','9')
@@ -84,21 +85,20 @@ class ConsultationsController extends Controller
                         ->get();
 
         if ($explorations == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de exploraciones']);
+            return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de exploraciones']);
         }
         
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion de subpatologias']);
+            return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
 
         $diseases = Disease::where('subclassification_id','230')->get();
         if($diseases == null){
-          return Redirect::back()->withErrors(['Error', 'Enfermedades no registradas']);
+          return Redirect()-route('consultations.index')->withErrors(['Error', 'Enfermedades no registradas']);
         }
 
-        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments',
-                    'diseases'));
+        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments','diseases'));
     }
 
     

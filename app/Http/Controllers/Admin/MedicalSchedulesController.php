@@ -25,7 +25,8 @@ class MedicalSchedulesController extends Controller
         
         $doctor = Doctor::where('id', $id)->first();
         if ($doctor == null) {
-            return Redirect::back()->withErrors(['Error', 'No existen medicos registrados']);
+            return Redirect::back()
+                  ->withErrors(['Error', 'No existen medicos registrados']);
         }
        
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)
@@ -43,7 +44,8 @@ class MedicalSchedulesController extends Controller
        
         $doctor = Doctor::where('admin_id', Auth::user()->id)->first();
         if ($doctor == null) {
-            return Redirect::back()->withErrors(['Error', 'Debe de loguearse con el perfil de medico']);
+            return redirect()->route('medical_schedules.index')
+                    ->withErrors(['Error', 'Debe de loguearse con el perfil de medico']);
         }
 
         $medical_schedules = MedicalSchedule::where('doctor_id', $doctor->id)

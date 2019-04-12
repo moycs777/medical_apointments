@@ -33,10 +33,11 @@ class AppointmentsController extends Controller
     public function create()
     {
         $doctors = Doctor::where('status',1)->get();
-        if($doctors == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre doctores no registrada']);
+        
+        if(count($doctors) == 0){
+           return redirect()->route('appointments.index')->withErrors(['Error', 'Informacion sobre doctores no registrada']);
         }
-
+        
         $patients = ClinicalPatient::all();
         if($patients == null){
            return Redirect::back()->withErrors(['Error', 'Informacion sobre pacientes no registrada']);
@@ -57,7 +58,8 @@ class AppointmentsController extends Controller
 
         $insurances = Insurance::all();
         if($insurances == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre seguros no registrada']);
+           return redirect()->route('appointments.index')
+                            ->withErrors(['Error', 'Informacion sobre seguros no registrada']);
         }
 
         return view('dashboard.appointments.create',compact('doctors','patients','doctorspecialty','insurances'));
@@ -92,8 +94,7 @@ class AppointmentsController extends Controller
          
         Appointment::create($request->all());
         
-        return redirect()->route('appointments.index')
-          ->with('info','Informacion actualizada');
+        return redirect()->route('appointments.index')->with('info','Informacion actualizada');
     }
 
     
@@ -117,12 +118,14 @@ class AppointmentsController extends Controller
             ->get();
 
         if($doctorspecialty == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
+           return Redirect()->route('appointments.index')
+                            ->withErrors(['Error', 'Informacion sobre especialidades de doctores no registrada']);
         }
         
         $insurances = Insurance::all();
         if($insurances == null){
-           return Redirect::back()->withErrors(['Error', 'Informacion sobre seguros no registrada']);
+           return redirect()->route('appointments.index')
+                            ->withErrors(['Error', 'Informacion sobre seguros no registrada']);
         }
 
         return view('dashboard.appointments.edit',compact('appointment','doctors','doctorspecialty','insurances'));

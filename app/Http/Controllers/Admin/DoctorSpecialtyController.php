@@ -10,6 +10,7 @@ use App\DoctorSpecialty;
 use App\Doctor;
 use App\Specialty;
 
+
 class DoctorSpecialtyController extends Controller
 {
     
@@ -28,7 +29,8 @@ class DoctorSpecialtyController extends Controller
         $doctor = Doctor::where('id', 1)->first();
         //$doctors = Doctor::orderBy('last_name')->get();
         if ($doctor == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Doctores']);
+            //return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Doctores']);
+            return redirect()->route('dashboard.doctorspecialties.index')->with('info','Doctor no registrado');
         }
 
         $specialties = Specialty::orderBy('name')->get();
@@ -73,12 +75,14 @@ class DoctorSpecialtyController extends Controller
         $doctor = Doctor::where('id', 1)->first();
         //$doctors = Doctor::orderBy('last_name')->get();
         if ($doctor == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Doctores']);
+           //return redirect()->route('doctorspecialties.index')->with('Error','Doctor no registrado');
+           return redirect()->route('doctorspecialties.index')->withErrors(['Error', 'Doctor no registrado']);
+           
         }
 
         $specialties = Specialty::orderBy('name')->get();
         if ($specialties == null) {
-            return Redirect::back()->withErrors(['Error', 'No existe informacion sobre Especialidades']);
+           return redirect()->route('doctorspecialties.index')->withErrors(['Error', 'No existe informacion sobre Especialidades']);
         }
         //dd($specialties);
         //$doctor = DoctorSpecialty::where('id', 1)->first();
