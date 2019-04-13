@@ -3,13 +3,15 @@
 <div class="col-md-4 pr-md-1">
   <div class="form-group">
     <label>Numero/codigo de la cita</label>
-    <select class="js-example-basic-single form-control" id="appointment_id" name="appointment_id">
-        <option value="0">seleccione</option>
-        @foreach($appointments as $item)
-           <option value ="{{ $item->id }}">
-              {{ $item->id . "              " . $item->first_name ." " . $item->last_name }}
-           </option>
-        @endforeach
+    <select class="js-example-basic-single form-control" id="appointment_id" 
+        name="appointment_id" value ="{{old('appointment_id')}}"
+    >
+    <option value="">seleccione</option>
+    @foreach($appointments as $item)
+       <option value ="{{ $item->id }}"> 
+          {{ $item->id . " " . $item->first_name ." " . $item->last_name }}
+       </option>
+    @endforeach
     </select>
   </div>
 </div>
@@ -20,9 +22,8 @@
     <input id="date_consultation"
         type="text"
         class="form-control {{ $errors->has('date_consultation') ? ' is-invalid' : '' }}"
-        placeholder="Fecha de la consulta"
-        name="date_consultation"
-        value="@php echo date("Y-m-d") @endphp" required = "require" readonly
+        placeholder="Fecha de la consulta" name="date_consultation"
+        value="@php echo date("Y-m-d") @endphp" required readonly
     >
     @if ($errors->has('date_consultation'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -39,7 +40,7 @@
         type="text"
         class="form-control {{ $errors->has('clinical_patient_id') ? ' is-invalid' : '' }}"
         placeholder="" name="clinical_patient_id" disabled 
-        value="{{ old('clinical_patient_id') }}" required
+        value="{{old('clinical_patient_id')}}" required
         >
     @if ($errors->has('clinical_patient_id'))
         <span style="color: red; class="invalid-feedback" role="alert">
@@ -178,7 +179,7 @@
   <div class="form-group">
     <label>Exploracion</label>
     <select class="form-control" id="asd" name="exploration_id">
-      <option value="0">Seleccione</option>
+      <option value="">Seleccione</option>
          @foreach($explorations as $item)
            <option value ="{{ $item->id }}">
               {{ $item->name }}
@@ -187,6 +188,7 @@
      </select>
   </div>
 </div>
+
 
 {{-- @section('page-script')
   <script type="text/javascript">

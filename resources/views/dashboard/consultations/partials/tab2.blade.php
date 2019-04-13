@@ -2,14 +2,19 @@
 <div class="col-md-12">
   <div class="form-group">
     <label for="sel22"><strong>Seleccione enfermedad (diagnostico)</strong></label>
-      <select class="js-example-basic-single form-control" id="seldisease" name="disease_id" style="width: 100%;">
-        <option value="0">Seleccione</option>
-        @foreach($diseases as $item)
-           <option value ="{{ $item->id }}">
-              {{  $item->name }}
-           </option>
-        @endforeach 
-      </select>
+    <select class="form-control js-example-basic-single" id="seldisease" name="disease_id" style="width: 100%;">
+      <option value="">Seleccione</option>
+         @php $i = 0; @endphp
+         @foreach ($diseases->chunk(100) as $chunk)
+
+            @foreach ($chunk as $dis)
+               @php $i++; @endphp
+              <option value ="{{ $dis->id }}">
+                 {{ $i }} : {{ $dis->name }}
+              </option>
+            @endforeach
+          @endforeach
+     </select>
   </div>
 </div>
 
@@ -17,7 +22,7 @@
   <div class="form-group">
     <label for="sel22"><strong>Seleccione tratamiento</strong></label>
       <select class="js-example-basic-single form-control" id="sel22" name="subpatology_id" style="width: 100%;">
-        <option value="0">Seleccione</option>
+        <option value="">Seleccione</option>
         @foreach($subpatologies as $item)
            <option value ="{{ $item->id }}">
               {{  $item->name . "---" .$item->recipe }}

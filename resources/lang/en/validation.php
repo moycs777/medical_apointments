@@ -172,5 +172,10 @@ return [
         'subject'               => 'asunto',
         'message'               => 'mensaje',
         'reason_consultation'   => 'motivo de la consulta',
+        'appointment_id'        => 'numero de la cita es obligatorio',
+        'exploration_id'        => 'la exploracion es obligatoria',
+        'disease_id'            => 'debe seleccionar tipo de enfermedad',
+        'subpatology_id'        => 'debe seleccionar tratamiento',
+        
     ],
 ];

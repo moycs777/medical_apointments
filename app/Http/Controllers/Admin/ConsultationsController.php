@@ -94,10 +94,15 @@ class ConsultationsController extends Controller
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de subpatologias']);
         }
 
-        $diseases = Disease::where('subclassification_id','230')->get();
-        if($diseases == null){
+        $diseases = Disease::select('id', 'name')
+                       ->where('subclassification_id','230')
+                       ->get();
+                       
+        //dd($diseases);
+        if(count($diseases) <= 0){
           return Redirect()->route('consultations.index')->withErrors(['Error', 'Enfermedades no registradas']);
         }
+        
 
         return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments','diseases'));
     }
