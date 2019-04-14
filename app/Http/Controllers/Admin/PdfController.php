@@ -24,12 +24,24 @@ class PdfController extends Controller
         $consult = Consultation::where('id',$request->id)
             ->with('appointment')
             ->first(); 
+
+        // $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
+        //     ->setPaper('A5', 'landscape');
         $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
-            ->setPaper('a4', 'landscape');
-        //return $consult->appointment->clinical_patient;
+               ->setPaper(array(0,40,419.53,595.28), 'landscape');
+           
         return $pdf->download(
             'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
             .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
             .'.pdf');
+
+        // $nombre_recipe = 'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
+        //     .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
+        //     .'.pdf';
+
+        //return $pdf->stream($nombre_recipe, [ "Attachment" => true]);
+
+        
+        //return $pdf->stream(); 
     }
 }
