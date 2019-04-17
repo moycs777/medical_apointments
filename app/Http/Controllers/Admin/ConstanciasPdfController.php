@@ -19,10 +19,9 @@ class ConstanciasPdfController extends Controller
         $detalle = $request->detalle;
         $pdf = PDF::loadView('dashboard.pdf.constancia', compact('paciente','detalle'))
                ->setPaper(array(0,40,419.53,595.28), 'landscape');
-           
+
         return $pdf->download(
-            'Recipe de ' . $paciente->first_name .' ' . $paciente->last_name . ' , fecha: ' 
+            'Constancia :' . $paciente->first_name .' ' . $paciente->last_name . ' , fecha: ' 
             . date('d-m-Y H:i:s') .'.pdf');
-       
-    }
+   }
 }
