@@ -141,4 +141,7 @@ class ClinicalPatientsController extends Controller
 
         return redirect()->route('clinicalpatients.index');
     }
+
+    
+    
 }

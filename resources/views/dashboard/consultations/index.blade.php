@@ -58,8 +58,7 @@
                         </td>
                         <td>
                           <form 
-                            action="{{ route('pdf_generate') }}"
-                            method="POST" >
+                            action="{{ route('pdf_generate') }}" method="POST" >
                             @csrf 
                             <input type="hidden" name="id" value="{{$item->id}}" />
                             <button type="submit" id = "salvar" class="btn btn-sm">imprimir</button>

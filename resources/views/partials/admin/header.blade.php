@@ -11,29 +11,25 @@
     <ul class="nav">
 
       <li class="{{ Request::path() == 'admin/home' ? 'active' : '' }}">
-        <a href="{{ route('admin.home')}}">
-          <i class="tim-icons icon-chart-pie-36"></i>
+        <a href="{{ route('admin.home')}}"><i class="tim-icons icon-chart-pie-36"></i>
           <p>Dashboard / Inicio</p>
         </a>
       </li>
 
       <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
-        <a href="{{ route('clinicalpatients.index') }}">
-          <i class="tim-icons icon-single-02"></i>
+        <a href="{{ route('clinicalpatients.index') }}"><i class="tim-icons icon-single-02"></i>
           <p>Pacientes</p>
         </a>
       </li>
 
       <li class="{{ Request::path() == 'office/appointments' ? 'active' : '' }}">
-        <a href="{{ route('appointments.index')}}">
-          <i class="tim-icons icon-pin"></i>
+        <a href="{{ route('appointments.index')}}"><i class="tim-icons icon-pin"></i>
           <p>Citas</p>
         </a>
       </li>
 
       <li class="{{ Request::path() == 'office/consultations' ? 'active' : '' }}">
-        <a href="{{ route('consultations.index')}}">
-          <i class="tim-icons icon-chart-pie-36"></i>
+        <a href="{{ route('consultations.index')}}"><i class="tim-icons icon-chart-pie-36"></i>
           <p>Consulta / Medica</p>
         </a>
       </li>

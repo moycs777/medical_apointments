@@ -34,9 +34,8 @@
                               <th>Nombre</th>
                               <th>Apellido</th>
                               <th>Seguro Medico</th>
-                              <th>Direccion</th>
                               <th>Tipo Sangre</th>
-                              <th colspan="2"></th>
+                              <th colspan="3"></th>
                             </tr>
                           </thead>
                           @foreach($clinicalpatients as $item)
@@ -47,7 +46,6 @@
                               <td>{{ $item->user->name }}</td>
                               <td>{{ $item->last_name }}</td>
                               <td>{{ $item->insurance->name }}</td>
-                              <td>{{ $item->address }}</td>
                               <td>
 
                                 @foreach($Tipo_Sangre as $tipo)
@@ -66,19 +64,26 @@
                                   class = "btn btn-sm">Editar 
                                 </a>
                               </td>
+
                               <td width = "10px">
                                 <a href="" class = "btn btn-sm btn-danger" 
-                                   onclick="
-                                    event.preventDefault();
+                                   onclick="event.preventDefault();
                                     document.getElementById('delete-form-{{ $item->id }}').submit();"
-                                >
-                                   Eliminar
+                                   >Eliminar
                                 </a>
                                 <form id="delete-form-{{ $item->id }}"
                                       action="{{ route('clinicalpatients.destroy',$item->id) }}"
                                       method="POST" style="display: none;">
                                       @csrf @method('DELETE')
                                 </form>
+                                
+                                <td>
+                                  <form action="{{ route('verpaciente',$item->id) }}" method="GET" >
+                                    @csrf 
+                                    <input type="hidden" name="id" value="{{$item->id}}" />
+                                    <button type="submit" id = "salvar" class="btn btn-sm">Imprimir</button>
+                                  </form>
+                                </td>
                               </td>
                             </tr>
                           </tbody>
@@ -100,6 +105,8 @@
 @stop
 @section('page-script')
   <script type="text/javascript">
-    console.log("dashboard ");
+     console.log("dashboard ");
+
+     
   </script>
 @stop

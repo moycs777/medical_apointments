@@ -13,8 +13,7 @@
                <h2>Actualizar Enfermedad</h2>
                <div class="card">
                   <div class="card-body">
-                     <form method="POST" 
-                         action="{{ route('diseases.update', $disease->id ) }}">
+                     <form method="POST" action="{{ route('diseases.update', $disease->id ) }}">
 
                          @csrf
                          {{ method_field('PUT') }}

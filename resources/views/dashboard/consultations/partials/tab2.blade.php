@@ -52,7 +52,8 @@
     <label for="">Indicaciones</label>
     <textarea name="prescription" 
       placeholder="Describa las indicaciones" rows = '10' cols= "80" required = "required" 
-      style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" id="prescription">
+      style="width: 100%; height: 100% px; font-size: 13px; line-height: 18px; border: 4px solid #dddddd; padding: 10px;" 
+      id="prescription">
     </textarea>
     @if ($errors->has('prescription'))
         <span style="color: red; class="invalid-feedback" role="alert">

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/doctors',             'Admin\DoctorsController');
   Route::resource('office/doctorprofile',       'Admin\DoctorProfileController');
   Route::post('office/pdf',                     'Admin\PdfController@generate')->name('pdf_generate');
+
   Route::resource('office/pathologies',         'Admin\PathologiesController');
   Route::resource('office/subpatologies',       'Admin\SubpatologiesController');
   Route::resource('office/medical_schedules',   'Admin\MedicalSchedulesController');
@@ -35,6 +36,9 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/explorations',        'Admin\ExplorationsController');
   Route::resource('office/explorations',        'Admin\ExplorationsController');
   Route::resource('office/doctorspecialties',   'Admin\DoctorSpecialtyController');
+  Route::get('office/constancias/{id}',         'Admin\ConstanciasController@verpaciente')->name('verpaciente');
+  Route::post('office/generarconstancias',      'Admin\ConstanciasPdfController@generate_constancia')
+                                                      ->name('pdf_generate_constancia');
 });
 
 

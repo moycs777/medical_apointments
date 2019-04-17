@@ -26,6 +26,7 @@ class CreateConsultationsTable extends Migration
             $table->string('size',10)->nullable()->comment('talla');
             $table->string('systolic_pressure',10)->nullable()->comment('presion sistolica');
             $table->string('diastolic_pressure',10)->nullable()->comment('presion diastolica');
+            
             $table->string('status');
             
             $table->foreign('appointment_id')->references('id')->on('appointments')
