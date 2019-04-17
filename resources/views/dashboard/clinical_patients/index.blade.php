@@ -81,7 +81,7 @@
                                   <form action="{{ route('verpaciente',$item->id) }}" method="GET" >
                                     @csrf 
                                     <input type="hidden" name="id" value="{{$item->id}}" />
-                                    <button type="submit" id = "salvar" class="btn btn-sm">Imprimir</button>
+                                    <button type="submit" id = "salvar" class="btn btn-sm">Constancia Medica</button>
                                   </form>
                                 </td>
                               </td>
