@@ -12,11 +12,12 @@ class ConstanciasPdfController extends Controller
 {
      public function generate_constancia(Request $request)
     {
-    	dd("Hola ");
+        dd($request->all());
+        
+        dd("Hola ");
         $consult = ClinicalPatient::where('id',$request->id)
                    ->first(); 
 
-        dd($request->all());
         // $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
         //        ->setPaper(array(0,40,419.53,595.28), 'landscape');
            

@@ -11,9 +11,11 @@
           
           <div class="card">
             <div class="card-body">
-              <form  method="POST" action="{{ route('pdf_generate_constancia') }}" >
-               
-                @csrf
+             {{--  <form method="POST" action="{{ route('appointments.update',$appointment->id) }}" > --}}
+               <form method="GET"  >
+                {{-- @csrf
+                {{ method_field('PUT') }} --}}
+
                                 
                 <div class="form-group">
                    <input type="hidden" name="id" class="form-control"
@@ -21,6 +23,21 @@
                   >
                 </div>
 
+                {{-- <div class="row">
+                  <div class="form-group col-sm-6">
+                    <label for="sel1"><strong>Id</strong></label>
+                    <input type="text" name="id" class="form-control"
+                      value = "{{ $paciente->id }}" disabled="true"
+                    >  
+                  </div>
+
+                  <div class="form-group col-sm-6">
+                    <label for=""><strong>DNI</strong></label>
+                    <input id="dni" type="text" name = "dni" class="form-control" 
+                      value="{{ $paciente->dni }}" disabled="true"
+                    > 
+                  </div>
+                </div> --}}
                 
                 <div class="row">
                   <div class="form-group col-sm-6">
@@ -49,10 +66,15 @@
 
                 <div class="form-group">
                   <center>
-                    
-                    <div class="col-md-4 col-md-4-offset-8">
-                      <button type="submit" class="btn btn-fill btn-primary">Salvar</button>
-                    </div>
+                    {{-- <form
+                      action="{{ route('pdf_generate_constancia') }}" method="POST">
+                      @csrf 
+                      
+                      <button type="submit" id = "salvar" class="btn btn-sm">Imprimir</button>
+                    </form> --}}
+                    <a href="{{ route('pdf_generate_constancia') }}"
+                       class = "btn btn-sm">Editar 
+                    </a>
                   </center>
                 </div>
 
