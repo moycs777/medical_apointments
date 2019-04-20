@@ -45,8 +45,7 @@ class ClassificationsController extends Controller
     {
 
         $classification = Classification::find($id);
-        $classification->codigo = $request->codigo;
-        $classification->nombre = $request->nombre;
+        $classification->name = $request->name;
         $classification->oms = ($request->oms == null) ? "0": "1";
         $classification->particular =($request->particular == null) ? "0": "1";
 
