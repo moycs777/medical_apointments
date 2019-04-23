@@ -17,6 +17,7 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/consultations',       'Admin\ConsultationsController');
   Route::get('office/consultations_mostrar_recipe/{id}','Admin\ConsultationsController@Mostrar_Recipe_Prescripcion');
   Route::get('office/consultations_mostrar_paciente/{id}','Admin\ConsultationsController@Mostrar_Paciente');
+  Route::resource('office/patientsconsultation','Admin\PatientsConsultationController');
   Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
   Route::resource('office/classifications',     'Admin\ClassificationsController');
   Route::resource('office/insurances',       	  'Admin\InsurancesController');

@@ -167,7 +167,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label for="sel1"><strong>Exploracion</strong></label>
     <select class="js-example-basic-single form-control" id="asd" name="exploration_id"
@@ -183,7 +183,7 @@
       @endforeach
     </select>
   </div>
-</div>
+</div> --}}
 
 <input type = "hidden" name = "status" value = "{{ $consultation->status }}">
 <input type = "hidden" name = "nrocita" value = "{{ $consultation->appointment_id }}">

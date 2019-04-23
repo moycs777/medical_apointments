@@ -175,7 +175,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+{{-- <div class="col-md-12">
   <div class="form-group">
     <label>Exploracion</label>
     <select class="form-control" id="asd" name="exploration_id">
@@ -187,7 +187,7 @@
         @endforeach
      </select>
   </div>
-</div>
+</div> --}}
 
 
 {{-- @section('page-script')

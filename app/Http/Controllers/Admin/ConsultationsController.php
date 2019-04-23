@@ -81,13 +81,13 @@ class ConsultationsController extends Controller
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion sobre citas']);
         }
 
-        $explorations = Exploration::where('specialty_id','9')
-                        ->orderBy('name')
-                        ->get();
+        // $explorations = Exploration::where('specialty_id','9')
+        //                 ->orderBy('name')
+        //                 ->get();
 
-        if ($explorations == null) {
-            return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de exploraciones']);
-        }
+        // if ($explorations == null) {
+        //     return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de exploraciones']);
+        // }
         
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
@@ -104,7 +104,7 @@ class ConsultationsController extends Controller
         }
         
 
-        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments','diseases'));
+        return view('dashboard.consultations.create',compact('subpatologies','appointments','diseases'));
     }
 
     
@@ -124,7 +124,7 @@ class ConsultationsController extends Controller
 
         $consultation = new Consultation();
         $consultation->appointment_id        = $request->appointment_id;
-        $consultation->exploration_id        = $request->exploration_id;
+        $consultation->exploration_id        = 3; //$request->exploration_id;
         $consultation->subpatology_id        = $request->subpatology_id;
         $consultation->disease_id            = $request->disease_id ;
         $consultation->date_consultation     = $request->date_consultation;
@@ -178,11 +178,11 @@ class ConsultationsController extends Controller
                             ->withErrors(['Error', 'No existe informacion de citas']);
         } 
 
-        $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
-        if ($explorations == null) {
-            return redirect()->route('consultations.index')
-                             ->withErrors(['Error', 'No existe informacion de exploraciones']);
-        } 
+        // $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
+        // if ($explorations == null) {
+        //     return redirect()->route('consultations.index')
+        //                      ->withErrors(['Error', 'No existe informacion de exploraciones']);
+        // } 
         
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
@@ -196,8 +196,7 @@ class ConsultationsController extends Controller
                             ->withErrors(['Error', 'Enfermedades no registradas']);
         }
         
-        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations',
-            'subpatologies','diseases'));
+        return view('dashboard.consultations.edit',compact('consultation','appointment','subpatologies','diseases'));
 
     }
 
@@ -213,7 +212,7 @@ class ConsultationsController extends Controller
             $consultation = Consultation::find($id);
             
             $consultation->appointment_id        = $request->nrocita;
-            $consultation->exploration_id        = $request->exploration_id;
+            $consultation->exploration_id        = 3; //$request->exploration_id;
             $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->disease_id            = $request->disease_id;
             $consultation->date_consultation     = $request->date_consultation;
