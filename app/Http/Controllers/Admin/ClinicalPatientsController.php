@@ -41,6 +41,7 @@ class ClinicalPatientsController extends Controller
     public function store(ClinicalPatientsRequest $request)
     {
         // Validar si username ya existe*****
+        dd($request->all());
         $buscarUser = User::where('username',$request->username)->first();
         if($buscarUser != null){
            return back()->withInput()->withErrors(['field_name' => ['Username ya esta registrado.']]);
@@ -70,6 +71,9 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->family_background  = $request->family_background;
         $clinicalpatients->address            = $request->address;
         $clinicalpatients->bloodtype          = $request->bloodtype;
+        $clinicalpatients->phone_1            = $request->phone_1;
+        $clinicalpatients->phone_2            = $request->phone_2;
+
         $clinicalpatients->save();
 
         //return redirect()->route('clinicalpatients.index');
@@ -96,18 +100,10 @@ class ClinicalPatientsController extends Controller
 
     public function update(ClinicalPatientsUpdateRequest $request, $id)
     {
-        //dd($request->all());
         $clinicalpatients = ClinicalPatient::find($id);
-        //dd($clinicalpatients->all());
+       
         $user = $clinicalpatients->user;
 
-        /* $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password =Hash::make('12345678');
-
-        $user->save(); */
-       
         $clinicalpatients->insurance_id       = $request->insurance_id; 
         $clinicalpatients->dni                = $request->dni;
         $clinicalpatients->first_name         = $request->first_name;
@@ -121,6 +117,8 @@ class ClinicalPatientsController extends Controller
         $clinicalpatients->family_background  = $request->family_background;
         $clinicalpatients->address            = $request->address;
         $clinicalpatients->bloodtype          = $request->bloodtype;
+        $clinicalpatients->phone_1            = $request->phone_1;
+        $clinicalpatients->phone_2            = $request->phone_2;
 
         $clinicalpatients->save();
 
@@ -131,7 +129,6 @@ class ClinicalPatientsController extends Controller
 
     public function destroy($id)
     {
-        //dd($id);
         $clinicalpatients = ClinicalPatient::find($id);
         $user = $clinicalpatients->user;
 

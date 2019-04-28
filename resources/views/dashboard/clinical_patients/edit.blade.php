@@ -98,8 +98,7 @@
                             <input id="last_name" 
                                 type="text" 
                                 class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
-                                placeholder="apellido"
-                                name="last_name" 
+                                placeholder="apellido" name="last_name" required
                                 value="{{ $clinicalpatient->last_name }}"
                             >
                             @if ($errors->has('last_name'))
@@ -262,6 +261,41 @@
                             @endif
                           </div>
                         </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label><strong>Telefono de contacto (1)</strong></label>
+                            <input id="phone_1" maxlength="20"
+                                type="text" required
+                                class="form-control {{ $errors->has('phone_1') ? ' is-invalid' : '' }}"
+                                placeholder="Telefono de contacto" name="phone_1" 
+                                value="{{ $clinicalpatient->phone_1 }}">
+                            @if ($errors->has('systolic_pressure'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('phone_1') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label><strong>Telefono de contacto (2)</strong></label>
+                            <input id="phone_2" maxlength="20"
+                                type="text" 
+                                class="form-control {{ $errors->has('phone_2') ? ' is-invalid' : '' }}"
+                                placeholder="Telefono de contacto" name="phone_2" 
+                                value="{{ $clinicalpatient->phone_2 }}">
+                            @if ($errors->has('phone_2'))
+                                <span style="color: red; class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('phone_2') }}</strong>
+                                </span>
+                            @endif
+                          </div>
+                        </div>
+
                       </div>
 
                       <div class="row">

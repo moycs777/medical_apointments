@@ -67,7 +67,8 @@
                 <div class="row">
                   <div class="form-group col-sm-6">
                       <label for=""><strong>Seleccione seguro medico</strong></label>
-                      <select class="js-example-basic-single form-control" id="sel1" name="insurance_id">
+                      <select class="js-example-basic-single form-control" id="sel1" name="insurance_id" 
+                          required = "required">
                           @if(count($insurances) > 1)
                              <option value = 0><strong>Seleccione su Seguro Medico</strong></option>
                           @endif

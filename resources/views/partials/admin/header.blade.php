@@ -16,11 +16,11 @@
         </a>
       </li>
 
-      {{-- <li class="{{ Request::path() == 'office/patientsconsultation' ? 'active' : '' }}">
+      <li class="{{ Request::path() == 'office/patientsconsultation' ? 'active' : '' }}">
         <a href="{{ route('patientsconsultation.index')}}"><i class="tim-icons icon-single-02"></i>
           <p>Filtrar consultas pacientes</p>
         </a>
-      </li> --}}
+      </li>
 
       <li class="{{ Request::path() == 'office/clinicalpatients' ? 'active' : '' }}">
         <a href="{{ route('clinicalpatients.index') }}"><i class="tim-icons icon-single-02"></i>

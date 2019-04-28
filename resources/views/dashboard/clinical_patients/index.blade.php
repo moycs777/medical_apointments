@@ -34,7 +34,7 @@
                               <th>Nombre</th>
                               <th>Apellido</th>
                               <th>Seguro Medico</th>
-                              <th>Tipo Sangre</th>
+                              <th>Telefono</th>
                               <th colspan="3"></th>
                             </tr>
                           </thead>
@@ -46,19 +46,19 @@
                               <td>{{ $item->user->name }}</td>
                               <td>{{ $item->last_name }}</td>
                               <td>{{ $item->insurance->name }}</td>
-                              <td>
-
-                                @foreach($Tipo_Sangre as $tipo)
+                              <td>{{ $item->phone_1 }}</td>
+                              {{--<td>
+                                 @foreach($Tipo_Sangre as $tipo)
 
                                   @if($i == $item->bloodtype)
                                       {{ $tipo }}
                                   @endif
                                   @php $i++ @endphp
 
-                                @endforeach
+                                @endforeach 
                                 
                                 @php $i=1; @endphp
-                              </td>                        
+                              </td> --}}                       
                               <td width = "10px">
                                 <a href="{{ route('clinicalpatients.edit', $item->id) }}"
                                   class = "btn btn-sm">Editar 

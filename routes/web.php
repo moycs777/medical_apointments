@@ -17,7 +17,6 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/consultations',       'Admin\ConsultationsController');
   Route::get('office/consultations_mostrar_recipe/{id}','Admin\ConsultationsController@Mostrar_Recipe_Prescripcion');
   Route::get('office/consultations_mostrar_paciente/{id}','Admin\ConsultationsController@Mostrar_Paciente');
-  Route::resource('office/patientsconsultation','Admin\PatientsConsultationController');
   Route::resource('office/clinicalpatients',    'Admin\ClinicalPatientsController');
   Route::resource('office/classifications',     'Admin\ClassificationsController');
   Route::resource('office/insurances',       	  'Admin\InsurancesController');
@@ -41,6 +40,11 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::post('office/generarconstancias',      'Admin\ConstanciasPdfController@generate_constancia')
                                                       ->name('pdf_generate_constancia');
 });
+
+ Route::get('office/patientsconsultation','Admin\PatientsConsultationController@index')
+      ->name('patientsconsultation.index');
+ Route::get('office/patientsconsultation_cons/{id}',
+      'Admin\PatConController@pacientes_consultas')->name('patientsconsultation_cons.pacientes_consultas');
 
 
 

@@ -81,14 +81,7 @@ class ConsultationsController extends Controller
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion sobre citas']);
         }
 
-        // $explorations = Exploration::where('specialty_id','9')
-        //                 ->orderBy('name')
-        //                 ->get();
-
-        // if ($explorations == null) {
-        //     return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de exploraciones']);
-        // }
-        
+                
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de subpatologias']);
@@ -178,12 +171,6 @@ class ConsultationsController extends Controller
                             ->withErrors(['Error', 'No existe informacion de citas']);
         } 
 
-        // $explorations = Exploration::where('specialty_id','9')->orderBy('name')->get();
-        // if ($explorations == null) {
-        //     return redirect()->route('consultations.index')
-        //                      ->withErrors(['Error', 'No existe informacion de exploraciones']);
-        // } 
-        
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return redirect()->route('consultations.index')
@@ -265,7 +252,36 @@ class ConsultationsController extends Controller
         }
     }
 
-    
+    public function show($id)
+    {
+        $consultation = Consultation::find($id);
+
+        if ($consultation == null) {
+            return redirect()->route('consultations.index')
+                             ->withErrors(['Error', 'No existe informacion de consultas']);
+        } 
+
+        $appointment = Appointment::find($consultation->appointment_id);
+        if ($appointment == null) {
+            return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'No existe informacion de citas']);
+        } 
+
+        $subpatologies = Subpatology::orderBy('name')->get();
+        if ($subpatologies == null) {
+            return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'No existe informacion de subpatologias']);
+        }
+
+        $diseases = Disease::where('subclassification_id','230')->get();
+        if($diseases == null){
+          return redirect()->route('consultations.index')
+                            ->withErrors(['Error', 'Enfermedades no registradas']);
+        }
+        return view('dashboard.consultations.edit',compact('consultation','appointment','subpatologies','diseases'));
+
+    }
+
     public function destroy($id)
     {
         //

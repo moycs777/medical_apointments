@@ -71,9 +71,12 @@ class AppointmentsController extends Controller
     public function store(AppointmentStoreRequest $request)
     {
 
-         //dd($request->all());
          if($request->input('doctor_id') == "0") {
-            return redirect()->route('appointments.create')->with('info','Debe seleccionar un doctor');
+            return redirect()->route('appointments.create')->withErrors(['Debe seleccionar un doctor']);
+         }
+
+         if($request->input('insurance_id') == "0") {
+            return redirect()->route('appointments.create')->withErrors(['Debe seleccionar un Seguro Medico']);
          }
 
          $fec_consulta = $request->input('appointment_date');
@@ -84,15 +87,13 @@ class AppointmentsController extends Controller
 
          if (strtotime($fec_consulta) < strtotime($hoy1) ){
             return redirect()->route('appointments.create')
-               ->with('info','Fecha de consulta no puede ser menor (<) a la fecha actual');  
+               ->withErrors(['Fecha de consulta no puede ser menor (<) a la fecha actual']);  
          }
 
          // $fec_cons=strtotime($fec_consulta);
          // $i=$fec_cons;
          // $dia = date('N', $i);
 
-        //dd($request->all());
-         
         Appointment::create($request->all());
         
         return redirect()->route('appointments.index')->with('info','Informacion actualizada');

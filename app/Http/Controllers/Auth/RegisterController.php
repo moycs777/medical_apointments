@@ -62,16 +62,12 @@ class RegisterController extends Controller
             $patient->user_id = $user->id;
             $patient->insurance_id = 10;
             $patient->first_name = $user->name;
-            $patient->last_name = $user->name;
+            $patient->last_name =  $data['last_name'];
             $patient->dni = $user->id;
             $patient->gender = 'M';
-            $patient->personal_history  = 'A';
-            $patient->family_background = 'A'; 
-            $patient->weight = '00'; 
-            $patient->size = '00'; 
-            $patient->systolic_pressure = '00'; 
-            $patient->diastolic_pressure = '00'; 
             $patient->bloodtype  = 2;
+            $patient->phone_1 = $data['phone_1'];
+            $patient->phone_2 = $data['phone_1'];
             $patient->save();
             DB::commit(); 
         } catch (\Exception $e){
