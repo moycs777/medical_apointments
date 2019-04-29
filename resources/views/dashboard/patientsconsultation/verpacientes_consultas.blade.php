@@ -16,10 +16,8 @@
                
                 <div class="card-body">
 
-                  <div class="page-header"><strong>Busqueda de Pacientes</strong>
-               
+                    <div class="page-header"><strong>Busqueda de Pacientes</strong>
                       <div class="form-group">
-                        
                         <form method="GET" action="{{ route('patientsconsultation.index') }}"
                               class="form-inline">
                      
@@ -48,13 +46,11 @@
                                 </button>
                               </div>
                             </div>
-
                         </form>
                       </div>
-
                     </div>
 
-                  <div class="table-responsive ps">
+                    <div class="table-responsive ps">
                       <div class="panel-body">
                         {{-- <table class="table tablesorter"> --}}
                         <table class="table table-hover table-striped">
@@ -86,10 +82,9 @@
                         </table>
 
                         {{ $clinicalpatients->render() }}
+                      </div>
                     </div>
-                  </div>
                 </div>
-
               </div>
             </div>
           </div>

@@ -18,9 +18,19 @@ use App\Insurance;
 class ClinicalPatientsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $clinicalpatients = ClinicalPatient::orderBy('id','DESC')->paginate();
+        $dni        = $request->get('dni');
+        $first_name = $request->get('first_name');
+        $last_name =  $request->get('last_name');
+
+        $clinicalpatients = ClinicalPatient::orderBy('id','DESC')
+            ->dni($dni)
+            ->first_name($first_name)
+            ->last_name($last_name)
+            ->paginate(8);
+
+        //$clinicalpatients = ClinicalPatient::orderBy('id','DESC')->paginate();
         return view('dashboard.clinical_patients.index', compact('clinicalpatients'));
     }
 

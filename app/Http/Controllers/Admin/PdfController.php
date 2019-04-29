@@ -16,6 +16,13 @@ use App\ClinicalPatient;
 use App\Disease;
 use Barryvdh\DomPDF\Facade as PDF;
 
+// Margen superior : 6.8 cm
+// Alto : 15.5 cm
+// Ancho: 21.5 com
+//->setPaper(array(0,40,419.53,595.28), 'portrait');
+
+//"a6" => array(0,0,297.64,419.53),
+//"a7" => array(0,0,209.76,297.64),
 class PdfController extends Controller
 {
     public function generate(Request $request)
@@ -28,7 +35,7 @@ class PdfController extends Controller
         // $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
         //     ->setPaper('A5', 'landscape');
         $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
-               ->setPaper(array(0,40,419.53,595.28), 'landscape');
+               ->setPaper(array(0,60,419.53,500), 'portrait');
            
         return $pdf->download(
             'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '

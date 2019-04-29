@@ -29,7 +29,7 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>Recipe</th>
+                                <th>Receta</th>
                                 <th>Prescription</th>
                             </tr>                            
                         </thead>

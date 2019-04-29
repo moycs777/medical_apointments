@@ -150,7 +150,7 @@ class ConsultationsController extends Controller
         $subpatology->prescription = $request->prescription;
         $subpatology->save();
         //***************************************************
-
+        //return redirect()->route('pdf.generate',$consultation->id);
         return redirect()->route('consultations.index')->with('info','Informacion actualizada');
     }
 

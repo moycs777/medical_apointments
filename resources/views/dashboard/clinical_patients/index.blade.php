@@ -14,16 +14,52 @@
                     </div>
                 @endif
                
-                @php
+               {{--  @php
                   $Tipo_Sangre = array('A+','A-','B+','B-','AB+','AB-','O+','O-');
                   $i = 1;
-                @endphp
+                @endphp --}}
 
-                <div class="card-body">
-                    Pacientes 
+                <div class="card-body"><strong>Pacientes </strong>
                   <a href="{{ route('clinicalpatients.create') }}" class ='btn btn-primary pull-rigth'>
                     Crear
                   </a>
+
+                  {{-- -------------------------------------------- --}}
+                  <div class="page-header"><strong>Busqueda</strong>
+                      <div class="form-group">
+                        <form method="GET" action="{{ route('clinicalpatients.index') }}"
+                              class="form-inline">
+                     
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <input type="text" name="dni" class="form-control" placeholder="Ingrese Dni">
+                              </div>
+                            </div>
+
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <input type="text" name="first_name" class="form-control" placeholder="Ingrese nombre">
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <input type="text" name="last_name" class="form-control" placeholder="Ingrese apellido">
+                              </div>
+                            </div>
+
+                            <div class="col-md-3">
+                              <div class="form-group">
+                                <button type="submit" class="btn btn-default">
+                                   <i class="fa fa-search"></i>
+                                </button>
+                              </div>
+                            </div>
+                        </form>
+                      </div>
+                  </div>
+                  {{-- -------------------------------------------- --}}
+
                   <div class="table-responsive ps">
                       <div class="panel-body">
                         <table class="table tablesorter">
