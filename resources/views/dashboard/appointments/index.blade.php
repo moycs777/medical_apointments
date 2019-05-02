@@ -33,7 +33,7 @@
                     </thead>
                     @foreach($appointments as $item)
                     <tbody>
-                      <tr>
+                      <tr >
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->appointment_date }}</td>
                         <td>{{ $item->reason_consultation }}</td>
@@ -41,7 +41,12 @@
                         <td>{{ $item->clinical_patient->first_name . " " . 
                                $item->clinical_patient->last_name }}
                         </td>
-                        <td>{{ $item->status}} </td>
+                        @if ($item->status == 'pendiente')
+                            <td><strong>{{ $item->status }}</strong></td>
+                        @else
+                            <td>{{ $item->status }}</td>
+                        @endif 
+
                         <td width = "10px">
                           <a href="{{ route('appointments.edit', $item->id) }}"
                             class = "btn btn-sm">Editar 

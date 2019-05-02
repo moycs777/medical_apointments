@@ -15,10 +15,12 @@ use App\Subpatology;
 use App\Appointment;
 use App\ClinicalPatient;
 use App\Disease;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class ConsultationsController extends Controller
 {
+
     public function Mostrar_Recipe_Prescripcion($id)
     {
         
@@ -150,7 +152,22 @@ class ConsultationsController extends Controller
         $subpatology->prescription = $request->prescription;
         $subpatology->save();
         //***************************************************
-        //return redirect()->route('pdf.generate',$consultation->id);
+
+
+        // ****************Imprime Recipe**************
+        $consult = Consultation::where('id',$consultation->id)
+            ->with('appointment') 
+            ->first(); 
+
+        $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
+              ->setPaper(array(0,60,419.53,500), 'portrait');
+          
+        return $pdf->download(
+            'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
+            .$consult->appointment->clinical_patient->last_name . ' , fecha: ' 
+            . $consultation->appointment->created_at.'.pdf');
+        //*********************************************
+
         return redirect()->route('consultations.index')->with('info','Informacion actualizada');
     }
 
@@ -229,7 +246,7 @@ class ConsultationsController extends Controller
 
            $clinicalpatient->save();
 
-          
+                      
            //Actualizar recipe e indicaciones
            $subpatology = Subpatology::find($request->subpatology_id);
            if ($subpatology == null) {
@@ -287,5 +304,21 @@ class ConsultationsController extends Controller
         //
     }
 
+    public function recipe($id){
+
+      //dd($request->all());
+      $consult = Consultation::where('id',$id)
+            ->with('appointment')
+            ->first(); 
+
+      $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
+              ->setPaper(array(0,60,419.53,500), 'portrait');
+          
+     
+      return $pdf->download(
+            'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
+            .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
+            .'.pdf');
+    }
     
 }

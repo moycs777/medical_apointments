@@ -38,8 +38,8 @@
                         <td>{{ $item->date_consultation }}</td>
                         <td>{{ $item->reason_consultation }}</td>
                         <td>{{ $item->first_name . " " . $item->last_name}}</td>  
-                        <td>{{ $item->nomdoctor. " " . $item->apedoctor }} 
-                        <td>{{ $item->status}}
+                        <td>{{ $item->nomdoctor. " " . $item->apedoctor }} </td>
+                        <td>{{ $item->status }}</td>
                         <td width = "10px">
                           <a href="{{ route('consultations.edit', $item->id) }}" 
                              class = "btn btn-sm">Editar 
