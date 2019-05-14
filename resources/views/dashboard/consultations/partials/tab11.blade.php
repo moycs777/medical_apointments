@@ -185,6 +185,29 @@
   </div>
 </div> --}}
 
+<hr>
+<div class="table-responsive ps">
+  <thead>
+    <tr><h3>Exploracion</h3></tr>
+  </thead>
+  
+  @foreach($explorations as $item)
+    <tbody>
+      <tr>
+        <td>{{ $item->id }}</td>
+        <td>{{ $item->name_1 }}</td>
+        <td>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" name="explo[{{$item->id}}][]"  maxlength="200" value = "" class="form-control">
+            </div>                                  
+          </div>
+        </td>
+      </tr> 
+    </tbody> 
+  @endforeach 
+</div>
+
 <input type = "hidden" name = "status" value = "{{ $consultation->status }}">
 <input type = "hidden" name = "nrocita" value = "{{ $consultation->appointment_id }}">
 

@@ -15,6 +15,7 @@ use App\Subpatology;
 use App\Appointment;
 use App\ClinicalPatient;
 use App\Disease;
+use App\ConsultationExploration;
 use Barryvdh\DomPDF\Facade as PDF;
 
 
@@ -47,9 +48,7 @@ class ConsultationsController extends Controller
              ->where('appointments.id', '=', $id)
              ->Where('appointments.status','=','confirmado')
              ->get();
-        return response()->json(
-            $appointment->toArray()
-        );
+        return response()->json($appointment->toArray());
     }
 
     public function index()
@@ -83,7 +82,14 @@ class ConsultationsController extends Controller
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion sobre citas']);
         }
 
-                
+        $explorations = Exploration::select('id','name')
+                        ->where('specialty_id',9)
+                        ->where('de','D')
+                        ->orderBy('id')->get();
+        if ($explorations == null) {
+            return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion sobre Exploraciones']);
+        }
+
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return redirect()->route('consultations.index')->withErrors(['Error', 'No existe informacion de subpatologias']);
@@ -99,13 +105,12 @@ class ConsultationsController extends Controller
         }
         
 
-        return view('dashboard.consultations.create',compact('subpatologies','appointments','diseases'));
+        return view('dashboard.consultations.create',compact('explorations','subpatologies','appointments','diseases'));
     }
 
     
     public function store(ConsultationStoreRequest $request)
     {
-        // dd($request->all());
         // Elimina retornos de carro y salto de linea
         $recipe = trim($request->recipe);
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
@@ -116,59 +121,87 @@ class ConsultationsController extends Controller
         $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
         $reemplazar=array("", "", "", "");
         $cadena=str_ireplace($buscar,$reemplazar,$prescription);
+      
+      DB::beginTransaction();                          
+      try {
+            $consultation = new Consultation();
+            $consultation->appointment_id        = $request->appointment_id;
+            //$consultation->exploration_id        = $request->exploration_id;
+            $consultation->subpatology_id        = $request->subpatology_id;
+            $consultation->disease_id            = $request->disease_id ;
+            $consultation->date_consultation     = $request->date_consultation;
+            $consultation->reason_consultation   = $request->reason_consultation;
+            $consultation->current_illness       = $request->current_illness;
+            $consultation->weight                = $request->weight;
+            $consultation->size                  = $request->size;
+            $consultation->systolic_pressure     = $request->systolic_pressure;
+            $consultation->diastolic_pressure    = $request->diastolic_pressure;
+            $consultation->status                = "atendido";
+            
+            $consultation->save();
 
-        $consultation = new Consultation();
-        $consultation->appointment_id        = $request->appointment_id;
-        $consultation->exploration_id        = 3; //$request->exploration_id;
-        $consultation->subpatology_id        = $request->subpatology_id;
-        $consultation->disease_id            = $request->disease_id ;
-        $consultation->date_consultation     = $request->date_consultation;
-        $consultation->reason_consultation   = $request->reason_consultation;
-        $consultation->current_illness       = $request->current_illness;
-        $consultation->weight                = $request->weight;
-        $consultation->size                  = $request->size;
-        $consultation->systolic_pressure     = $request->systolic_pressure;
-        $consultation->diastolic_pressure    = $request->diastolic_pressure;
-        $consultation->status                = "atendido";
-        
-        $consultation->save();
+            //**** Actualizar status de la cita del paciente***
+            $appointment = Appointment::find($request->appointment_id);
+            if ($appointment == null) {
+                return redirect()->route('consultations.index')->withErrors(['Error', 'informacion no encontrada...']);
+            }
+            $appointment->status = 'atendido';
+            $appointment->save();
+            //**************************************************
 
-        //**** Actualizar status de la cita del paciente***
-        $appointment = Appointment::find($request->appointment_id);
-        if ($appointment == null) {
-            return redirect()->route('consultations.index')->withErrors(['Error', 'informacion no encontrada...']);
-        }
-        $appointment->status = 'atendido';
-        $appointment->save();
-        //**************************************************
+            //Actualizar recipe e indicaciones***********************
+            $subpatology = Subpatology::find($request->subpatology_id);
+            if ($subpatology == null) {
+                return redirect()->route('consultations.index')
+                                 ->withErrors(['Error', 'Subpatologia no sera actualizada...']);
+            }
+            $subpatology->recipe       = $request->recipe;
+            $subpatology->prescription = $request->prescription;
+            $subpatology->save();
+            //***************************************************
 
-        //Actualizar recipe e indicaciones
-        $subpatology = Subpatology::find($request->subpatology_id);
-        if ($subpatology == null) {
-            return redirect()->route('consultations.index')
-                             ->withErrors(['Error', 'Subpatologia no sera actualizada...']);
-        }
-        $subpatology->recipe       = $request->recipe;
-        $subpatology->prescription = $request->prescription;
-        $subpatology->save();
-        //***************************************************
-
-
-        // ****************Imprime Recipe**************
-        $consult = Consultation::where('id',$consultation->id)
-            ->with('appointment') 
-            ->first(); 
-
-        $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
-              ->setPaper(array(0,60,419.53,500), 'portrait');
+            //*** Guardar exploracion ***
+            //$array = $request->input('array');
+            $array = $request->input('explo');
+            foreach ($array as $key => $a) {
+              foreach ($a as $key_1 => $aa) {
+                $consexplo = new ConsultationExploration();
+                if ($aa != null){
+                   $consexplo->exploration_id = $key;
+                   $consexplo->consultation_id = $consultation->id;
+                   $consexplo->name = $aa;
+                   $consexplo->save();
+                }
+              }
+            }
           
-        return $pdf->download(
-            'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
-            .$consult->appointment->clinical_patient->last_name . ' , fecha: ' 
-            . $consultation->appointment->created_at.'.pdf');
-        //*********************************************
+            DB::commit();
+            
+            // ****************Imprime Recipe**************
+            $consult = Consultation::where('id',$consultation->id)
+                ->with('appointment') 
+                ->first(); 
 
-        return redirect()->route('consultations.index')->with('info','Informacion actualizada');
+            $pdf = PDF::loadView('dashboard.pdf.consultations', compact('consult'))
+                  ->setPaper(array(0,60,419.53,500), 'portrait');
+              
+            return $pdf->download(
+                'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
+                .$consult->appointment->clinical_patient->last_name . ' , fecha: ' 
+                . $consultation->appointment->created_at.'.pdf');
+            //*********************************************
+
+            return redirect()->route('consultations.index')->with('info','Informacion actualizada');
+
+
+      } catch (\Exception $e) {
+             $success = false;
+             $error = $e->getMessage();
+             DB::rollback();
+             return redirect()->route('consultations.index')
+                              ->withErrors(['Error', 'Transaccion Cancelada..']);
+      }
+      
     }
 
        
@@ -188,6 +221,14 @@ class ConsultationsController extends Controller
                             ->withErrors(['Error', 'No existe informacion de citas']);
         } 
 
+        $explorations = DB::table('consultation_explorations AS a')
+          ->rightjoin('explorations AS b', 'a.exploration_id', '=', 'b.id')
+          ->select('b.id','b.name as name_1','a.name AS name_2')
+          ->where('b.specialty_id','=',9)
+          ->where('a.consultation_id','=',$id)
+          ->get();
+
+        //dd($explorations);
         $subpatologies = Subpatology::orderBy('name')->get();
         if ($subpatologies == null) {
             return redirect()->route('consultations.index')
@@ -200,7 +241,7 @@ class ConsultationsController extends Controller
                             ->withErrors(['Error', 'Enfermedades no registradas']);
         }
         
-        return view('dashboard.consultations.edit',compact('consultation','appointment','subpatologies','diseases'));
+        return view('dashboard.consultations.edit',compact('consultation','appointment','explorations','subpatologies','diseases'));
 
     }
 

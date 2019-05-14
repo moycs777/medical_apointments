@@ -51,7 +51,7 @@ class ClinicalPatientsController extends Controller
     public function store(ClinicalPatientsRequest $request)
     {
         // Validar si username ya existe*****
-        dd($request->all());
+        //dd($request->all());
         $buscarUser = User::where('username',$request->username)->first();
         if($buscarUser != null){
            return back()->withInput()->withErrors(['field_name' => ['Username ya esta registrado.']]);

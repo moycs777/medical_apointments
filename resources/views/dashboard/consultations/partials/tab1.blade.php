@@ -175,79 +175,26 @@
   </div>
 </div>
 
-{{-- <div class="col-md-12">
-  <div class="form-group">
-    <label>Exploracion</label>
-    <select class="form-control" id="asd" name="exploration_id">
-      <option value="">Seleccione</option>
-         @foreach($explorations as $item)
-           <option value ="{{ $item->id }}">
-              {{ $item->name }}
-           </option>
-        @endforeach
-     </select>
-  </div>
-</div> --}}
+<hr>
+<div class="table-responsive ps">
+  <thead>
+    <tr><h3>Exploracion</h3></tr>
+  </thead>
+  @php $i=0; $a="";@endphp
+  @foreach($explorations as $item)
+    <tbody>
+      <tr>
+        <td>{{ $item->id }}</td>
+        <td>{{ $item->name }}</td>
+        <td>
+          <div class="col-md-12">
+            <div class="form-group">
+              <input type="text" name="explo[{{$item->id}}][]"  maxlength="200" value = "" class="form-control">
+            </div>                                  
+          </div>
+        </td>
+      </tr> 
+    </tbody> 
+  @endforeach 
+</div>
 
-
-{{-- @section('page-script')
-  <script type="text/javascript">
-    console.log("pacientes ");
-     $(document).ready(function() {  
-        
-         var a = new Array();
-         var i = 0;
-         var aa = '';
-         $('.js-example-basic-single').select2();
-               
-         $('#qwe').select2();
-         $('#asd').select2();
-         $('#appointment_id').select2();
-         $('#seldisease').select2();
-
-         
-         $('#sel1').on('change',function(){
-            //var n = $(this).val();
-            //var optionText = $('#dropdownList option[value="'+optionValue+'"]').text();
-            var optionText = $("#sel1 option:selected").text();
-            var id = $("#sel1 option:selected").val();
-         });
-
-         
-         //tab 1
-         $("select[name=subpatology_id]").change(function(){
-             Mostrar_Recipe($('select[name=subpatology_id]').val());
-         });
-
-         function Mostrar_Recipe(pid){
-           var route = $('#url').val()+'/office/consultations_mostrar_recipe/' + pid;
-           $.get(route,function(res){
-              $("#recipe").val($.trim(res.recipe));
-              $("#prescription").val($.trim(res.prescription));
-           });
-         }
-                
-
-        $("#appointment_id").change(function(){
-             //alert("Hola");
-            console.log("appointment_id :" + $('select[name=appointment_id]').val() );
-            Mostrar_Paciente($('select[name=appointment_id]').val());
-        });
-
-        function Mostrar_Paciente(pid){
-
-            var route = $('#url').val() + '/office/consultations_mostrar_paciente/' + pid;
-            $.get(route,function(datos){
-                console.log("Retorno :" + JSON.stringify(datos[0]));
-                $("#clinical_patient_full_name").val(datos[0].first_name + " " + datos[0].last_name);
-                $("#reason_consultation").val(datos[0].reason_consultation);
-                $("#personal_history").val(datos[0].personal_history);
-                $("#family_background").val(datos[0].family_background);
-            });
-        }
-
-        
-    }); 
-  </script>
-@stop
- --}}

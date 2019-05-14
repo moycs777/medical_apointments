@@ -61,7 +61,7 @@ class ExplorationsController extends Controller
 
         $exploration->specialty_id = $request->specialty_id;
         $exploration->name         = $request->name;
-        $exploration->de           = $request->de;
+        $exploration->de           = 'D';
         $exploration->status       = ($request->input('status') == null) ? 0 : 1;
         $exploration->save();
 

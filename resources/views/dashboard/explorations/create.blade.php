@@ -23,12 +23,12 @@
                     
                   </div>
 
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label for=""><strong>DE</strong></label>
-                    <input type="text" name="de" class="form-control" 
+                    <input type="text" name="de" class="form-control"  value="D"
                     required = "required" placeholder=""
                     >
-                  </div>
+                  </div> --}}
 
                   <div class="form-group">
                     <label for="sel1"><strong>Seleccione Especialidad</strong></label>
