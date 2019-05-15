@@ -199,7 +199,8 @@
         <td>
           <div class="col-md-12">
             <div class="form-group">
-              <input type="text" name="explo[{{$item->id}}][]"  maxlength="200" value = "" class="form-control">
+              <input type="text" name="explo[{{$item->id}}][]"  maxlength="200" 
+              value = "{{$item->name_2}}" class="form-control">
             </div>                                  
           </div>
         </td>

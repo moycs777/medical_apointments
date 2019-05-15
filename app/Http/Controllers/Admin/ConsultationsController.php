@@ -249,7 +249,6 @@ class ConsultationsController extends Controller
     public function update(ConsultationUpdateRequest $request, $id)
     {
         
-        //dd($request->all());       
         DB::beginTransaction();
         
         try{
@@ -257,7 +256,7 @@ class ConsultationsController extends Controller
             $consultation = Consultation::find($id);
             
             $consultation->appointment_id        = $request->nrocita;
-            $consultation->exploration_id        = 3; //$request->exploration_id;
+            //$consultation->exploration_id        = 3; //$request->exploration_id;
             $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->disease_id            = $request->disease_id;
             $consultation->date_consultation     = $request->date_consultation;
@@ -284,10 +283,29 @@ class ConsultationsController extends Controller
            if( $request->family_background != null) {
                $clinicalpatient->family_background  = $request->family_background;
            }
-
            $clinicalpatient->save();
-
-                      
+           
+           //***Eliminar exploraciones****
+           $cc =0;
+           $consultas = array();
+           $registros=ConsultationExploration::where('consultation_id','=',$id)->delete();
+           
+           //*** Guardar exploracion ***
+           $m =0;
+           $array = $request->input('explo');
+           foreach ($array as $key => $a) {
+              foreach ($a as $key_1 => $aa) {
+                $consexplo = new ConsultationExploration();
+                if (strlen(trim($aa)) > 0 ){
+                   $consexplo->exploration_id = $key;
+                   $consexplo->consultation_id = $consultation->id;
+                   $consexplo->name = $aa;
+                   $consexplo->save();
+                   $m++;
+                }
+              }
+           }
+                   
            //Actualizar recipe e indicaciones
            $subpatology = Subpatology::find($request->subpatology_id);
            if ($subpatology == null) {
@@ -304,7 +322,6 @@ class ConsultationsController extends Controller
         } catch (\Exception $e){
 
             DB::rollback();
-
             throw $e;
             return Redirect::back()->withErrors(['Error', 'Transaccion cancelada...']);
         }

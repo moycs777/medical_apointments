@@ -39,8 +39,8 @@ class PdfController extends Controller
            
         return $pdf->download(
             'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
-            .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
-            .'.pdf');
+            .$consult->appointment->clinical_patient->last_name . ' , fecha: '  
+            .$consult->appointment->created_at.'.pdf');
 
         // $nombre_recipe = 'Recipe de ' . $consult->appointment->clinical_patient->first_name .' '
         //     .$consult->appointment->clinical_patient->last_name . ' , fecha: ' . $consult->appointment->created_at
