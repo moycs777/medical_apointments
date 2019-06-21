@@ -42,9 +42,15 @@ Route::group(['middleware' => 'auth:admin',], function () {
 });
 
  Route::get('office/patientsconsultation','Admin\PatientsConsultationController@index')
-      ->name('patientsconsultation.index');
+            ->name('patientsconsultation.index');
  Route::get('office/patientsconsultation_cons/{id}',
-      'Admin\PatConController@pacientes_consultas')->name('patientsconsultation_cons.pacientes_consultas');
+              'Admin\PatConController@pacientes_consultas')->name('patientsconsultation_cons.pacientes_consultas');
+ Route::get('office/confirmappointments/{id}',       'Admin\NotifyAppointmentController@notificar_cita')
+                                                      ->name('notificar_cita');
+ Route::post('office/enviarconfirmappointments',     'Admin\NotifyAppointmentController@enviar_notificacion_cita')
+                                                      ->name('email_notificar_cita');
+ // Route::post('office/enviarconfirmappointments',       'Admin\EnviarMailAppointmentController@enviar_notificacion_cita')
+ //                                                      ->name('email_notificar_cita');
 
 
 
