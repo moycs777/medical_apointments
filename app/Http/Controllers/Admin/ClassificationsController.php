@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClassificationStoreRequest;
 use App\Http\Requests\ClassificationUpdateRequest;
 
+use Illuminate\Support\Facades\DB;
+use App\Pathology;
 use App\Classification;
 
 class ClassificationsController extends Controller
@@ -59,9 +61,22 @@ class ClassificationsController extends Controller
 
     public function destroy($id)
     {
+        
+        // Validar sublasificaciones a traves de las relaciones
+        //$subclas = Classification::find($id)->subclassifications; Funciona y se puede iterar foreach
+
+        $subclas = DB::table('subclassifications')->where('classification_id', $id)->first();
+        if($subclas != null){
+            return redirect()->route('classifications.index')->with('info','Existen registros vinculados, no puede eliminarse (Subclasificaciones');
+        }
+
+        $pathologies = Pathology::where('classification_id', $id)->first();
+        if($pathologies != null){
+            return redirect()->route('classifications.index')->with('info','Existen registros vinculados, no puede eliminarse (Patologias)');
+        }
+
         Classification::find($id)->delete();
 
-        return redirect()->route('classifications.index')
-           ->with('info','Informacion eliminada...');
+        return redirect()->route('classifications.index')->with('info','Informacion eliminada...');
     }
 }

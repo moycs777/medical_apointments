@@ -16,7 +16,6 @@ class CreateConsultationsTable extends Migration
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('appointment_id')->unsigned()->comment('Numero de la cita');
-            $table->integer('exploration_id')->unsigned()->comment('Codigo de la exploracion');
             $table->integer('subpatology_id')->unsigned()->comment('Codigo de la subpatologia');
             $table->integer('disease_id')->unsigned()->comment('Codigo de la enfermedad');
             $table->timestamp('date_consultation');
@@ -32,9 +31,6 @@ class CreateConsultationsTable extends Migration
             $table->foreign('appointment_id')->references('id')->on('appointments')
                   ->ondelete('cascade')
                   ->onupdate('cascade');  
-            $table->foreign('exploration_id')->references('id')->on('explorations')
-                  ->ondelete('cascade')
-                  ->onupdate('cascade'); 
             $table->foreign('subpatology_id')->references('id')->on('subpatologies')
                   ->ondelete('cascade')
                   ->onupdate('cascade'); 

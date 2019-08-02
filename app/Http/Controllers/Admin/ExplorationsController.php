@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Exploration;
 use App\Specialty;
+
 
 class ExplorationsController extends Controller
 {
@@ -71,6 +73,14 @@ class ExplorationsController extends Controller
 
     public function destroy($id)
     {
-        //
+        $consulta_exploracion = DB::table('consultation_explorations')->where('consultation_id', $id)->first();
+
+        if($consulta_exploracion != null){
+            return redirect()->route('explorations.index')->with('info','Existen registros vinculados, no puede eliminarse (Consulta-Exploracion)');
+        }
+
+        Exploration::find($id)->delete();
+
+        return redirect()->route('explorations.index')->with('info','Informacion eliminada...');
     }
 }

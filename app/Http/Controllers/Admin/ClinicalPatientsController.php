@@ -22,7 +22,7 @@ class ClinicalPatientsController extends Controller
     {
         $dni        = $request->get('dni');
         $first_name = $request->get('first_name');
-        $last_name =  $request->get('last_name');
+        $last_name  =  $request->get('last_name');
 
         $clinicalpatients = ClinicalPatient::orderBy('id','DESC')
             ->dni($dni)

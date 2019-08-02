@@ -17,6 +17,7 @@ use App\ClinicalPatient;
 use App\Specialty;
 use App\DoctorSpecialty;
 use App\Insurance;
+use App\Consultation;
 
 class AppointmentsController extends Controller
 {
@@ -157,6 +158,11 @@ class AppointmentsController extends Controller
     
     public function destroy($id)
     {
+
+        $consulta_medica = Consultation::where('appointment_id', $id)->first();
+        if($consulta_medica != null){
+            return redirect()->route('appointments.index')->with('info','No debe eliminarse, tiene una consulta de paciente asociada');
+        }
         Appointment::find($id)->delete();
         return redirect()->route('appointments.index')
             ->with('info','Informacion eliminada');;

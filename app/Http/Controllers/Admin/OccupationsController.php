@@ -55,6 +55,7 @@ class OccupationsController extends Controller
 
     public function destroy($id)
     {
+
         Occupation::find($id)->delete();
 
         return redirect()->route('occupations.index');

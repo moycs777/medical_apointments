@@ -19,6 +19,35 @@
 			    	<a href="{{ route('diseases.create') }}" class ='btn btn-primary pull-rigth'>
 			    		Crear
 			    	</a>
+
+			    	{{-- -------------------------------------------- --}}
+		            <div class="page-header"><strong>Busqueda</strong>
+		                <div class="form-group">
+		                  
+		                  <form method="GET" action="{{ route('diseases.index') }}" class="form-inline">
+		                     
+		                    <div class="col-md-3">
+		                      <div class="form-group">
+		                        <input type="text" name="name_1" class="form-control" 
+		                           placeholder="Ingrese descripcion enfermedad"
+		                        >
+		                      </div>
+		                    </div>
+
+		                    <div class="col-md-3">
+		                      <div class="form-group">
+		                        <button type="submit" class="btn btn-default">
+		                            <i class="fa fa-search"></i>
+		                        </button>
+		                      </div>
+		                    </div>
+
+		                  </form>
+
+		                </div>
+		            </div>
+		            {{-- -------------------------------------------- --}}
+
 			    	<div class="table-responsive ps">
 				  	    <div class="panel-body">
 				  	    	<table class="table tablesorter">

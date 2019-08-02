@@ -126,7 +126,6 @@ class ConsultationsController extends Controller
       try {
             $consultation = new Consultation();
             $consultation->appointment_id        = $request->appointment_id;
-            //$consultation->exploration_id        = $request->exploration_id;
             $consultation->subpatology_id        = $request->subpatology_id;
             $consultation->disease_id            = $request->disease_id ;
             $consultation->date_consultation     = $request->date_consultation;

@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Admin\Exception;
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Db;
 use App\Http\Requests\DiseaseStoreRequest;
 use App\Http\Requests\DiseaseUpdateRequest;
 use App\Disease;
@@ -12,9 +18,18 @@ use App\Subclassification;
 class DiseasesController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $diseases = Disease::where('subclassification_id','230')->orderBy('id','DESC')->paginate();
+
+        //dd($request->all());
+        $name     = $request->get('name_1');
+               
+        $diseases = Disease::orderBy('id','DESC')
+                    ->typedisease()
+                    ->disease($name)
+                    ->paginate(8); 
+               
+        //$diseases = Disease::where('subclassification_id','230')->orderBy('id','DESC')->paginate();
 
         return view('dashboard.diseases.index',compact('diseases'));
     }
@@ -76,6 +91,15 @@ class DiseasesController extends Controller
 
     public function destroy($id)
     {
+
+        // Verificar si esta asociada a una consulta
+        $consulta_medica = DB::table('consultations')->where('disease_id',$id)->first();
+
+        if($consulta_medica != null){
+           return redirect()->route('diseases.index')
+                            ->with('info','Enfermedad no debe de eliminarse, esta relacionado a una consulta medica'); 
+        }
+
         Disease::find($id)->delete();
 
         return redirect()->route('diseases.index');

@@ -27,7 +27,7 @@ class PatientsConsultationController extends Controller
 
     public function pacientes_consultas(Request $request){
 
-        dd("Hola");
+        //dd("Hola");
 
         // $dni        = $request->get('dni');
         // $firstname = $request->get('firstname');

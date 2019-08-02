@@ -71,6 +71,15 @@ class SubpatologiesController extends Controller
     
     public function destroy($id)
     {
+
+        // Verificar si esta asociada a una consulta
+        $consulta_medica = DB::table('consultations')->where('subpatology_id',$id)->first();
+
+        if($consulta_medica != null){
+           return redirect()->route('subpatologies.index')
+                            ->with('info','Subpatologia no debe de eliminarse, esta relacionado a una consulta medica'); 
+        }
+
         Subpatology::find($id)->delete();
 
         return redirect()->route('subpatologies.index');

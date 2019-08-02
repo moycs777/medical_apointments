@@ -42,12 +42,7 @@ class RegisterController extends Controller
    
     protected function create(array $data)
     {
-        // $insurance = Insurance::find(10);
-        // if($insurance == null){
-        //    return ('Error :No existen Seguros medicos creados...'); 
-        // }
-
-        // dd($insurance);
+        
         DB::beginTransaction();
         
         try{

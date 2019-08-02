@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PathologyStoreRequest;
 use App\Http\Requests\PathologyUpdateRequest;
 
+use Illuminate\Support\Facades\DB;
 use App\Pathology;
+use App\Subpatologies;
 use App\Classification;
 
 class PathologiesController extends Controller
@@ -69,6 +71,16 @@ class PathologiesController extends Controller
     
     public function destroy($id)
     {
+
+        //------------------------------------------------------------------------------
+        $subpatologies = DB::table('subpatologies')->where('pathology_id',$id)->first();
+
+        if($subpatologies != null){
+            return redirect()->route('pathologies.index')
+                             ->with('info','Existen registros vinculados, no puede eliminarse');
+        }
+        //-------------------------------------------------------------------------------
+
         Pathology::find($id)->delete();
 
         return redirect()->route('pathologies.index');

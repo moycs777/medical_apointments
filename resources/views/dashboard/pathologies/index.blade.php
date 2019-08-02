@@ -43,19 +43,20 @@
 	                                            class = "btn btn-sm">Editar 
 				  	    					</a>
 				  	    				</td>
+
 				  	    				<td width = "10px">
-	                                        <a href="" class = "btn btn-sm btn-danger" 
-	                                           onclick="event.preventDefault();
-	                                           document.getElementById('delete-form-{{ $item->id }}').submit();">
-	                                           Eliminar
-	                                        </a>
-	                                        <form id="delete-form-{{ $item->id }}"
-	                                              action="{{ route('pathologies.destroy',
-	                                                                $item->id) }}"
-	                                              method="POST" style="display: none;">
-	                                              @csrf @method('DELETE')
-	                                        </form>
+	                                        <form action="{{ route('pathologies.destroy',  $item->id) }}" 
+		                                      method="post" style="display:inline">
+		                                      {{ csrf_field() }}
+		                                      {{ method_field('DELETE') }}
+		                                                                          
+		                                      <button type="submit" alt="Eliminar"  class="btn btn-danger
+		                                        onclick="return confirm('Esta seguro de eliminar?');">
+		                                        <i class="fas fa-cut"></i>
+		                                      </button>
+		                                    </form>
 				  	    				</td>
+				  	    				
 				  	    			</tr>
 				  	    		</tbody>
 				  	    		@endforeach

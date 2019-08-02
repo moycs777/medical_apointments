@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Bitfumes\Multiauth\Notifications\RegistrationNotification;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests\DoctorsRequest;
 use App\Http\Requests\DoctorUpdateRequest;
 use App\Doctor;
@@ -101,6 +103,13 @@ class DoctorsController extends Controller
     
     public function destroy($id)
     {
+
+        $doctor_especialidad = DB::table('doctor_specialty')->where('doctor_id', $id)->first();
+        if($doctor_especialidad != null){
+           return redirect()->route('doctors.index')
+                            ->with('info','Doctor no debe de eliminarse, esta relacionado a una especialidad'); 
+        }
+       
         $doctor = Doctor::find($id);
 
         $admin = $doctor->admin;

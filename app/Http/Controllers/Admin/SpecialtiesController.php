@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
 use App\Specialty;
 
 class SpecialtiesController extends Controller
@@ -59,7 +61,20 @@ class SpecialtiesController extends Controller
     
     public function destroy($id)
     {
+        $doctor_especialidad = DB::table('doctor_specialty')->where('specialty_id',$id)->first();
+
+        if($doctor_especialidad != null){
+           return redirect()->route('specialties.index')
+                            ->with('info','Especialidad no debe de eliminarse, esta relacionado a un doctor con especialidad (doctor_specialty)'); 
+        }
         
+        $exploracion = DB::table('explorations')->where('specialty_id',$id)->first();
+
+        if($exploracion != null){
+           return redirect()->route('specialties.index')
+                            ->with('info','Especialidad no debe de eliminarse, esta relacionado con exploraciones (Exploraciones)'); 
+        }
+
         Specialty::find($id)->delete();
 
         return redirect()->route('specialties.index');
