@@ -21,16 +21,10 @@ class DiseasesController extends Controller
     public function index(Request $request)
     {
 
-        //dd($request->all());
         $name     = $request->get('name_1');
                
-        $diseases = Disease::orderBy('id','DESC')
-                    ->typedisease()
-                    ->disease($name)
-                    ->paginate(8); 
+        $diseases = Disease::orderBy('id','DESC')->typedisease()->disease($name)->paginate(8); 
                
-        //$diseases = Disease::where('subclassification_id','230')->orderBy('id','DESC')->paginate();
-
         return view('dashboard.diseases.index',compact('diseases'));
     }
 

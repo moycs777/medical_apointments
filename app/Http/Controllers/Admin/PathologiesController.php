@@ -15,9 +15,13 @@ use App\Classification;
 class PathologiesController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $pathologies = Pathology::orderBy('id','DESC')->paginate();
+        //$pathologies = Pathology::where('classification_id',10)->orderBy('id','DESC')->paginate();
+
+        $name     = $request->get('name');
+               
+        $pathologies = Pathology::orderBy('id','DESC')->classification(10)->pathologie($name)->paginate(8); 
 
         return view('dashboard.pathologies.index',compact('pathologies'));
         

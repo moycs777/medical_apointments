@@ -26,7 +26,7 @@
 		                  
 		                  <form method="GET" action="{{ route('diseases.index') }}" class="form-inline">
 		                     
-		                    <div class="col-md-3">
+		                    <div class="col-md-6">
 		                      <div class="form-group">
 		                        <input type="text" name="name_1" class="form-control" 
 		                           placeholder="Ingrese descripcion enfermedad"
@@ -34,7 +34,7 @@
 		                      </div>
 		                    </div>
 
-		                    <div class="col-md-3">
+		                    <div class="col-md-6">
 		                      <div class="form-group">
 		                        <button type="submit" class="btn btn-default">
 		                            <i class="fa fa-search"></i>
