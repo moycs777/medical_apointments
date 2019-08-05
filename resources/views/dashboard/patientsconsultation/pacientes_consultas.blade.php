@@ -90,7 +90,7 @@
                                   <td>{{ Carbon\Carbon::parse($item->date_consultation)->format('d-m-Y') }}</td>
                                   <td>{{ $item->reason_consultation }}</td>
                                   <td width = "10px">
-                                    <a href="{{ route('consultations.update', $item->id) }}"
+                                    <a href="{{ route('consultations.edit', $item->id) }}"
                                       class = "btn btn-sm">Editar consulta
                                     </a>
                                   </td>
