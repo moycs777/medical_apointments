@@ -4,7 +4,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('index');
 
-Auth::routes();
+Auth::routes();   
 
 Route::get('/home', 'HomeController@home')->name('home');
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
@@ -52,5 +52,14 @@ Route::group(['middleware' => 'auth:admin',], function () {
  // Route::post('office/enviarconfirmappointments',       'Admin\EnviarMailAppointmentController@enviar_notificacion_cita')
  //                                                      ->name('email_notificar_cita');
 
+// custom passwor reset
+// Password Resets
+//     Route::POST('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+//     Route::GET('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+//     Route::POST('/password/reset', 'ResetPasswordController@reset');
+//     Route::GET('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('admin.password.reset');
+     
+Route::GET('/customauth/reset', 'Admin\CustomAuthController@showLinkRequestForm')->name('admin.customauth.request');
+Route::POST('/customauth/email', 'Admin\CustomAuthController@sendResetLinkEmail')->name('admin.customauth.email');
 
 
