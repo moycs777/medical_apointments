@@ -59,7 +59,11 @@ Route::group(['middleware' => 'auth:admin',], function () {
 //     Route::POST('/password/reset', 'ResetPasswordController@reset');
 //     Route::GET('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('admin.password.reset');
      
+// rodolfo
 Route::GET('/customauth/reset', 'Admin\CustomAuthController@showLinkRequestForm')->name('admin.customauth.request');
 Route::POST('/customauth/email', 'Admin\CustomAuthController@sendResetLinkEmail')->name('admin.customauth.email');
+Route::GET('/customauth/reset/{token}', 'Admin\CustomAuthController@showResetForm')->name('admin.customauth.token');
+Route::POST('/customauth/reset', 'Admin\CustomAuthController@reset')->name('admin.customauth.reset');
+
 
 
