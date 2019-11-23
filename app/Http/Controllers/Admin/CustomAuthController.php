@@ -27,7 +27,7 @@ class CustomAuthController extends Controller
 
         $user = Admin::where('email',$request->email )->first();
         if ($user == null) {
-
+            return "email no encontrado";
             return back()
                 ->withInput($request->only('email'))
                 ->withErrors(['email' => trans($request)]);
