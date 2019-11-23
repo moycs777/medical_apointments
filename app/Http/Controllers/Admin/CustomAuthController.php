@@ -63,7 +63,7 @@ class CustomAuthController extends Controller
     {
         $user = DB::table('password_resets')->where('token', '=', $token)->first();
         if ($user == null) {
-            
+            return "error al buscar usuario";
         }
         return view('auth.passwords.admin.reset')->with(
             ['token' => $token, 'email' => $user->email]
@@ -74,6 +74,10 @@ class CustomAuthController extends Controller
     public function reset(Request $request)
     {
         $user = DB::table('password_resets')->where('token', '=', $request->token)->first();
+
+        if ($user == null) {
+            return "error al buscar usuario";
+        }
 
         $this->resetPassword($user,$request->password);
 
@@ -91,7 +95,6 @@ class CustomAuthController extends Controller
             ->where('email',  $user->email)
             ->update(['password' => $password]);
 
-        
 
         // $this->guard()->login($user);
     }
