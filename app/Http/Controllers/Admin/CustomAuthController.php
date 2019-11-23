@@ -77,7 +77,8 @@ class CustomAuthController extends Controller
 
         $this->resetPassword($user,$request->password);
 
-        dd($request->all());
+        // dd($request->all());
+        return "password cambiado con exito";
     }
 
 
