@@ -32,7 +32,7 @@ class CustomAuthController extends Controller
                 ->withInput($request->only('email'))
                 ->withErrors(['email' => trans($request)]);
             
-            dd($user);
+            // dd($user);
         }
         DB::table('password_resets')->where('email', '=', $user->email)->delete();
 
@@ -43,6 +43,7 @@ class CustomAuthController extends Controller
         );
 
         $this->sendEmail($user->email, $token);
+        return "mail enviado";
         // dd($user->email);
     }
 
