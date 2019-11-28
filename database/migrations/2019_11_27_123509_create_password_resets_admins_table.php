@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnPasswordResetsTipo extends Migration
+class CreatePasswordResetsAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AddColumnPasswordResetsTipo extends Migration
      */
     public function up()
     {
-        Schema::table('password_resets', function (Blueprint $table) {
-            
-            $table->string('type',1)->nullable()->after('token');
-                       
+        Schema::create('password_resets_admins', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -27,8 +27,6 @@ class AddColumnPasswordResetsTipo extends Migration
      */
     public function down()
     {
-        Schema::table('password_resets', function (Blueprint $table) {
-            $table->dropColumn('type');
-        });
+        Schema::dropIfExists('password_resets_admins');
     }
 }

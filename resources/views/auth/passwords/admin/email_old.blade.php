@@ -1,6 +1,6 @@
 {{-- @extends('layouts.app') --}}
-@extends('layouts.web.web')
 
+@extends('layouts.web.web')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -36,7 +36,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Enviar enlace de recuperacion de contraseña') }}
+                                    {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
                         </div>

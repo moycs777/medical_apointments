@@ -34,11 +34,11 @@ class CustomAuthController extends Controller
             
             // dd($user);
         }
-        DB::table('password_resets')->where('email', '=', $user->email)->delete();
+        DB::table('password_resets_admins')->where('email', '=', $user->email)->delete();
 
         $token = rand(1000, 100000000);
 
-        $pass_reset = DB::table('password_resets')->insert(
+        $pass_reset = DB::table('password_resets_admins')->insert(
             ['email' =>  $user->email, 'token' => $token]
         );
 
@@ -61,7 +61,7 @@ class CustomAuthController extends Controller
 
     public function showResetForm($token)
     {
-        $user = DB::table('password_resets')->where('token', '=', $token)->first();
+        $user = DB::table('password_resets_admins')->where('token', '=', $token)->first();
         if ($user == null) {
             return "error al buscar usuario";
         }
@@ -73,7 +73,7 @@ class CustomAuthController extends Controller
 
     public function reset(Request $request)
     {
-        $user = DB::table('password_resets')->where('token', '=', $request->token)->first();
+        $user = DB::table('password_resets_admins')->where('token', '=', $request->token)->first();
 
         if ($user == null) {
             return "error al buscar usuario";
@@ -89,7 +89,7 @@ class CustomAuthController extends Controller
     protected function resetPassword($user, $password)
     {
         $password = Hash::make($password);
-        DB::table('password_resets')->where('email', '=', $user->email)->delete();
+        DB::table('password_resets_admins')->where('email', '=', $user->email)->delete();
 
         DB::table('admins')
             ->where('email',  $user->email)
