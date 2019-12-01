@@ -24,6 +24,7 @@
                       <tr>
                         <th>Id</th>
                         <th>Fecha Consulta</th>
+                        <th>Hora Consulta</th>
                         <th>Motivo Consulta</th>
                         <th>Doctor</th>
                         <th>Paciente</th>
@@ -36,6 +37,7 @@
                       <tr >
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->appointment_date }}</td>
+                        <td>{{ $item->time_consultation }}</td>
                         <td>{{ $item->reason_consultation }}</td>
                         <td>{{ $item->doctor->first_name . " " . $item->doctor->last_name}}</td>
                         <td>{{ $item->clinical_patient->first_name . " " . 

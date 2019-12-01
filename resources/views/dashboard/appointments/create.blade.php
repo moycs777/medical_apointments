@@ -87,9 +87,20 @@
                   </div>
                 </div>
 
+                <div class="form-group">                  
+                    <label for=""><strong>Hora de la Consulta</strong></label>
+                    <strong>
+                        <input type="text" name = "time_consultation"
+                            class="form-control" 
+                            value="@php echo date("H:m")@endphp"> 
+                    </strong>
+                </div>
+
                 <div class="form-group">
                   <label for=""><strong>Motivo de la consulta</strong></label>
-                  <input type="text" name="reason_consultation" class="form-control">
+                  <strong>
+                      <input type="text" name="reason_consultation" class="form-control">
+                  </strong>
                 </div>
 
                 <div class="form-group">

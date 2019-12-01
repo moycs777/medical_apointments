@@ -20,13 +20,7 @@
                             <h4>Contenido:</h4> --}}
                             <p>{{ $a->first_name }}</p>
                             <p>{{ bbbbbbbbbbbbbbbbbbbbbbbb }}</p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nam aut, doloremque labore animi voluptate. Rerum eius eligendi tenetur, vitae voluptatibus sapiente quas dolores repellat optio omnis, deserunt nulla illo.
-                            </p>
-                            {{-- <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Enviar Correo</button>
-                            </div> --}}
-                            
+                                                        
                         </div>
                     </div>
                 </div>

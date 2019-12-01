@@ -138,7 +138,7 @@ class AppointmentsController extends Controller
     public function update(AppointmentUpdateRequest $request, $id)
     {
 
-        // dd($request->all());
+        //dd($request->all());
         $appointment = Appointment::find($id);
        
         // $appointment->doctor_id            = $request->doctor_id;
@@ -150,7 +150,7 @@ class AppointmentsController extends Controller
         // $appointment->status               = $request->status;
         //$appointment->save();
         $appointment->fill($request->all())->save();
-
+       
         return redirect()->route('appointments.index')->with('info','Informacion actualizada');
 
     }

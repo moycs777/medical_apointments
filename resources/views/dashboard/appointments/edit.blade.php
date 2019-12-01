@@ -18,22 +18,7 @@
                 {{ method_field('PUT') }}
 
                 <div class="row">
-                  {{-- <div class="form-group col-sm-6">
-                    <label for="sel1"><strong>Seleccione Doctor</strong></label>
-                      <select class="js-example-basic-single form-control" 
-                        id="sel1" name="doctor_id">
-                        @foreach($doctors as $item) 
-                          <option value ="{{ $item->id }}"
-                            @if($item->id == "$appointment->doctor_id") 
-                              selected='selected' 
-                            @endif
-                          >
-                          {{ $item->first_name . " " . $item->last_name}} 
-                          </option>
-                        @endforeach
-                      </select>
-                  </div> --}}
-
+                  
                   <div class="form-group col-sm-6">
                     <label for="sel1"><strong>Doctor</strong></label>
                     <input type="hidden" name="doctor_id" class="form-control" value = "{{ $appointment->doctor_id }}">
@@ -96,6 +81,15 @@
                   <label for=""><strong><strong>Motivo de la consulta</strong></strong></label>
                   <input type="text" name="reason_consultation" class="form-control"
                   value = "{{ $appointment->reason_consultation }}">
+                </div>
+
+                <div class="form-group">                  
+                    <label for=""><strong>Hora de la Consulta</strong></label>
+                    <strong>
+                        <input type="text" name = "time_consultation"
+                               class="form-control" 
+                               value="{{ $appointment->time_consultation }}"> 
+                    </strong>
                 </div>
 
                 <div class="form-group">

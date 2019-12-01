@@ -36,33 +36,51 @@ Route::group(['middleware' => 'auth:admin',], function () {
   Route::resource('office/explorations',        'Admin\ExplorationsController');
   Route::resource('office/explorations',        'Admin\ExplorationsController');
   Route::resource('office/doctorspecialties',   'Admin\DoctorSpecialtyController');
-  Route::get('office/constancias/{id}',         'Admin\ConstanciasController@verpaciente')->name('verpaciente');
+  Route::get('office/constancias/{id}',         'Admin\ConstanciasController@verpaciente')
+             ->name('verpaciente');
   Route::post('office/generarconstancias',      'Admin\ConstanciasPdfController@generate_constancia')
-                                                      ->name('pdf_generate_constancia');
+              ->name('pdf_generate_constancia');
+
+ 
+ // *** Notificacion de consultas a pacientes 29-11-2019 ***
+ Route::get('office/notifypatientsappointments', 
+    'Admin\NotifyPatientsAppointmentsController@mostrar_citas_medicas')
+    ->name('mostrar_citas_medicas');
+
+//*** Notificar_cita_pacientes 30-11-2019 ***
+Route::get('office/notifypatientsappointments/{id}', 
+    'Admin\NotifyPatientsAppointmentsController@mostrar_cita_pantalla')->name('mostrar_cita_pantalla');
+//********************************************
+
+//*** Enviar email Notificando cita 30-11-2019 ***
+Route::post('office/notifypatientsappointments',
+  'Admin\NotifyPatientsAppointmentsController@enviar_email')->name('enviar_email_notificando_cita');
+
+//********************************************
+
 });
+
+
+//*******************************************
 
  Route::get('office/patientsconsultation','Admin\PatientsConsultationController@index')
             ->name('patientsconsultation.index');
- Route::get('office/patientsconsultation_cons/{id}',
-              'Admin\PatConController@pacientes_consultas')->name('patientsconsultation_cons.pacientes_consultas');
- Route::get('office/confirmappointments/{id}',       'Admin\NotifyAppointmentController@notificar_cita')
-                                                      ->name('notificar_cita');
- Route::post('office/enviarconfirmappointments',     'Admin\NotifyAppointmentController@enviar_notificacion_cita')
-                                                      ->name('email_notificar_cita');
- // Route::post('office/enviarconfirmappointments',       'Admin\EnviarMailAppointmentController@enviar_notificacion_cita')
- //                                                      ->name('email_notificar_cita');
 
-// custom passwor reset
-// Password Resets
-//     Route::POST('/password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-//     Route::GET('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-//     Route::POST('/password/reset', 'ResetPasswordController@reset');
-//     Route::GET('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('admin.password.reset');
-     
+ Route::get('office/patientsconsultation_cons/{id}',
+    'Admin\PatConController@pacientes_consultas')->name('patientsconsultation_cons.pacientes_consultas');
+
+ Route::get('office/confirmappointments/{id}', 'Admin\NotifyAppointmentController@notificar_cita')
+             ->name('notificar_cita');
+ Route::post('office/enviarconfirmappointments',
+      'Admin\NotifyAppointmentController@enviar_notificacion_cita')->name('email_notificar_cita');
+ 
 // rodolfo
-Route::GET('/customauth/reset', 'Admin\CustomAuthController@showLinkRequestForm')->name('admin.customauth.request');
-Route::POST('/customauth/email', 'Admin\CustomAuthController@sendResetLinkEmail')->name('admin.customauth.email');
-Route::GET('/customauth/reset/{token}', 'Admin\CustomAuthController@showResetForm')->name('admin.customauth.token');
+Route::GET('/customauth/reset', 'Admin\CustomAuthController@showLinkRequestForm')
+     ->name('admin.customauth.request');
+Route::POST('/customauth/email', 'Admin\CustomAuthController@sendResetLinkEmail')
+     ->name('admin.customauth.email');
+Route::GET('/customauth/reset/{token}', 'Admin\CustomAuthController@showResetForm')
+     ->name('admin.customauth.token');
 Route::POST('/customauth/reset', 'Admin\CustomAuthController@reset')->name('admin.customauth.reset');
 
 

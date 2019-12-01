@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Admin\Exception;
 use Illuminate\Support\Facades\Hash;
 

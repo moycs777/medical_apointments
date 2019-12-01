@@ -9,7 +9,7 @@ class Appointment extends Model
     protected $fillable =[
 
     	'clinical_patient_id','doctor_id','doctor_specialty_id','insurance_id','appointment_date',
-    	'reason_consultation','status'
+    	'reason_consultation','time_consultation','status'
 
     ];
 
@@ -17,7 +17,8 @@ class Appointment extends Model
         return $this->belongsTo('App\Doctor');
     }
     
-    public function clinical_patient(){
+    public function clinical_patient()
+    {
         return $this->belongsTo('App\ClinicalPatient');
     }
 }
