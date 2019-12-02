@@ -12,6 +12,7 @@
         <div class="row">
           <div class="col-md-8">
           <div class="card">
+
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.login') }}" aria-label="{{ __('Admin Login') }}">
                     @csrf
@@ -63,7 +64,7 @@
                     <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                     <a class="btn btn-link" href="{{ route('admin.customauth.request') }}">
                     {{-- <a class="btn btn-link" href="{{ route('admin.password.request') }}"> --}}
-                        {{ __('Forgot Your Password?') }}
+                        {{ __('Recuperar Password?') }}
                     </a>
                 </form>
             </div>

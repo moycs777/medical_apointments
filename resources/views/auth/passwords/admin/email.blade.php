@@ -9,11 +9,12 @@
                 <div class="card-header">Admin {{ __('Reset Password') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    
+                    @if (Session::has('message')) 
+                       <div class="alert alert-info">
+                         {{ Session::get('message') }}
+                       </div>
+                    @endif 
 
                     <form method="POST" action="{{ route('admin.customauth.email') }}">
                     {{-- <form method="POST" action="{{ route('password.email') }}"> --}}

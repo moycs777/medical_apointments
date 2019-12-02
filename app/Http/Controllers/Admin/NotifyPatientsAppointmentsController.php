@@ -54,14 +54,14 @@ class NotifyPatientsAppointmentsController extends Controller
     public function enviar_email(request $request)
     {
 
-     
         $a = $request; 
 
         Mail::to($request->email)->send(new UserMail($request->content,$request->title));
        
-        return "Se ha enviado el correo";
+        return redirect()->route('mostrar_citas_medicas')
+               ->with('info','Correo enviado satisfactoriamente');
+        
     }
-    
         
 }
 

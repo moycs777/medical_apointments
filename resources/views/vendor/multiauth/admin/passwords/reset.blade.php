@@ -11,7 +11,7 @@
                 <div class="card-body">
                    
                     <form method="POST" action="{{ route('admin.password.request') }}" 
-                        aria-label="{{ __(' Recuperar Password del Administrador') }}">
+                        aria-label="{{ __(' *** Recuperar Password del Administrador ***') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">

@@ -21,6 +21,12 @@
                         </tr>
                       </thead>
 
+                      @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                          {{ session('status') }}
+                        </div>
+                      @endif
+
                       @foreach($patient as $item)
                           <tbody>
                             <tr>

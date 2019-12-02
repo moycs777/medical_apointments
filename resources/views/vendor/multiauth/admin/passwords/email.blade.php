@@ -8,17 +8,13 @@
                 <div class="card-header">Admin Reset {{ ucfirst(config('multiauth.prefix')) }} Password</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    
 
-                    <form method="POST" action="{{ route('admin.password.email') }}" 
-                        aria-label="{{ __('Resetear Password de Administrador') }}">
+                    {{-- <form method="POST" action="{{ route('admin.password.email') }}" 
+                        aria-label="{{ __('Resetear Password de Administrador') }}"> --}}
 
-                   {{-- <form method="POST" action="" aria-label="{{ __('Reset Admin Password') }}"> --}}
-                    <form method="POST" action="{{ route('admin.customauth.email') }}" aria-label="{{ __('Resetear Password Administrador') }}">
+                    <form method="POST" action="{{ route('admin.customauth.email') }}" 
+                        aria-label="{{ __('<<< Resetear Password Administrador >>>') }}">
                         @csrf
 
                         <div class="form-group row">

@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomReetPassword;
 use Illuminate\Support\Facades\Hash;
 
+//use Illuminate\Support\Facades\Redirect;
+
+//use App\Http\Controllers\Admin\Session;
+use Session;
+
 class CustomAuthController extends Controller
 {
 
@@ -27,7 +32,10 @@ class CustomAuthController extends Controller
 
         $user = Admin::where('email',$request->email )->first();
         if ($user == null) {
-            return "email no encontrado";
+            //return "email no encontrado";
+            Session::flash('message','Email no encontrado...');
+            return \Redirect::back();
+
             return back()
                 ->withInput($request->only('email'))
                 ->withErrors(['email' => trans($request)]);
@@ -43,8 +51,13 @@ class CustomAuthController extends Controller
         );
 
         $this->sendEmail($user->email, $token);
-        return "mail enviado";
-        // dd($user->email);
+
+        // return redirect()->route('admin.customauth.email')
+        //        ->with('info','Se ha enviado un correo a su email personal');
+        //return \Redirect::back()->with('info', 'Se ha enviado un email a su cuenta de correo...');
+        Session::flash('message','Se ha enviado un email a su cuenta de correo...');
+        return \Redirect::back();
+                
     }
 
     protected function validateEmail(Request $request)
@@ -61,6 +74,7 @@ class CustomAuthController extends Controller
 
     public function showResetForm($token)
     {
+        
         $user = DB::table('password_resets_admins')->where('token', '=', $token)->first();
         if ($user == null) {
             return "error al buscar usuario";
@@ -76,12 +90,15 @@ class CustomAuthController extends Controller
         $user = DB::table('password_resets_admins')->where('token', '=', $request->token)->first();
 
         if ($user == null) {
-            return "error al buscar usuario";
+            return "Error al buscar usuario";
         }
 
         $this->resetPassword($user,$request->password);
 
         // dd($request->all());
+
+        Session::flash('message','Se ha cambiado su password satisfactoriamente...');
+        return \Redirect::back();
         return "password cambiado con exito";
     }
 
