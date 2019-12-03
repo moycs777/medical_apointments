@@ -6,18 +6,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin {{ __('Reset Password') }}</div>
+                <div class="card-header">Admin {{ __('Resetear Password') }}</div>
 
                 <div class="card-body">
                     
-                    @if (Session::has('message')) 
-                       <div class="alert alert-info">
-                         {{ Session::get('message') }}
-                       </div>
-                    @endif 
+                    @if (Session::has('message'))
+                        <div class="alert alert-error">
+                           {{ Session::get('message') }}
+                        </div>
+                    @endif
 
                     <form method="POST" action="{{ route('admin.customauth.email') }}">
-                    {{-- <form method="POST" action="{{ route('password.email') }}"> --}}
+                    
                         @csrf
 
                         <div class="form-group row">

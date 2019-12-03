@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 //use Illuminate\Support\Facades\Redirect;
 
 //use App\Http\Controllers\Admin\Session;
-use Session;
+
 
 class CustomAuthController extends Controller
 {
@@ -28,13 +28,13 @@ class CustomAuthController extends Controller
     public function sendResetLinkEmail(Request $request)
     {
         
+        var_dump("1");
         $this->validateEmail($request);
 
         $user = Admin::where('email',$request->email )->first();
         if ($user == null) {
-            //return "email no encontrado";
-            Session::flash('message','Email no encontrado...');
-            return \Redirect::back();
+            return "email no encontrado";
+            //return redirect()->back()->with(['message' => 'Email no encontrado...']);
 
             return back()
                 ->withInput($request->only('email'))
@@ -52,12 +52,8 @@ class CustomAuthController extends Controller
 
         $this->sendEmail($user->email, $token);
 
-        // return redirect()->route('admin.customauth.email')
-        //        ->with('info','Se ha enviado un correo a su email personal');
-        //return \Redirect::back()->with('info', 'Se ha enviado un email a su cuenta de correo...');
-        Session::flash('message','Se ha enviado un email a su cuenta de correo...');
-        return \Redirect::back();
-                
+        return redirect()->back()->with(['message' => 'Se ha enviado un correo a su email personal']); 
+                        
     }
 
     protected function validateEmail(Request $request)
@@ -75,10 +71,14 @@ class CustomAuthController extends Controller
     public function showResetForm($token)
     {
         
+        
         $user = DB::table('password_resets_admins')->where('token', '=', $token)->first();
         if ($user == null) {
-            return "error al buscar usuario";
+            return "Error al buscar usuario, no se actualizara su password";
+            return redirect()->back()
+               ->with(['message' => 'Error al buscar usuario, no se actualizara su password']);
         }
+
         return view('auth.passwords.admin.reset')->with(
             ['token' => $token, 'email' => $user->email]
         );
@@ -95,23 +95,22 @@ class CustomAuthController extends Controller
 
         $this->resetPassword($user,$request->password);
 
-        // dd($request->all());
+        //return redirect()->back()->with(['message' => 'Se ha cambiado su password satisfactoriamente...']); 
 
-        Session::flash('message','Se ha cambiado su password satisfactoriamente...');
-        return \Redirect::back();
         return "password cambiado con exito";
     }
 
 
     protected function resetPassword($user, $password)
     {
+        
         $password = Hash::make($password);
         DB::table('password_resets_admins')->where('email', '=', $user->email)->delete();
 
         DB::table('admins')
             ->where('email',  $user->email)
             ->update(['password' => $password]);
-
+//dd("2");
 
         // $this->guard()->login($user);
     }
